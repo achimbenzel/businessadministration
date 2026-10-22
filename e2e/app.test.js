@@ -184,6 +184,41 @@ test('viewer on the phone: read, quiz, flashcards, search', async () => {
   await ctx.close();
 });
 
+test('interactive demos: sliders move the curves and the numbers', async () => {
+  const c = (await admin('/api/chapters', { method: 'POST', json: { subjectId: 'economical-framework', title: 'Demos' } })).data.chapter;
+  await admin(`/api/chapters/${c.id}`, {
+    method: 'PATCH',
+    json: { status: 'published', lang: 'en', blocks: [
+      { type: 'supplyDemand', a: 100, b: 2, c: -20, d: 4 },
+      { type: 'consumerChoice', m: 100, p1: 2, p2: 5, alpha: 0.5 },
+    ] },
+  });
+  const { ctx, page } = await open(PHONE);
+  await login(page, 'User', PASSWORDS.user);
+  await page.goto(`${srv.base}/kapitel/${c.id}`);
+  await page.waitForSelector('.demo svg');
+  const [market, choice] = [page.locator('.demo').nth(0), page.locator('.demo').nth(1)];
+  const readout = (demo, label) => demo.locator('.demo-readout', { hasText: label }).first().locator('strong').textContent();
+  assert.equal(await readout(market, 'P*'), '20');
+  assert.equal(await readout(market, 'Consumer surplus'), '900');
+  await market.locator('input[type=range]').nth(0).fill('140'); // a: demand at P = 0
+  assert.equal(await readout(market, 'P*'), '26.67');
+  assert.equal(await market.locator('.demo-base').count(), 2, 'starting curves stay visible, dashed');
+  await market.locator('button', { hasText: 'Reset' }).click();
+  assert.equal(await readout(market, 'P*'), '20');
+  await market.locator('button', { hasText: 'Price ceiling' }).click();
+  await market.locator('input[type=range]').last().fill('15');
+  assert.equal(await readout(market, 'Shortage'), '30');
+  assert.equal(await readout(market, 'Quantity traded'), '40');
+
+  assert.equal(await readout(choice, 'x₁*'), '25');
+  await choice.locator('input[type=range]').nth(1).fill('4'); // p₁
+  assert.equal(await readout(choice, 'x₁*'), '12.5');
+  assert.equal(await readout(choice, 'x₂*'), '10');
+  assert.ok(await sideways(page) <= 1, 'demo page scrolls sideways');
+  await ctx.close();
+});
+
 test('no script errors, console errors or CSP violations on any page', () => {
   assert.deepEqual(problems, []);
 });

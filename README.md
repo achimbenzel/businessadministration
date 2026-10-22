@@ -5,7 +5,7 @@ Eine Web-App zum Lernen der Inhalte des Masterstudiengangs
 **Semester → Fach → Kapitel**. Die Inhalte werden direkt in der App gepflegt,
 wie in einem CMS: Kapitel bestehen aus **Bausteinen** (ähnlich wie in Notion) –
 Text, Definitionen, Hinweise, Formeln, Tabellen, Karteikarten, Quizfragen,
-Bilder, Dateien und Links.
+Bilder, Dateien, Links und interaktive Demos.
 
 Dark Mode, mobile first, Icons von [lucide](https://lucide.dev), Schrift
 DM Sans lokal gebündelt (kein CDN). Aufbau nach der Projekt-Blaupause des
@@ -35,7 +35,9 @@ Playwright).
 - **Papierkorb** – gelöschte Kapitel bleiben 30 Tage wiederherstellbar.
 - **Inhaltspakete** – Kapitel können auch im Repo unter `content/` vorbereitet werden
   und werden beim Serverstart einmal übernommen (siehe [content/README.md](content/README.md)).
-  Erstes Kapitel: *Supply & Demand and Indifference Curves* (Englisch) im Fach Economical Framework.
+  Im Fach Economical Framework (Englisch): *Supply & Demand* und *Indifference Curves and Consumer Choice*.
+- **Interaktive Demos** als Bausteine – Angebot & Nachfrage sowie Haushaltsoptimum: Werte per
+  Regler ändern, Kurven, Gleichgewicht bzw. Optimum und Kennzahlen passen sich live an.
 - **Inhaltssprache pro Kapitel** (Deutsch/Englisch) – die Beschriftungen in den Bausteinen folgen ihr.
 - **Als App installierbar** (PWA-Manifest, Icons, iOS-Meta-Tags).
 

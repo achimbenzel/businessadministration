@@ -216,3 +216,92 @@
   .ed-quiz-correct:hover { color: var(--text-faint); }
   .picker-item:hover, .picker-item:focus-visible { border-color: rgba(var(--accent-rgb), .6); background: var(--surface-3); }
 }
+
+/* --------------------------------------------------------- Interactive demos */
+.demo { padding: 14px 14px 16px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--border); display: flex; flex-direction: column; gap: 12px; }
+.demo-head { display: flex; align-items: center; gap: 8px; min-height: 30px; }
+.demo-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--tint); }
+.demo-reset { margin-left: auto; min-height: 32px; }
+.demo-title { margin: -4px 0 0; font-size: 17px; }
+.demo-caption { margin: 0; font-size: 13px; color: var(--text-faint); }
+.demo-note { margin: -6px 0 0; font-size: 12px; color: var(--text-faint); }
+.demo-warning { margin: 0; padding: 10px 12px; border-radius: 10px; background: rgba(var(--warn-rgb), .12); color: var(--warn); font-size: 14px; }
+.demo-eq { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--font-mono); font-size: 14px; }
+.demo-eq sub, .demo-eq sup { font-size: .72em; }
+.demo-eq .d { color: var(--c-teal); }
+.demo-eq .s { color: var(--c-amber); }
+.demo-eq .u { color: var(--c-violet); }
+.demo-eq .budget { color: var(--c-teal); }
+
+/* The chart (SVG at 1 unit = 1 px, see demos/Plot.jsx) */
+.demo-plot { width: 100%; margin: 0 -2px; }
+.demo-plot svg { display: block; overflow: visible; font-family: var(--font); }
+.demo-grid { stroke: rgba(255, 255, 255, .06); stroke-width: 1; }
+.demo-axis { stroke: var(--text-faint); stroke-width: 1.5; }
+.demo-tick { fill: var(--text-faint); font-size: 11px; font-family: var(--font-mono); }
+.demo-axis-label { fill: var(--text-muted); font-size: 12px; }
+.demo-curve { fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.demo-curve.d { stroke: var(--c-teal); }
+.demo-curve.s { stroke: var(--c-amber); }
+.demo-curve.u { stroke: var(--c-violet); }
+.demo-curve.u.faint { stroke-width: 1.6; opacity: .45; }
+.demo-curve.budget { stroke: var(--c-teal); }
+.demo-base { stroke-width: 2; stroke-dasharray: 6 6; opacity: .5; }
+.demo-area { stroke: none; }
+.demo-area.cs { fill: rgba(var(--c-teal-rgb), .18); }
+.demo-area.ps { fill: rgba(var(--c-amber-rgb), .18); }
+.demo-area.budget { fill: rgba(var(--c-teal-rgb), .08); }
+.demo-guide { stroke: var(--text-faint); stroke-width: 1.2; stroke-dasharray: 4 5; }
+.demo-control { stroke-width: 2; stroke-dasharray: 8 6; }
+.demo-control.ceiling, .demo-gap.ceiling { stroke: var(--c-blue); }
+.demo-control.floor, .demo-gap.floor { stroke: var(--c-pink); }
+.demo-gap { stroke-width: 6; stroke-linecap: round; }
+.demo-point { fill: var(--text); stroke: var(--surface); stroke-width: 2.5; }
+.demo-point.faint { fill: var(--text-faint); }
+.demo-tag { fill: var(--text); font-size: 14px; font-weight: 700; }
+.demo-tag.d { fill: var(--c-teal); }
+.demo-tag.s { fill: var(--c-amber); }
+.demo-tag.u { fill: var(--c-violet); }
+
+/* Readouts */
+.demo-readouts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.demo-readout { display: flex; flex-direction: column; gap: 2px; padding: 8px 10px; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--border); min-width: 0; }
+.demo-readout span { font-size: 11px; color: var(--text-faint); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.demo-readout strong { font-family: var(--font-mono); font-size: 16px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.demo-readout.cs strong { color: var(--c-teal); }
+.demo-readout.ps strong { color: var(--c-amber); }
+.demo-readout.ceiling strong { color: var(--c-blue); }
+.demo-readout.floor strong { color: var(--c-pink); }
+.demo-readout.u strong { color: var(--c-violet); }
+.demo-readout.budget strong { color: var(--c-teal); }
+@media (min-width: 641px) { .demo-readouts { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+/* Sliders: a thin track that fills up to a round knob (fill via --p). */
+.demo-sliders, .demo-fields { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px 18px; }
+@media (min-width: 641px) { .demo-sliders, .demo-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.demo-slider { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.demo-slider-head { display: flex; align-items: baseline; gap: 8px; font-size: 13px; }
+.demo-slider-name { font-family: var(--font-mono); font-weight: 500; color: var(--text); flex-shrink: 0; }
+.demo-slider-label { color: var(--text-muted); flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.demo-slider-value { font-family: var(--font-mono); font-variant-numeric: tabular-nums; color: var(--text); flex-shrink: 0; }
+.demo-slider input[type=range] {
+  -webkit-appearance: none; appearance: none; width: 100%; height: 36px; margin: 0; background: transparent; cursor: pointer;
+  --track: rgba(255, 255, 255, .12);
+}
+.demo-slider input[type=range]:focus { outline: none; }
+.demo-slider input[type=range]::-webkit-slider-runnable-track {
+  height: 4px; border-radius: 999px; background: linear-gradient(to right, var(--tint) 0 var(--p, 0%), var(--track) var(--p, 0%) 100%);
+}
+.demo-slider input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none; width: 20px; height: 20px; margin-top: -8px; border: 0; border-radius: 50%;
+  background: #fff; box-shadow: 0 1px 4px rgba(0, 0, 0, .5); transition: transform .12s ease;
+}
+.demo-slider input[type=range]:active::-webkit-slider-thumb { transform: scale(1.15); }
+.demo-slider input[type=range]:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 4px var(--accent-dim), 0 1px 4px rgba(0, 0, 0, .5); }
+.demo-slider input[type=range]::-moz-range-track { height: 4px; border-radius: 999px; background: var(--track); }
+.demo-slider input[type=range]::-moz-range-progress { height: 4px; border-radius: 999px; background: var(--tint); }
+.demo-slider input[type=range]::-moz-range-thumb { width: 20px; height: 20px; border: 0; border-radius: 50%; background: #fff; box-shadow: 0 1px 4px rgba(0, 0, 0, .5); }
+.demo-num { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--text-muted); }
+.demo-num b { font-family: var(--font-mono); color: var(--text); font-weight: 500; margin-right: 4px; }
+.demo-control-row { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; }
+.demo-control-label { font-size: 13px; color: var(--text-muted); }

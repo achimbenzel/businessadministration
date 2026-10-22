@@ -159,3 +159,18 @@ test('a chapter has a content language (de by default, en possible)', async () =
   assert.equal((await patch(c.id, { lang: 'en' })).data.chapter.lang, 'en');
   assert.equal((await patch(c.id, { lang: 'fr' })).data.chapter.lang, 'de');
 });
+
+test('interactive demo blocks keep their numbers in range', async () => {
+  const c = await create('Demos');
+  const res = await patch(c.id, {
+    blocks: [
+      { type: 'supplyDemand', a: 120, b: 0, c: 'x', d: -3, control: 'tax', controlPrice: -5, title: 'Market' },
+      { type: 'consumerChoice', m: 50, p1: 0, p2: 1e9, alpha: 2 },
+      { type: 'supplyDemand' },
+    ],
+  });
+  const [sd, cc, empty] = res.data.chapter.blocks;
+  assert.deepEqual([sd.a, sd.b, sd.c, sd.d, sd.control, sd.controlPrice, sd.title], [120, 0.001, -20, 0.001, 'none', 0, 'Market']);
+  assert.deepEqual([cc.m, cc.p1, cc.p2, cc.alpha], [50, 0.001, 1e6, 0.95]);
+  assert.deepEqual([empty.a, empty.b, empty.c, empty.d], [100, 2, -20, 4]);
+});

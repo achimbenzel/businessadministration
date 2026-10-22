@@ -41,7 +41,8 @@ content/
   "summary": "…",
   "blocks": [
     { "type": "text", "text": "**fett**, *kursiv* …" },
-    { "type": "image", "file": "img/marktgleichgewicht.svg", "caption": "…", "alt": "…" }
+    { "type": "image", "file": "img/market-equilibrium.svg", "caption": "…", "alt": "…" },
+    { "type": "supplyDemand", "a": 100, "b": 2, "c": -20, "d": 4 }
   ]
 }
 ```
@@ -51,7 +52,8 @@ content/
 - `subjectId` – das Fach (IDs siehe `server/schema.js`, z. B. `economical-framework`).
 - `lang` – Sprache des Inhalts: `"de"` (Standard) oder `"en"`. Die Beschriftungen in den
   Bausteinen folgen ihr („Check answer“ statt „Antwort prüfen“).
-- `position` – `"first"` stellt das Kapitel an den Anfang des Fachs, sonst kommt es ans Ende.
+- `position` – `"first"` stellt das Kapitel an den Anfang des Fachs; alternativ `after` mit der
+  ID eines Kapitels, hinter dem es eingereiht wird. Sonst kommt es ans Ende.
 - `status` – `"published"` (Standard) oder `"draft"`.
 - `blocks` – Bausteine wie in [docs/bausteine.md](../docs/bausteine.md). Bilder und Dateien
   verweisen mit `file` auf eine Datei im Paket (`image`: `file`, `files`: `items[].file`).
@@ -61,10 +63,11 @@ beim nächsten Start erneut versucht. `CONTENT_DIR=off` schaltet den Import ab.
 
 ## Abbildungen
 
-Die Grafiken in `economical-framework/01-…/img/` erzeugt `figures.mjs`:
+Die Grafiken der Economical-Framework-Kapitel erzeugt `economical-framework/figures.mjs`
+(es schreibt in die `img/`-Ordner beider Kapitel):
 
 ```bash
-node content/economical-framework/01-supply-demand-indifference-curves/figures.mjs
+node content/economical-framework/figures.mjs
 ```
 
 Damit eine geänderte Abbildung ankommt, `version` in `chapter.json` hochzählen.

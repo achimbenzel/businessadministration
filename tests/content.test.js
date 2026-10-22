@@ -7,33 +7,40 @@ import { startServer, tempDir, readJSON, exists, ROOT } from './helpers.js';
 
 const CONTENT = path.join(ROOT, 'content');
 const PACK = 'efed-01-supply-demand-indifferenz';
+const PACK2 = 'efed-02-indifference-curves';
 const servers = [];
 after(async () => { for (const s of servers) await s.stop(); });
 const start = async (opts) => { const s = await startServer(opts); servers.push(s); return s; };
 
-test('the bundled chapter is imported as the first, published chapter with its figures', async () => {
+test('the bundled chapters are imported first in the subject, in English, with figures and demos', async () => {
   const srv = await start({ env: { CONTENT_DIR: CONTENT } });
   const viewer = await srv.login('user');
   const { data } = await viewer('/api/subjects/economical-framework');
-  assert.equal(data.chapters[0].id, PACK);
-  assert.equal(data.chapters[0].status, 'published');
-  assert.equal(data.chapters[0].lang, 'en');
-
-  const { chapter } = (await viewer(`/api/chapters/${PACK}`)).data;
-  const source = await readJSON(path.join(CONTENT, 'economical-framework/01-supply-demand-indifference-curves/chapter.json'));
-  assert.equal(chapter.blocks.length, source.blocks.length, 'no block was dropped by the normalizer');
-  const images = chapter.blocks.filter((b) => b.type === 'image');
-  assert.ok(images.length >= 5);
-  for (const img of images) {
-    assert.match(img.src, new RegExp(`^chapters/${PACK}/[0-9a-f]{8}-[\\w.-]+\\.svg$`)); // content hash in the name
-    const res = await viewer(`/data/${img.src}`);
-    assert.equal(res.status, 200, img.src);
-    assert.match(res.headers.get('content-type'), /image\/svg\+xml/);
-    assert.ok(img.alt && img.caption, 'every figure has alt text and a caption');
+  assert.deepEqual(data.chapters.map((c) => c.id), [PACK, PACK2]);
+  let cards = 0;
+  for (const [id, folder, demo] of [[PACK, '01-supply-demand', 'supplyDemand'], [PACK2, '02-indifference-curves', 'consumerChoice']]) {
+    const { chapter } = (await viewer(`/api/chapters/${id}`)).data;
+    const source = await readJSON(path.join(CONTENT, 'economical-framework', folder, 'chapter.json'));
+    assert.equal(chapter.status, 'published');
+    assert.equal(chapter.lang, 'en');
+    assert.equal(chapter.blocks.length, source.blocks.length, `${id}: no block was dropped by the normalizer`);
+    const images = chapter.blocks.filter((b) => b.type === 'image');
+    assert.ok(images.length >= 2);
+    for (const img of images) {
+      assert.match(img.src, new RegExp(`^chapters/${id}/[0-9a-f]{8}-[\\w.-]+\\.svg$`)); // content hash in the name
+      const res = await viewer(`/data/${img.src}`);
+      assert.equal(res.status, 200, img.src);
+      assert.match(res.headers.get('content-type'), /image\/svg\+xml/);
+      assert.ok(img.alt && img.caption, 'every figure has alt text and a caption');
+    }
+    const demoBlock = chapter.blocks.find((b) => b.type === demo);
+    const demoSource = source.blocks.find((b) => b.type === demo);
+    assert.ok(demoBlock, `${id} has its interactive demo`);
+    for (const [k, v] of Object.entries(demoSource)) if (k !== 'type') assert.equal(demoBlock[k], v, `${id} demo ${k}`);
+    assert.ok(chapter.blocks.filter((b) => b.type === 'quiz').every((q) => q.options.some((o) => o.correct)));
+    cards += chapter.blocks.filter((b) => b.type === 'flashcard').length;
   }
-  assert.ok(chapter.blocks.some((b) => b.type === 'flashcard'));
-  assert.ok(chapter.blocks.filter((b) => b.type === 'quiz').every((q) => q.options.some((o) => o.correct)));
-  assert.equal((await viewer('/api/subjects/economical-framework/cards')).data.cards.length, chapter.blocks.filter((b) => b.type === 'flashcard').length);
+  assert.equal((await viewer('/api/subjects/economical-framework/cards')).data.cards.length, cards);
 });
 
 test('a pack is imported only once — also after the admin deleted the chapter', async () => {
@@ -48,8 +55,8 @@ test('a pack is imported only once — also after the admin deleted the chapter'
   admin = await srv.login('admin');
   assert.equal((await admin(`/api/chapters/${PACK}`)).status, 404);
   const db = await readJSON(path.join(dataDir, 'db.json'));
-  assert.deepEqual(db.contentImported.map((x) => x.id), [PACK]);
-  assert.equal((await admin('/api/subjects/economical-framework')).data.chapters.length, 0);
+  assert.deepEqual(db.contentImported.map((x) => x.id), [PACK, PACK2]);
+  assert.deepEqual((await admin('/api/subjects/economical-framework')).data.chapters.map((c) => c.id), [PACK2]);
 });
 
 test('position "first" moves existing chapters down; bad packs are skipped', async () => {

@@ -4,6 +4,7 @@ import { DefinitionView, DefinitionEdit, CalloutView, CalloutEdit, ToggleView, T
 import { FlashcardView, FlashcardEdit, QuizView, QuizEdit } from './QuizBlocks.jsx';
 import { ImageView, ImageEdit, FilesView, FilesEdit, LinksView, LinksEdit } from './MediaBlocks.jsx';
 import { TableView, TableEdit } from './TableBlock.jsx';
+import { SupplyDemandView, SupplyDemandEdit, ConsumerChoiceView, ConsumerChoiceEdit } from './DemoBlocks.jsx';
 
 export const BLOCKS = {
   text: { View: TextView, Edit: TextEdit },
@@ -21,4 +22,6 @@ export const BLOCKS = {
   image: { View: ImageView, Edit: ImageEdit },
   files: { View: FilesView, Edit: FilesEdit },
   links: { View: LinksView, Edit: LinksEdit },
+  supplyDemand: { View: SupplyDemandView, Edit: SupplyDemandEdit },
+  consumerChoice: { View: ConsumerChoiceView, Edit: ConsumerChoiceEdit },
 };

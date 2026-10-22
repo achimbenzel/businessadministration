@@ -3,7 +3,7 @@
 // The server cleans the same fields (server/schema/chapters.js) — keep in sync.
 import {
   Type, Heading2, List, Quote, Minus, Lightbulb, BookMarked, ChevronRight, Sigma, Layers, CircleHelp,
-  Table, Image, Paperclip, Link2,
+  Table, Image, Paperclip, Link2, ChartLine, ChartSpline,
 } from 'lucide-react';
 
 export const rid = () => Math.random().toString(36).slice(2, 10);
@@ -27,12 +27,21 @@ export const BLOCK_META = {
   image: { label: 'Bild', icon: Image, hint: 'Grafik oder Foto hochladen', create: () => ({ src: '', alt: '', caption: '' }) },
   files: { label: 'Dateien', icon: Paperclip, hint: 'Folien, PDFs, Skripte', create: () => ({ items: [] }) },
   links: { label: 'Links', icon: Link2, hint: 'Weiterführende Links', create: () => ({ items: [{ id: rid(), url: '', title: '' }] }) },
+  supplyDemand: {
+    label: 'Angebot & Nachfrage', icon: ChartLine, hint: 'Interaktive Demo: Kurven, Gleichgewicht, Preiseingriffe',
+    create: () => ({ title: '', caption: '', a: 100, b: 2, c: -20, d: 4, control: 'none', controlPrice: 0 }),
+  },
+  consumerChoice: {
+    label: 'Haushaltsoptimum', icon: ChartSpline, hint: 'Interaktive Demo: Budgetgerade und Indifferenzkurven',
+    create: () => ({ title: '', caption: '', m: 100, p1: 2, p2: 5, alpha: 0.5 }),
+  },
 };
 
 export const BLOCK_GROUPS = [
   { key: 'basic', label: 'Grundlagen', types: ['text', 'heading', 'list', 'quote', 'divider'] },
   { key: 'learn', label: 'Lernen', types: ['definition', 'callout', 'toggle', 'formula', 'flashcard', 'quiz'] },
   { key: 'media', label: 'Medien & Daten', types: ['table', 'image', 'files', 'links'] },
+  { key: 'interactive', label: 'Interaktiv', types: ['supplyDemand', 'consumerChoice'] },
 ];
 
 export const blockMeta = (type) => BLOCK_META[type] || BLOCK_META.text;
@@ -44,7 +53,7 @@ const blank = (s) => !String(s ?? '').trim();
 /** A block without content — hidden from viewers. */
 export function isEmptyBlock(b) {
   switch (b.type) {
-    case 'divider': return false;
+    case 'divider': case 'supplyDemand': case 'consumerChoice': return false;
     case 'heading': case 'text': return blank(b.text);
     case 'list': return (b.items || []).every(blank);
     case 'quote': case 'formula': return blank(b.text);

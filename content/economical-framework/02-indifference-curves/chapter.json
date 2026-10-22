@@ -1,0 +1,306 @@
+{
+  "id": "efed-02-indifference-curves",
+  "version": 1,
+  "subjectId": "economical-framework",
+  "lang": "en",
+  "after": "efed-01-supply-demand-indifferenz",
+  "status": "published",
+  "title": "Indifference Curves and Consumer Choice",
+  "summary": "How households choose: preferences and indifference curves, the marginal rate of substitution, the budget line and the consumer optimum – with an interactive demo.",
+  "blocks": [
+    {
+      "type": "text",
+      "text": "Behind every demand curve are households deciding what to buy. Consumer theory models this choice with two ingredients: **preferences**, described by indifference curves, and the **budget constraint**, given by income and prices. Their combination – the consumer optimum – explains how much of each good a household buys and, in the end, where the demand curve from the previous chapter comes from."
+    },
+    {
+      "type": "callout",
+      "variant": "info",
+      "title": "Learning objectives",
+      "text": "- describe preferences with indifference curves and explain their properties\n- interpret the marginal rate of substitution (MRS)\n- draw the budget line and explain how income and prices move it\n- find the consumer optimum graphically and mathematically\n- explain how the demand curve follows from the consumer optimum"
+    },
+    {
+      "type": "heading",
+      "text": "1. Indifference curves",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "text": "Consumer theory asks how a household divides its budget between two goods – good 1 with quantity x₁ and good 2 with quantity x₂. Its **preferences** are described with indifference curves."
+    },
+    {
+      "type": "definition",
+      "term": "Indifference curve",
+      "text": "The set of all bundles of goods (x₁, x₂) that give the household **the same level of utility**. The household is **indifferent** between the bundles on one curve – it does not prefer any of them to another."
+    },
+    {
+      "type": "image",
+      "file": "img/indifference-curves.svg",
+      "caption": "Figure 4: Indifference curves U₁ < U₂ < U₃ – the further from the origin, the higher the utility. The step from A to B illustrates the marginal rate of substitution",
+      "alt": "Three convex, downward-sloping indifference curves U1, U2 and U3; an arrow pointing away from the origin shows rising utility. On U2 a step leads from point A to point B: to get more of good 1 (delta x1) the household gives up some of good 2 (delta x2)."
+    },
+    {
+      "type": "heading",
+      "text": "Properties",
+      "level": 3
+    },
+    {
+      "type": "list",
+      "style": "number",
+      "items": [
+        "**Downward sloping:** If the household gets more of good 1, it must give up some of good 2 to keep its utility constant.",
+        "**Further out is better:** Curves further from the origin represent higher utility (non-satiation: more is better).",
+        "**They never cross:** An intersection would lie on two utility levels at once – a contradiction to transitive preferences.",
+        "**Convex to the origin:** The more of a good the household already has, the less it is willing to give up for another unit of it (diminishing marginal rate of substitution)."
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "2. The marginal rate of substitution",
+      "level": 2
+    },
+    {
+      "type": "definition",
+      "term": "Marginal rate of substitution (MRS)",
+      "text": "The amount of good 2 the household would give up for **one additional unit of good 1** while keeping its utility unchanged. Graphically it is the absolute **slope of the indifference curve**; along a convex curve it decreases from the upper left to the lower right."
+    },
+    {
+      "type": "formula",
+      "text": "MRS = −Δx₂ / Δx₁ ≈ −dx₂ / dx₁\n    = MU₁ / MU₂\n\nMU: marginal utility",
+      "caption": "The MRS equals the ratio of the marginal utilities of the two goods"
+    },
+    {
+      "type": "callout",
+      "variant": "info",
+      "title": "Special cases",
+      "text": "- **Perfect substitutes** (e.g. two brands of bottled water): the indifference curves are **straight lines**, the MRS is constant.\n- **Perfect complements** (e.g. left and right shoes): the indifference curves are **L-shaped** – an extra unit of only one of the two goods adds no utility."
+    },
+    {
+      "type": "heading",
+      "text": "3. The budget line",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "text": "Which bundle the household actually chooses also depends on its **income m** and the **prices p₁ and p₂**. All bundles it can just afford when spending its entire income lie on the **budget line** (budget constraint)."
+    },
+    {
+      "type": "formula",
+      "text": "Budget line:\n  p₁·x₁ + p₂·x₂ = m\n  ⇔ x₂ = m/p₂ − (p₁/p₂)·x₁\n\nIntercepts: m/p₁ and m/p₂\nSlope: −p₁/p₂ (price ratio)",
+      "caption": "Higher income shifts the line outwards in parallel; a change in one price rotates it around the other intercept"
+    },
+    {
+      "type": "heading",
+      "text": "4. The consumer optimum",
+      "level": 2
+    },
+    {
+      "type": "image",
+      "file": "img/consumer-optimum.svg",
+      "caption": "Figure 5: At the optimum O the budget line touches the highest attainable indifference curve U₂",
+      "alt": "Downward-sloping budget line between m/p2 on the vertical and m/p1 on the horizontal axis; the area below it contains the affordable bundles. Indifference curve U2 touches the line at the optimum O at x1* and x2*; U1 crosses the line twice, U3 lies outside the budget."
+    },
+    {
+      "type": "text",
+      "text": "The household chooses the bundle on the **highest indifference curve it can still reach**. At the optimum O this curve is **tangent** to the budget line, so both have the same slope: the rate at which the household is *willing* to trade (MRS) equals the rate at which it *can* trade in the market (the price ratio). Bundles on U₁ are affordable but not optimal; U₃ lies outside the budget."
+    },
+    {
+      "type": "formula",
+      "text": "Optimum:  MRS = MU₁/MU₂ = p₁/p₂\n      ⇔  MU₁/p₁ = MU₂/p₂\n\n(equimarginal principle)",
+      "caption": "At the optimum, the last euro spent on each good yields the same additional utility"
+    },
+    {
+      "type": "toggle",
+      "title": "Worked example: optimum with U = x₁ · x₂",
+      "text": "Given: utility function U = x₁ · x₂, income m = €100, prices p₁ = €2 and p₂ = €5.\n\n1. Marginal utilities: MU₁ = x₂ and MU₂ = x₁ → MRS = x₂ / x₁\n2. Optimum condition: x₂ / x₁ = 2 / 5 → x₂ = 0.4 · x₁\n3. Substitute into the budget line: 2 · x₁ + 5 · 0.4 · x₁ = 100 → 4 · x₁ = 100 → **x₁ = 25**\n4. Hence **x₂ = 10** (check: 2 · 25 + 5 · 10 = 100 ✓) and utility U = 250."
+    },
+    {
+      "type": "heading",
+      "text": "Interactive demo",
+      "level": 3
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "title": "Try it",
+      "text": "- Double the income **m**: the budget line shifts out in parallel – how do x₁∗ and x₂∗ change?\n- Raise the price **p₁**: the budget line rotates inward – x₁∗ falls, while x₂∗ stays the same (a property of this utility function).\n- Change **α** to give good 1 more weight: the household spends a larger share of its budget on it.\n- Check at every setting: at the optimum the indifference curve just touches the budget line, and MRS = p₁/p₂."
+    },
+    {
+      "type": "consumerChoice",
+      "title": "Find the consumer optimum",
+      "caption": "Starting point: the worked example above (m = €100, p₁ = €2, p₂ = €5).",
+      "m": 100,
+      "p1": 2,
+      "p2": 5,
+      "alpha": 0.5
+    },
+    {
+      "type": "text",
+      "text": "*Note:* The demo uses U = x₁^α · x₂^(1−α). With α = 0.5 it describes the same preferences as U = x₁ · x₂ in the worked example – the optimal bundle is identical, only the utility numbers differ. With this utility function the household always spends the share α of its income on good 1."
+    },
+    {
+      "type": "heading",
+      "text": "5. From the consumer optimum to the demand curve",
+      "level": 2
+    },
+    {
+      "type": "callout",
+      "variant": "important",
+      "title": "Key point: from the consumer optimum to the demand curve",
+      "text": "If you vary the price p₁ and find the new optimum each time, you get the quantity x₁ the household wants at every price – exactly the **individual demand curve** from section 1. Adding up the individual demand curves of all households gives the **market demand curve**."
+    },
+    {
+      "type": "text",
+      "text": "**Example:** With α = 0.5 and m = 100 the optimal quantity of good 1 is x₁∗ = 0.5 · 100 / p₁ = 50 / p₁. At p₁ = 2 the household buys 25 units, at p₁ = 4 only 12.5 – the higher the price, the lower the quantity: a downward-sloping demand curve. Check it in the demo by moving p₁."
+    },
+    {
+      "type": "heading",
+      "text": "Key terms",
+      "level": 3
+    },
+    {
+      "type": "table",
+      "header": true,
+      "rows": [
+        [
+          "Term",
+          "Meaning",
+          "German"
+        ],
+        [
+          "Preferences",
+          "how a household ranks bundles of goods",
+          "Präferenzen"
+        ],
+        [
+          "Indifference curve",
+          "bundles with the same utility",
+          "Indifferenzkurve"
+        ],
+        [
+          "Marginal utility (MU)",
+          "extra utility from one more unit of a good",
+          "Grenznutzen"
+        ],
+        [
+          "Marginal rate of substitution (MRS)",
+          "slope of the indifference curve, MU₁/MU₂",
+          "Grenzrate der Substitution (GRS)"
+        ],
+        [
+          "Perfect substitutes / complements",
+          "straight-line / L-shaped indifference curves",
+          "perfekte Substitute / Komplemente"
+        ],
+        [
+          "Budget line (budget constraint)",
+          "bundles that cost exactly the income m",
+          "Budgetgerade"
+        ],
+        [
+          "Consumer optimum",
+          "tangency of budget line and indifference curve",
+          "Haushaltsoptimum"
+        ],
+        [
+          "Equimarginal principle",
+          "MU per euro is equal across goods at the optimum",
+          "2. Gossensches Gesetz"
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Self-test",
+      "level": 2
+    },
+    {
+      "type": "flashcard",
+      "front": "Why can indifference curves never cross?",
+      "back": "An intersection would lie on two different utility levels at the same time – this contradicts transitive preferences (and the principle that more is better)."
+    },
+    {
+      "type": "flashcard",
+      "front": "What is the marginal rate of substitution (MRS)?",
+      "back": "The amount of good 2 the household would give up for one additional unit of good 1 without losing utility – the absolute slope of the indifference curve (= MU₁ / MU₂)."
+    },
+    {
+      "type": "flashcard",
+      "front": "Which condition holds at the consumer optimum?",
+      "back": "The indifference curve is tangent to the budget line: **MRS = p₁ / p₂** (equivalently: MU₁ / p₁ = MU₂ / p₂)."
+    },
+    {
+      "type": "flashcard",
+      "front": "How does the budget line react when the price of good 1 rises?",
+      "back": "It rotates inward around its intercept on the x₂ axis (m/p₂) and becomes steeper – its slope is −p₁/p₂."
+    },
+    {
+      "type": "quiz",
+      "question": "Which properties do well-behaved indifference curves have?",
+      "options": [
+        {
+          "text": "They slope downward.",
+          "correct": true
+        },
+        {
+          "text": "Curves further from the origin represent lower utility.",
+          "correct": false
+        },
+        {
+          "text": "They are convex to the origin.",
+          "correct": true
+        },
+        {
+          "text": "They never cross.",
+          "correct": true
+        }
+      ],
+      "explanation": "Curves further from the origin contain more of both goods – so they represent **higher** utility."
+    },
+    {
+      "type": "quiz",
+      "question": "At the consumer optimum …",
+      "options": [
+        {
+          "text": "MRS = 0",
+          "correct": false
+        },
+        {
+          "text": "the budget is not fully spent.",
+          "correct": false
+        },
+        {
+          "text": "MRS = p₁ / p₂",
+          "correct": true
+        },
+        {
+          "text": "p₁ = p₂",
+          "correct": false
+        }
+      ],
+      "explanation": "At the optimum the highest attainable indifference curve is tangent to the budget line, so their slopes – the MRS and the price ratio – are equal. Since more is better, the whole budget is spent."
+    },
+    {
+      "type": "quiz",
+      "question": "U = x₁^0.5 · x₂^0.5, income m = 120, prices p₁ = 3 and p₂ = 4. How much of good 1 does the household buy?",
+      "options": [
+        {
+          "text": "x₁∗ = 40",
+          "correct": false
+        },
+        {
+          "text": "x₁∗ = 15",
+          "correct": false
+        },
+        {
+          "text": "x₁∗ = 60",
+          "correct": false
+        },
+        {
+          "text": "x₁∗ = 20",
+          "correct": true
+        }
+      ],
+      "explanation": "With this utility function the household spends half of its income on each good: x₁∗ = 0.5 · 120 / 3 = 20 (and x₂∗ = 0.5 · 120 / 4 = 15). Check it in the demo."
+    }
+  ]
+}

@@ -1,11 +1,11 @@
-// Draws this chapter's figures as SVG in the app's dark look.
-//   node content/economical-framework/01-supply-demand-indifference-curves/figures.mjs
+// Draws the figures of the Economical Framework chapters as SVG in the app's dark look.
+//   node content/economical-framework/figures.mjs
 // Each figure works in a 0–10 × 0–10 "math" space that is mapped onto the plot area.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const OUT = path.join(path.dirname(fileURLToPath(import.meta.url)), 'img');
+const OUT = path.dirname(fileURLToPath(import.meta.url));
 const W = 640;
 const H = 420;
 const P = { L: 64, R: 600, T: 36, B: 372 };
@@ -215,14 +215,14 @@ const optimum = svg('Consumer optimum: the budget line touches the highest attai
   ], { width: 284 }),
 ]);
 
-fs.mkdirSync(OUT, { recursive: true });
 for (const [name, content] of Object.entries({
-  'market-equilibrium.svg': equilibrium,
-  'demand-movement-vs-shift.svg': demandShift,
-  'price-floor-ceiling.svg': priceControls,
-  'indifference-curves.svg': indifference,
-  'consumer-optimum.svg': optimum,
+  '01-supply-demand/img/market-equilibrium.svg': equilibrium,
+  '01-supply-demand/img/demand-movement-vs-shift.svg': demandShift,
+  '01-supply-demand/img/price-floor-ceiling.svg': priceControls,
+  '02-indifference-curves/img/indifference-curves.svg': indifference,
+  '02-indifference-curves/img/consumer-optimum.svg': optimum,
 })) {
+  fs.mkdirSync(path.dirname(path.join(OUT, name)), { recursive: true });
   fs.writeFileSync(path.join(OUT, name), content);
-  console.log('  wrote img/' + name);
+  console.log('  wrote ' + name);
 }

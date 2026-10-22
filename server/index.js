@@ -33,6 +33,15 @@ const server = createApp().listen(PORT, HOST, () => {
   console.log(`  BA Lernplattform ${IS_PROD ? '' : 'API '}läuft auf http://${HOST}:${PORT}`);
   if (!IS_PROD) console.log('  Frontend (Dev): http://127.0.0.1:4200');
 });
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`\n  Port ${PORT} ist schon belegt – läuft die App bereits (z. B. in einem anderen Terminal)?`);
+    console.error('  Diese beenden oder einen anderen Port wählen: API_PORT=4301 in der .env.\n');
+  } else {
+    console.error(`\n  Server konnte nicht starten: ${err.message}\n`);
+  }
+  process.exit(1);
+});
 
 // Finish queued writes before exiting, so Ctrl+C never cuts a save in half.
 async function shutdown() {

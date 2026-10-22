@@ -1,22 +1,22 @@
 {
   "id": "efed-01-supply-demand-indifferenz",
-  "version": 2,
+  "version": 3,
   "subjectId": "economical-framework",
   "lang": "en",
   "position": "first",
   "status": "published",
-  "title": "Supply & Demand and Indifference Curves",
-  "summary": "How markets set prices – demand, supply, equilibrium and price controls – and how households choose between bundles of goods using indifference curves and the budget line.",
+  "title": "Supply & Demand",
+  "summary": "How markets set prices: demand, supply, market equilibrium, consumer and producer surplus, price controls and shifts – with an interactive market demo.",
   "blocks": [
     {
       "type": "text",
-      "text": "This chapter covers two core tools of microeconomics: the **market model of supply and demand** and the **indifference curves** of consumer theory. Together they explain the economic framework of entrepreneurial decisions: how do markets set prices – and how do consumers choose between alternatives?"
+      "text": "This chapter covers the core model of microeconomics: **supply and demand**. It explains how prices form in competitive markets, why they change, and what happens when governments set prices. The next chapter, *Indifference Curves and Consumer Choice*, shows where the demand curve comes from."
     },
     {
       "type": "callout",
       "variant": "info",
       "title": "Learning objectives",
-      "text": "- explain and draw demand and supply curves\n- distinguish a movement along a curve from a shift of the curve\n- calculate the market equilibrium and interpret consumer and producer surplus\n- explain the effects of price ceilings and price floors\n- apply indifference curves, the marginal rate of substitution and the consumer optimum"
+      "text": "- explain and draw demand and supply curves\n- distinguish a movement along a curve from a shift of the curve\n- calculate the market equilibrium and interpret consumer and producer surplus\n- explain the effects of price ceilings and price floors\n- predict how shifts in supply and demand change price and quantity"
     },
     {
       "type": "heading",
@@ -181,6 +181,33 @@
       "text": "Set them equal: 100 − 2P = −20 + 4P → 120 = 6P → **P∗ = 20**\n\nSubstitute: Q∗ = 100 − 2 · 20 = **60** (check: −20 + 4 · 20 = 60 ✓)\n\n- Consumer surplus: demand falls to zero at P = 50 (the choke price) → CS = ½ · (50 − 20) · 60 = **900**\n- Producer surplus: supply starts at P = 5 → PS = ½ · (20 − 5) · 60 = **450**"
     },
     {
+      "type": "heading",
+      "text": "Interactive demo",
+      "level": 3
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "title": "Try it",
+      "text": "- Increase **a** (e.g. consumers' income rises): demand shifts right – what happens to P∗ and Q∗?\n- Increase **c** (e.g. input prices fall): supply shifts right – compare the effect on the price.\n- Change the slope with **b** or **d** and watch how consumer and producer surplus change.\n- Switch on a **price ceiling** below P∗ and read off the shortage – then try a **price floor** above P∗."
+    },
+    {
+      "type": "supplyDemand",
+      "title": "Explore the market",
+      "caption": "Starting point: the worked example above (P∗ = 20, Q∗ = 60). The dashed lines keep the starting position visible.",
+      "a": 100,
+      "b": 2,
+      "c": -20,
+      "d": 4,
+      "control": "none",
+      "controlPrice": 0
+    },
+    {
+      "type": "heading",
+      "text": "4. Price controls",
+      "level": 2
+    },
+    {
       "type": "image",
       "file": "img/price-floor-ceiling.svg",
       "caption": "Figure 3: A price floor above P∗ creates a surplus, a price ceiling below P∗ creates a shortage",
@@ -193,9 +220,14 @@
       "text": "- **Price ceiling** (a legal maximum price) *below* P∗, e.g. rent control: the quantity demanded exceeds the quantity supplied → **shortage**, waiting lists, black markets.\n- **Price floor** (a legal minimum price) *above* P∗, e.g. agricultural price supports or a minimum wage in the labour market: the quantity supplied exceeds the quantity demanded → **surplus** (in the labour market model: unemployment).\n- A ceiling above P∗ or a floor below P∗ is **non-binding** and has no effect."
     },
     {
+      "type": "toggle",
+      "title": "Example: a price ceiling of 15",
+      "text": "Market from the worked example: Q_D = 100 − 2P and Q_S = −20 + 4P, equilibrium P∗ = 20.\n\nAt the ceiling P = 15:\n- quantity demanded: 100 − 2 · 15 = **70**\n- quantity supplied: −20 + 4 · 15 = **40**\n\nThe ceiling is below P∗, so it binds: a **shortage of 30 units**, and only the 40 units supplied are traded. Try it in the demo above."
+    },
+    {
       "type": "heading",
-      "text": "Shifts and their effects",
-      "level": 3
+      "text": "5. Shifts in supply and demand",
+      "level": 2
     },
     {
       "type": "table",
@@ -238,97 +270,6 @@
       "variant": "warning",
       "title": "Caution: both curves shift",
       "text": "If supply **and** demand shift at the same time, only one of the two variables is certain. If both increase, for example, the quantity definitely rises – whether the price rises or falls depends on which shift is larger."
-    },
-    {
-      "type": "heading",
-      "text": "4. Indifference curves",
-      "level": 2
-    },
-    {
-      "type": "text",
-      "text": "Consumer theory asks how a household divides its budget between two goods – good 1 with quantity x₁ and good 2 with quantity x₂. Its **preferences** are described with indifference curves."
-    },
-    {
-      "type": "definition",
-      "term": "Indifference curve",
-      "text": "The set of all bundles of goods (x₁, x₂) that give the household **the same level of utility**. The household is **indifferent** between the bundles on one curve – it does not prefer any of them to another."
-    },
-    {
-      "type": "image",
-      "file": "img/indifference-curves.svg",
-      "caption": "Figure 4: Indifference curves U₁ < U₂ < U₃ – the further from the origin, the higher the utility. The step from A to B illustrates the marginal rate of substitution",
-      "alt": "Three convex, downward-sloping indifference curves U1, U2 and U3; an arrow pointing away from the origin shows rising utility. On U2 a step leads from point A to point B: to get more of good 1 (delta x1) the household gives up some of good 2 (delta x2)."
-    },
-    {
-      "type": "heading",
-      "text": "Properties",
-      "level": 3
-    },
-    {
-      "type": "list",
-      "style": "number",
-      "items": [
-        "**Downward sloping:** If the household gets more of good 1, it must give up some of good 2 to keep its utility constant.",
-        "**Further out is better:** Curves further from the origin represent higher utility (non-satiation: more is better).",
-        "**They never cross:** An intersection would lie on two utility levels at once – a contradiction to transitive preferences.",
-        "**Convex to the origin:** The more of a good the household already has, the less it is willing to give up for another unit of it (diminishing marginal rate of substitution)."
-      ]
-    },
-    {
-      "type": "definition",
-      "term": "Marginal rate of substitution (MRS)",
-      "text": "The amount of good 2 the household would give up for **one additional unit of good 1** while keeping its utility unchanged. Graphically it is the absolute **slope of the indifference curve**; along a convex curve it decreases from the upper left to the lower right."
-    },
-    {
-      "type": "formula",
-      "text": "MRS = −Δx₂ / Δx₁ ≈ −dx₂ / dx₁\n    = MU₁ / MU₂\n\nMU: marginal utility",
-      "caption": "The MRS equals the ratio of the marginal utilities of the two goods"
-    },
-    {
-      "type": "callout",
-      "variant": "info",
-      "title": "Special cases",
-      "text": "- **Perfect substitutes** (e.g. two brands of bottled water): the indifference curves are **straight lines**, the MRS is constant.\n- **Perfect complements** (e.g. left and right shoes): the indifference curves are **L-shaped** – an extra unit of only one of the two goods adds no utility."
-    },
-    {
-      "type": "heading",
-      "text": "5. Budget line and consumer optimum",
-      "level": 2
-    },
-    {
-      "type": "text",
-      "text": "Which bundle the household actually chooses also depends on its **income m** and the **prices p₁ and p₂**. All bundles it can just afford when spending its entire income lie on the **budget line** (budget constraint)."
-    },
-    {
-      "type": "formula",
-      "text": "Budget line:\n  p₁·x₁ + p₂·x₂ = m\n  ⇔ x₂ = m/p₂ − (p₁/p₂)·x₁\n\nIntercepts: m/p₁ and m/p₂\nSlope: −p₁/p₂ (price ratio)",
-      "caption": "Higher income shifts the line outwards in parallel; a change in one price rotates it around the other intercept"
-    },
-    {
-      "type": "image",
-      "file": "img/consumer-optimum.svg",
-      "caption": "Figure 5: At the optimum O the budget line touches the highest attainable indifference curve U₂",
-      "alt": "Downward-sloping budget line between m/p2 on the vertical and m/p1 on the horizontal axis; the area below it contains the affordable bundles. Indifference curve U2 touches the line at the optimum O at x1* and x2*; U1 crosses the line twice, U3 lies outside the budget."
-    },
-    {
-      "type": "text",
-      "text": "The household chooses the bundle on the **highest indifference curve it can still reach**. At the optimum O this curve is **tangent** to the budget line, so both have the same slope: the rate at which the household is *willing* to trade (MRS) equals the rate at which it *can* trade in the market (the price ratio). Bundles on U₁ are affordable but not optimal; U₃ lies outside the budget."
-    },
-    {
-      "type": "formula",
-      "text": "Optimum:  MRS = MU₁/MU₂ = p₁/p₂\n      ⇔  MU₁/p₁ = MU₂/p₂\n\n(equimarginal principle)",
-      "caption": "At the optimum, the last euro spent on each good yields the same additional utility"
-    },
-    {
-      "type": "toggle",
-      "title": "Worked example: optimum with U = x₁ · x₂",
-      "text": "Given: utility function U = x₁ · x₂, income m = €100, prices p₁ = €2 and p₂ = €5.\n\n1. Marginal utilities: MU₁ = x₂ and MU₂ = x₁ → MRS = x₂ / x₁\n2. Optimum condition: x₂ / x₁ = 2 / 5 → x₂ = 0.4 · x₁\n3. Substitute into the budget line: 2 · x₁ + 5 · 0.4 · x₁ = 100 → 4 · x₁ = 100 → **x₁ = 25**\n4. Hence **x₂ = 10** (check: 2 · 25 + 5 · 10 = 100 ✓) and utility U = 250."
-    },
-    {
-      "type": "callout",
-      "variant": "important",
-      "title": "Key point: from the consumer optimum to the demand curve",
-      "text": "If you vary the price p₁ and find the new optimum each time, you get the quantity x₁ the household wants at every price – exactly the **individual demand curve** from section 1. Adding up the individual demand curves of all households gives the **market demand curve**."
     },
     {
       "type": "heading",
@@ -383,26 +324,6 @@
           "Shortage / surplus",
           "excess demand / excess supply",
           "Nachfrage- / Angebotsüberschuss"
-        ],
-        [
-          "Indifference curve",
-          "bundles with the same utility",
-          "Indifferenzkurve"
-        ],
-        [
-          "Marginal rate of substitution (MRS)",
-          "slope of the indifference curve, MU₁/MU₂",
-          "Grenzrate der Substitution (GRS)"
-        ],
-        [
-          "Budget line (budget constraint)",
-          "bundles that cost exactly the income m",
-          "Budgetgerade"
-        ],
-        [
-          "Consumer optimum",
-          "tangency of budget line and indifference curve",
-          "Haushaltsoptimum"
         ]
       ]
     },
@@ -433,18 +354,8 @@
     },
     {
       "type": "flashcard",
-      "front": "Why can indifference curves never cross?",
-      "back": "An intersection would lie on two different utility levels at the same time – this contradicts transitive preferences (and the principle that more is better)."
-    },
-    {
-      "type": "flashcard",
-      "front": "What is the marginal rate of substitution (MRS)?",
-      "back": "The amount of good 2 the household would give up for one additional unit of good 1 without losing utility – the absolute slope of the indifference curve (= MU₁ / MU₂)."
-    },
-    {
-      "type": "flashcard",
-      "front": "Which condition holds at the consumer optimum?",
-      "back": "The indifference curve is tangent to the budget line: **MRS = p₁ / p₂** (equivalently: MU₁ / p₁ = MU₂ / p₂)."
+      "front": "What happens to the equilibrium price and quantity when supply increases?",
+      "back": "The supply curve shifts right: the equilibrium **price falls** and the equilibrium **quantity rises**."
     },
     {
       "type": "quiz",
@@ -494,49 +405,32 @@
     },
     {
       "type": "quiz",
-      "question": "Which properties do well-behaved indifference curves have?",
+      "question": "With Q_D = 100 − 2P and Q_S = −20 + 4P, the government sets a price ceiling of 15. What happens?",
       "options": [
         {
-          "text": "They slope downward.",
-          "correct": true
-        },
-        {
-          "text": "Curves further from the origin represent lower utility.",
+          "text": "A surplus of 30 units.",
           "correct": false
         },
         {
-          "text": "They are convex to the origin.",
+          "text": "Nothing – the ceiling is not binding.",
+          "correct": false
+        },
+        {
+          "text": "A shortage of 30 units – only 40 units are traded.",
           "correct": true
         },
         {
-          "text": "They never cross.",
-          "correct": true
+          "text": "A shortage of 70 units.",
+          "correct": false
         }
       ],
-      "explanation": "Curves further from the origin contain more of both goods – so they represent **higher** utility."
+      "explanation": "At P = 15: Q_D = 70 and Q_S = 40. The ceiling is below P∗ = 20, so it binds: excess demand of 70 − 40 = 30, and only the 40 units supplied are traded."
     },
     {
-      "type": "quiz",
-      "question": "At the consumer optimum …",
-      "options": [
-        {
-          "text": "MRS = 0",
-          "correct": false
-        },
-        {
-          "text": "the budget is not fully spent.",
-          "correct": false
-        },
-        {
-          "text": "MRS = p₁ / p₂",
-          "correct": true
-        },
-        {
-          "text": "p₁ = p₂",
-          "correct": false
-        }
-      ],
-      "explanation": "At the optimum the highest attainable indifference curve is tangent to the budget line, so their slopes – the MRS and the price ratio – are equal. Since more is better, the whole budget is spent."
+      "type": "callout",
+      "variant": "info",
+      "title": "Next chapter",
+      "text": "**Indifference Curves and Consumer Choice** shows how a household picks its best bundle of goods – and how the demand curve follows from that choice."
     }
   ]
 }

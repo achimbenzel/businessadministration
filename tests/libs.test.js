@@ -65,3 +65,32 @@ test('host allowlist', () => {
   for (const h of ['localhost:4200', '127.0.0.1', '[::1]:4300', 'laptop', 'pc.local', 'x.tail9.ts.net']) assert.ok(isAllowedHost(h), h);
   for (const h of ['evil.com', 'lernen.example.de']) assert.equal(isAllowedHost(h), false, h);
 });
+
+test('demo maths: axes, steps, market and consumer', async () => {
+  const { niceMax, ticks, niceStep, snap, market, priceControl, consumer, indifferenceX2 } = await import('../src/lib/demos.js');
+  assert.equal(niceMax(75), 80);
+  assert.equal(niceMax(150), 150);
+  assert.equal(niceMax(31), 40);
+  assert.deepEqual(ticks(80), [0, 20, 40, 60, 80]);
+  assert.deepEqual(ticks(150), [0, 50, 100, 150]);
+  assert.equal(niceStep(170), 2);
+  assert.equal(snap(0.30000000004, 0.1), 0.3);
+
+  // The worked example of the Supply & Demand chapter.
+  const m = market({ a: 100, b: 2, c: -20, d: 4 });
+  assert.deepEqual([m.pStar, m.qStar, m.cs, m.ps], [20, 60, 900, 450]);
+  assert.equal(m.valid, true);
+  // Supply already positive at P = 0: PS is the trapezoid under the supply curve.
+  const m2 = market({ a: 100, b: 2, c: 10, d: 2 }); // P* = 22.5, Q* = 55
+  assert.equal(m2.ps, 10 * 22.5 + 22.5 ** 2);
+  assert.equal(market({ a: 10, b: 1, c: 20, d: 1 }).valid, false);
+
+  assert.deepEqual(priceControl({ a: 100, b: 2, c: -20, d: 4 }, 'ceiling', 15), { qd: 70, qs: 40, binding: true, gap: 30, traded: 40 });
+  assert.equal(priceControl({ a: 100, b: 2, c: -20, d: 4 }, 'ceiling', 25).binding, false);
+  assert.equal(priceControl({ a: 100, b: 2, c: -20, d: 4 }, 'floor', 25).gap, 30);
+
+  // The worked example of the Indifference Curves chapter.
+  const c = consumer({ m: 100, p1: 2, p2: 5, alpha: 0.5 });
+  assert.deepEqual([c.x1, c.x2, c.mrs], [25, 10, 0.4]);
+  assert.ok(Math.abs(indifferenceX2(c.u, 0.5, 25) - 10) < 1e-9);
+});

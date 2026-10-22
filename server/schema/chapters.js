@@ -11,6 +11,7 @@ export const CHAPTER_LANGS = ['de', 'en'];
 const TEXT_MAX = 20000;
 const CALLOUT_VARIANTS = ['info', 'tip', 'warning', 'important'];
 const LIST_STYLES = ['bullet', 'number'];
+const DEMO_CONTROLS = ['none', 'ceiling', 'floor'];
 
 // A file of a chapter lives in its own folder: chapters/<chapterId>/<name>.
 // Nothing else may be referenced (no ../, no other chapter's files).
@@ -52,6 +53,28 @@ const BLOCKS = {
   files: (b, chapterId) => ({ items: list(b.items, 50).map((f) => normalizeFileRef(f, chapterId)).filter((f) => f.src) }),
   links: (b) => ({
     items: list(b.items, 50).map((l) => ({ id: subId(l?.id), url: normalizeUrl(l?.url), title: line(l?.title, 200) })),
+  }),
+  // Interactive demos: the stored numbers are the starting point; viewers change
+  // them with sliders (their changes are not saved).
+  // Market: Q_D = a − b·P, Q_S = c + d·P, optional price ceiling / floor.
+  supplyDemand: (b) => ({
+    title: line(b.title, 200),
+    caption: line(b.caption, 500),
+    a: num(b.a, 0.1, 1e6, 100),
+    b: num(b.b, 0.001, 1e4, 2),
+    c: num(b.c, -1e6, 1e6, -20),
+    d: num(b.d, 0.001, 1e4, 4),
+    control: oneOf(b.control, DEMO_CONTROLS),
+    controlPrice: num(b.controlPrice, 0, 1e6, 0),
+  }),
+  // Consumer choice: U = x₁^α · x₂^(1−α), budget p₁·x₁ + p₂·x₂ = m.
+  consumerChoice: (b) => ({
+    title: line(b.title, 200),
+    caption: line(b.caption, 500),
+    m: num(b.m, 0.1, 1e9, 100),
+    p1: num(b.p1, 0.001, 1e6, 2),
+    p2: num(b.p2, 0.001, 1e6, 5),
+    alpha: num(b.alpha, 0.05, 0.95, 0.5),
   }),
 };
 export const BLOCK_TYPES = Object.keys(BLOCKS);
@@ -112,6 +135,7 @@ export function blockText(b) {
     case 'image': return `${b.alt} ${b.caption}`;
     case 'files': return b.items.map((f) => f.name).join(' ');
     case 'links': return b.items.map((l) => `${l.title} ${l.url}`).join(' ');
+    case 'supplyDemand': case 'consumerChoice': return `${b.title} ${b.caption}`;
     default: return '';
   }
 }

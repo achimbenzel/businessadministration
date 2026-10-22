@@ -32,6 +32,15 @@ Editor bleiben deutsch.
 | `image` | Medien & Daten | `src`, `alt`, `caption` | Bild, antippen zum Vergrößern |
 | `files` | Medien & Daten | `items[{ src, name, size, type }]` | Dateiliste (Folien, Skripte) zum Öffnen/Herunterladen |
 | `links` | Medien & Daten | `items[{ url, title }]` | Linkliste (nur http/https/mailto) |
+| `supplyDemand` | Interaktiv | `title`, `caption`, `a`, `b`, `c`, `d`, `control` (none/ceiling/floor), `controlPrice` | Demo Angebot & Nachfrage: Q_D = a − b·P, Q_S = c + d·P mit Reglern; zeigt Gleichgewicht, Konsumenten-/Produzentenrente, Höchst-/Mindestpreis mit Mangel bzw. Überschuss |
+| `consumerChoice` | Interaktiv | `title`, `caption`, `m`, `p1`, `p2`, `alpha` | Demo Haushaltsoptimum: U = x₁^α · x₂^(1−α) und Budgetgerade mit Reglern; zeigt Optimum, Indifferenzkurven, GRS |
+
+**Interaktive Demos:** Die gespeicherten Zahlen sind der Startzustand – im Editor per
+Zahlenfeld gesetzt. Lernende verändern sie mit Reglern; gespeichert wird dabei nichts,
+„Zurücksetzen“ stellt den Start wieder her. Die Ausgangslage bleibt gestrichelt sichtbar,
+damit Verschiebungen erkennbar sind; die Achsen richten sich nach dem Startzustand und
+skalieren beim Verschieben nicht mit. Die Rechnungen stecken in `src/lib/demos.js`
+(mit Unit-Tests).
 
 ## Formatierung in Textfeldern
 

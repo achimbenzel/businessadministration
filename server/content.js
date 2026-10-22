@@ -2,7 +2,7 @@
  * Content packs: chapters that ship with the code, so content can be prepared
  * in the repository and arrives with a `git pull`:
  *
- *   content/<subject>/<chapter>/chapter.json   { id, version, subjectId, lang, title, summary, status, position, blocks }
+ *   content/<subject>/<chapter>/chapter.json   { id, version, subjectId, lang, title, summary, status, position | after, blocks }
  *   content/<subject>/<chapter>/img/…          pictures, referenced as { type: 'image', file: 'img/x.svg' }
  *
  * At start, every new pack is added to the database once (its files copied to
@@ -119,7 +119,14 @@ export async function importContentPacks(dir = CONTENT_DIR) {
           if (!exists) {
             const siblings = d.chapters.filter((c) => c.subjectId === pack.subjectId);
             let order = Math.max(-1, ...siblings.map((c) => c.order)) + 1;
-            if (pack.position === 'first') { for (const c of siblings) c.order += 1; order = 0; }
+            const ref = pack.after && siblings.find((c) => c.id === pack.after);
+            if (pack.position === 'first') {
+              for (const c of siblings) c.order += 1;
+              order = 0;
+            } else if (ref) { // right after another chapter
+              for (const c of siblings) if (c.order > ref.order) c.order += 1;
+              order = ref.order + 1;
+            }
             d.chapters.push(normalizeChapter({ id: pack.id, subjectId: pack.subjectId, ...fromPack(pack, blocks), order, rev: 1, createdAt: now, updatedAt: now }));
           }
           d.contentImported.push({ id: pack.id, at: now, version, rev: exists ? chapter?.rev ?? 0 : 1 });

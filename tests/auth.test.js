@@ -131,3 +131,12 @@ test('the server refuses to start without passwords', async () => {
   assert.equal(code, 1);
   assert.match(srv2.log(), /ADMIN_PASSWORD is not set/);
 });
+
+test('a port that is already taken gives a clear message', async () => {
+  const srv = await startServer();
+  const dataDir = await tempDir();
+  const second = await spawnServer({ dataDir, port: srv.port });
+  assert.equal(await second.exited, 1);
+  assert.match(second.log(), /Port \d+ ist schon belegt/);
+  await srv.stop();
+});
