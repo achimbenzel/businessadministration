@@ -17,14 +17,15 @@ test('the bundled chapter is imported as the first, published chapter with its f
   const { data } = await viewer('/api/subjects/economical-framework');
   assert.equal(data.chapters[0].id, PACK);
   assert.equal(data.chapters[0].status, 'published');
+  assert.equal(data.chapters[0].lang, 'en');
 
   const { chapter } = (await viewer(`/api/chapters/${PACK}`)).data;
-  const source = await readJSON(path.join(CONTENT, 'economical-framework/01-supply-demand-indifferenzkurven/chapter.json'));
+  const source = await readJSON(path.join(CONTENT, 'economical-framework/01-supply-demand-indifference-curves/chapter.json'));
   assert.equal(chapter.blocks.length, source.blocks.length, 'no block was dropped by the normalizer');
   const images = chapter.blocks.filter((b) => b.type === 'image');
   assert.ok(images.length >= 5);
   for (const img of images) {
-    assert.match(img.src, new RegExp(`^chapters/${PACK}/[\\w.-]+\\.svg$`));
+    assert.match(img.src, new RegExp(`^chapters/${PACK}/[0-9a-f]{8}-[\\w.-]+\\.svg$`)); // content hash in the name
     const res = await viewer(`/data/${img.src}`);
     assert.equal(res.status, 200, img.src);
     assert.match(res.headers.get('content-type'), /image\/svg\+xml/);
@@ -48,6 +49,7 @@ test('a pack is imported only once — also after the admin deleted the chapter'
   assert.equal((await admin(`/api/chapters/${PACK}`)).status, 404);
   const db = await readJSON(path.join(dataDir, 'db.json'));
   assert.deepEqual(db.contentImported.map((x) => x.id), [PACK]);
+  assert.equal((await admin('/api/subjects/economical-framework')).data.chapters.length, 0);
 });
 
 test('position "first" moves existing chapters down; bad packs are skipped', async () => {
@@ -78,8 +80,96 @@ test('position "first" moves existing chapters down; bad packs are skipped', asy
   const viewer = await srv.login('admin');
   const list = (await viewer('/api/subjects/kosten-leistungsrechnung')).data.chapters;
   assert.deepEqual(list.map((c) => c.id), ['klr-01-neu', old.id]);
-  assert.ok(exists(path.join(dataDir, 'chapters', 'klr-01-neu', 'a.svg')));
+  const imported = (await viewer('/api/chapters/klr-01-neu')).data.chapter;
+  assert.match(imported.blocks[0].src, /^chapters\/klr-01-neu\/[0-9a-f]{8}-a\.svg$/);
+  assert.ok(exists(path.join(dataDir, imported.blocks[0].src)));
   assert.equal((await viewer('/api/chapters/klr-02-evil')).status, 404);
   assert.match(srv.log(), /klr-02-evil|02-evil/);
   assert.match(srv.log(), /no-such-subject/);
+});
+
+// A small pack in a temp folder; write(version, text, svg) rewrites it.
+async function tempPack() {
+  const content = await tempDir();
+  const dir = path.join(content, 'klr', '01-pack');
+  await fsp.mkdir(path.join(dir, 'img'), { recursive: true });
+  const write = async (version, text, svg) => {
+    await fsp.writeFile(path.join(dir, 'img', 'fig.svg'), `<svg xmlns="http://www.w3.org/2000/svg"><title>${svg}</title></svg>`);
+    await fsp.writeFile(path.join(dir, 'chapter.json'), JSON.stringify({
+      id: 'klr-01-pack', version, subjectId: 'kosten-leistungsrechnung', lang: 'en', title: `Pack v${version}`,
+      blocks: [{ type: 'text', text }, { type: 'image', file: 'img/fig.svg', caption: 'Fig' }],
+    }));
+  };
+  return { content, write };
+}
+
+test('a new pack version updates a chapter nobody has edited', async () => {
+  const dataDir = await tempDir();
+  const { content, write } = await tempPack();
+  await write(1, 'first', 'one');
+  let srv = await start({ dataDir, env: { CONTENT_DIR: content } });
+  let admin = await srv.login('admin');
+  // Reordering is not an edit.
+  await admin('/api/subjects/kosten-leistungsrechnung/order', { method: 'POST', json: { ids: ['klr-01-pack'] } });
+  const v1 = (await admin('/api/chapters/klr-01-pack')).data.chapter;
+  await srv.stop();
+
+  await write(2, 'second', 'two');
+  srv = await start({ dataDir, env: { CONTENT_DIR: content } });
+  admin = await srv.login('admin');
+  const v2 = (await admin('/api/chapters/klr-01-pack')).data.chapter;
+  assert.equal(v2.title, 'Pack v2');
+  assert.equal(v2.blocks[0].text, 'second');
+  assert.equal(v2.lang, 'en');
+  assert.equal(v2.rev, v1.rev + 1);
+  assert.notEqual(v2.blocks[1].src, v1.blocks[1].src, 'changed figure gets a new URL (long browser cache)');
+  assert.ok(exists(path.join(dataDir, v2.blocks[1].src)));
+  assert.equal(exists(path.join(dataDir, v1.blocks[1].src)), false, 'old figure removed');
+  assert.match(srv.log(), /aktualisiert: klr-01-pack/);
+
+  // Same version again: nothing happens.
+  await srv.stop();
+  srv = await start({ dataDir, env: { CONTENT_DIR: content } });
+  admin = await srv.login('admin');
+  assert.equal((await admin('/api/chapters/klr-01-pack')).data.chapter.rev, v2.rev);
+});
+
+test('a chapter edited in the app is never overwritten: the new version arrives as a draft', async () => {
+  const dataDir = await tempDir();
+  const { content, write } = await tempPack();
+  await write(1, 'first', 'one');
+  let srv = await start({ dataDir, env: { CONTENT_DIR: content } });
+  let admin = await srv.login('admin');
+  const other = (await admin('/api/chapters', { method: 'POST', json: { subjectId: 'kosten-leistungsrechnung', title: 'Later' } })).data.chapter;
+  await admin('/api/chapters/klr-01-pack', { method: 'PATCH', json: { blocks: [{ type: 'text', text: 'my own edit' }] } });
+  await srv.stop();
+
+  await write(3, 'third', 'three');
+  srv = await start({ dataDir, env: { CONTENT_DIR: content } });
+  admin = await srv.login('admin');
+  assert.equal((await admin('/api/chapters/klr-01-pack')).data.chapter.blocks[0].text, 'my own edit');
+  const draft = (await admin('/api/chapters/klr-01-pack-v3')).data.chapter;
+  assert.equal(draft.status, 'draft');
+  assert.equal(draft.blocks[0].text, 'third');
+  assert.match(draft.blocks[1].src, /^chapters\/klr-01-pack-v3\//);
+  const order = (await admin('/api/subjects/kosten-leistungsrechnung')).data.chapters.map((c) => c.id);
+  assert.deepEqual(order, ['klr-01-pack', 'klr-01-pack-v3', other.id]);
+});
+
+test('a new version of a deleted chapter does not bring it back', async () => {
+  const dataDir = await tempDir();
+  const { content, write } = await tempPack();
+  await write(1, 'first', 'one');
+  let srv = await start({ dataDir, env: { CONTENT_DIR: content } });
+  let admin = await srv.login('admin');
+  await admin('/api/chapters/klr-01-pack', { method: 'DELETE' });
+  await srv.stop();
+
+  await write(2, 'second', 'two');
+  srv = await start({ dataDir, env: { CONTENT_DIR: content } });
+  admin = await srv.login('admin');
+  assert.equal((await admin('/api/chapters/klr-01-pack')).status, 404);
+  assert.equal((await admin('/api/subjects/kosten-leistungsrechnung')).data.chapters.length, 0);
+  const db = await readJSON(path.join(dataDir, 'db.json'));
+  assert.equal(db.contentImported[0].version, 2);
 });

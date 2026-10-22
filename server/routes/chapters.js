@@ -2,7 +2,7 @@
 //   GET    /api/chapters?recent=n     recently changed chapters (for the start page)
 //   GET    /api/chapters/:id          chapter with blocks, its subject, semester and neighbours
 //   POST   /api/chapters              admin: { subjectId, title } → new draft
-//   PATCH  /api/chapters/:id          admin: { title, summary, status, blocks, subjectId, baseRev }
+//   PATCH  /api/chapters/:id          admin: { title, summary, status, lang, blocks, subjectId, baseRev }
 //   DELETE /api/chapters/:id          admin: into the trash (→ { trashId } for Undo)
 //   POST   /api/chapters/:id/files    admin: upload one file (multipart field "file")
 import fsp from 'node:fs/promises';
@@ -17,7 +17,7 @@ import { upload } from '../upload.js';
 import { normalizeChapter } from '../schema.js';
 import { chapterMeta, visibleChapters } from './catalog.js';
 
-const FIELDS = ['title', 'summary', 'status', 'blocks', 'subjectId'];
+const FIELDS = ['title', 'summary', 'status', 'lang', 'blocks', 'subjectId'];
 const byOrder = (a, b) => a.order - b.order || a.createdAt - b.createdAt;
 
 export const chapterDir = (chapterId) => assertInside(path.join(DATA_DIR, 'chapters', chapterId));

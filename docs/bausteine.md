@@ -8,6 +8,11 @@ in einem leeren Textbaustein öffnet sie ebenfalls und ersetzt den Baustein.
 
 Leere Bausteine sieht nur der Admin – Betrachter bekommen sie nicht angezeigt.
 
+**Sprache:** Jedes Kapitel hat eine Inhaltssprache (Deutsch oder Englisch, im ⋯-Menü des
+Kapitels umstellbar). Die Beschriftungen in den Bausteinen folgen ihr – „Quiz“, „Check
+answer“, „Tap to flip“ in einem englischen Kapitel (`src/lib/blockText.js`). Navigation und
+Editor bleiben deutsch.
+
 ## Alle Typen
 
 | Typ | Gruppe | Felder | Anzeige für Betrachter |
@@ -56,7 +61,8 @@ Text wird nie als HTML ausgegeben – eingegebenes HTML erscheint als Text.
 3. **Komponenten** – `View` (Lesemodus) und `Edit` (Editor) schreiben, z. B. in
    `src/components/blocks/LearnBlocks.jsx`. `Edit` bekommt
    `{ block, onChange(patch), upload(file), autoFocus, chapterId }`.
-4. **Registrieren** – `src/components/blocks/registry.js`.
+4. **Registrieren** – `src/components/blocks/registry.js`. Beschriftungen in `View`
+   über `useBlockText()` aus `src/lib/blockText.js` (Deutsch und Englisch ergänzen).
 5. **Styles** – `src/styles/blocks.css` (`blk-…` für die Ansicht, `ed-…` für den Editor).
 6. **Test** – in `tests/chapters.test.js` prüfen, dass der Normalizer die Felder
    übernimmt und Ungültiges verwirft.

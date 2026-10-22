@@ -152,3 +152,10 @@ test('recent chapters for the start page', async () => {
   assert.ok(data.chapters.length <= 3);
   assert.ok(data.chapters.every((c) => c.status === 'published' && c.subject));
 });
+
+test('a chapter has a content language (de by default, en possible)', async () => {
+  const c = await create('Language');
+  assert.equal(c.lang, 'de');
+  assert.equal((await patch(c.id, { lang: 'en' })).data.chapter.lang, 'en');
+  assert.equal((await patch(c.id, { lang: 'fr' })).data.chapter.lang, 'de');
+});

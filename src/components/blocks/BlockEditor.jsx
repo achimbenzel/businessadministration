@@ -15,7 +15,7 @@ import { api } from '../../lib/api.js';
 // Block types whose content can move over when converting (same text field).
 const TEXTISH = new Set(['text', 'heading', 'quote', 'formula', 'callout', 'toggle', 'definition']);
 
-export default function BlockEditor({ blocks, chapterId, onChange }) {
+export default function BlockEditor({ blocks, chapterId, onChange, lang = 'de' }) {
   const toast = useToast();
   const listRef = useRef(null);
   // Always change the newest list — uploads and quick edits can land between renders.
@@ -87,7 +87,8 @@ export default function BlockEditor({ blocks, chapterId, onChange }) {
   };
 
   return (
-    <div className="editor">
+    // lang: the browser's spell check follows the chapter's language.
+    <div className="editor" lang={lang}>
       <div className="ed-blocks" ref={listRef}>
         {blocks.map((b, i) => {
           const def = BLOCKS[b.type];

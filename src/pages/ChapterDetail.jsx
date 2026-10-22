@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import {
   ChevronLeft, ChevronRight, Eye, Pencil, Trash2, CircleCheck, Circle, Globe, EyeOff, Check, LoaderCircle,
-  CloudOff, TriangleAlert, FolderInput, FileText,
+  CloudOff, TriangleAlert, FolderInput, FileText, Languages,
 } from 'lucide-react';
 import Menu from '../components/Menu.jsx';
 import Modal from '../components/Modal.jsx';
@@ -72,7 +72,7 @@ export default function ChapterDetail() {
     setSaveState('saving');
     try {
       const saved = await api.updateChapter(c.id, {
-        title: c.title, summary: c.summary, status: c.status, blocks: c.blocks, baseRev: revRef.current,
+        title: c.title, summary: c.summary, status: c.status, lang: c.lang, blocks: c.blocks, baseRev: revRef.current,
       }, { keepalive: opts.keepalive });
       revRef.current = saved.rev;
       // Only the revision is taken over — the text stays as typed (the server
@@ -156,8 +156,15 @@ export default function ChapterDetail() {
             title={chapter.status === 'published' ? 'Für Betrachter sichtbar – klicken, um es zum Entwurf zu machen' : 'Nur für Admins sichtbar – klicken, um es zu veröffentlichen'}>
             {chapter.status === 'published' ? <><Globe size={15} /> Veröffentlicht</> : <><EyeOff size={15} /> Entwurf</>}
           </button>
+          {chapter.lang === 'en' && <span className="chip-static" title="Inhalt auf Englisch">EN</span>}
           <SaveIndicator state={saveState} updatedAt={chapter.updatedAt} />
           <Menu label="Kapitel-Aktionen" items={[
+            {
+              label: chapter.lang === 'en' ? 'Inhalt auf Deutsch umstellen' : 'Inhalt auf Englisch umstellen',
+              hint: chapter.lang === 'en' ? 'jetzt: EN' : 'jetzt: DE',
+              icon: Languages,
+              onClick: () => edit({ lang: chapter.lang === 'en' ? 'de' : 'en' }, { immediate: true }),
+            },
             { label: 'In anderes Fach verschieben', icon: FolderInput, onClick: () => { saver.flush(); setMoving(true); } },
             '-',
             { label: 'Kapitel löschen', icon: Trash2, danger: true, onClick: remove },
@@ -165,7 +172,7 @@ export default function ChapterDetail() {
         </div>
       )}
 
-      <header className="chapter-head">
+      <header className="chapter-head" lang={chapter.lang}>
         {editing ? (
           <>
             <AutoTextarea className="chapter-title-input" value={chapter.title} onChange={(e) => edit({ title: e.target.value.replace(/\n/g, ' ') })}
@@ -182,8 +189,8 @@ export default function ChapterDetail() {
       </header>
 
       {editing
-        ? <BlockEditor blocks={chapter.blocks} chapterId={chapter.id} onChange={(blocks) => edit({ blocks })} />
-        : <BlockList blocks={chapter.blocks} chapterId={chapter.id} emptyHint={isAdmin ? <button className="btn" onClick={() => setEditing(true)}><Pencil size={15} /> Inhalte hinzufügen</button> : null} />}
+        ? <BlockEditor blocks={chapter.blocks} chapterId={chapter.id} lang={chapter.lang} onChange={(blocks) => edit({ blocks })} />
+        : <BlockList blocks={chapter.blocks} chapterId={chapter.id} lang={chapter.lang} emptyHint={isAdmin ? <button className="btn" onClick={() => setEditing(true)}><Pencil size={15} /> Inhalte hinzufügen</button> : null} />}
 
       {!editing && (
         <footer className="chapter-foot">

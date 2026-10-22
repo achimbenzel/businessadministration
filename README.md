@@ -35,7 +35,8 @@ Playwright).
 - **Papierkorb** – gelöschte Kapitel bleiben 30 Tage wiederherstellbar.
 - **Inhaltspakete** – Kapitel können auch im Repo unter `content/` vorbereitet werden
   und werden beim Serverstart einmal übernommen (siehe [content/README.md](content/README.md)).
-  Erstes Kapitel: *Supply & Demand und Indifferenzkurven* im Fach Economical Framework.
+  Erstes Kapitel: *Supply & Demand and Indifference Curves* (Englisch) im Fach Economical Framework.
+- **Inhaltssprache pro Kapitel** (Deutsch/Englisch) – die Beschriftungen in den Bausteinen folgen ihr.
 - **Als App installierbar** (PWA-Manifest, Icons, iOS-Meta-Tags).
 
 ## Schnellstart

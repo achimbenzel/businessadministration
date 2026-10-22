@@ -6,6 +6,7 @@ import { fileUrl } from '../../lib/api.js';
 import { fmtBytes } from '../../lib/format.js';
 import { rid } from '../../lib/blocks.js';
 import { Inline } from '../Inline.jsx';
+import { useBlockText } from '../../lib/blockText.js';
 
 const hostOf = (url) => { try { return new URL(url).hostname.replace(/^www\./, ''); } catch { return url; } };
 const safeLink = (url) => (/^(https?:\/\/|mailto:)/i.test(url || '') ? url : null);
@@ -37,18 +38,19 @@ function Dropzone({ accept, multiple = false, upload, onUploaded, icon: Icon = U
 }
 
 export function ImageView({ block }) {
+  const t = useBlockText();
   const [zoom, setZoom] = useState(false);
   if (!block.src) return null;
   return (
     <figure className="blk-image">
-      <button type="button" className="blk-image-btn" onClick={() => setZoom(true)} aria-label="Bild vergrößern">
+      <button type="button" className="blk-image-btn" onClick={() => setZoom(true)} aria-label={t.zoom}>
         <img src={fileUrl(block.src)} alt={block.alt || block.caption || ''} loading="lazy" />
       </button>
       {block.caption && <figcaption><Inline text={block.caption} /></figcaption>}
       {zoom && createPortal(
-        <div className="lightbox" onClick={() => setZoom(false)} role="dialog" aria-label="Bild">
+        <div className="lightbox" onClick={() => setZoom(false)} role="dialog" aria-label={block.alt || t.zoom}>
           <img src={fileUrl(block.src)} alt={block.alt || ''} />
-          <button className="icon-btn lightbox-close" aria-label="Schließen"><X size={20} /></button>
+          <button className="icon-btn lightbox-close" aria-label={t.close}><X size={20} /></button>
         </div>,
         document.body,
       )}
@@ -88,6 +90,7 @@ export function ImageEdit({ block, onChange, upload }) {
 }
 
 function FileRow({ f, onRemove }) {
+  const t = useBlockText();
   return (
     <div className="file-row">
       <FileText size={18} className="file-row-icon" />
@@ -98,7 +101,7 @@ function FileRow({ f, onRemove }) {
       {onRemove ? (
         <button type="button" className="icon-btn icon-btn-ghost icon-btn-sm" onClick={onRemove} aria-label={`${f.name} entfernen`}><X size={15} /></button>
       ) : (
-        <a className="icon-btn icon-btn-ghost icon-btn-sm" href={fileUrl(f.src)} download={f.name} aria-label={`${f.name} herunterladen`} title="Herunterladen"><Download size={16} /></a>
+        <a className="icon-btn icon-btn-ghost icon-btn-sm" href={fileUrl(f.src)} download={f.name} aria-label={`${f.name} ${t.download}`} title={t.download}><Download size={16} /></a>
       )}
     </div>
   );

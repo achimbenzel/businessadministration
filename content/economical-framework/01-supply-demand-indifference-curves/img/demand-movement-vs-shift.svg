@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" font-family="'DM Sans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" role="img" aria-label="Bewegung entlang der Nachfragekurve und Verschiebung der Nachfragekurve">
-<title>Bewegung entlang der Nachfragekurve und Verschiebung der Nachfragekurve</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" font-family="'DM Sans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" role="img" aria-label="Movement along the demand curve and shift of the demand curve">
+<title>Movement along the demand curve and shift of the demand curve</title>
 <defs><marker id="arr-bg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#131316"/></marker><marker id="arr-axis" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8b8b94"/></marker><marker id="arr-guide" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6b6b75"/></marker><marker id="arr-text" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#ececef"/></marker><marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a8a8b0"/></marker><marker id="arr-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2ec5d3"/></marker><marker id="arr-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#fbbf24"/></marker><marker id="arr-pink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#f472b6"/></marker><marker id="arr-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6b9cff"/></marker><marker id="arr-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#34d399"/></marker><marker id="arr-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a78bfa"/></marker></defs>
 <rect width="640" height="420" fill="#131316"/>
 <line x1="64" y1="372" x2="618" y2="372" stroke="#8b8b94" stroke-width="2.5" marker-end="url(#arr-axis)"/>
 <line x1="64" y1="372" x2="64" y2="18" stroke="#8b8b94" stroke-width="2.5" marker-end="url(#arr-axis)"/>
-<text x="78" y="28" font-size="17" fill="#a8a8b0" text-anchor="start" font-weight="500">Preis p</text>
-<text x="618" y="410" font-size="17" fill="#a8a8b0" text-anchor="end" font-weight="500">Menge x</text>
+<text x="78" y="28" font-size="17" fill="#a8a8b0" text-anchor="start" font-weight="500">Price P</text>
+<text x="618" y="410" font-size="17" fill="#a8a8b0" text-anchor="end" font-weight="500">Quantity Q</text>
 <text x="54" y="394" font-size="16" fill="#a8a8b0" text-anchor="end" font-weight="500">0</text>
 <line x1="64" y1="153.6" x2="171.2" y2="153.6" stroke="#6b6b75" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6"/>
 <line x1="171.2" y1="372" x2="171.2" y2="153.6" stroke="#6b6b75" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6"/>
@@ -22,15 +22,15 @@
 <text x="317.2" y="227.6" font-size="19" fill="#ececef" text-anchor="start" font-weight="700">B</text>
 <text x="500.8" y="349.2" font-size="20" fill="#2ec5d3" text-anchor="start" font-weight="700">D₀</text>
 <text x="594" y="329.2" font-size="20" fill="#2ec5d3" text-anchor="end" font-weight="700">D₁</text>
-<text x="54" y="159.6" font-size="18" fill="#ececef" text-anchor="end" font-weight="500" font-style="italic">p₁</text>
-<text x="54" y="243.6" font-size="18" fill="#ececef" text-anchor="end" font-weight="500" font-style="italic">p₂</text>
-<text x="171.2" y="398" font-size="18" fill="#ececef" text-anchor="middle" font-weight="500" font-style="italic">x₁</text>
-<text x="305.2" y="398" font-size="18" fill="#ececef" text-anchor="middle" font-weight="500" font-style="italic">x₂</text>
-<rect x="348" y="16" width="270" height="126" rx="10" fill="#131316" fill-opacity="0.92" stroke="#2c2c32"/>
-<line x1="362" y1="38" x2="388" y2="38" stroke="#ececef" stroke-width="3.5" stroke-linecap="round"/>
-<text x="398" y="44" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500">A → B: Bewegung entlang D₀</text>
-<text x="362" y="71" font-size="15.5" fill="#a8a8b0" text-anchor="start" font-weight="500">Preis des Gutes sinkt</text>
-<line x1="362" y1="92" x2="388" y2="92" stroke="#f472b6" stroke-width="3.5" stroke-linecap="round"/>
-<text x="398" y="98" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500">D₀ → D₁: Verschiebung</text>
-<text x="362" y="125" font-size="15.5" fill="#a8a8b0" text-anchor="start" font-weight="500">z. B. Einkommen steigt</text>
+<text x="54" y="159.6" font-size="18" fill="#ececef" text-anchor="end" font-weight="500" font-style="italic">P₁</text>
+<text x="54" y="243.6" font-size="18" fill="#ececef" text-anchor="end" font-weight="500" font-style="italic">P₂</text>
+<text x="171.2" y="398" font-size="18" fill="#ececef" text-anchor="middle" font-weight="500" font-style="italic">Q₁</text>
+<text x="305.2" y="398" font-size="18" fill="#ececef" text-anchor="middle" font-weight="500" font-style="italic">Q₂</text>
+<rect x="356" y="16" width="262" height="126" rx="10" fill="#131316" fill-opacity="0.92" stroke="#2c2c32"/>
+<line x1="370" y1="38" x2="396" y2="38" stroke="#ececef" stroke-width="3.5" stroke-linecap="round"/>
+<text x="406" y="44" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500">A → B: movement along D₀</text>
+<text x="370" y="71" font-size="15.5" fill="#a8a8b0" text-anchor="start" font-weight="500">the good’s own price falls</text>
+<line x1="370" y1="92" x2="396" y2="92" stroke="#f472b6" stroke-width="3.5" stroke-linecap="round"/>
+<text x="406" y="98" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500">D₀ → D₁: shift in demand</text>
+<text x="370" y="125" font-size="15.5" fill="#a8a8b0" text-anchor="start" font-weight="500">e.g. income rises</text>
 </svg>

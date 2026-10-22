@@ -3,6 +3,8 @@
 import { bool, id, line, list, num, oneOf, str, subId, time } from './base.js';
 
 export const CHAPTER_STATUS = ['draft', 'published'];
+// Language of a chapter's content: the labels inside its blocks follow it ("Check answer" …).
+export const CHAPTER_LANGS = ['de', 'en'];
 
 // Every block type and how its fields are cleaned. Unknown types are dropped.
 // Keep in sync with src/lib/blocks.js (labels, icons, defaults for the editor).
@@ -86,6 +88,7 @@ export function normalizeChapter(c) {
     title: line(c?.title, 200) || 'Unbenanntes Kapitel',
     summary: str(c?.summary, 1000),
     status: oneOf(c?.status, CHAPTER_STATUS),
+    lang: oneOf(c?.lang, CHAPTER_LANGS),
     blocks,
     order: num(c?.order, 0, 1e6, 0),
     rev: num(c?.rev, 0, Number.MAX_SAFE_INTEGER, 0),

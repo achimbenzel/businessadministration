@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" font-family="'DM Sans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" role="img" aria-label="Mindestpreis über und Höchstpreis unter dem Gleichgewichtspreis">
-<title>Mindestpreis über und Höchstpreis unter dem Gleichgewichtspreis</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" font-family="'DM Sans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" role="img" aria-label="Price floor above and price ceiling below the equilibrium price">
+<title>Price floor above and price ceiling below the equilibrium price</title>
 <defs><marker id="arr-bg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#131316"/></marker><marker id="arr-axis" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8b8b94"/></marker><marker id="arr-guide" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6b6b75"/></marker><marker id="arr-text" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#ececef"/></marker><marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a8a8b0"/></marker><marker id="arr-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2ec5d3"/></marker><marker id="arr-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#fbbf24"/></marker><marker id="arr-pink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#f472b6"/></marker><marker id="arr-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6b9cff"/></marker><marker id="arr-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#34d399"/></marker><marker id="arr-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a78bfa"/></marker></defs>
 <rect width="640" height="420" fill="#131316"/>
 <line x1="64" y1="372" x2="618" y2="372" stroke="#8b8b94" stroke-width="2.5" marker-end="url(#arr-axis)"/>
 <line x1="64" y1="372" x2="64" y2="18" stroke="#8b8b94" stroke-width="2.5" marker-end="url(#arr-axis)"/>
-<text x="78" y="28" font-size="17" fill="#a8a8b0" text-anchor="start" font-weight="500">Preis p</text>
-<text x="618" y="410" font-size="17" fill="#a8a8b0" text-anchor="end" font-weight="500">Menge x</text>
+<text x="78" y="28" font-size="17" fill="#a8a8b0" text-anchor="start" font-weight="500">Price P</text>
+<text x="618" y="410" font-size="17" fill="#a8a8b0" text-anchor="end" font-weight="500">Quantity Q</text>
 <text x="54" y="394" font-size="16" fill="#a8a8b0" text-anchor="end" font-weight="500">0</text>
 <line x1="64" y1="237.6" x2="332" y2="237.6" stroke="#6b6b75" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6"/>
 <line x1="332" y1="372" x2="332" y2="237.6" stroke="#6b6b75" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6"/>
@@ -15,18 +15,18 @@
 <line x1="64" y1="288" x2="600" y2="288" stroke="#6b9cff" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="8 6"/>
 <line x1="251.6" y1="187.2" x2="492.8" y2="187.2" stroke="#f472b6" stroke-width="6" stroke-linecap="round"/>
 <line x1="171.2" y1="288" x2="412.4" y2="288" stroke="#6b9cff" stroke-width="6" stroke-linecap="round"/>
-<text x="372.2" y="173.2" font-size="17" fill="#f472b6" text-anchor="middle" font-weight="700">Angebotsüberschuss</text>
-<text x="262.3" y="315" font-size="16" fill="#6b9cff" text-anchor="middle" font-weight="700">Nachfrageüberschuss (Mangel)</text>
+<text x="372.2" y="173.2" font-size="17" fill="#f472b6" text-anchor="middle" font-weight="700">Surplus (excess supply)</text>
+<text x="267.7" y="315" font-size="16.5" fill="#6b9cff" text-anchor="middle" font-weight="700">Shortage (excess demand)</text>
 <circle cx="332" cy="237.6" r="6.5" fill="#ececef" stroke="#131316" stroke-width="2.5"/>
 <text x="344" y="225.6" font-size="20" fill="#ececef" text-anchor="start" font-weight="700">E</text>
 <text x="529.6" y="351.2" font-size="21" fill="#2ec5d3" text-anchor="start" font-weight="700">D</text>
 <text x="606" y="160.6" font-size="21" fill="#fbbf24" text-anchor="start" font-weight="700">S</text>
-<text x="54" y="193.2" font-size="18" fill="#ececef" text-anchor="end" font-weight="500" font-style="italic">pₘᵢₙ</text>
-<text x="54" y="243.6" font-size="18" fill="#ececef" text-anchor="end" font-weight="500" font-style="italic">p*</text>
-<text x="54" y="294" font-size="18" fill="#ececef" text-anchor="end" font-weight="500" font-style="italic">pₘₐₓ</text>
-<rect x="378" y="16" width="240" height="72" rx="10" fill="#131316" fill-opacity="0.92" stroke="#2c2c32"/>
-<line x1="392" y1="38" x2="418" y2="38" stroke="#f472b6" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="8 6"/>
-<text x="428" y="44" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500">Mindestpreis über p*</text>
-<line x1="392" y1="65" x2="418" y2="65" stroke="#6b9cff" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="8 6"/>
-<text x="428" y="71" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500">Höchstpreis unter p*</text>
+<text x="54" y="193.2" font-size="18" fill="#ececef" text-anchor="end" font-weight="500" font-style="italic">P<tspan dy="4" font-size="72%">F</tspan><tspan dy="-4"></tspan></text>
+<text x="54" y="243.6" font-size="18" fill="#ececef" text-anchor="end" font-weight="500" font-style="italic">P*</text>
+<text x="54" y="294" font-size="18" fill="#ececef" text-anchor="end" font-weight="500" font-style="italic">P<tspan dy="4" font-size="72%">C</tspan><tspan dy="-4"></tspan></text>
+<rect x="356" y="16" width="262" height="72" rx="10" fill="#131316" fill-opacity="0.92" stroke="#2c2c32"/>
+<line x1="370" y1="38" x2="396" y2="38" stroke="#f472b6" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="8 6"/>
+<text x="406" y="44" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500">P<tspan dy="4" font-size="72%">F</tspan><tspan dy="-4">: price floor above P*</tspan></text>
+<line x1="370" y1="65" x2="396" y2="65" stroke="#6b9cff" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="8 6"/>
+<text x="406" y="71" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500">P<tspan dy="4" font-size="72%">C</tspan><tspan dy="-4">: price ceiling below P*</tspan></text>
 </svg>

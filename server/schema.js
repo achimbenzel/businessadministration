@@ -6,7 +6,7 @@
  * normalizer, so records written by an older version stay valid without a
  * migration.
  */
-import { list, time, str, line, isId } from './schema/base.js';
+import { list, time, str, line, isId, num } from './schema/base.js';
 import { normalizeSemester } from './schema/semesters.js';
 import { normalizeSubject } from './schema/subjects.js';
 import { normalizeChapter } from './schema/chapters.js';
@@ -20,7 +20,11 @@ export const SCHEMA_VERSION = 1;
 export const emptyDB = () => ({ schemaVersion: SCHEMA_VERSION, semesters: [], subjects: [], chapters: [], trash: [], contentImported: [] });
 
 // Content packs (content/…/chapter.json) that were imported once — see server/content.js.
-const normalizeImport = (x) => ({ id: isId(x?.id) ? x.id : '', at: time(x?.at) });
+// version: the pack's version; rev: the chapter's revision right after the import —
+// if the chapter still has it, nobody has edited it since and an update may replace it.
+const normalizeImport = (x) => ({
+  id: isId(x?.id) ? x.id : '', at: time(x?.at), version: num(x?.version, 1, 1e6, 1), rev: num(x?.rev, 0, Number.MAX_SAFE_INTEGER, 1),
+});
 
 // A deleted chapter, kept until it's restored or purged (see routes/trash.js).
 export function normalizeTrashEntry(t) {

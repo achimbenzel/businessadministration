@@ -24,8 +24,8 @@ for (const w of warnings) console.warn(`  ⚠ ${w}`);
 
 await fsp.mkdir(DATA_DIR, { recursive: true });
 await loadDB();
-const imported = await importContentPacks();
-if (imported.length) console.log(`  Neue Kapitel aus content/ importiert: ${imported.join(', ')}`);
+const LABEL = { imported: 'neu importiert', updated: 'aktualisiert', draft: 'neue Version als Entwurf' };
+for (const { id, action } of await importContentPacks()) console.log(`  Kapitel aus content/ ${LABEL[action]}: ${id}`);
 await cleanTmp().catch(() => {});
 await purgeOldTrash().catch((err) => console.warn('  trash purge failed:', err.message));
 

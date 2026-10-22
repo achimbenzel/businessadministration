@@ -2,22 +2,26 @@
  * Content packs: chapters that ship with the code, so content can be prepared
  * in the repository and arrives with a `git pull`:
  *
- *   content/<subject>/<chapter>/chapter.json   { id, subjectId, title, summary, status, position, blocks }
+ *   content/<subject>/<chapter>/chapter.json   { id, version, subjectId, lang, title, summary, status, position, blocks }
  *   content/<subject>/<chapter>/img/…          pictures, referenced as { type: 'image', file: 'img/x.svg' }
  *
- * At start, every pack that hasn't been imported yet is added to the database
- * once (its files copied to data/chapters/<id>/). From then on the chapter is
- * the admin's like any other: edit it, move it, delete it — a pack is never
- * imported twice (db.contentImported remembers it).
+ * At start, every new pack is added to the database once (its files copied to
+ * data/chapters/<id>/). From then on the chapter is the admin's like any other.
+ * When a pack's `version` goes up, the chapter is updated — but only if nobody
+ * has edited it in the app since (its revision is still the one the import
+ * produced). An edited chapter is never overwritten: the new version arrives
+ * as a separate draft right after it. A chapter the admin deleted stays deleted.
  */
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import fsp from 'node:fs/promises';
 import path from 'node:path';
+import { nanoid } from 'nanoid';
 import { CONTENT_DIR, DATA_DIR } from './config.js';
 import { mutateDB, readDB } from './db.js';
-import { normalizeChapter } from './schema.js';
+import { normalizeChapter, chapterFiles } from './schema.js';
 import { isId } from './schema/base.js';
-import { assertInside, sanitize } from './files.js';
+import { assertInside, sanitize, safeRm } from './files.js';
 
 /** Every chapter.json up to three folders deep, sorted by path (01-…, 02-…). */
 export async function findPacks(dir = CONTENT_DIR) {
@@ -34,17 +38,23 @@ export async function findPacks(dir = CONTENT_DIR) {
   return found.sort((a, b) => a.file.localeCompare(b.file));
 }
 
-// Copies the pack's files into the chapter's folder and points the blocks at them.
-async function withFiles(pack, dir) {
-  const target = path.join(DATA_DIR, 'chapters', pack.id);
+/**
+ * Copies the pack's files into data/chapters/<chapterId>/ and points the blocks
+ * at them. Names carry a hash of the content: files are served with a long
+ * "immutable" cache, so a changed figure must get a new URL.
+ */
+async function withFiles(pack, dir, chapterId) {
+  const target = path.join(DATA_DIR, 'chapters', chapterId);
   const copied = new Map();
   const copy = async (rel) => {
     if (copied.has(rel)) return copied.get(rel);
     const src = assertInside(path.join(dir, String(rel)), dir); // nothing outside the pack
-    const name = sanitize(path.basename(src));
+    const data = await fsp.readFile(src);
+    const hash = crypto.createHash('sha256').update(data).digest('hex').slice(0, 8);
+    const name = `${hash}-${sanitize(path.basename(src))}`;
     await fsp.mkdir(target, { recursive: true });
-    await fsp.copyFile(src, path.join(target, name));
-    const ref = { src: `chapters/${pack.id}/${name}`, size: (await fsp.stat(src)).size };
+    await fsp.writeFile(path.join(target, name), data);
+    const ref = { src: `chapters/${chapterId}/${name}`, size: data.length };
     copied.set(rel, ref);
     return ref;
   };
@@ -63,41 +73,104 @@ async function withFiles(pack, dir) {
   return blocks;
 }
 
-/** Import all new packs. Returns the ids of the chapters that were added. */
+// The chapter fields a pack sets.
+const fromPack = (pack, blocks) => ({
+  title: pack.title,
+  summary: pack.summary,
+  status: pack.status === 'draft' ? 'draft' : 'published',
+  lang: pack.lang,
+  blocks,
+});
+
+// After an update: files of the old version that the new one no longer uses.
+async function removeUnusedFiles(chapter) {
+  const dir = path.join(DATA_DIR, 'chapters', chapter.id);
+  const used = new Set([...chapterFiles(chapter)].map((src) => path.basename(src)));
+  for (const f of await fsp.readdir(dir).catch(() => [])) {
+    if (!used.has(f)) await safeRm(path.join(dir, f)).catch(() => {});
+  }
+}
+
+/** Import new packs and apply new versions. Returns what happened: [{ id, action }]. */
 export async function importContentPacks(dir = CONTENT_DIR) {
-  const imported = [];
+  const report = [];
   for (const { file, dir: packDir } of await findPacks(dir)) {
     const where = path.relative(process.cwd(), file);
     try {
       const pack = JSON.parse(await fsp.readFile(file, 'utf8'));
       if (!isId(pack.id)) throw new Error('"id" fehlt oder ist ungültig (6–40 Zeichen: a–z, 0–9, _ und -)');
+      const version = Number.isInteger(pack.version) && pack.version > 0 ? pack.version : 1;
       const db = await readDB();
-      if (db.contentImported.some((x) => x.id === pack.id)) continue;
+      const record = db.contentImported.find((x) => x.id === pack.id);
+      if (record && record.version >= version) continue;
       if (!db.subjects.some((s) => s.id === pack.subjectId)) {
         console.warn(`  Inhaltspaket ${where}: Fach "${pack.subjectId}" gibt es nicht – übersprungen.`);
         continue;
       }
-      // The chapter exists already (e.g. imported before this was tracked): just remember it.
-      const exists = db.chapters.some((c) => c.id === pack.id) || db.trash.some((t) => t.item.id === pack.id);
-      const blocks = exists ? [] : await withFiles(pack, packDir);
+      const chapter = db.chapters.find((c) => c.id === pack.id);
+      const inTrash = db.trash.some((t) => t.item.id === pack.id);
+
+      // 1. New pack.
+      if (!record) {
+        const exists = Boolean(chapter) || inTrash; // imported before this was tracked: just remember it
+        const blocks = exists ? [] : await withFiles(pack, packDir, pack.id);
+        await mutateDB((d) => {
+          const now = Date.now();
+          if (!exists) {
+            const siblings = d.chapters.filter((c) => c.subjectId === pack.subjectId);
+            let order = Math.max(-1, ...siblings.map((c) => c.order)) + 1;
+            if (pack.position === 'first') { for (const c of siblings) c.order += 1; order = 0; }
+            d.chapters.push(normalizeChapter({ id: pack.id, subjectId: pack.subjectId, ...fromPack(pack, blocks), order, rev: 1, createdAt: now, updatedAt: now }));
+          }
+          d.contentImported.push({ id: pack.id, at: now, version, rev: exists ? chapter?.rev ?? 0 : 1 });
+        });
+        if (!exists) report.push({ id: pack.id, action: 'imported' });
+        continue;
+      }
+
+      // 2. Newer version, chapter deleted in the app: respect that.
+      if (!chapter) {
+        await mutateDB((d) => { Object.assign(d.contentImported.find((x) => x.id === pack.id), { version, at: Date.now() }); });
+        console.log(`  Inhaltspaket ${pack.id} v${version}: Kapitel wurde gelöscht – nicht wieder angelegt.`);
+        continue;
+      }
+
+      // 3. Newer version, chapter untouched since the import: update it in place
+      //    (subject and position stay as they are).
+      if (chapter.rev === record.rev) {
+        const blocks = await withFiles(pack, packDir, pack.id);
+        const updated = await mutateDB((d) => {
+          const c = d.chapters.find((x) => x.id === pack.id);
+          const now = Date.now();
+          Object.assign(c, normalizeChapter({ ...c, ...fromPack(pack, blocks), rev: c.rev + 1, updatedAt: now }));
+          Object.assign(d.contentImported.find((x) => x.id === pack.id), { version, rev: c.rev, at: now });
+          return c;
+        });
+        await removeUnusedFiles(updated);
+        report.push({ id: pack.id, action: 'updated' });
+        continue;
+      }
+
+      // 4. Newer version, chapter edited in the app: keep the edits, add the
+      //    new version as a draft right after it.
+      const copyId = isId(`${pack.id}-v${version}`) && !db.chapters.some((c) => c.id === `${pack.id}-v${version}`)
+        ? `${pack.id}-v${version}` : nanoid(10);
+      const blocks = await withFiles(pack, packDir, copyId);
       await mutateDB((d) => {
         const now = Date.now();
-        if (!exists) {
-          const siblings = d.chapters.filter((c) => c.subjectId === pack.subjectId);
-          let order = Math.max(-1, ...siblings.map((c) => c.order)) + 1;
-          if (pack.position === 'first') { for (const c of siblings) c.order += 1; order = 0; }
-          d.chapters.push(normalizeChapter({
-            id: pack.id, subjectId: pack.subjectId, title: pack.title, summary: pack.summary,
-            status: pack.status === 'draft' ? 'draft' : 'published',
-            blocks, order, rev: 1, createdAt: now, updatedAt: now,
-          }));
-        }
-        d.contentImported.push({ id: pack.id, at: now });
+        const original = d.chapters.find((x) => x.id === pack.id);
+        for (const c of d.chapters) if (c.subjectId === original.subjectId && c.order > original.order) c.order += 1;
+        d.chapters.push(normalizeChapter({
+          id: copyId, subjectId: original.subjectId, ...fromPack(pack, blocks), status: 'draft',
+          order: original.order + 1, rev: 1, createdAt: now, updatedAt: now,
+        }));
+        Object.assign(d.contentImported.find((x) => x.id === pack.id), { version, at: now });
       });
-      if (!exists) imported.push(pack.id);
+      console.log(`  Inhaltspaket ${pack.id} v${version}: Kapitel wurde in der App bearbeitet – neue Version als Entwurf „${copyId}“ angelegt.`);
+      report.push({ id: copyId, action: 'draft' });
     } catch (err) {
       console.warn(`  Inhaltspaket ${where} konnte nicht importiert werden: ${err.message}`);
     }
   }
-  return imported;
+  return report;
 }

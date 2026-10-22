@@ -5,17 +5,19 @@ import { Layers, RotateCcw, Check, X, Plus, CircleHelp } from 'lucide-react';
 import AutoTextarea from '../AutoTextarea.jsx';
 import { Inline, RichText } from '../Inline.jsx';
 import { rid } from '../../lib/blocks.js';
+import { useBlockText } from '../../lib/blockText.js';
 
 export function FlashcardView({ block }) {
+  const t = useBlockText();
   const [flipped, setFlipped] = useState(false);
   return (
     <button type="button" className={`blk-card ${flipped ? 'flipped' : ''}`} onClick={() => setFlipped((f) => !f)}
-      aria-label={flipped ? 'Karteikarte: Frage zeigen' : 'Karteikarte: Antwort zeigen'}>
-      <span className="blk-card-label"><Layers size={14} /> {flipped ? 'Antwort' : 'Frage'}</span>
+      aria-label={flipped ? t.showQuestion : t.showAnswer}>
+      <span className="blk-card-label"><Layers size={14} /> {flipped ? t.answer : t.question}</span>
       <span className="blk-card-content">
         <RichText text={flipped ? block.back : block.front} />
       </span>
-      <span className="blk-card-hint"><RotateCcw size={13} /> {flipped ? 'Zur Frage' : 'Antippen zum Umdrehen'}</span>
+      <span className="blk-card-hint"><RotateCcw size={13} /> {flipped ? t.backToQuestion : t.tapToFlip}</span>
     </button>
   );
 }
@@ -37,6 +39,7 @@ export function FlashcardEdit({ block, onChange, autoFocus }) {
 }
 
 export function QuizView({ block }) {
+  const t = useBlockText();
   const options = block.options.filter((o) => o.text.trim());
   const multi = options.filter((o) => o.correct).length > 1;
   const [picked, setPicked] = useState(() => new Set());
@@ -52,7 +55,7 @@ export function QuizView({ block }) {
   const right = options.every((o) => o.correct === picked.has(o.id));
   return (
     <div className="blk-quiz">
-      <div className="blk-quiz-label"><CircleHelp size={14} /> Quizfrage{multi ? ' · mehrere Antworten richtig' : ''}</div>
+      <div className="blk-quiz-label"><CircleHelp size={14} /> {t.quiz}{multi ? ` · ${t.multi}` : ''}</div>
       <div className="blk-quiz-q"><RichText text={block.question} /></div>
       <div className="blk-quiz-options" role={multi ? 'group' : 'radiogroup'}>
         {options.map((o) => {
@@ -71,12 +74,12 @@ export function QuizView({ block }) {
       </div>
       {checked ? (
         <div className={`blk-quiz-result ${right ? 'right' : 'wrong'}`}>
-          <strong>{right ? 'Richtig!' : 'Leider nicht ganz.'}</strong>
+          <strong>{right ? t.right : t.wrong}</strong>
           {block.explanation && <RichText text={block.explanation} />}
-          <button type="button" className="btn btn-sm" onClick={() => { setChecked(false); setPicked(new Set()); }}><RotateCcw size={14} /> Nochmal</button>
+          <button type="button" className="btn btn-sm" onClick={() => { setChecked(false); setPicked(new Set()); }}><RotateCcw size={14} /> {t.again}</button>
         </div>
       ) : (
-        <button type="button" className="btn btn-primary btn-sm" disabled={!picked.size} onClick={() => setChecked(true)}>Antwort prüfen</button>
+        <button type="button" className="btn btn-primary btn-sm" disabled={!picked.size} onClick={() => setChecked(true)}>{t.check}</button>
       )}
     </div>
   );

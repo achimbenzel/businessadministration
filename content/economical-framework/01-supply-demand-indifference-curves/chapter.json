@@ -1,0 +1,542 @@
+{
+  "id": "efed-01-supply-demand-indifferenz",
+  "version": 2,
+  "subjectId": "economical-framework",
+  "lang": "en",
+  "position": "first",
+  "status": "published",
+  "title": "Supply & Demand and Indifference Curves",
+  "summary": "How markets set prices – demand, supply, equilibrium and price controls – and how households choose between bundles of goods using indifference curves and the budget line.",
+  "blocks": [
+    {
+      "type": "text",
+      "text": "This chapter covers two core tools of microeconomics: the **market model of supply and demand** and the **indifference curves** of consumer theory. Together they explain the economic framework of entrepreneurial decisions: how do markets set prices – and how do consumers choose between alternatives?"
+    },
+    {
+      "type": "callout",
+      "variant": "info",
+      "title": "Learning objectives",
+      "text": "- explain and draw demand and supply curves\n- distinguish a movement along a curve from a shift of the curve\n- calculate the market equilibrium and interpret consumer and producer surplus\n- explain the effects of price ceilings and price floors\n- apply indifference curves, the marginal rate of substitution and the consumer optimum"
+    },
+    {
+      "type": "heading",
+      "text": "1. Demand",
+      "level": 2
+    },
+    {
+      "type": "definition",
+      "term": "Demand",
+      "text": "The quantity of a good that buyers are **willing and able** to purchase at different prices – all other things being equal (*ceteris paribus*). The **demand curve** shows this relationship between the price P and the quantity demanded Q."
+    },
+    {
+      "type": "text",
+      "text": "**Law of demand:** Ceteris paribus, when the price of a good rises, the quantity demanded falls. The demand curve therefore slopes downward from the upper left to the lower right.\n\nWhy?\n- **Substitution effect:** The good becomes more expensive relative to alternatives, so buyers switch to substitutes.\n- **Income effect:** A higher price reduces the purchasing power of a given income.\n- **Diminishing marginal utility:** Each additional unit adds less utility, so buyers only purchase more at a lower price."
+    },
+    {
+      "type": "image",
+      "file": "img/demand-movement-vs-shift.svg",
+      "caption": "Figure 1: Movement along the demand curve (A → B) and shift of the demand curve (D₀ → D₁)",
+      "alt": "Downward-sloping demand curve D0 with points A and B; an arrow shows the movement from A to B as the price falls. Next to it, the demand curve D1 shifted to the right."
+    },
+    {
+      "type": "callout",
+      "variant": "important",
+      "title": "Key point: movement or shift?",
+      "text": "A change in **the good's own price** causes a **movement along** the curve – a change in the *quantity demanded*. A change in **any other determinant**, such as income or preferences, **shifts the whole curve** – a change in *demand*."
+    },
+    {
+      "type": "heading",
+      "text": "What shifts the demand curve?",
+      "level": 3
+    },
+    {
+      "type": "table",
+      "header": true,
+      "rows": [
+        [
+          "Determinant",
+          "Example",
+          "Effect on the demand curve"
+        ],
+        [
+          "Income",
+          "income rises",
+          "normal good: shifts right · inferior good: shifts left"
+        ],
+        [
+          "Price of substitutes",
+          "tea becomes more expensive",
+          "demand for coffee shifts right"
+        ],
+        [
+          "Price of complements",
+          "printers become more expensive",
+          "demand for ink cartridges shifts left"
+        ],
+        [
+          "Tastes and preferences",
+          "organic food is popular",
+          "shifts right"
+        ],
+        [
+          "Expectations",
+          "a price increase is announced",
+          "today's demand shifts right"
+        ],
+        [
+          "Number of buyers",
+          "population grows",
+          "shifts right"
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "2. Supply",
+      "level": 2
+    },
+    {
+      "type": "definition",
+      "term": "Supply",
+      "text": "The quantity of a good that sellers are **willing and able** to offer at different prices – ceteris paribus. The **supply curve** shows the relationship between the price and the quantity supplied."
+    },
+    {
+      "type": "text",
+      "text": "**Law of supply:** The higher the price, the greater the quantity supplied – the supply curve slopes upward. A higher price makes production more profitable, and additional output can often only be produced at **rising marginal cost**: a firm produces another unit only if the price covers its cost."
+    },
+    {
+      "type": "heading",
+      "text": "What shifts the supply curve?",
+      "level": 3
+    },
+    {
+      "type": "table",
+      "header": true,
+      "rows": [
+        [
+          "Determinant",
+          "Example",
+          "Effect on the supply curve"
+        ],
+        [
+          "Input prices",
+          "energy becomes more expensive",
+          "shifts left"
+        ],
+        [
+          "Technology",
+          "more efficient production",
+          "shifts right"
+        ],
+        [
+          "Taxes and subsidies",
+          "a per-unit subsidy",
+          "shifts right (a tax: shifts left)"
+        ],
+        [
+          "Expectations",
+          "higher prices expected",
+          "today's supply tends to shift left (goods are held back)"
+        ],
+        [
+          "Number of sellers",
+          "new competitors enter",
+          "shifts right"
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "3. Market equilibrium",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "text": "In **market equilibrium** the supply and demand curves intersect: at the **equilibrium price P∗** the quantity demanded equals the quantity supplied, the **equilibrium quantity Q∗**. The market *clears* – everyone who wants to buy or sell at this price can do so."
+    },
+    {
+      "type": "image",
+      "file": "img/market-equilibrium.svg",
+      "caption": "Figure 2: Market equilibrium E with consumer surplus (CS) and producer surplus (PS)",
+      "alt": "Downward-sloping demand curve D and upward-sloping supply curve S intersect at equilibrium E with price P* and quantity Q*. The area between the demand curve and the price is consumer surplus, the area between the price and the supply curve is producer surplus."
+    },
+    {
+      "type": "definition",
+      "term": "Consumer surplus",
+      "text": "The difference between buyers' **willingness to pay** and the price they actually pay – graphically the area **below the demand curve and above the price**."
+    },
+    {
+      "type": "definition",
+      "term": "Producer surplus",
+      "text": "The difference between the market price and the lowest price at which sellers would still sell (their marginal cost) – the area **above the supply curve and below the price**. Consumer and producer surplus together make up **total surplus**, the welfare the market creates."
+    },
+    {
+      "type": "formula",
+      "text": "Equilibrium:  Q_D(P) = Q_S(P)\n\nDemand:  Q_D = 100 − 2P\nSupply:  Q_S = −20 + 4P",
+      "caption": "Worked example – try it yourself first, then open the solution"
+    },
+    {
+      "type": "toggle",
+      "title": "Solution: equilibrium and surplus",
+      "text": "Set them equal: 100 − 2P = −20 + 4P → 120 = 6P → **P∗ = 20**\n\nSubstitute: Q∗ = 100 − 2 · 20 = **60** (check: −20 + 4 · 20 = 60 ✓)\n\n- Consumer surplus: demand falls to zero at P = 50 (the choke price) → CS = ½ · (50 − 20) · 60 = **900**\n- Producer surplus: supply starts at P = 5 → PS = ½ · (20 − 5) · 60 = **450**"
+    },
+    {
+      "type": "image",
+      "file": "img/price-floor-ceiling.svg",
+      "caption": "Figure 3: A price floor above P∗ creates a surplus, a price ceiling below P∗ creates a shortage",
+      "alt": "Supply and demand curves with a price floor above the equilibrium price, where the quantity supplied exceeds the quantity demanded, and a price ceiling below it, where the quantity demanded exceeds the quantity supplied."
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "title": "Price controls",
+      "text": "- **Price ceiling** (a legal maximum price) *below* P∗, e.g. rent control: the quantity demanded exceeds the quantity supplied → **shortage**, waiting lists, black markets.\n- **Price floor** (a legal minimum price) *above* P∗, e.g. agricultural price supports or a minimum wage in the labour market: the quantity supplied exceeds the quantity demanded → **surplus** (in the labour market model: unemployment).\n- A ceiling above P∗ or a floor below P∗ is **non-binding** and has no effect."
+    },
+    {
+      "type": "heading",
+      "text": "Shifts and their effects",
+      "level": 3
+    },
+    {
+      "type": "table",
+      "header": true,
+      "rows": [
+        [
+          "Event",
+          "Curve",
+          "Equilibrium price",
+          "Equilibrium quantity"
+        ],
+        [
+          "Demand increases",
+          "D shifts right",
+          "rises ↑",
+          "rises ↑"
+        ],
+        [
+          "Demand decreases",
+          "D shifts left",
+          "falls ↓",
+          "falls ↓"
+        ],
+        [
+          "Supply increases",
+          "S shifts right",
+          "falls ↓",
+          "rises ↑"
+        ],
+        [
+          "Supply decreases",
+          "S shifts left",
+          "rises ↑",
+          "falls ↓"
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "warning",
+      "title": "Caution: both curves shift",
+      "text": "If supply **and** demand shift at the same time, only one of the two variables is certain. If both increase, for example, the quantity definitely rises – whether the price rises or falls depends on which shift is larger."
+    },
+    {
+      "type": "heading",
+      "text": "4. Indifference curves",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "text": "Consumer theory asks how a household divides its budget between two goods – good 1 with quantity x₁ and good 2 with quantity x₂. Its **preferences** are described with indifference curves."
+    },
+    {
+      "type": "definition",
+      "term": "Indifference curve",
+      "text": "The set of all bundles of goods (x₁, x₂) that give the household **the same level of utility**. The household is **indifferent** between the bundles on one curve – it does not prefer any of them to another."
+    },
+    {
+      "type": "image",
+      "file": "img/indifference-curves.svg",
+      "caption": "Figure 4: Indifference curves U₁ < U₂ < U₃ – the further from the origin, the higher the utility. The step from A to B illustrates the marginal rate of substitution",
+      "alt": "Three convex, downward-sloping indifference curves U1, U2 and U3; an arrow pointing away from the origin shows rising utility. On U2 a step leads from point A to point B: to get more of good 1 (delta x1) the household gives up some of good 2 (delta x2)."
+    },
+    {
+      "type": "heading",
+      "text": "Properties",
+      "level": 3
+    },
+    {
+      "type": "list",
+      "style": "number",
+      "items": [
+        "**Downward sloping:** If the household gets more of good 1, it must give up some of good 2 to keep its utility constant.",
+        "**Further out is better:** Curves further from the origin represent higher utility (non-satiation: more is better).",
+        "**They never cross:** An intersection would lie on two utility levels at once – a contradiction to transitive preferences.",
+        "**Convex to the origin:** The more of a good the household already has, the less it is willing to give up for another unit of it (diminishing marginal rate of substitution)."
+      ]
+    },
+    {
+      "type": "definition",
+      "term": "Marginal rate of substitution (MRS)",
+      "text": "The amount of good 2 the household would give up for **one additional unit of good 1** while keeping its utility unchanged. Graphically it is the absolute **slope of the indifference curve**; along a convex curve it decreases from the upper left to the lower right."
+    },
+    {
+      "type": "formula",
+      "text": "MRS = −Δx₂ / Δx₁ ≈ −dx₂ / dx₁\n    = MU₁ / MU₂\n\nMU: marginal utility",
+      "caption": "The MRS equals the ratio of the marginal utilities of the two goods"
+    },
+    {
+      "type": "callout",
+      "variant": "info",
+      "title": "Special cases",
+      "text": "- **Perfect substitutes** (e.g. two brands of bottled water): the indifference curves are **straight lines**, the MRS is constant.\n- **Perfect complements** (e.g. left and right shoes): the indifference curves are **L-shaped** – an extra unit of only one of the two goods adds no utility."
+    },
+    {
+      "type": "heading",
+      "text": "5. Budget line and consumer optimum",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "text": "Which bundle the household actually chooses also depends on its **income m** and the **prices p₁ and p₂**. All bundles it can just afford when spending its entire income lie on the **budget line** (budget constraint)."
+    },
+    {
+      "type": "formula",
+      "text": "Budget line:\n  p₁·x₁ + p₂·x₂ = m\n  ⇔ x₂ = m/p₂ − (p₁/p₂)·x₁\n\nIntercepts: m/p₁ and m/p₂\nSlope: −p₁/p₂ (price ratio)",
+      "caption": "Higher income shifts the line outwards in parallel; a change in one price rotates it around the other intercept"
+    },
+    {
+      "type": "image",
+      "file": "img/consumer-optimum.svg",
+      "caption": "Figure 5: At the optimum O the budget line touches the highest attainable indifference curve U₂",
+      "alt": "Downward-sloping budget line between m/p2 on the vertical and m/p1 on the horizontal axis; the area below it contains the affordable bundles. Indifference curve U2 touches the line at the optimum O at x1* and x2*; U1 crosses the line twice, U3 lies outside the budget."
+    },
+    {
+      "type": "text",
+      "text": "The household chooses the bundle on the **highest indifference curve it can still reach**. At the optimum O this curve is **tangent** to the budget line, so both have the same slope: the rate at which the household is *willing* to trade (MRS) equals the rate at which it *can* trade in the market (the price ratio). Bundles on U₁ are affordable but not optimal; U₃ lies outside the budget."
+    },
+    {
+      "type": "formula",
+      "text": "Optimum:  MRS = MU₁/MU₂ = p₁/p₂\n      ⇔  MU₁/p₁ = MU₂/p₂\n\n(equimarginal principle)",
+      "caption": "At the optimum, the last euro spent on each good yields the same additional utility"
+    },
+    {
+      "type": "toggle",
+      "title": "Worked example: optimum with U = x₁ · x₂",
+      "text": "Given: utility function U = x₁ · x₂, income m = €100, prices p₁ = €2 and p₂ = €5.\n\n1. Marginal utilities: MU₁ = x₂ and MU₂ = x₁ → MRS = x₂ / x₁\n2. Optimum condition: x₂ / x₁ = 2 / 5 → x₂ = 0.4 · x₁\n3. Substitute into the budget line: 2 · x₁ + 5 · 0.4 · x₁ = 100 → 4 · x₁ = 100 → **x₁ = 25**\n4. Hence **x₂ = 10** (check: 2 · 25 + 5 · 10 = 100 ✓) and utility U = 250."
+    },
+    {
+      "type": "callout",
+      "variant": "important",
+      "title": "Key point: from the consumer optimum to the demand curve",
+      "text": "If you vary the price p₁ and find the new optimum each time, you get the quantity x₁ the household wants at every price – exactly the **individual demand curve** from section 1. Adding up the individual demand curves of all households gives the **market demand curve**."
+    },
+    {
+      "type": "heading",
+      "text": "Key terms",
+      "level": 3
+    },
+    {
+      "type": "table",
+      "header": true,
+      "rows": [
+        [
+          "Term",
+          "Meaning",
+          "German"
+        ],
+        [
+          "Ceteris paribus",
+          "all other things being equal",
+          "unter sonst gleichen Bedingungen"
+        ],
+        [
+          "Quantity demanded / supplied",
+          "amount buyers want to buy / sellers want to sell at a given price",
+          "nachgefragte / angebotene Menge"
+        ],
+        [
+          "Normal / inferior good",
+          "demand rises / falls when income rises",
+          "normales / inferiores Gut"
+        ],
+        [
+          "Substitutes / complements",
+          "goods used instead of / together with each other",
+          "Substitute / Komplemente"
+        ],
+        [
+          "Equilibrium price",
+          "price at which quantity demanded equals quantity supplied",
+          "Gleichgewichtspreis"
+        ],
+        [
+          "Consumer / producer surplus",
+          "gain of buyers / sellers from trading at the market price",
+          "Konsumenten- / Produzentenrente"
+        ],
+        [
+          "Price ceiling / price floor",
+          "legal maximum / minimum price",
+          "Höchstpreis / Mindestpreis"
+        ],
+        [
+          "Shortage / surplus",
+          "excess demand / excess supply",
+          "Nachfrage- / Angebotsüberschuss"
+        ],
+        [
+          "Indifference curve",
+          "bundles with the same utility",
+          "Indifferenzkurve"
+        ],
+        [
+          "Marginal rate of substitution (MRS)",
+          "slope of the indifference curve, MU₁/MU₂",
+          "Grenzrate der Substitution (GRS)"
+        ],
+        [
+          "Budget line (budget constraint)",
+          "bundles that cost exactly the income m",
+          "Budgetgerade"
+        ],
+        [
+          "Consumer optimum",
+          "tangency of budget line and indifference curve",
+          "Haushaltsoptimum"
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Self-test",
+      "level": 2
+    },
+    {
+      "type": "flashcard",
+      "front": "What does the law of demand state?",
+      "back": "Ceteris paribus, the quantity demanded falls when the price of the good rises (and vice versa) – the demand curve slopes downward."
+    },
+    {
+      "type": "flashcard",
+      "front": "Movement along the demand curve or a shift of the curve – when is it which?",
+      "back": "**Movement along:** the good's own price changes.\n**Shift:** another determinant changes – income, prices of related goods, preferences, expectations or the number of buyers."
+    },
+    {
+      "type": "flashcard",
+      "front": "What is consumer surplus?",
+      "back": "The difference between willingness to pay and the price paid – the area below the demand curve and above the market price."
+    },
+    {
+      "type": "flashcard",
+      "front": "What happens with a price ceiling below the equilibrium price?",
+      "back": "The quantity demanded exceeds the quantity supplied: a **shortage** (excess demand) occurs."
+    },
+    {
+      "type": "flashcard",
+      "front": "Why can indifference curves never cross?",
+      "back": "An intersection would lie on two different utility levels at the same time – this contradicts transitive preferences (and the principle that more is better)."
+    },
+    {
+      "type": "flashcard",
+      "front": "What is the marginal rate of substitution (MRS)?",
+      "back": "The amount of good 2 the household would give up for one additional unit of good 1 without losing utility – the absolute slope of the indifference curve (= MU₁ / MU₂)."
+    },
+    {
+      "type": "flashcard",
+      "front": "Which condition holds at the consumer optimum?",
+      "back": "The indifference curve is tangent to the budget line: **MRS = p₁ / p₂** (equivalently: MU₁ / p₁ = MU₂ / p₂)."
+    },
+    {
+      "type": "quiz",
+      "question": "Consumers' income rises and the good is a **normal good**. What happens in the market?",
+      "options": [
+        {
+          "text": "We move down along the demand curve.",
+          "correct": false
+        },
+        {
+          "text": "The supply curve shifts right – the price falls.",
+          "correct": false
+        },
+        {
+          "text": "The demand curve shifts right – the equilibrium price and quantity both rise.",
+          "correct": true
+        },
+        {
+          "text": "The demand curve shifts left – price and quantity both fall.",
+          "correct": false
+        }
+      ],
+      "explanation": "Income is not the good's own price, so the curve shifts. For a normal good, demand rises with income → D shifts right → new equilibrium with a higher price and a higher quantity."
+    },
+    {
+      "type": "quiz",
+      "question": "Demand: Q_D = 120 − 3P, supply: Q_S = 4P − 20. What is the equilibrium price?",
+      "options": [
+        {
+          "text": "P∗ = 14",
+          "correct": false
+        },
+        {
+          "text": "P∗ = 20",
+          "correct": true
+        },
+        {
+          "text": "P∗ = 40",
+          "correct": false
+        },
+        {
+          "text": "P∗ = 60",
+          "correct": false
+        }
+      ],
+      "explanation": "120 − 3P = 4P − 20 → 140 = 7P → P∗ = 20. The equilibrium quantity is Q∗ = 120 − 3 · 20 = 60."
+    },
+    {
+      "type": "quiz",
+      "question": "Which properties do well-behaved indifference curves have?",
+      "options": [
+        {
+          "text": "They slope downward.",
+          "correct": true
+        },
+        {
+          "text": "Curves further from the origin represent lower utility.",
+          "correct": false
+        },
+        {
+          "text": "They are convex to the origin.",
+          "correct": true
+        },
+        {
+          "text": "They never cross.",
+          "correct": true
+        }
+      ],
+      "explanation": "Curves further from the origin contain more of both goods – so they represent **higher** utility."
+    },
+    {
+      "type": "quiz",
+      "question": "At the consumer optimum …",
+      "options": [
+        {
+          "text": "MRS = 0",
+          "correct": false
+        },
+        {
+          "text": "the budget is not fully spent.",
+          "correct": false
+        },
+        {
+          "text": "MRS = p₁ / p₂",
+          "correct": true
+        },
+        {
+          "text": "p₁ = p₂",
+          "correct": false
+        }
+      ],
+      "explanation": "At the optimum the highest attainable indifference curve is tangent to the budget line, so their slopes – the MRS and the price ratio – are equal. Since more is better, the whole budget is spent."
+    }
+  ]
+}

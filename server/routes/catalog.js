@@ -22,7 +22,7 @@ const byOrder = (a, b) => a.order - b.order || a.createdAt - b.createdAt;
 
 export function chapterMeta(c) {
   return {
-    id: c.id, subjectId: c.subjectId, title: c.title, summary: c.summary, status: c.status,
+    id: c.id, subjectId: c.subjectId, title: c.title, summary: c.summary, status: c.status, lang: c.lang,
     order: c.order, updatedAt: c.updatedAt, ...chapterStats(c),
   };
 }

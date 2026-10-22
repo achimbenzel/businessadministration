@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" font-family="'DM Sans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" role="img" aria-label="Haushaltsoptimum: Die Budgetgerade berührt die höchste erreichbare Indifferenzkurve">
-<title>Haushaltsoptimum: Die Budgetgerade berührt die höchste erreichbare Indifferenzkurve</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" font-family="'DM Sans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" role="img" aria-label="Consumer optimum: the budget line touches the highest attainable indifference curve">
+<title>Consumer optimum: the budget line touches the highest attainable indifference curve</title>
 <defs><marker id="arr-bg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#131316"/></marker><marker id="arr-axis" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8b8b94"/></marker><marker id="arr-guide" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6b6b75"/></marker><marker id="arr-text" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#ececef"/></marker><marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a8a8b0"/></marker><marker id="arr-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2ec5d3"/></marker><marker id="arr-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#fbbf24"/></marker><marker id="arr-pink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#f472b6"/></marker><marker id="arr-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6b9cff"/></marker><marker id="arr-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#34d399"/></marker><marker id="arr-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a78bfa"/></marker></defs>
 <rect width="640" height="420" fill="#131316"/>
 <line x1="64" y1="372" x2="618" y2="372" stroke="#8b8b94" stroke-width="2.5" marker-end="url(#arr-axis)"/>
 <line x1="64" y1="372" x2="64" y2="18" stroke="#8b8b94" stroke-width="2.5" marker-end="url(#arr-axis)"/>
-<text x="78" y="28" font-size="17" fill="#a8a8b0" text-anchor="start" font-weight="500">Gut 2 (x₂)</text>
-<text x="618" y="410" font-size="17" fill="#a8a8b0" text-anchor="end" font-weight="500">Gut 1 (x₁)</text>
+<text x="78" y="28" font-size="17" fill="#a8a8b0" text-anchor="start" font-weight="500">Good 2 (x₂)</text>
+<text x="618" y="410" font-size="17" fill="#a8a8b0" text-anchor="end" font-weight="500">Good 1 (x₁)</text>
 <text x="54" y="394" font-size="16" fill="#a8a8b0" text-anchor="end" font-weight="500">0</text>
 <polygon points="64,372 64,170.4 492.8,372" fill="#2ec5d3" fill-opacity="0.1"/>
 <polyline points="100.2,73.3 104.2,103.2 108.2,127.6 112.2,148 116.3,165.2 120.3,180 124.3,192.8 128.3,204 132.3,213.9 136.4,222.7 140.4,230.5 144.4,237.6 148.4,244 152.4,249.8 156.5,255.1 160.5,260 164.5,264.5 168.5,268.6 172.5,272.4 176.6,276 180.6,279.3 184.6,282.4 188.6,285.3 192.6,288 196.7,290.5 200.7,292.9 204.7,295.2 208.7,297.3 212.7,299.4 216.8,301.3 220.8,303.1 224.8,304.8 228.8,306.4 232.8,308 236.9,309.5 240.9,310.9 244.9,312.3 248.9,313.6 252.9,314.8 257,316 261,317.1 265,318.2 269,319.3 273,320.3 277.1,321.3 281.1,322.2 285.1,323.1 289.1,324 293.1,324.8 297.2,325.7 301.2,326.4 305.2,327.2 309.2,327.9 313.2,328.6 317.3,329.3 321.3,330 325.3,330.6 329.3,331.3 333.3,331.9 337.4,332.5 341.4,333 345.4,333.6 349.4,334.1 353.4,334.7 357.5,335.2 361.5,335.7 365.5,336.2 369.5,336.6 373.5,337.1 377.6,337.5 381.6,338 385.6,338.4 389.6,338.8 393.6,339.2 397.7,339.6 401.7,340 405.7,340.4 409.7,340.7 413.7,341.1 417.8,341.5 421.8,341.8 425.8,342.1 429.8,342.5 433.8,342.8 437.9,343.1 441.9,343.4 445.9,343.7 449.9,344 453.9,344.3 458,344.6 462,344.8 466,345.1 470,345.4 474,345.6 478.1,345.9 482.1,346.2 486.1,346.4 490.1,346.6 494.1,346.9 498.2,347.1 502.2,347.3 506.2,347.6 510.2,347.8 514.2,348 518.3,348.2 522.3,348.4 526.3,348.6 530.3,348.8 534.3,349 538.4,349.2 542.4,349.4 546.4,349.6 550.4,349.8 554.4,350 558.5,350.1 562.5,350.3 566.5,350.5 570.5,350.7 574.5,350.8 578.6,351" fill="none" stroke="#a78bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -25,13 +25,13 @@
 <text x="54" y="277.2" font-size="18" fill="#ececef" text-anchor="end" font-weight="500" font-style="italic">x₂*</text>
 <text x="278.4" y="398" font-size="18" fill="#ececef" text-anchor="middle" font-weight="500" font-style="italic">x₁*</text>
 <text x="492.8" y="398" font-size="18" fill="#ececef" text-anchor="middle" font-weight="500" font-style="italic">m/p₁</text>
-<rect x="318" y="16" width="300" height="126" rx="10" fill="#131316" fill-opacity="0.92" stroke="#2c2c32"/>
-<line x1="332" y1="38" x2="358" y2="38" stroke="#2ec5d3" stroke-width="3.5" stroke-linecap="round"/>
-<text x="368" y="44" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500">Budgetgerade: p₁x₁ + p₂x₂ = m</text>
-<rect x="332" y="57" width="26" height="16" rx="3" fill="#2ec5d3" fill-opacity="0.3" stroke="#2ec5d3" stroke-opacity="0.6"/>
-<text x="368" y="71" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500">erreichbare Güterbündel</text>
-<circle cx="345" cy="92" r="6" fill="#ececef"/>
-<text x="368" y="98" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500">O: Optimum, GRS = p₁/p₂</text>
-<circle cx="345" cy="119" r="6" fill="#a8a8b0"/>
-<text x="368" y="125" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500">auf U₁: erreichbar, nicht optimal</text>
+<rect x="334" y="16" width="284" height="126" rx="10" fill="#131316" fill-opacity="0.92" stroke="#2c2c32"/>
+<line x1="348" y1="38" x2="374" y2="38" stroke="#2ec5d3" stroke-width="3.5" stroke-linecap="round"/>
+<text x="384" y="44" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500">Budget line: p₁x₁ + p₂x₂ = m</text>
+<rect x="348" y="57" width="26" height="16" rx="3" fill="#2ec5d3" fill-opacity="0.3" stroke="#2ec5d3" stroke-opacity="0.6"/>
+<text x="384" y="71" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500">affordable bundles</text>
+<circle cx="361" cy="92" r="6" fill="#ececef"/>
+<text x="384" y="98" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500">O: optimum, MRS = p₁/p₂</text>
+<circle cx="361" cy="119" r="6" fill="#a8a8b0"/>
+<text x="384" y="125" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500">on U₁: affordable, not optimal</text>
 </svg>

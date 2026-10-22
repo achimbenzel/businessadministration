@@ -21,9 +21,9 @@ Browser (React SPA)  ──fetch, Cookie + X-Requested-With──▶  Express (s
   schemaVersion: 1,
   semesters: [{ id, number, title, description, createdAt, updatedAt }],
   subjects:  [{ id, semesterId, title, short, description, icon, color, ects, order, … }],
-  chapters:  [{ id, subjectId, title, summary, status: 'draft'|'published', blocks: [...], order, rev, … }],
+  chapters:  [{ id, subjectId, title, summary, status: 'draft'|'published', lang: 'de'|'en', blocks: [...], order, rev, … }],
   trash:     [{ id, kind: 'chapter', item: <Kapitel>, subjectTitle, deletedAt }],
-  contentImported: [{ id, at }],   // bereits übernommene Inhaltspakete
+  contentImported: [{ id, version, rev, at }],   // übernommene Inhaltspakete (Version, Revision danach)
 }
 ```
 
@@ -40,8 +40,9 @@ Browser (React SPA)  ──fetch, Cookie + X-Requested-With──▶  Express (s
 - **Dateien** eines Kapitels liegen in `data/chapters/<kapitelId>/<zufall>-<name>`.
 - **Inhaltspakete** (`server/content.js`): Kapitel aus `content/<fach>/<kapitel>/chapter.json`
   werden beim Start einmal übernommen, ihre Abbildungen nach `data/chapters/<id>/` kopiert.
-  `contentImported` verhindert einen zweiten Import – auch wenn das Kapitel später
-  gelöscht wurde. Details: [content/README.md](../content/README.md).
+  Eine höhere `version` aktualisiert das Kapitel – nur wenn es seit dem Import nicht
+  bearbeitet wurde (gleiche `rev`), sonst kommt sie als Entwurf daneben; gelöschte
+  Kapitel bleiben gelöscht. Details: [content/README.md](../content/README.md).
 
 ### Speichern
 

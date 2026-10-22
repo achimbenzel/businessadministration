@@ -5,11 +5,13 @@ import { BookMarked, Info, Lightbulb, Pin, TriangleAlert, ChevronRight } from 'l
 import AutoTextarea from '../AutoTextarea.jsx';
 import { Inline, RichText } from '../Inline.jsx';
 import { CALLOUT_VARIANTS } from '../../lib/blocks.js';
+import { useBlockText } from '../../lib/blockText.js';
 
 export function DefinitionView({ block }) {
+  const t = useBlockText();
   return (
     <div className="blk-def">
-      <div className="blk-def-label"><BookMarked size={14} /> Definition</div>
+      <div className="blk-def-label"><BookMarked size={14} /> {t.definition}</div>
       {block.term && <div className="blk-def-term"><Inline text={block.term} /></div>}
       <RichText text={block.text} />
     </div>
@@ -30,12 +32,13 @@ const CALLOUT_ICON = { info: Info, tip: Lightbulb, important: Pin, warning: Tria
 const calloutLabel = (v) => CALLOUT_VARIANTS.find((x) => x.key === v)?.label || 'Info';
 
 export function CalloutView({ block }) {
+  const t = useBlockText();
   const Icon = CALLOUT_ICON[block.variant] || Info;
   return (
     <aside className={`blk-callout ${block.variant}`}>
       <Icon size={18} className="blk-callout-icon" />
       <div className="blk-callout-body">
-        <div className="blk-callout-title">{block.title ? <Inline text={block.title} /> : calloutLabel(block.variant)}</div>
+        <div className="blk-callout-title">{block.title ? <Inline text={block.title} /> : t.callout[block.variant] || t.callout.info}</div>
         {block.text && <RichText text={block.text} />}
       </div>
     </aside>
@@ -62,12 +65,13 @@ export function CalloutEdit({ block, onChange, autoFocus }) {
 }
 
 export function ToggleView({ block }) {
+  const t = useBlockText();
   const [open, setOpen] = useState(false);
   return (
     <div className={`blk-toggle ${open ? 'open' : ''}`}>
       <button type="button" className="blk-toggle-head" aria-expanded={open} onClick={() => setOpen((o) => !o)}>
         <ChevronRight size={17} className="blk-toggle-chev" />
-        <span>{block.title ? <Inline text={block.title} /> : 'Mehr anzeigen'}</span>
+        <span>{block.title ? <Inline text={block.title} /> : t.showMore}</span>
       </button>
       {open && <div className="blk-toggle-body"><RichText text={block.text} /></div>}
     </div>
