@@ -81,6 +81,7 @@
 html[data-mbar=hidden] .admin-bar { top: calc(8px + env(safe-area-inset-top)); }
 .chapter.is-tabbed .admin-bar { position: static; }
 .chapter.is-tabbed .blk { scroll-margin-top: 124px; }
+@media (min-width: 900px) { .chapter.is-tabbed .blk { scroll-margin-top: 72px; } }
 
 .ch-tabs {
   display: flex; align-items: stretch; margin: 0 0 22px;
