@@ -1,0 +1,102 @@
+/* Start page, semester and subject pages, trash (prefixes home-, subj-, subject-, chapter-, continue-). */
+
+/* Subject tiles: 1 column on small phones, 2 from 420 px, 3 on desktop. */
+.subj-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+@media (min-width: 420px) { .subj-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .subj-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; } }
+@media (min-width: 1440px) { .subj-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+.subj-card {
+  position: relative; display: flex; flex-direction: column; gap: 10px;
+  padding: 16px; border-radius: var(--radius);
+  background: var(--surface); border: 1px solid var(--border);
+  transition: border-color .18s, background .18s, transform .12s;
+  overflow: hidden;
+}
+.subj-card::before {
+  content: ''; position: absolute; inset: 0 0 auto; height: 90px; pointer-events: none;
+  background: linear-gradient(180deg, rgba(var(--tint-rgb), .09), transparent);
+}
+.subj-card:active { transform: scale(.985); }
+.subj-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.subj-card-title { margin: 0; font-size: 16px; line-height: 1.3; font-weight: 700; flex: 1; }
+.subj-card-meta { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 13px; color: var(--text-faint); }
+.subj-card-cards { display: inline-flex; align-items: center; gap: 4px; }
+
+/* Start page */
+.home-head h1 { font-size: 26px; }
+.continue-card {
+  display: flex; align-items: center; gap: 14px; margin: 0 0 8px;
+  padding: 14px 16px; border-radius: var(--radius);
+  background: linear-gradient(120deg, rgba(var(--accent-rgb), .12), rgba(var(--accent-rgb), .03));
+  border: 1px solid rgba(var(--accent-rgb), .28);
+  transition: border-color .15s, transform .12s;
+}
+.continue-card:active { transform: scale(.99); }
+.continue-icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 30%; background: var(--accent-dim); color: var(--accent); }
+.continue-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.continue-text small { font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .06em; }
+.continue-text strong { font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.continue-text span { font-size: 13px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.continue-arrow { color: var(--accent); flex-shrink: 0; }
+
+/* Subject page */
+.subject-head { display: flex; align-items: flex-start; gap: 14px; margin: 4px 0 14px; }
+.subject-head-text { flex: 1; min-width: 0; }
+.subject-head h1 { margin: 6px 0 0; font-size: 22px; line-height: 1.25; }
+.subject-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.lead-placeholder { display: inline-flex; align-items: center; gap: 6px; margin: -4px 0 18px; padding: 6px 10px; border: 1px dashed var(--border-strong); border-radius: 10px; background: none; color: var(--text-faint); font-size: 14px; }
+.subject-bar { display: flex; flex-direction: column; gap: 12px; margin: 0 0 16px; }
+.subject-progress { display: flex; align-items: center; gap: 12px; flex: 1; }
+.subject-progress .progress { flex: 1; max-width: 360px; }
+.subject-progress-text { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+@media (min-width: 641px) {
+  .subject-head h1 { font-size: 28px; }
+  .subject-bar { flex-direction: row; align-items: center; justify-content: space-between; }
+}
+
+/* Chapter list */
+.chapter-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.chapter-row {
+  display: flex; align-items: center; gap: 4px;
+  border-radius: var(--radius); background: var(--surface); border: 1px solid var(--border);
+  transition: border-color .15s, background .15s;
+}
+.chapter-row.sort-dragging { position: relative; z-index: 5; box-shadow: var(--shadow); border-color: var(--accent); opacity: .95; }
+.chapter-row.sort-before { box-shadow: 0 -3px 0 var(--accent); }
+.chapter-row.sort-after { box-shadow: 0 3px 0 var(--accent); }
+.chapter-grip { display: grid; place-items: center; width: 32px; align-self: stretch; border: 0; background: none; color: var(--text-faint); cursor: grab; border-radius: var(--radius) 0 0 var(--radius); }
+.chapter-link { flex: 1; min-width: 0; display: flex; align-items: flex-start; gap: 12px; padding: 14px 4px 14px 14px; }
+.chapter-grip + .chapter-link { padding-left: 2px; }
+.chapter-num {
+  display: grid; place-items: center; flex-shrink: 0; width: 30px; height: 30px; border-radius: 9px;
+  font-family: var(--font-mono); font-size: 13px; font-variant-numeric: tabular-nums;
+  background: rgba(var(--tint-rgb), .12); color: var(--tint);
+}
+.chapter-row.done .chapter-num { background: rgba(var(--ok-rgb), .14); color: var(--ok); }
+.chapter-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.chapter-text strong { font-size: 15px; line-height: 1.35; }
+.chapter-text small { font-size: 13px; color: var(--text-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.chapter-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; margin-top: 4px; font-size: 12px; color: var(--text-faint); }
+.chapter-meta:empty { display: none; }
+.chapter-meta > span { display: inline-flex; align-items: center; gap: 4px; }
+.chapter-check { display: grid; place-items: center; width: 48px; height: 48px; margin-right: 4px; border: 0; border-radius: 999px; background: none; color: var(--text-faint); flex-shrink: 0; }
+.chapter-check.on { color: var(--ok); }
+
+.trash-row { flex-wrap: wrap; }
+.trash-row .row-text small { white-space: normal; }
+.trash-row .row-actions { width: 100%; justify-content: flex-end; }
+@media (min-width: 641px) {
+  .trash-row { flex-wrap: nowrap; }
+  .trash-row .row-actions { width: auto; }
+}
+
+/* Hover only with a real pointer — on touch a tapped card would keep its hover look. */
+@media (hover: hover) {
+  .subj-card:hover { border-color: rgba(var(--tint-rgb), .45); background: var(--surface-2); }
+  .continue-card:hover { border-color: var(--accent); }
+  .lead-placeholder:hover { color: var(--text); border-color: var(--text-faint); }
+  .chapter-row:hover { border-color: var(--border-strong); }
+  .chapter-grip:hover { color: var(--text); }
+  .chapter-check:hover { color: var(--text); background: var(--surface-2); }
+}
