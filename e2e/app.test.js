@@ -27,8 +27,11 @@ after(async () => {
 
 // allow401: a wrong password is answered with 401, which the browser logs as a
 // failed request — expected in the login test, a problem anywhere else.
-async function open(device, { allow401 = false } = {}) {
+// cookieNotice: show the cookie notice (otherwise it counts as confirmed, so it
+// doesn't sit on top of buttons at the bottom of the phone screen).
+async function open(device, { allow401 = false, cookieNotice = false } = {}) {
   const ctx = await browser.newContext(device);
+  if (!cookieNotice) await ctx.addInitScript(() => { try { localStorage.setItem('ba:cookieNotice', '1'); } catch { /* none */ } });
   const page = await ctx.newPage();
   page.on('pageerror', (e) => problems.push(`pageerror: ${e.message}`));
   page.on('console', (m) => {
@@ -76,6 +79,35 @@ test('nothing but the login without a session', async () => {
   await page.click('button[type=submit]');
   await page.waitForSelector('.subject-head');
   assert.match(await page.textContent('h1'), /Kosten- & Leistungsrechnung/);
+  await ctx.close();
+});
+
+test('Impressum, Datenschutz and the cookie notice without a session', async () => {
+  const { ctx, page } = await open(PHONE, { cookieNotice: true });
+  await page.goto(`${srv.base}/`);
+  await page.waitForSelector('.login-card');
+  await page.waitForSelector('.cookie');
+  // The links below the login stay reachable while the notice is open.
+  await page.click('.login-legal a:has-text("Impressum")');
+  await page.waitForSelector('.legal h2:has-text("Angaben gemäß § 5 TMG")');
+  assert.equal(new URL(page.url()).pathname, '/impressum');
+  await page.click('.legal-foot a:has-text("Datenschutzerklärung")');
+  await page.waitForSelector('.legal h1:has-text("Datenschutzerklärung")');
+  assert.ok(await page.locator('.legal h3:has-text("Anmeldung und Session-Cookie")').count());
+  assert.ok(await sideways(page) <= 1);
+  await page.click('.cookie-ok');
+  await page.reload();
+  await page.waitForSelector('.legal h1');
+  assert.equal(await page.locator('.cookie').count(), 0, 'the notice stays confirmed');
+  await page.click('.legal-back');
+  await page.waitForSelector('.login-card');
+  // Signed in: the same pages from the sidebar.
+  await page.fill('input[name=username]', 'User');
+  await page.fill('input[name=password]', PASSWORDS.user);
+  await page.click('button[type=submit]');
+  await page.click('button[aria-label="Menü öffnen"]');
+  await page.click('.side-legal a:has-text("Impressum")');
+  await page.waitForSelector('.main .legal h1:has-text("Impressum")');
   await ctx.close();
 });
 

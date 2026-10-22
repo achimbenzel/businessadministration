@@ -6,8 +6,9 @@ Reines CSS mit Custom Properties – kein Tailwind, kein CSS-in-JS.
 
 | Datei | Inhalt | Geladen von |
 | --- | --- | --- |
-| `base.css` | Tokens, Rahmen (Sidebar/Drawer, Top-Bar), Buttons, Formulare, Dialoge, Menüs, Toasts, Suche, leere Zustände | `main.jsx` (immer) |
+| `base.css` | Tokens, Rahmen (Sidebar/Drawer, Top-Bar), Buttons, Formulare, Dialoge, Menüs, Toasts, Suche, leere Zustände, Cookie-Hinweis (`cookie-`) | `main.jsx` (immer) |
 | `login.css` | Login-Seite (`login-`) | `LoginPage.jsx` |
+| `legal.css` | Impressum und Datenschutzerklärung (`legal-`) | `LegalPage.jsx` |
 | `catalog.css` | Übersicht, Semester, Fach, Papierkorb (`subj-`, `subject-`, `chapter-`, `continue-`) | die jeweiligen Seiten |
 | `chapter.css` | Kapitelseite: Pfad, Admin-Leiste, Titel, Fußnavigation, Abschnitte (`ch-`: Reiter, Inhaltsverzeichnis, Übersichtskarten) | `ChapterDetail.jsx` |
 | `blocks.css` | Bausteine im Lesemodus (`blk-`), Demos (`demo-`, Markt-Demo `mk-`) und im Editor (`ed-`, `picker-`) | `ChapterDetail.jsx`, `FlashcardsPage.jsx` |

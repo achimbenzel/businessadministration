@@ -1,6 +1,7 @@
-// The only page without a session: username ("User" or "Admin") and the
-// password from .env.
+// The page without a session: username ("User" or "Admin") and the password
+// from .env. Impressum and Datenschutz are linked below the form.
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Eye, EyeOff, LoaderCircle, LogIn, WifiOff } from 'lucide-react';
 import Logo from '../components/Logo.jsx';
 import { useAuth } from '../lib/auth.jsx';
@@ -65,6 +66,11 @@ export default function LoginPage() {
         </button>
         <p className="login-note">Zugang nur mit Passwort. Betrachter melden sich als <b>User</b> an, Redakteure als <b>Admin</b>.</p>
       </form>
+      <nav className="login-legal" aria-label="Rechtliches">
+        <Link to="/impressum">Impressum</Link>
+        <span aria-hidden="true">·</span>
+        <Link to="/datenschutz">Datenschutz</Link>
+      </nav>
     </div>
   );
 }

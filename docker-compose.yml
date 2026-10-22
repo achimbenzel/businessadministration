@@ -1,0 +1,35 @@
+version: '3.8'
+
+# Läuft hinter Nginx Proxy Manager (Docker-Netz npm_default). Dort einen
+# Proxy Host für die eigene Domain anlegen: Forward Hostname „mba“, Port 4300,
+# SSL-Zertifikat an. Vorher im Projektordner die .env anlegen
+# (cp .env.example .env): Passwörter, SESSION_SECRET und ALLOWED_HOSTS=<Domain>.
+# Schritt für Schritt: docs/betrieb.md → „Docker auf dem VPS“.
+
+services:
+  web:
+    image: node:20
+    container_name: mba
+    working_dir: /app
+    volumes:
+      - ./:/app
+      # Pakete für Linux getrennt vom Projektordner (esbuild u. a. sind plattformabhängig).
+      - node_modules:/app/node_modules
+    environment:
+      HOST: 0.0.0.0              # im Container auf allen Schnittstellen – erreichbar nur über das Docker-Netz
+      API_PORT: "4300"
+      TRUST_PROXY: uniquelocal   # Nginx Proxy Manager (private Docker-IP) darf Client-IP und HTTPS melden
+      PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
+    # Produktion: Pakete installieren, bauen, starten. „npm run dev“ wäre der
+    # Vite-Entwicklungsserver – langsamer und nicht fürs offene Internet gedacht.
+    command: sh -c "npm ci --no-audit --no-fund && npm run build && npm start"
+    restart: unless-stopped
+    networks:
+      - npm_default
+
+volumes:
+  node_modules:
+
+networks:
+  npm_default:
+    external: true

@@ -1,5 +1,6 @@
 // The shell: login gate, sidebar / drawer, the phone's top bar, the routes
-// (lazy-loaded pages) and the search dialog.
+// (lazy-loaded pages), the search dialog and the cookie notice.
+// Impressum and Datenschutz are reachable with and without a session.
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { LoaderCircle } from 'lucide-react';
@@ -9,6 +10,7 @@ import { usePref } from './lib/prefs.js';
 import { DESKTOP, useMediaQuery } from './lib/useMedia.js';
 import { ToastProvider } from './components/Toast.jsx';
 import ErrorBoundary from './components/ErrorBoundary.jsx';
+import CookieNotice from './components/CookieNotice.jsx';
 import Sidebar from './components/Sidebar.jsx';
 import MobileBar from './components/MobileBar.jsx';
 import PageLoader from './components/PageLoader.jsx';
@@ -21,6 +23,7 @@ const ChapterDetail = lazy(() => import('./pages/ChapterDetail.jsx'));
 const FlashcardsPage = lazy(() => import('./pages/FlashcardsPage.jsx'));
 const TrashPage = lazy(() => import('./pages/TrashPage.jsx'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage.jsx'));
+const LegalPage = lazy(() => import('./pages/LegalPage.jsx'));
 const SearchDialog = lazy(() => import('./components/SearchDialog.jsx'));
 
 export default function App() {
@@ -28,6 +31,7 @@ export default function App() {
     <ToastProvider>
       <AuthProvider>
         <Gate />
+        <CookieNotice />
       </AuthProvider>
     </ToastProvider>
   );
@@ -37,7 +41,17 @@ export default function App() {
 function Gate() {
   const { loading, user } = useAuth();
   if (loading) return <Splash />;
-  if (!user) return <LoginPage />;
+  if (!user) {
+    return (
+      <Suspense fallback={<Splash />}>
+        <Routes>
+          <Route path="/impressum" element={<LegalPage kind="impressum" />} />
+          <Route path="/datenschutz" element={<LegalPage kind="datenschutz" />} />
+          <Route path="*" element={<LoginPage />} />
+        </Routes>
+      </Suspense>
+    );
+  }
   return (
     <CatalogProvider>
       <Shell />
@@ -86,6 +100,8 @@ function Shell() {
                 <Route path="/fach/:id/karteikarten" element={<FlashcardsPage />} />
                 <Route path="/kapitel/:id" element={<ChapterDetail />} />
                 <Route path="/papierkorb" element={<TrashPage />} />
+                <Route path="/impressum" element={<LegalPage kind="impressum" />} />
+                <Route path="/datenschutz" element={<LegalPage kind="datenschutz" />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
             </Suspense>

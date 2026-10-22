@@ -33,6 +33,10 @@ Playwright).
   Fach, „Weiterlernen“ auf der Startseite. Der Fortschritt wird pro Gerät gespeichert.
 - **Suche** (Strg/⌘ + K) über Fächer, Kapitel und den Text aller Bausteine.
 - **Papierkorb** – gelöschte Kapitel bleiben 30 Tage wiederherstellbar.
+- **Impressum & Datenschutz** – ohne Anmeldung erreichbar (Links unter dem Login) und in
+  der App (unten in der Seitenleiste); Texte in `src/legal/`. Ein **Cookie-Hinweis** erklärt
+  beim ersten Besuch, dass nur das Login-Cookie und der lokale Lernfortschritt gespeichert werden.
+- **App-Icon** für „Zum Home-Bildschirm“ (Android, iOS) – erzeugt mit `npm run icons`.
 - **Inhaltspakete** – Kapitel können auch im Repo unter `content/` vorbereitet werden
   und werden beim Serverstart einmal übernommen (siehe [content/README.md](content/README.md)).
   Im Fach Economical Framework: *Angebot & Nachfrage (Supply & Demand)* und *Budgetgerade &
@@ -87,7 +91,8 @@ npm start                 # ein Prozess: API + gebautes Frontend auf 127.0.0.1:4
 ```
 
 Für den Betrieb auf einem Server (HTTPS per Reverse-Proxy, Domain, Backups)
-siehe [docs/betrieb.md](docs/betrieb.md).
+siehe [docs/betrieb.md](docs/betrieb.md). Für einen VPS mit Nginx Proxy Manager liegt
+eine fertige `docker-compose.yml` bei (`docker compose up -d`, Details ebenfalls dort).
 
 ## Scripts
 
@@ -141,7 +146,7 @@ siehe [docs/betrieb.md](docs/betrieb.md).
 
 - [docs/architektur.md](docs/architektur.md) – Aufbau, Datenmodell, Sicherheit, Abweichungen von der Blaupause
 - [docs/bausteine.md](docs/bausteine.md) – alle Bausteine, Formatierung, neuen Baustein-Typ hinzufügen
-- [docs/betrieb.md](docs/betrieb.md) – Server-Betrieb, HTTPS, Backups, Passwörter ändern
+- [docs/betrieb.md](docs/betrieb.md) – Server-Betrieb, Docker, HTTPS, Backups, Passwörter ändern
 - [src/styles/README.md](src/styles/README.md) – CSS-Regeln, Breakpoints, Tokens
 
 ## Lizenzen

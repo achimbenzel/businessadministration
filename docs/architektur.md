@@ -95,7 +95,9 @@ die Seite bietet „Neu laden“ an – nichts wird still überschrieben.
   (Semester + Fächer für Sidebar und Seiten) → Sidebar/Drawer, Top-Bar, Routen.
 - Alle Seiten außer Login und Übersicht werden **lazy** geladen (eigenes JS-Paket).
 - **Routen:** `/`, `/semester/:id`, `/fach/:id`, `/fach/:id/karteikarten`,
-  `/kapitel/:id` (`?bearbeiten=1` = Editor, `?tab=formulas` = Abschnitt), `/papierkorb`.
+  `/kapitel/:id` (`?bearbeiten=1` = Editor, `?tab=formulas` = Abschnitt), `/papierkorb`,
+  `/impressum`, `/datenschutz`. Ohne Session kennt die Login-Schranke nur die beiden
+  Rechtstexte – jede andere Adresse zeigt den Login (und bleibt danach erhalten).
 - **`lib/chapterTabs.js`:** teilt die Bausteine eines Kapitels in Abschnitte
   (Übersicht, Begriffe, Formeln, Theorie, Interaktiv, Übungen) und liefert die
   Einträge für Inhaltsverzeichnis und Übersichtskarten; die Oberfläche dazu steckt in

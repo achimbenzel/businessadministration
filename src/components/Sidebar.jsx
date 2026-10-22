@@ -75,6 +75,10 @@ export default function Sidebar({ collapsed, onToggleCollapsed, onSearch, onNavi
         </div>
         <button className="icon-btn icon-btn-ghost" onClick={logout} aria-label="Abmelden" title="Abmelden"><LogOut size={17} /></button>
       </div>
+      <nav className="side-legal side-label" aria-label="Rechtliches">
+        <NavLink to="/impressum" onClick={onNavigate}>Impressum</NavLink>
+        <NavLink to="/datenschutz" onClick={onNavigate}>Datenschutz</NavLink>
+      </nav>
     </aside>
   );
 }

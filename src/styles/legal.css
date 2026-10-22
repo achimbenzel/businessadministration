@@ -1,0 +1,29 @@
+/* Impressum and Datenschutzerklärung (prefix legal-). */
+.legal { max-width: var(--readw); margin: 0 auto; hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; }
+.legal h1 { margin: 0 0 6px; font-size: 28px; line-height: 1.2; }
+.legal h2 { margin: 30px 0 8px; padding-top: 18px; border-top: 1px solid var(--border); font-size: 20px; line-height: 1.3; }
+.legal h1 + h2 { border-top: 0; padding-top: 6px; }
+.legal h3 { margin: 22px 0 6px; font-size: 16px; line-height: 1.35; }
+.legal h4 { margin: 16px 0 4px; font-size: 15px; font-weight: 600; color: var(--text); }
+.legal p, .legal li { margin: 0 0 10px; font-size: 15px; line-height: 1.65; color: var(--text-muted); }
+.legal ul { margin: 0 0 12px; padding-left: 20px; }
+.legal strong { color: var(--text); font-weight: 600; }
+.legal a { color: var(--accent); overflow-wrap: anywhere; }
+.legal-foot { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--border); font-size: 14px; }
+.legal-foot a { display: inline-flex; align-items: center; min-height: 40px; color: var(--text-muted); }
+
+/* Without a session: a page of its own with the way back to the login. */
+.legal-standalone {
+  min-height: 100dvh;
+  padding: calc(14px + env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) calc(48px + env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+}
+.legal-top { max-width: var(--readw); margin: 0 auto 22px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.legal-back { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--text-muted); font-weight: 500; }
+@media (min-width: 641px) {
+  .legal h1 { font-size: 34px; }
+  .legal-standalone { padding-top: 28px; }
+}
+@media (hover: hover) {
+  .legal a:hover { text-decoration: underline; }
+  .legal-foot a:hover, .legal-back:hover { color: var(--text); text-decoration: none; }
+}
