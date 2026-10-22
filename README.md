@@ -33,6 +33,9 @@ Playwright).
   Fach, „Weiterlernen“ auf der Startseite. Der Fortschritt wird pro Gerät gespeichert.
 - **Suche** (Strg/⌘ + K) über Fächer, Kapitel und den Text aller Bausteine.
 - **Papierkorb** – gelöschte Kapitel bleiben 30 Tage wiederherstellbar.
+- **Inhaltspakete** – Kapitel können auch im Repo unter `content/` vorbereitet werden
+  und werden beim Serverstart einmal übernommen (siehe [content/README.md](content/README.md)).
+  Erstes Kapitel: *Supply & Demand und Indifferenzkurven* im Fach Economical Framework.
 - **Als App installierbar** (PWA-Manifest, Icons, iOS-Meta-Tags).
 
 ## Schnellstart
@@ -107,6 +110,7 @@ siehe [docs/betrieb.md](docs/betrieb.md).
 │   ├── schema.js           Schema-Version, leere DB, Erststart-Inhalte (1. Semester)
 │   ├── schema/*.js         ein Normalizer pro Sammlung (Semester, Fächer, Kapitel + Bausteine)
 │   ├── http.js             Fehler-Handler, Host-/CSRF-/Security-Header-Guards
+│   ├── content.js          Inhaltspakete aus content/ beim Start importieren
 │   ├── files.js, upload.js Dateinamen, Pfadprüfung, Uploads
 │   └── routes/             catalog (Semester/Fächer), chapters, trash, search
 ├── src/
@@ -115,6 +119,7 @@ siehe [docs/betrieb.md](docs/betrieb.md).
 │   ├── components/         wiederverwendbare Komponenten, blocks/ = Bausteine
 │   ├── lib/                Logik ohne UI (api, auth, autosave, blocks, inline …)
 │   └── styles/             base.css + eine Datei pro Bereich (siehe README dort)
+├── content/                Inhaltspakete (Kapitel + Abbildungen), einmal importiert
 ├── tests/                  API-/Unit-Tests (node:test)
 ├── e2e/                    Browser-Tests (Playwright, Handy + Desktop)
 ├── scripts/                Lizenz-Check, Icon-Generator

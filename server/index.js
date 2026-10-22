@@ -11,6 +11,7 @@ import { loadDB, drainWrites } from './db.js';
 import { createApp } from './app.js';
 import { cleanTmp } from './upload.js';
 import { purgeOldTrash } from './routes/trash.js';
+import { importContentPacks } from './content.js';
 
 const { errors, warnings } = checkAuthConfig();
 if (errors.length) {
@@ -23,6 +24,8 @@ for (const w of warnings) console.warn(`  ⚠ ${w}`);
 
 await fsp.mkdir(DATA_DIR, { recursive: true });
 await loadDB();
+const imported = await importContentPacks();
+if (imported.length) console.log(`  Neue Kapitel aus content/ importiert: ${imported.join(', ')}`);
 await cleanTmp().catch(() => {});
 await purgeOldTrash().catch((err) => console.warn('  trash purge failed:', err.message));
 

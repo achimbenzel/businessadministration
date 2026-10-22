@@ -35,5 +35,10 @@ export const TRUST_PROXY = process.env.TRUST_PROXY || 'loopback';
 export const MAX_UPLOAD_MB = Math.max(1, Number(process.env.MAX_UPLOAD_MB) || 50);
 export const MAX_UPLOAD_BYTES = MAX_UPLOAD_MB * 1024 * 1024;
 
+// Content packs that ship with the code (content/<subject>/<chapter>/chapter.json),
+// imported once at start. CONTENT_DIR=off switches the import off.
+export const CONTENT_DIR = process.env.CONTENT_DIR === 'off' ? null
+  : process.env.CONTENT_DIR ? path.resolve(process.env.CONTENT_DIR) : path.join(ROOT, 'content');
+
 // Deleted chapters stay in the trash this long before they're purged.
 export const TRASH_DAYS = 30;

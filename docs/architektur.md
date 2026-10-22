@@ -23,6 +23,7 @@ Browser (React SPA)  ──fetch, Cookie + X-Requested-With──▶  Express (s
   subjects:  [{ id, semesterId, title, short, description, icon, color, ects, order, … }],
   chapters:  [{ id, subjectId, title, summary, status: 'draft'|'published', blocks: [...], order, rev, … }],
   trash:     [{ id, kind: 'chapter', item: <Kapitel>, subjectTitle, deletedAt }],
+  contentImported: [{ id, at }],   // bereits übernommene Inhaltspakete
 }
 ```
 
@@ -37,6 +38,10 @@ Browser (React SPA)  ──fetch, Cookie + X-Requested-With──▶  Express (s
 - **Erststart:** Gibt es noch keine Datenbank, legt `seedDB()` das 1. Semester mit
   seinen fünf Fächern an. Über eine bestehende Datenbank läuft das nie.
 - **Dateien** eines Kapitels liegen in `data/chapters/<kapitelId>/<zufall>-<name>`.
+- **Inhaltspakete** (`server/content.js`): Kapitel aus `content/<fach>/<kapitel>/chapter.json`
+  werden beim Start einmal übernommen, ihre Abbildungen nach `data/chapters/<id>/` kopiert.
+  `contentImported` verhindert einen zweiten Import – auch wenn das Kapitel später
+  gelöscht wurde. Details: [content/README.md](../content/README.md).
 
 ### Speichern
 

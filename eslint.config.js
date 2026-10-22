@@ -30,7 +30,7 @@ export default [
     },
   },
   {
-    files: ['server/**/*.js', 'tests/**/*.js', 'scripts/**/*.mjs', '*.config.js'],
+    files: ['server/**/*.js', 'tests/**/*.js', 'scripts/**/*.mjs', 'content/**/*.mjs', '*.config.js'],
     languageOptions: { ecmaVersion: 2023, sourceType: 'module', globals: globals.node },
     rules: {
       'no-unused-vars': unused,

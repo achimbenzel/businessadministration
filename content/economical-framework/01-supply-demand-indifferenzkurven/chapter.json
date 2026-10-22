@@ -1,0 +1,464 @@
+{
+  "id": "efed-01-supply-demand-indifferenz",
+  "subjectId": "economical-framework",
+  "position": "first",
+  "status": "published",
+  "title": "Supply & Demand und Indifferenzkurven",
+  "summary": "Wie Märkte Preise bilden – Angebot, Nachfrage, Gleichgewicht und Preiseingriffe – und wie Haushalte mit Indifferenzkurven und Budgetgerade zwischen Güterbündeln wählen.",
+  "blocks": [
+    {
+      "type": "text",
+      "text": "In diesem Kapitel geht es um zwei Grundwerkzeuge der Mikroökonomie: das **Marktmodell aus Angebot und Nachfrage** (Supply & Demand) und die **Indifferenzkurven** (Indifference Curves) der Haushaltstheorie. Mit beiden lässt sich das wirtschaftliche Umfeld unternehmerischer Entscheidungen einordnen: Wie entstehen Preise auf Märkten – und wie wählen Konsumenten zwischen Alternativen?"
+    },
+    {
+      "type": "callout",
+      "variant": "info",
+      "title": "Lernziele",
+      "text": "- Nachfrage- und Angebotskurve erklären und zeichnen\n- Bewegungen entlang einer Kurve von Verschiebungen der Kurve unterscheiden\n- das Marktgleichgewicht berechnen und Konsumenten- und Produzentenrente deuten\n- die Wirkung von Höchst- und Mindestpreisen erklären\n- Indifferenzkurven, Grenzrate der Substitution und Haushaltsoptimum anwenden"
+    },
+    {
+      "type": "heading",
+      "text": "1. Nachfrage (Demand)",
+      "level": 2
+    },
+    {
+      "type": "definition",
+      "term": "Nachfrage (Demand)",
+      "text": "Die Menge eines Gutes, die Käufer zu unterschiedlichen Preisen kaufen **wollen und können** – bei sonst gleichen Bedingungen (*ceteris paribus*). Die **Nachfragekurve** stellt diesen Zusammenhang zwischen dem Preis p und der nachgefragten Menge x dar."
+    },
+    {
+      "type": "text",
+      "text": "**Gesetz der Nachfrage** (Law of Demand): Steigt der Preis eines Gutes, sinkt – ceteris paribus – die nachgefragte Menge. Die Nachfragekurve fällt deshalb von links oben nach rechts unten.\n\nGründe dafür:\n- **Substitutionseffekt:** Das Gut wird im Vergleich zu Alternativen teurer, Käufer weichen auf andere Güter aus.\n- **Einkommenseffekt:** Ein höherer Preis senkt die Kaufkraft des Einkommens.\n- **Abnehmender Grenznutzen:** Jede weitere Einheit stiftet weniger zusätzlichen Nutzen – mehr wird nur zu einem niedrigeren Preis gekauft."
+    },
+    {
+      "type": "image",
+      "file": "img/nachfrage-bewegung-verschiebung.svg",
+      "caption": "Abb. 1: Bewegung entlang der Nachfragekurve (A → B) und Verschiebung der Kurve (D₀ → D₁)",
+      "alt": "Fallende Nachfragekurve D₀ mit den Punkten A und B; ein Pfeil zeigt die Bewegung von A nach B bei sinkendem Preis. Daneben die nach rechts verschobene Nachfragekurve D₁."
+    },
+    {
+      "type": "callout",
+      "variant": "important",
+      "title": "Merke: Bewegung oder Verschiebung?",
+      "text": "Ändert sich **der Preis des Gutes selbst**, bewegt man sich **entlang** der Kurve – es ändert sich die *nachgefragte Menge*. Ändert sich **ein anderer Einflussfaktor**, etwa das Einkommen oder die Präferenzen, **verschiebt sich die ganze Kurve** – es ändert sich die *Nachfrage*."
+    },
+    {
+      "type": "heading",
+      "text": "Was verschiebt die Nachfragekurve?",
+      "level": 3
+    },
+    {
+      "type": "table",
+      "header": true,
+      "rows": [
+        [
+          "Faktor",
+          "Beispiel",
+          "Wirkung auf die Nachfragekurve"
+        ],
+        [
+          "Einkommen",
+          "Einkommen steigt",
+          "normales Gut: nach rechts · inferiores Gut: nach links"
+        ],
+        [
+          "Preis von Substituten",
+          "Tee wird teurer",
+          "Nachfrage nach Kaffee: nach rechts"
+        ],
+        [
+          "Preis von Komplementen",
+          "Drucker werden teurer",
+          "Nachfrage nach Druckerpatronen: nach links"
+        ],
+        [
+          "Präferenzen, Trends",
+          "Bio-Produkte sind gefragt",
+          "nach rechts"
+        ],
+        [
+          "Erwartungen",
+          "Preiserhöhung angekündigt",
+          "heute nach rechts"
+        ],
+        [
+          "Zahl der Käufer",
+          "Bevölkerung wächst",
+          "nach rechts"
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "2. Angebot (Supply)",
+      "level": 2
+    },
+    {
+      "type": "definition",
+      "term": "Angebot (Supply)",
+      "text": "Die Menge eines Gutes, die Verkäufer zu unterschiedlichen Preisen anbieten **wollen und können** – ceteris paribus. Die **Angebotskurve** zeigt den Zusammenhang zwischen dem Preis und der angebotenen Menge."
+    },
+    {
+      "type": "text",
+      "text": "**Gesetz des Angebots** (Law of Supply): Je höher der Preis, desto größer die angebotene Menge – die Angebotskurve steigt. Ein höherer Preis macht die Produktion lohnender, und zusätzliche Mengen lassen sich oft nur mit **steigenden Grenzkosten** herstellen: Ein Unternehmen produziert eine weitere Einheit nur, wenn der Preis ihre Kosten deckt."
+    },
+    {
+      "type": "heading",
+      "text": "Was verschiebt die Angebotskurve?",
+      "level": 3
+    },
+    {
+      "type": "table",
+      "header": true,
+      "rows": [
+        [
+          "Faktor",
+          "Beispiel",
+          "Wirkung auf die Angebotskurve"
+        ],
+        [
+          "Inputpreise",
+          "Energie wird teurer",
+          "nach links"
+        ],
+        [
+          "Technologie",
+          "effizientere Fertigung",
+          "nach rechts"
+        ],
+        [
+          "Steuern, Subventionen",
+          "Subvention je Stück",
+          "nach rechts (Steuer: nach links)"
+        ],
+        [
+          "Erwartungen",
+          "höhere Preise erwartet",
+          "heute eher nach links (Ware wird zurückgehalten)"
+        ],
+        [
+          "Zahl der Anbieter",
+          "neue Wettbewerber",
+          "nach rechts"
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "3. Marktgleichgewicht",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "text": "Im **Marktgleichgewicht** (Equilibrium) schneiden sich Angebots- und Nachfragekurve: Zum **Gleichgewichtspreis p∗** ist die nachgefragte Menge genau so groß wie die angebotene Menge **x∗**. Der Markt wird *geräumt* – wer zu diesem Preis kaufen oder verkaufen will, kommt zum Zug."
+    },
+    {
+      "type": "image",
+      "file": "img/marktgleichgewicht.svg",
+      "caption": "Abb. 2: Marktgleichgewicht E mit Konsumentenrente (KR) und Produzentenrente (PR)",
+      "alt": "Fallende Nachfragekurve D und steigende Angebotskurve S schneiden sich im Gleichgewicht E beim Preis p* und der Menge x*. Die Fläche zwischen Nachfragekurve und Preis ist die Konsumentenrente, die Fläche zwischen Preis und Angebotskurve die Produzentenrente."
+    },
+    {
+      "type": "definition",
+      "term": "Konsumentenrente (Consumer Surplus)",
+      "text": "Differenz zwischen der **Zahlungsbereitschaft** der Käufer und dem tatsächlich gezahlten Marktpreis – grafisch die Fläche **unter der Nachfragekurve und über dem Preis**."
+    },
+    {
+      "type": "definition",
+      "term": "Produzentenrente (Producer Surplus)",
+      "text": "Differenz zwischen dem Marktpreis und dem Preis, zu dem die Anbieter gerade noch verkaufen würden (ihren Grenzkosten) – die Fläche **über der Angebotskurve und unter dem Preis**. Zusammen ergeben Konsumenten- und Produzentenrente die **Gesamtwohlfahrt** des Marktes."
+    },
+    {
+      "type": "formula",
+      "text": "Gleichgewicht:  x_D(p) = x_S(p)\n\nNachfrage:  x_D = 100 − 2p\nAngebot:    x_S = −20 + 4p",
+      "caption": "Rechenbeispiel – erst selbst lösen, dann die Lösung aufklappen"
+    },
+    {
+      "type": "toggle",
+      "title": "Lösung: Gleichgewicht und Renten berechnen",
+      "text": "Gleichsetzen: 100 − 2p = −20 + 4p → 120 = 6p → **p∗ = 20**\n\nEinsetzen: x∗ = 100 − 2 · 20 = **60** (Kontrolle: −20 + 4 · 20 = 60 ✓)\n\n- Konsumentenrente: Die Nachfrage ist bei p = 50 null (Prohibitivpreis) → KR = ½ · (50 − 20) · 60 = **900**\n- Produzentenrente: Das Angebot beginnt bei p = 5 → PR = ½ · (20 − 5) · 60 = **450**"
+    },
+    {
+      "type": "image",
+      "file": "img/mindestpreis-hoechstpreis.svg",
+      "caption": "Abb. 3: Ein Mindestpreis über p∗ führt zu einem Angebotsüberschuss, ein Höchstpreis unter p∗ zu einem Nachfrageüberschuss",
+      "alt": "Angebots- und Nachfragekurve mit einem Mindestpreis oberhalb des Gleichgewichtspreises, bei dem die angebotene Menge die nachgefragte übersteigt, und einem Höchstpreis unterhalb, bei dem die nachgefragte Menge die angebotene übersteigt."
+    },
+    {
+      "type": "callout",
+      "variant": "tip",
+      "title": "Staatliche Preiseingriffe",
+      "text": "- **Höchstpreis** (Price Ceiling) *unter* p∗, z. B. ein Mietendeckel: Die nachgefragte Menge übersteigt das Angebot → **Mangel**, Wartelisten, Schwarzmärkte.\n- **Mindestpreis** (Price Floor) *über* p∗, z. B. Agrar-Mindestpreise oder ein Mindestlohn auf dem Arbeitsmarkt: Das Angebot übersteigt die Nachfrage → **Überschuss** (im Modell des Arbeitsmarkts: Arbeitslosigkeit).\n- Liegt ein Höchstpreis über bzw. ein Mindestpreis unter p∗, ist der Eingriff **nicht bindend** und wirkungslos."
+    },
+    {
+      "type": "heading",
+      "text": "Verschiebungen und ihre Wirkung",
+      "level": 3
+    },
+    {
+      "type": "table",
+      "header": true,
+      "rows": [
+        [
+          "Ereignis",
+          "Kurve",
+          "Gleichgewichtspreis",
+          "Gleichgewichtsmenge"
+        ],
+        [
+          "Nachfrage steigt",
+          "D nach rechts",
+          "steigt ↑",
+          "steigt ↑"
+        ],
+        [
+          "Nachfrage sinkt",
+          "D nach links",
+          "sinkt ↓",
+          "sinkt ↓"
+        ],
+        [
+          "Angebot steigt",
+          "S nach rechts",
+          "sinkt ↓",
+          "steigt ↑"
+        ],
+        [
+          "Angebot sinkt",
+          "S nach links",
+          "steigt ↑",
+          "sinkt ↓"
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "variant": "warning",
+      "title": "Achtung: Beide Kurven verschieben sich",
+      "text": "Verschieben sich Angebot **und** Nachfrage gleichzeitig, ist nur eine der beiden Größen eindeutig. Steigen zum Beispiel beide, steigt die Menge sicher – ob der Preis steigt oder fällt, hängt davon ab, welche Verschiebung stärker ist."
+    },
+    {
+      "type": "heading",
+      "text": "4. Indifferenzkurven (Indifference Curves)",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "text": "Die Haushaltstheorie fragt, wie ein Konsument sein Budget auf zwei Güter aufteilt – Gut 1 mit der Menge x₁ und Gut 2 mit der Menge x₂. Seine **Präferenzen** beschreibt man mit Indifferenzkurven."
+    },
+    {
+      "type": "definition",
+      "term": "Indifferenzkurve (Indifference Curve)",
+      "text": "Die Menge aller Güterbündel (x₁, x₂), die dem Haushalt **denselben Nutzen** stiften. Zwischen den Bündeln auf einer Kurve ist er **indifferent** – keines ist ihm lieber als ein anderes."
+    },
+    {
+      "type": "image",
+      "file": "img/indifferenzkurven.svg",
+      "caption": "Abb. 4: Indifferenzkurven U₁ < U₂ < U₃ – je weiter vom Ursprung, desto höher der Nutzen. Die Treppe von A nach B veranschaulicht die Grenzrate der Substitution",
+      "alt": "Drei konvexe, fallende Indifferenzkurven U1, U2 und U3; ein Pfeil vom Ursprung nach außen zeigt steigenden Nutzen. Auf U2 führt eine Treppe von Punkt A nach Punkt B: Für mehr von Gut 1 (Delta x1) wird auf Gut 2 verzichtet (Delta x2)."
+    },
+    {
+      "type": "heading",
+      "text": "Eigenschaften",
+      "level": 3
+    },
+    {
+      "type": "list",
+      "style": "number",
+      "items": [
+        "**Negativ geneigt:** Bekommt der Haushalt mehr von Gut 1, muss er auf etwas Gut 2 verzichten, damit sein Nutzen gleich bleibt.",
+        "**Weiter außen ist besser:** Kurven, die weiter vom Ursprung entfernt liegen, stehen für einen höheren Nutzen (Nichtsättigung: mehr ist besser).",
+        "**Schneiden sich nicht:** Ein Schnittpunkt läge auf zwei Nutzenniveaus zugleich – ein Widerspruch zur Transitivität der Präferenzen.",
+        "**Konvex zum Ursprung:** Je mehr man von einem Gut schon hat, desto weniger gibt man für eine weitere Einheit davon auf (abnehmende Grenzrate der Substitution)."
+      ]
+    },
+    {
+      "type": "definition",
+      "term": "Grenzrate der Substitution, GRS (Marginal Rate of Substitution, MRS)",
+      "text": "Die Menge von Gut 2, auf die der Haushalt für **eine zusätzliche Einheit von Gut 1** verzichten würde, ohne dass sich sein Nutzen ändert. Grafisch ist sie der Betrag der **Steigung der Indifferenzkurve**; entlang einer konvexen Kurve nimmt sie von links oben nach rechts unten ab."
+    },
+    {
+      "type": "formula",
+      "text": "GRS = −Δx₂ / Δx₁ ≈ −dx₂ / dx₁\n    = GN₁ / GN₂\n\nGN: Grenznutzen (marginal utility)",
+      "caption": "Die GRS entspricht dem Verhältnis der Grenznutzen beider Güter"
+    },
+    {
+      "type": "callout",
+      "variant": "info",
+      "title": "Sonderfälle",
+      "text": "- **Perfekte Substitute** (z. B. zwei Marken Mineralwasser): Die Indifferenzkurven sind **Geraden**, die GRS ist konstant.\n- **Perfekte Komplemente** (z. B. linker und rechter Schuh): Die Indifferenzkurven sind **L-förmig** – eine zusätzliche Einheit nur eines der beiden Güter bringt keinen zusätzlichen Nutzen."
+    },
+    {
+      "type": "heading",
+      "text": "5. Budgetgerade und Haushaltsoptimum",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "text": "Welches Bündel der Haushalt tatsächlich wählt, hängt auch von seinem **Einkommen m** und den **Preisen p₁ und p₂** ab. Alle Bündel, die er sich mit seinem ganzen Einkommen gerade leisten kann, liegen auf der **Budgetgeraden**."
+    },
+    {
+      "type": "formula",
+      "text": "Budgetgerade:\n  p₁·x₁ + p₂·x₂ = m\n  ⇔ x₂ = m/p₂ − (p₁/p₂)·x₁\n\nAchsenabschnitte: m/p₁ und m/p₂\nSteigung: −p₁/p₂ (Preisverhältnis)",
+      "caption": "Steigt das Einkommen, verschiebt sich die Gerade parallel nach außen; ändert sich ein Preis, dreht sie sich um den anderen Achsenabschnitt"
+    },
+    {
+      "type": "image",
+      "file": "img/haushaltsoptimum.svg",
+      "caption": "Abb. 5: Im Optimum O berührt die Budgetgerade die höchste erreichbare Indifferenzkurve U₂",
+      "alt": "Fallende Budgetgerade zwischen m/p2 auf der senkrechten und m/p1 auf der waagrechten Achse; die Fläche darunter sind die erreichbaren Güterbündel. Die Indifferenzkurve U2 berührt die Gerade im Optimum O bei x1* und x2*; U1 schneidet die Gerade zweimal, U3 liegt außerhalb."
+    },
+    {
+      "type": "text",
+      "text": "Der Haushalt wählt das Bündel auf der **höchsten Indifferenzkurve, die er gerade noch erreicht**. Im Optimum O **berührt** (tangiert) diese Kurve die Budgetgerade, beide haben dort dieselbe Steigung: Die Rate, zu der der Haushalt tauschen *möchte* (GRS), entspricht der Rate, zu der er am Markt tauschen *kann* (Preisverhältnis). Bündel auf U₁ sind erreichbar, aber nicht optimal; U₃ liegt außerhalb des Budgets."
+    },
+    {
+      "type": "formula",
+      "text": "Optimum:  GRS = GN₁/GN₂ = p₁/p₂\n      ⇔  GN₁/p₁ = GN₂/p₂\n\n(2. Gossensches Gesetz)",
+      "caption": "Im Optimum bringt der letzte Euro in jedem Gut denselben zusätzlichen Nutzen"
+    },
+    {
+      "type": "toggle",
+      "title": "Rechenbeispiel: Optimum bei U = x₁ · x₂",
+      "text": "Gegeben: Nutzenfunktion U = x₁ · x₂, Einkommen m = 100 €, Preise p₁ = 2 € und p₂ = 5 €.\n\n1. Grenznutzen: GN₁ = x₂ und GN₂ = x₁ → GRS = x₂ / x₁\n2. Optimumbedingung: x₂ / x₁ = 2 / 5 → x₂ = 0,4 · x₁\n3. In die Budgetgerade einsetzen: 2 · x₁ + 5 · 0,4 · x₁ = 100 → 4 · x₁ = 100 → **x₁ = 25**\n4. Damit **x₂ = 10** (Kontrolle: 2 · 25 + 5 · 10 = 100 ✓) und der Nutzen U = 250."
+    },
+    {
+      "type": "callout",
+      "variant": "important",
+      "title": "Merke: Vom Haushaltsoptimum zur Nachfragekurve",
+      "text": "Verändert man den Preis p₁ und bestimmt jeweils das neue Optimum, erhält man zu jedem Preis die gewünschte Menge x₁ – das ist genau die **individuelle Nachfragekurve** aus Abschnitt 1. Addiert man sie über alle Haushalte, ergibt sich die **Marktnachfrage**."
+    },
+    {
+      "type": "heading",
+      "text": "Selbsttest",
+      "level": 2
+    },
+    {
+      "type": "flashcard",
+      "front": "Was besagt das Gesetz der Nachfrage?",
+      "back": "Ceteris paribus sinkt die nachgefragte Menge, wenn der Preis des Gutes steigt (und umgekehrt) – die Nachfragekurve fällt."
+    },
+    {
+      "type": "flashcard",
+      "front": "Bewegung entlang der Nachfragekurve oder Verschiebung – wann was?",
+      "back": "**Entlang:** Der Preis des Gutes selbst ändert sich.\n**Verschiebung:** Ein anderer Faktor ändert sich – Einkommen, Preise verwandter Güter, Präferenzen, Erwartungen oder die Zahl der Käufer."
+    },
+    {
+      "type": "flashcard",
+      "front": "Was ist die Konsumentenrente?",
+      "back": "Die Differenz zwischen Zahlungsbereitschaft und gezahltem Preis – die Fläche unter der Nachfragekurve und über dem Marktpreis."
+    },
+    {
+      "type": "flashcard",
+      "front": "Was passiert bei einem Höchstpreis unter dem Gleichgewichtspreis?",
+      "back": "Die nachgefragte Menge ist größer als die angebotene: Es entsteht ein **Nachfrageüberschuss (Mangel)**."
+    },
+    {
+      "type": "flashcard",
+      "front": "Warum schneiden sich Indifferenzkurven nicht?",
+      "back": "Ein Schnittpunkt läge auf zwei verschiedenen Nutzenniveaus zugleich – das widerspricht der Transitivität der Präferenzen (und dem Prinzip „mehr ist besser“)."
+    },
+    {
+      "type": "flashcard",
+      "front": "Was ist die Grenzrate der Substitution (GRS)?",
+      "back": "Die Menge von Gut 2, die der Haushalt für eine zusätzliche Einheit von Gut 1 aufgeben würde, ohne Nutzen zu verlieren – der Betrag der Steigung der Indifferenzkurve (= GN₁ / GN₂)."
+    },
+    {
+      "type": "flashcard",
+      "front": "Welche Bedingung gilt im Haushaltsoptimum?",
+      "back": "Die Indifferenzkurve tangiert die Budgetgerade: **GRS = p₁ / p₂** (gleichbedeutend: GN₁ / p₁ = GN₂ / p₂)."
+    },
+    {
+      "type": "quiz",
+      "question": "Das Einkommen der Konsumenten steigt, das Gut ist ein **normales Gut**. Was passiert auf dem Markt?",
+      "options": [
+        {
+          "text": "Man bewegt sich entlang der Nachfragekurve nach rechts unten.",
+          "correct": false
+        },
+        {
+          "text": "Die Angebotskurve verschiebt sich nach rechts – der Preis sinkt.",
+          "correct": false
+        },
+        {
+          "text": "Die Nachfragekurve verschiebt sich nach rechts – Gleichgewichtspreis und -menge steigen.",
+          "correct": true
+        },
+        {
+          "text": "Die Nachfragekurve verschiebt sich nach links – Preis und Menge sinken.",
+          "correct": false
+        }
+      ],
+      "explanation": "Das Einkommen ist nicht der Preis des Gutes selbst, also verschiebt sich die Kurve. Bei normalen Gütern steigt die Nachfrage mit dem Einkommen → D nach rechts → neues Gleichgewicht mit höherem Preis und höherer Menge."
+    },
+    {
+      "type": "quiz",
+      "question": "Nachfrage: x_D = 120 − 3p, Angebot: x_S = 4p − 20. Wie hoch ist der Gleichgewichtspreis?",
+      "options": [
+        {
+          "text": "p∗ = 14",
+          "correct": false
+        },
+        {
+          "text": "p∗ = 20",
+          "correct": true
+        },
+        {
+          "text": "p∗ = 40",
+          "correct": false
+        },
+        {
+          "text": "p∗ = 60",
+          "correct": false
+        }
+      ],
+      "explanation": "120 − 3p = 4p − 20 → 140 = 7p → p∗ = 20. Die Gleichgewichtsmenge ist x∗ = 120 − 3 · 20 = 60."
+    },
+    {
+      "type": "quiz",
+      "question": "Welche Eigenschaften haben „normale“ Indifferenzkurven?",
+      "options": [
+        {
+          "text": "Sie sind negativ geneigt.",
+          "correct": true
+        },
+        {
+          "text": "Weiter außen liegende Kurven stehen für geringeren Nutzen.",
+          "correct": false
+        },
+        {
+          "text": "Sie verlaufen konvex zum Ursprung.",
+          "correct": true
+        },
+        {
+          "text": "Sie schneiden sich nicht.",
+          "correct": true
+        }
+      ],
+      "explanation": "Kurven weiter vom Ursprung entfernt bedeuten mehr von beiden Gütern – also **höheren** Nutzen."
+    },
+    {
+      "type": "quiz",
+      "question": "Im Haushaltsoptimum gilt …",
+      "options": [
+        {
+          "text": "GRS = 0",
+          "correct": false
+        },
+        {
+          "text": "Das Budget wird nicht vollständig ausgegeben.",
+          "correct": false
+        },
+        {
+          "text": "GRS = p₁ / p₂",
+          "correct": true
+        },
+        {
+          "text": "p₁ = p₂",
+          "correct": false
+        }
+      ],
+      "explanation": "Im Optimum tangiert die höchste erreichbare Indifferenzkurve die Budgetgerade, ihre Steigungen – GRS und Preisverhältnis – sind gleich. Bei „mehr ist besser“ wird das Budget voll ausgegeben."
+    }
+  ]
+}

@@ -39,6 +39,7 @@ export async function spawnServer({ dataDir, env = {}, port }) {
       DATA_DIR: dataDir,
       NODE_ENV: 'test',
       ENV_FILE: path.join(dataDir, 'no-such.env'), // never read the developer's .env
+      CONTENT_DIR: 'off',                           // tests start without content packs
       USER_PASSWORD: PASSWORDS.user,
       ADMIN_PASSWORD: PASSWORDS.admin,
       SESSION_SECRET: 'test-secret',
