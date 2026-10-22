@@ -1,22 +1,14 @@
 // A small SVG chart for the interactive demos. It measures its own width and
 // draws at 1 unit = 1 pixel, so labels stay readable on a phone. `draw` gets
 // { X, Y } (data → pixels) and is clipped to the plot area; `overlay` isn't.
-import { useId, useLayoutEffect, useRef, useState } from 'react';
+import { useId } from 'react';
 import { ticks } from '../../../lib/demos.js';
+import { useElementWidth } from './useElementWidth.js';
 
 const PAD = { L: 48, R: 16, T: 30, B: 42 };
 
 export default function Plot({ xMax, yMax, xLabel, yLabel, fmt, label, draw, overlay }) {
-  const box = useRef(null);
-  const [w, setW] = useState(0);
-  useLayoutEffect(() => {
-    const el = box.current;
-    if (!el) return undefined;
-    setW(Math.round(el.getBoundingClientRect().width));
-    const ro = new ResizeObserver(([e]) => setW(Math.round(e.contentRect.width)));
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, []);
+  const [box, w] = useElementWidth();
   const h = Math.round(Math.min(420, Math.max(250, w * 0.66)));
   const clip = `clip${useId().replace(/[^\w-]/g, '')}`;
   const iw = Math.max(10, w - PAD.L - PAD.R);

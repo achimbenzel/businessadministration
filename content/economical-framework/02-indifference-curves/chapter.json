@@ -1,306 +1,1178 @@
 {
   "id": "efed-02-indifference-curves",
-  "version": 1,
+  "version": 2,
   "subjectId": "economical-framework",
-  "lang": "en",
+  "lang": "de",
   "after": "efed-01-supply-demand-indifferenz",
   "status": "published",
-  "title": "Indifference Curves and Consumer Choice",
-  "summary": "How households choose: preferences and indifference curves, the marginal rate of substitution, the budget line and the consumer optimum – with an interactive demo.",
+  "title": "Budgetgerade & Indifferenzkurven (Consumer Choice)",
+  "summary": "Wie Haushalte entscheiden: Budgetgerade, Präferenzen und Indifferenzkurven, GRS (MRS) und GRT (MRT), das Haushaltsoptimum, Einkommens- und Substitutionseffekt – mit Formeln, Beispielen und interaktiver Demo.",
   "blocks": [
     {
       "type": "text",
-      "text": "Behind every demand curve are households deciding what to buy. Consumer theory models this choice with two ingredients: **preferences**, described by indifference curves, and the **budget constraint**, given by income and prices. Their combination – the consumer optimum – explains how much of each good a household buys and, in the end, where the demand curve from the previous chapter comes from."
+      "tab": "overview",
+      "text": "Hinter jeder Nachfragekurve stehen Menschen, die entscheiden, wofür sie ihr Geld ausgeben. Die **Theorie der Konsumentscheidung** (*theory of consumer choice*) erklärt diese Entscheidung mit zwei Bausteinen:\n1. **Was kann ich mir leisten?** – die **Budgetgerade** (*budget constraint*). Ihre Steigung ist die **GRT** (Grenzrate der Transformation, *marginal rate of transformation, MRT*) = Preisverhältnis p₁/p₂.\n2. **Was mag ich?** – die **Indifferenzkurven** (*indifference curves*). Ihre Steigung ist die **GRS** (Grenzrate der Substitution, *marginal rate of substitution, MRS*).\n\nDas beste erreichbare Bündel – das **Haushaltsoptimum** – liegt dort, wo beide Steigungen gleich sind: **GRS = GRT**. Deshalb beginnt das Kapitel mit der Budgetgeraden."
     },
     {
       "type": "callout",
+      "tab": "overview",
+      "variant": "important",
+      "title": "Lernziele (learning objectives)",
+      "text": "- die Budgetgerade aufstellen, zeichnen und bei Einkommens- und Preisänderungen verschieben (*budget line*)\n- Präferenzen mit Indifferenzkurven beschreiben und ihre Eigenschaften begründen (*indifference curves*)\n- GRS (MRS) und GRT (MRT) erklären, berechnen und vergleichen\n- das Haushaltsoptimum grafisch und rechnerisch bestimmen (*consumer optimum*)\n- Einkommens- und Substitutionseffekt unterscheiden und daraus die Nachfragekurve ableiten"
+    },
+    {
+      "type": "image",
+      "tab": "overview",
+      "file": "img/consumer-optimum.svg",
+      "caption": "Das Grundbild: Die Budgetgerade (türkis) berührt die höchste erreichbare Indifferenzkurve im Optimum O. Dort ist GRS = GRT.",
+      "alt": "Diagramm mit drei Indifferenzkurven und einer fallenden Budgetgeraden, die die mittlere Kurve im Punkt O berührt."
+    },
+    {
+      "type": "callout",
+      "tab": "overview",
+      "variant": "tip",
+      "title": "Die Kernidee in drei Sätzen",
+      "text": "1. Die **Budgetgerade** zeigt, was ich mir leisten kann – ihre Steigung p₁/p₂ ist der „Marktkurs“, zu dem ich Gut 2 gegen Gut 1 tauschen **kann** (**GRT / MRT**).\n2. Die **Indifferenzkurve** zeigt, was mir gleich lieb ist – ihre Steigung ist der Kurs, zu dem ich tauschen **würde** (**GRS / MRS**).\n3. Solange GRS ≠ GRT, lohnt sich Umschichten. Im Optimum gilt **GRS = GRT**."
+    },
+    {
+      "type": "callout",
+      "tab": "overview",
       "variant": "info",
-      "title": "Learning objectives",
-      "text": "- describe preferences with indifference curves and explain their properties\n- interpret the marginal rate of substitution (MRS)\n- draw the budget line and explain how income and prices move it\n- find the consumer optimum graphically and mathematically\n- explain how the demand curve follows from the consumer optimum"
+      "title": "Ein Beispielhaushalt für alles",
+      "text": "Formeln, Rechenbeispiele und die Demo nutzen denselben Haushalt: **Einkommen m = 100 €**, Gut 1 (z. B. Kaffee) kostet **p₁ = 2 €**, Gut 2 (z. B. Kinotickets) kostet **p₂ = 5 €**, Nutzen **U = x₁^0,5 · x₂^0,5**. Optimum: **25 Kaffee und 10 Kinotickets**."
+    },
+    {
+      "type": "text",
+      "tab": "terms",
+      "text": "Die Grundbegriffe – jeweils auf Deutsch erklärt und darunter **auf Englisch** für die Klausur. Am Ende steht eine Vokabelliste."
     },
     {
       "type": "heading",
-      "text": "1. Indifference curves",
+      "tab": "terms",
+      "text": "Budget: Was kann ich mir leisten? (budget)",
+      "level": 2
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Güterbündel",
+      "termEn": "bundle (of goods) · consumption bundle",
+      "text": "Eine Kombination von Mengen der Güter, z. B. (x₁, x₂) = (25, 10): 25 Einheiten Gut 1 und 10 Einheiten Gut 2. Im Diagramm ist jedes Bündel ein Punkt.",
+      "textEn": "A bundle is a combination of quantities of the goods, e.g. (x₁, x₂). Each bundle is a point in the diagram."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Budgetgerade",
+      "termEn": "budget line · budget constraint",
+      "text": "Alle Bündel, die genau das ganze Einkommen kosten: p₁·x₁ + p₂·x₂ = m. Sie zeigt die Grenze dessen, was sich der Haushalt leisten kann.",
+      "textEn": "The budget constraint is the limit on the consumption bundles that a consumer can afford: all bundles that cost exactly the consumer’s income."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Budgetmenge",
+      "termEn": "budget set · affordable bundles",
+      "text": "Alle Bündel, die sich der Haushalt leisten kann: auf **oder unter** der Budgetgeraden (p₁·x₁ + p₂·x₂ ≤ m).",
+      "textEn": "The budget set contains all bundles that the consumer can afford, i.e. on or below the budget line."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Relativer Preis",
+      "termEn": "relative price (p₁/p₂)",
+      "text": "Der Preis von Gut 1 ausgedrückt in Einheiten von Gut 2: Wie viele Einheiten Gut 2 kostet eine Einheit Gut 1? Bei p₁ = 2 € und p₂ = 5 € ist p₁/p₂ = 0,4.",
+      "textEn": "The relative price is the price of one good measured in units of the other good, p₁/p₂."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Grenzrate der Transformation (GRT)",
+      "termEn": "marginal rate of transformation (MRT)",
+      "text": "Die Rate, zu der der **Markt** den Tausch erlaubt: wie viele Einheiten Gut 2 man **aufgeben muss**, um eine Einheit Gut 1 mehr zu kaufen. Im Haushaltsmodell ist das der Betrag der Steigung der Budgetgeraden: **GRT = p₁/p₂**.",
+      "textEn": "In consumer choice, the MRT is the rate at which the market allows the consumer to trade one good for the other: the slope of the budget line, equal to the relative price p₁/p₂."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Opportunitätskosten",
+      "termEn": "opportunity cost",
+      "text": "Was man für etwas aufgeben muss. Eine Einheit Gut 1 mehr kostet p₁/p₂ Einheiten Gut 2 – das sind ihre Opportunitätskosten.",
+      "textEn": "The opportunity cost of an item is whatever must be given up to obtain it."
+    },
+    {
+      "type": "heading",
+      "tab": "terms",
+      "text": "Präferenzen: Was mag ich? (preferences)",
+      "level": 2
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Präferenzen",
+      "termEn": "preferences",
+      "text": "Die Vorlieben eines Haushalts: welche Bündel er welchen anderen vorzieht oder gleich gut findet. Sie hängen **nicht** vom Einkommen oder den Preisen ab.",
+      "textEn": "Preferences describe how a consumer ranks different bundles of goods."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Nutzen und Nutzenfunktion",
+      "termEn": "utility · utility function (U)",
+      "text": "Ein Maß für die Zufriedenheit mit einem Bündel. Die Nutzenfunktion U(x₁, x₂) ordnet jedem Bündel eine Zahl zu – höher heißt „lieber“. Wichtig ist nur die **Reihenfolge**, nicht die Zahl selbst.",
+      "textEn": "Utility is an abstract measure of the satisfaction or happiness a consumer receives from a bundle of goods."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Indifferenzkurve",
+      "termEn": "indifference curve",
+      "text": "Alle Bündel, die dem Haushalt **den gleichen Nutzen** stiften – zwischen ihnen ist er **indifferent** (gleichgültig). Kurven weiter vom Ursprung entfernt bedeuten höheren Nutzen.",
+      "textEn": "An indifference curve is a curve that shows consumption bundles that give the consumer the same level of satisfaction."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Indifferenzkurvenschar",
+      "termEn": "indifference map",
+      "text": "Die Gesamtheit aller Indifferenzkurven eines Haushalts – eine „Höhenlinienkarte“ seiner Präferenzen.",
+      "textEn": "The set of all of a consumer’s indifference curves."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Grenznutzen",
+      "termEn": "marginal utility (MU)",
+      "text": "Der zusätzliche Nutzen einer weiteren Einheit eines Guts. Meist **abnehmend**: Der erste Kaffee am Morgen bringt mehr als der fünfte.",
+      "textEn": "Marginal utility is the increase in utility that a consumer gets from an additional unit of a good."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Grenzrate der Substitution (GRS)",
+      "termEn": "marginal rate of substitution (MRS)",
+      "text": "Wie viele Einheiten Gut 2 der Haushalt für **eine** Einheit Gut 1 mehr **hergeben würde**, ohne dass sich sein Nutzen ändert. Betrag der Steigung der Indifferenzkurve: **GRS = GU₁/GU₂** (MRS = MU₁/MU₂).",
+      "textEn": "The marginal rate of substitution is the rate at which a consumer is willing to trade one good for another: the slope of the indifference curve."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Abnehmende GRS",
+      "termEn": "diminishing MRS · convex indifference curves",
+      "text": "Je mehr man von Gut 1 schon hat, desto weniger Gut 2 würde man für eine weitere Einheit hergeben. Deshalb sind Indifferenzkurven **zum Ursprung hin gewölbt** (konvex, *bowed inward*).",
+      "textEn": "People are more willing to trade away goods they have in abundance and less willing to trade away goods of which they have little, so indifference curves are bowed inward."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Perfekte Substitute und perfekte Komplemente",
+      "termEn": "perfect substitutes · perfect complements",
+      "text": "**Perfekte Substitute** (zwei Wassermarken): konstante GRS, Indifferenzkurven sind **Geraden**. **Perfekte Komplemente** (linker und rechter Schuh): nur zusammen nützlich, Indifferenzkurven sind **rechte Winkel** (L-Form).",
+      "textEn": "Perfect substitutes are two goods with straight-line indifference curves; perfect complements are two goods with right-angle indifference curves."
+    },
+    {
+      "type": "heading",
+      "tab": "terms",
+      "text": "Optimum und Veränderungen (optimum and changes)",
+      "level": 2
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Haushaltsoptimum",
+      "termEn": "consumer optimum · optimal choice",
+      "text": "Das Bündel auf der Budgetgeraden, das auf der **höchsten erreichbaren** Indifferenzkurve liegt. Dort berührt die Indifferenzkurve die Budgetgerade (Tangentialpunkt): **GRS = GRT**.",
+      "textEn": "The consumer chooses the point on the budget constraint that lies on the highest indifference curve; at this point the MRS equals the relative price."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Ausgleich der gewogenen Grenznutzen",
+      "termEn": "equimarginal principle · utility per euro",
+      "text": "Im Optimum bringt der **letzte Euro** in jedem Gut gleich viel zusätzlichen Nutzen: GU₁/p₁ = GU₂/p₂ (auch „2. Gossensches Gesetz“).",
+      "textEn": "At the optimum, the marginal utility per euro spent is the same for all goods: MU₁/p₁ = MU₂/p₂."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Einkommenseffekt",
+      "termEn": "income effect",
+      "text": "Die Änderung des Konsums, weil sich durch eine Preisänderung die **Kaufkraft** ändert – man kommt auf eine höhere oder niedrigere Indifferenzkurve.",
+      "textEn": "The income effect is the change in consumption that results when a price change moves the consumer to a higher or lower indifference curve."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Substitutionseffekt",
+      "termEn": "substitution effect",
+      "text": "Die Änderung des Konsums, weil sich das **Preisverhältnis** ändert – man ersetzt das relativ teurer gewordene Gut durch das billigere, bei **gleichem Nutzen** (entlang derselben Indifferenzkurve).",
+      "textEn": "The substitution effect is the change in consumption that results when a price change moves the consumer along a given indifference curve to a point with a new MRS."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Normales, inferiores und Giffen-Gut",
+      "termEn": "normal good · inferior good · Giffen good",
+      "text": "**Normal**: mehr Einkommen → mehr Konsum. **Inferior**: mehr Einkommen → weniger Konsum. **Giffen-Gut**: ein extrem inferiores Gut, bei dem ein Preisanstieg die nachgefragte Menge sogar **erhöht** (sehr selten).",
+      "textEn": "A Giffen good is a good for which an increase in the price raises the quantity demanded (the income effect outweighs the substitution effect)."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Individuelle Nachfragekurve",
+      "termEn": "individual demand curve",
+      "text": "Zeigt für jeden Preis p₁ die optimale Menge x₁∗. Man erhält sie, indem man das Haushaltsoptimum für verschiedene Preise berechnet.",
+      "textEn": "The demand curve can be derived from the consumer’s optimal choices at different prices."
+    },
+    {
+      "type": "heading",
+      "tab": "terms",
+      "text": "Vokabelliste (für die Klausur)",
+      "level": 2
+    },
+    {
+      "type": "table",
+      "tab": "terms",
+      "header": true,
+      "rows": [
+        [
+          "Deutsch",
+          "Englisch",
+          "Symbol"
+        ],
+        [
+          "Einkommen",
+          "income",
+          "m"
+        ],
+        [
+          "Preis von Gut 1 / Gut 2",
+          "price of good 1 / good 2",
+          "p₁, p₂"
+        ],
+        [
+          "Menge von Gut 1 / Gut 2",
+          "quantity of good 1 / good 2",
+          "x₁, x₂"
+        ],
+        [
+          "Budgetgerade",
+          "budget line / budget constraint",
+          "p₁x₁ + p₂x₂ = m"
+        ],
+        [
+          "Nutzen",
+          "utility",
+          "U"
+        ],
+        [
+          "Grenznutzen",
+          "marginal utility",
+          "GU / MU"
+        ],
+        [
+          "Indifferenzkurve",
+          "indifference curve",
+          "U = konst."
+        ],
+        [
+          "Grenzrate der Substitution",
+          "marginal rate of substitution",
+          "GRS / MRS"
+        ],
+        [
+          "Grenzrate der Transformation",
+          "marginal rate of transformation",
+          "GRT / MRT"
+        ],
+        [
+          "Haushaltsoptimum",
+          "consumer optimum / optimal bundle",
+          "x₁∗, x₂∗"
+        ],
+        [
+          "Steigung",
+          "slope",
+          "−p₁/p₂"
+        ],
+        [
+          "Achsenabschnitt",
+          "intercept",
+          "m/p₁, m/p₂"
+        ],
+        [
+          "Einkommens- / Substitutionseffekt",
+          "income / substitution effect",
+          "EE / SE"
+        ],
+        [
+          "gleichgültig sein zwischen …",
+          "to be indifferent between …",
+          ""
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "tab": "formulas",
+      "text": "Alle Formeln mit Symbolen, einer Erklärung **in einfachen Worten**, einem **Rechenbeispiel** und einem **Vergleich aus dem Alltag**. Beispielhaushalt: m = 100 €, p₁ = 2 € (Kaffee), p₂ = 5 € (Kino), U = x₁^0,5 · x₂^0,5."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Budgetgerade (budget line)",
+      "text": "p₁ · x₁ + p₂ · x₂ = m\n\nnach x₂ aufgelöst:\nx₂ = m/p₂ − (p₁/p₂) · x₁",
+      "variables": [
+        {
+          "symbol": "m",
+          "meaning": "Einkommen (income)"
+        },
+        {
+          "symbol": "p₁, p₂",
+          "meaning": "Preise der beiden Güter"
+        },
+        {
+          "symbol": "x₁, x₂",
+          "meaning": "Mengen der beiden Güter"
+        },
+        {
+          "symbol": "m/p₂",
+          "meaning": "Achsenabschnitt: nur Gut 2 kaufen"
+        },
+        {
+          "symbol": "m/p₁",
+          "meaning": "Achsenabschnitt: nur Gut 1 kaufen"
+        }
+      ],
+      "explanation": "Links steht, was das Bündel kostet, rechts, was man hat. Auf der Geraden gibt man **genau alles** aus. Die Achsenabschnitte findest du, indem du alles Geld für ein Gut ausgibst.",
+      "example": "m = 100, p₁ = 2, p₂ = 5:\n2 · x₁ + 5 · x₂ = 100 ⇔ x₂ = 20 − 0,4 · x₁\n- nur Kino: 100/5 = **20** Tickets\n- nur Kaffee: 100/2 = **50** Kaffee\n- z. B. 25 Kaffee und 10 Tickets: 50 + 50 = 100 ✓",
+      "analogy": "Ein Einkaufswagen mit festem Budget: Mehr von dem einen passt nur rein, wenn du etwas von dem anderen wieder rausnimmst."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "GRT = Steigung der Budgetgeraden (MRT)",
+      "text": "GRT = |Δx₂ / Δx₁| = p₁ / p₂",
+      "caption": "Begriff: In der Produktionstheorie heißt GRT die Steigung der Produktionsmöglichkeitenkurve – gleiche Idee: Opportunitätskosten.",
+      "variables": [
+        {
+          "symbol": "GRT",
+          "meaning": "Grenzrate der Transformation (MRT)"
+        },
+        {
+          "symbol": "Δx₂ / Δx₁",
+          "meaning": "wie viel Gut 2 pro zusätzlicher Einheit Gut 1 wegfällt"
+        }
+      ],
+      "explanation": "Die GRT ist der **Tauschkurs des Markts**: Für eine Einheit Gut 1 mehr musst du p₁ € ausgeben – dieses Geld fehlt für p₁/p₂ Einheiten Gut 2. Sie hängt nur von den **Preisen** ab, nicht von deinen Vorlieben. Grafisch ist sie der Betrag der Steigung der Budgetgeraden.",
+      "example": "p₁/p₂ = 2/5 = **0,4**: Ein Kaffee mehr kostet 0,4 Kinotickets. Umgekehrt: Ein Kinoticket mehr kostet 2,5 Kaffee.",
+      "analogy": "Ein Wechselkurs: Wie viele Kinotickets du für einen Kaffee „bezahlst“, legt der Markt fest – nicht du."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Änderungen der Budgetgeraden",
+      "text": "m steigt → Parallelverschiebung\n  (Steigung bleibt p₁/p₂)\n\np₁ steigt → Drehung um m/p₂\n  (steiler, x₁-Abschnitt sinkt)",
+      "variables": [
+        {
+          "symbol": "m/p₁",
+          "meaning": "x₁-Achsenabschnitt – ändert sich mit m und p₁"
+        },
+        {
+          "symbol": "m/p₂",
+          "meaning": "x₂-Achsenabschnitt – ändert sich mit m und p₂"
+        }
+      ],
+      "explanation": "Mehr Einkommen verschiebt die Gerade **parallel nach außen** – man kann von allem mehr kaufen, das Preisverhältnis bleibt. Wird **ein** Gut teurer, **dreht** sich die Gerade um den Achsenabschnitt des anderen Guts nach innen.",
+      "example": "m: 100 → 150: Achsenabschnitte 75 (Kaffee) und 30 (Kino), Steigung weiter 0,4.\np₁: 2 → 4: Kaffee-Abschnitt 100/4 = 25, Kino-Abschnitt bleibt 20, neue GRT = 4/5 = **0,8**.",
+      "analogy": "Mehr Taschengeld: Der ganze Einkaufswagen wird größer. Kaffee wird teurer: Nur die „Kaffee-Seite“ schrumpft."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Grenznutzen (marginal utility)",
+      "text": "GU₁ = ΔU / Δx₁ ≈ ∂U/∂x₁\n\nU = x₁^α · x₂^(1−α):\nGU₁ = α · U / x₁\nGU₂ = (1−α) · U / x₂",
+      "variables": [
+        {
+          "symbol": "GU₁, GU₂",
+          "meaning": "Grenznutzen (MU₁, MU₂)"
+        },
+        {
+          "symbol": "α",
+          "meaning": "Gewicht von Gut 1 in der Nutzenfunktion (0 < α < 1)"
+        },
+        {
+          "symbol": "∂U/∂x₁",
+          "meaning": "Ableitung von U nach x₁"
+        }
+      ],
+      "explanation": "Der Grenznutzen sagt, wie viel **zusätzliche** Zufriedenheit eine weitere Einheit bringt. Bei dieser (Cobb-Douglas-)Nutzenfunktion sinkt er, je mehr man vom Gut schon hat.",
+      "example": "U = x₁^0,5 · x₂^0,5 im Bündel (25, 10): U = √250 ≈ 15,8.\nGU₁ = 0,5 · 15,8 / 25 ≈ **0,32** · GU₂ = 0,5 · 15,8 / 10 ≈ **0,79**",
+      "analogy": "Das erste Stück Pizza ist großartig, das vierte nur noch okay – der Grenznutzen nimmt ab."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "GRS = Steigung der Indifferenzkurve (MRS)",
+      "text": "GRS = |Δx₂ / Δx₁|  (U konstant)\n    = GU₁ / GU₂\n\nCobb-Douglas:\nGRS = α/(1−α) · x₂/x₁",
+      "variables": [
+        {
+          "symbol": "GRS",
+          "meaning": "Grenzrate der Substitution (MRS)"
+        },
+        {
+          "symbol": "U konstant",
+          "meaning": "man bleibt auf derselben Indifferenzkurve"
+        }
+      ],
+      "explanation": "Die GRS ist dein **persönlicher Tauschkurs**: Wie viel Gut 2 würdest du für eine Einheit Gut 1 mehr hergeben und wärst danach genau so zufrieden? Sie hängt von deinen **Vorlieben** und davon ab, wie viel du schon hast. Grafisch: Betrag der Steigung der Indifferenzkurve.",
+      "example": "α = 0,5 → GRS = x₂/x₁.\n- Bündel (10, 16): GRS = 16/10 = **1,6** – für einen Kaffee mehr würdest du 1,6 Tickets hergeben.\n- Bündel (25, 10): GRS = 10/25 = **0,4**\n- Bündel (40, 4): GRS = 4/40 = **0,1** – du hast schon viel Kaffee, er ist dir wenig wert.",
+      "analogy": "Sammelkarten tauschen: Hast du von einer Sorte nur zwei, gibst du viel für eine dritte. Hast du schon zwanzig, ist dir eine weitere kaum etwas wert."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Entscheidungsregel: GRS vs. GRT",
+      "text": "GRS > GRT → mehr Gut 1 kaufen\nGRS < GRT → weniger Gut 1 kaufen\nGRS = GRT → Optimum",
+      "variables": [
+        {
+          "symbol": "GRS",
+          "meaning": "was dir eine Einheit Gut 1 wert ist (in Gut 2)"
+        },
+        {
+          "symbol": "GRT",
+          "meaning": "was sie am Markt kostet (in Gut 2)"
+        }
+      ],
+      "explanation": "Ist dir eine Einheit Gut 1 **mehr wert**, als sie kostet (GRS > GRT), lohnt es sich, Geld von Gut 2 zu Gut 1 umzuschichten – dein Nutzen steigt. Ist sie dir **weniger wert** (GRS < GRT), schichtest du zurück. Erst wenn beides gleich ist, bringt Umschichten nichts mehr.",
+      "example": "Bündel A = (10, 16) auf der Budgetgeraden (2 · 10 + 5 · 16 = 100 ✓):\nGRS = 1,6 > GRT = 0,4 → **mehr Kaffee, weniger Kino** kaufen.\nBündel (40, 4): GRS = 0,1 < 0,4 → **weniger Kaffee**.\nBündel (25, 10): GRS = 0,4 = GRT → **Optimum**.",
+      "analogy": "Flohmarkt-Logik: Ist dir ein Teil mehr wert, als es kostet, kaufst du es. Ist es dir weniger wert, als du dafür bekämst, verkaufst du es."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Haushaltsoptimum (consumer optimum)",
+      "text": "GRS = GRT\n⇔ GU₁ / GU₂ = p₁ / p₂\n⇔ GU₁ / p₁ = GU₂ / p₂\n\nund p₁x₁ + p₂x₂ = m",
+      "variables": [
+        {
+          "symbol": "GU₁/p₁",
+          "meaning": "Nutzen des letzten Euros, der in Gut 1 fließt"
+        },
+        {
+          "symbol": "GU₂/p₂",
+          "meaning": "Nutzen des letzten Euros, der in Gut 2 fließt"
+        }
+      ],
+      "explanation": "Zwei Bedingungen: Das Bündel liegt **auf** der Budgetgeraden (alles Geld ausgegeben) und die Indifferenzkurve **berührt** sie dort (gleiche Steigung). Anders gesagt: Der letzte Euro bringt in beiden Gütern gleich viel Nutzen.",
+      "example": "U = x₁^0,5 · x₂^0,5 → GRS = x₂/x₁.\n1. GRS = GRT: x₂/x₁ = 2/5 → x₂ = 0,4 · x₁\n2. In die Budgetgerade: 2x₁ + 5 · 0,4x₁ = 100 → 4x₁ = 100\n3. **x₁∗ = 25**, **x₂∗ = 10**",
+      "analogy": "Ein Buffet mit begrenztem Teller: Du verteilst den Platz so lange um, bis dir der letzte Löffel von jedem Gericht gleich viel Freude macht."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Nachfragefunktionen (Cobb-Douglas)",
+      "text": "x₁∗ = α · m / p₁\nx₂∗ = (1 − α) · m / p₂",
+      "variables": [
+        {
+          "symbol": "α",
+          "meaning": "Anteil des Einkommens für Gut 1 (budget share)"
+        },
+        {
+          "symbol": "x₁∗, x₂∗",
+          "meaning": "optimale Mengen"
+        }
+      ],
+      "explanation": "Bei dieser Nutzenfunktion gibt der Haushalt immer den **Anteil α** seines Einkommens für Gut 1 aus, egal wie die Preise sind. Daraus folgt direkt die Nachfragekurve: Sinkt p₁, steigt x₁∗.",
+      "example": "α = 0,5, m = 100:\n- p₁ = 2 → x₁∗ = 0,5 · 100 / 2 = **25**\n- p₁ = 1 → x₁∗ = **50**\n- p₁ = 4 → x₁∗ = **12,5**\nDas sind drei Punkte der Nachfragekurve von Gut 1.",
+      "analogy": "Eine feste Regel wie „die Hälfte vom Taschengeld für Snacks“: Werden Snacks billiger, kaufst du mehr davon, gibst aber gleich viel Geld aus."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Gesamteffekt = Substitutions- + Einkommenseffekt",
+      "text": "Δx₁ (gesamt) = SE + EE\n\nSE: gleicher Nutzen,\n    neues Preisverhältnis\nEE: Kaufkraft ändert sich",
+      "variables": [
+        {
+          "symbol": "SE",
+          "meaning": "Substitutionseffekt (substitution effect)"
+        },
+        {
+          "symbol": "EE",
+          "meaning": "Einkommenseffekt (income effect)"
+        }
+      ],
+      "explanation": "Sinkt p₁, passieren zwei Dinge: Gut 1 wird **relativ billiger** – man ersetzt Gut 2 durch Gut 1 (Substitutionseffekt, immer in Richtung des billigeren Guts). Und man ist **reicher**, weil das Geld weiter reicht (Einkommenseffekt – bei normalen Gütern ebenfalls mehr Gut 1).",
+      "example": "p₁ sinkt von 2 auf 1 (α = 0,5, m = 100, p₂ = 5): x₁∗ steigt von 25 auf 50.\n- Mit gleichem Nutzen wie vorher (U ≈ 15,8) würde man bei den neuen Preisen ≈ 35,4 Kaffee kaufen → **SE ≈ +10,4**\n- Der Rest kommt durch die gestiegene Kaufkraft → **EE ≈ +14,6**\n- Gesamt: +25 (gerundet)",
+      "analogy": "Dein Lieblingscafé halbiert die Preise: Du trinkst mehr Kaffee statt Tee (Substitution) – und weil dir mehr Geld übrig bleibt, gönnst du dir insgesamt mehr (Einkommen)."
+    },
+    {
+      "type": "heading",
+      "tab": "theory",
+      "text": "1. Die Budgetgerade: Was kann ich mir leisten? (budget constraint)",
       "level": 2
     },
     {
       "type": "text",
-      "text": "Consumer theory asks how a household divides its budget between two goods – good 1 with quantity x₁ and good 2 with quantity x₂. Its **preferences** are described with indifference curves."
-    },
-    {
-      "type": "definition",
-      "term": "Indifference curve",
-      "text": "The set of all bundles of goods (x₁, x₂) that give the household **the same level of utility**. The household is **indifferent** between the bundles on one curve – it does not prefer any of them to another."
+      "tab": "theory",
+      "text": "Ein Haushalt hat ein festes Einkommen m und kann zwei Güter kaufen. Gibt er alles aus, gilt **p₁ · x₁ + p₂ · x₂ = m** – das ist die **Budgetgerade** (*budget line*). Alles **auf oder unter** der Geraden ist bezahlbar (*budget set*), alles darüber nicht.\n\nDie Steigung der Geraden ist **−p₁/p₂**. Ihr Betrag ist die **GRT** (*MRT*): Für eine Einheit Gut 1 mehr muss man p₁/p₂ Einheiten Gut 2 aufgeben. Das ist der Tauschkurs, den der **Markt** vorgibt."
     },
     {
       "type": "image",
-      "file": "img/indifference-curves.svg",
-      "caption": "Figure 4: Indifference curves U₁ < U₂ < U₃ – the further from the origin, the higher the utility. The step from A to B illustrates the marginal rate of substitution",
-      "alt": "Three convex, downward-sloping indifference curves U1, U2 and U3; an arrow pointing away from the origin shows rising utility. On U2 a step leads from point A to point B: to get more of good 1 (delta x1) the household gives up some of good 2 (delta x2)."
+      "tab": "theory",
+      "file": "img/budget-line.svg",
+      "caption": "Budgetgerade für m = 100, p₁ = 2, p₂ = 5: Achsenabschnitte 50 und 20, Steigung −0,4. A liegt auf der Geraden, B darunter (Geld übrig), C darüber (zu teuer).",
+      "alt": "Fallende Budgetgerade von 20 auf der x₂-Achse bis 50 auf der x₁-Achse, darunter schattierte bezahlbare Fläche. Ein Steigungsdreieck zeigt 5 nach rechts und 2 nach unten. Punkte A auf, B unter und C über der Geraden."
+    },
+    {
+      "type": "callout",
+      "tab": "theory",
+      "variant": "important",
+      "title": "Merke",
+      "text": "Steigung der Budgetgeraden = **−p₁/p₂** → GRT = **p₁/p₂** (relativer Preis, *relative price*). Sie hängt nur von den Preisen ab – nicht davon, was der Haushalt mag."
     },
     {
       "type": "heading",
-      "text": "Properties",
+      "tab": "theory",
+      "text": "Wenn sich Einkommen oder Preise ändern",
       "level": 3
     },
     {
-      "type": "list",
-      "style": "number",
-      "items": [
-        "**Downward sloping:** If the household gets more of good 1, it must give up some of good 2 to keep its utility constant.",
-        "**Further out is better:** Curves further from the origin represent higher utility (non-satiation: more is better).",
-        "**They never cross:** An intersection would lie on two utility levels at once – a contradiction to transitive preferences.",
-        "**Convex to the origin:** The more of a good the household already has, the less it is willing to give up for another unit of it (diminishing marginal rate of substitution)."
+      "type": "image",
+      "tab": "theory",
+      "file": "img/budget-shifts.svg",
+      "caption": "Einkommen steigt (m: 100 → 150): Parallelverschiebung nach außen. Preis von Gut 1 steigt (p₁: 2 → 4): Drehung um den x₂-Achsenabschnitt nach innen.",
+      "alt": "Drei Budgetgeraden: die ursprüngliche, eine parallel nach außen verschobene und eine steilere, die sich um den Schnittpunkt mit der x₂-Achse gedreht hat."
+    },
+    {
+      "type": "table",
+      "tab": "theory",
+      "header": true,
+      "rows": [
+        [
+          "Änderung",
+          "Budgetgerade",
+          "Steigung / GRT"
+        ],
+        [
+          "Einkommen m steigt (income ↑)",
+          "parallel nach außen",
+          "bleibt gleich"
+        ],
+        [
+          "Einkommen m sinkt",
+          "parallel nach innen",
+          "bleibt gleich"
+        ],
+        [
+          "p₁ steigt",
+          "dreht sich nach innen (um m/p₂)",
+          "steiler: p₁/p₂ steigt"
+        ],
+        [
+          "p₁ sinkt",
+          "dreht sich nach außen (um m/p₂)",
+          "flacher: p₁/p₂ sinkt"
+        ],
+        [
+          "p₂ steigt",
+          "dreht sich nach innen (um m/p₁)",
+          "flacher: p₁/p₂ sinkt"
+        ],
+        [
+          "alle Preise und m verdoppeln sich",
+          "bleibt, wo sie ist",
+          "bleibt gleich"
+        ]
       ]
     },
     {
       "type": "heading",
-      "text": "2. The marginal rate of substitution",
-      "level": 2
-    },
-    {
-      "type": "definition",
-      "term": "Marginal rate of substitution (MRS)",
-      "text": "The amount of good 2 the household would give up for **one additional unit of good 1** while keeping its utility unchanged. Graphically it is the absolute **slope of the indifference curve**; along a convex curve it decreases from the upper left to the lower right."
-    },
-    {
-      "type": "formula",
-      "text": "MRS = −Δx₂ / Δx₁ ≈ −dx₂ / dx₁\n    = MU₁ / MU₂\n\nMU: marginal utility",
-      "caption": "The MRS equals the ratio of the marginal utilities of the two goods"
-    },
-    {
-      "type": "callout",
-      "variant": "info",
-      "title": "Special cases",
-      "text": "- **Perfect substitutes** (e.g. two brands of bottled water): the indifference curves are **straight lines**, the MRS is constant.\n- **Perfect complements** (e.g. left and right shoes): the indifference curves are **L-shaped** – an extra unit of only one of the two goods adds no utility."
-    },
-    {
-      "type": "heading",
-      "text": "3. The budget line",
+      "tab": "theory",
+      "text": "2. Präferenzen und Indifferenzkurven (preferences)",
       "level": 2
     },
     {
       "type": "text",
-      "text": "Which bundle the household actually chooses also depends on its **income m** and the **prices p₁ and p₂**. All bundles it can just afford when spending its entire income lie on the **budget line** (budget constraint)."
-    },
-    {
-      "type": "formula",
-      "text": "Budget line:\n  p₁·x₁ + p₂·x₂ = m\n  ⇔ x₂ = m/p₂ − (p₁/p₂)·x₁\n\nIntercepts: m/p₁ and m/p₂\nSlope: −p₁/p₂ (price ratio)",
-      "caption": "Higher income shifts the line outwards in parallel; a change in one price rotates it around the other intercept"
-    },
-    {
-      "type": "heading",
-      "text": "4. The consumer optimum",
-      "level": 2
+      "tab": "theory",
+      "text": "Die Budgetgerade sagt, was **möglich** ist. Was der Haushalt **will**, beschreiben seine **Präferenzen**. Eine **Indifferenzkurve** (*indifference curve*) verbindet alle Bündel, die ihm **gleich lieb** sind – zum Beispiel „10 Kaffee und 16 Kinotickets“ und „40 Kaffee und 4 Kinotickets“ (beide U = x₁^0,5 · x₂^0,5 = √160 ≈ 12,6)."
     },
     {
       "type": "image",
-      "file": "img/consumer-optimum.svg",
-      "caption": "Figure 5: At the optimum O the budget line touches the highest attainable indifference curve U₂",
-      "alt": "Downward-sloping budget line between m/p2 on the vertical and m/p1 on the horizontal axis; the area below it contains the affordable bundles. Indifference curve U2 touches the line at the optimum O at x1* and x2*; U1 crosses the line twice, U3 lies outside the budget."
+      "tab": "theory",
+      "file": "img/indifference-curves.svg",
+      "caption": "Drei Indifferenzkurven: Kurven weiter rechts oben bedeuten höheren Nutzen. Von A nach B gibt man Δx₂ ab und bekommt Δx₁ – das Verhältnis ist die GRS.",
+      "alt": "Drei zum Ursprung gewölbte Indifferenzkurven U₁ < U₂ < U₃ mit Pfeil Richtung höherer Nutzen; auf U₂ eine Treppenstufe von A nach B mit Δx₂ und Δx₁."
     },
     {
       "type": "text",
-      "text": "The household chooses the bundle on the **highest indifference curve it can still reach**. At the optimum O this curve is **tangent** to the budget line, so both have the same slope: the rate at which the household is *willing* to trade (MRS) equals the rate at which it *can* trade in the market (the price ratio). Bundles on U₁ are affordable but not optimal; U₃ lies outside the budget."
+      "tab": "theory",
+      "text": "Vier Eigenschaften „normaler“ Indifferenzkurven (*properties*):"
     },
     {
-      "type": "formula",
-      "text": "Optimum:  MRS = MU₁/MU₂ = p₁/p₂\n      ⇔  MU₁/p₁ = MU₂/p₂\n\n(equimarginal principle)",
-      "caption": "At the optimum, the last euro spent on each good yields the same additional utility"
-    },
-    {
-      "type": "toggle",
-      "title": "Worked example: optimum with U = x₁ · x₂",
-      "text": "Given: utility function U = x₁ · x₂, income m = €100, prices p₁ = €2 and p₂ = €5.\n\n1. Marginal utilities: MU₁ = x₂ and MU₂ = x₁ → MRS = x₂ / x₁\n2. Optimum condition: x₂ / x₁ = 2 / 5 → x₂ = 0.4 · x₁\n3. Substitute into the budget line: 2 · x₁ + 5 · 0.4 · x₁ = 100 → 4 · x₁ = 100 → **x₁ = 25**\n4. Hence **x₂ = 10** (check: 2 · 25 + 5 · 10 = 100 ✓) and utility U = 250."
-    },
-    {
-      "type": "heading",
-      "text": "Interactive demo",
-      "level": 3
+      "type": "list",
+      "tab": "theory",
+      "style": "number",
+      "items": [
+        "**Weiter außen = besser** (*higher indifference curves are preferred*): Mehr von beiden Gütern ist besser.",
+        "**Fallend** (*downward sloping*): Will man mehr von Gut 1 bei gleichem Nutzen, muss man auf etwas Gut 2 verzichten.",
+        "**Schneiden sich nie** (*do not cross*): Sonst wäre ein Bündel gleichzeitig gleich gut und besser als ein anderes.",
+        "**Zum Ursprung gewölbt** (*bowed inward*): Wegen der **abnehmenden GRS** gibt man von dem, was man reichlich hat, leichter etwas ab."
+      ]
     },
     {
       "type": "callout",
+      "tab": "theory",
+      "variant": "info",
+      "title": "Zwei Sonderfälle",
+      "text": "- **Perfekte Substitute** (*perfect substitutes*), z. B. zwei Wassermarken: Indifferenzkurven sind **Geraden**, die GRS ist konstant.\n- **Perfekte Komplemente** (*perfect complements*), z. B. linker und rechter Schuh: Indifferenzkurven sind **rechte Winkel** – ein zusätzlicher linker Schuh bringt allein nichts."
+    },
+    {
+      "type": "heading",
+      "tab": "theory",
+      "text": "3. GRS und GRT: zwei Tauschkurse (MRS vs. MRT)",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "tab": "theory",
+      "text": "Der Schlüssel zum ganzen Kapitel ist der Vergleich zweier Steigungen:\n- Die **GRS** (*MRS*) ist dein **innerer** Tauschkurs: Wie viel Gut 2 **würdest** du für eine Einheit Gut 1 mehr hergeben? Sie kommt aus deinen **Präferenzen** – die Steigung der Indifferenzkurve.\n- Die **GRT** (*MRT*) ist der **Markt**-Tauschkurs: Wie viel Gut 2 **musst** du für eine Einheit Gut 1 mehr hergeben? Sie kommt aus den **Preisen** – die Steigung der Budgetgeraden."
+    },
+    {
+      "type": "table",
+      "tab": "theory",
+      "header": true,
+      "rows": [
+        [
+          "",
+          "GRS (MRS)",
+          "GRT (MRT)"
+        ],
+        [
+          "Frage",
+          "Was ist mir eine Einheit Gut 1 wert?",
+          "Was kostet mich eine Einheit Gut 1?"
+        ],
+        [
+          "gemessen in",
+          "Einheiten Gut 2, die ich hergeben würde",
+          "Einheiten Gut 2, die ich hergeben muss"
+        ],
+        [
+          "hängt ab von",
+          "Präferenzen und dem Bündel, das ich habe",
+          "nur den Preisen"
+        ],
+        [
+          "im Diagramm",
+          "Steigung der Indifferenzkurve",
+          "Steigung der Budgetgeraden"
+        ],
+        [
+          "Formel",
+          "GU₁ / GU₂",
+          "p₁ / p₂"
+        ],
+        [
+          "entlang der Kurve",
+          "ändert sich (wird kleiner)",
+          "konstant"
+        ],
+        [
+          "Beispiel bei (10, 16)",
+          "16/10 = 1,6",
+          "2/5 = 0,4"
+        ]
+      ]
+    },
+    {
+      "type": "image",
+      "tab": "theory",
+      "file": "img/mrs-vs-mrt.svg",
+      "caption": "In A ist die Indifferenzkurve steiler als die Budgetgerade (GRS > GRT): mehr Gut 1 kaufen. In C ist sie flacher (GRS < GRT): weniger Gut 1. Beide Wege führen zum Optimum O.",
+      "alt": "Budgetgerade mit Punkten A (links oben), O (Mitte) und C (rechts unten). Eine niedrigere Indifferenzkurve schneidet die Gerade in A und C; Pfeile entlang der Geraden zeigen von A und C nach O, wo eine höhere Indifferenzkurve die Gerade berührt."
+    },
+    {
+      "type": "callout",
+      "tab": "theory",
+      "variant": "important",
+      "title": "Entscheidungsregel (decision rule)",
+      "text": "- **GRS > GRT**: Gut 1 ist dir mehr wert, als es kostet → **mehr Gut 1**, weniger Gut 2.\n- **GRS < GRT**: Gut 1 ist dir weniger wert, als es kostet → **weniger Gut 1**, mehr Gut 2.\n- **GRS = GRT**: Umschichten bringt nichts mehr → **Optimum**."
+    },
+    {
+      "type": "callout",
+      "tab": "theory",
+      "variant": "warning",
+      "title": "Achtung, Begriff „MRT“",
+      "text": "In der Produktionstheorie bezeichnet die GRT (*MRT*) die Steigung der **Produktionsmöglichkeitenkurve** (*production possibilities frontier*): wie viel Gut 2 man in der **Produktion** aufgeben muss, um eine Einheit Gut 1 mehr herzustellen. Die Idee ist dieselbe – **Opportunitätskosten**. Im Haushaltsmodell wird daraus das Preisverhältnis p₁/p₂."
+    },
+    {
+      "type": "heading",
+      "tab": "theory",
+      "text": "4. Das Haushaltsoptimum (consumer optimum)",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "tab": "theory",
+      "text": "Der Haushalt sucht das Bündel auf der Budgetgeraden, das auf der **höchsten erreichbaren Indifferenzkurve** liegt. Dort **berührt** die Indifferenzkurve die Budgetgerade, ohne sie zu schneiden (Tangentialpunkt, *tangency*): Beide haben die gleiche Steigung.\n\n**Optimum: GRS = GRT ⇔ GU₁/GU₂ = p₁/p₂ ⇔ GU₁/p₁ = GU₂/p₂**\n\nDie letzte Form heißt: Der letzte Euro bringt in beiden Gütern gleich viel Nutzen. Würde ein Euro in Gut 1 mehr bringen, würde man umschichten."
+    },
+    {
+      "type": "image",
+      "tab": "theory",
+      "file": "img/consumer-optimum.svg",
+      "caption": "Im Optimum O berührt die Budgetgerade die Indifferenzkurve U₂. Die Punkte auf U₁ sind bezahlbar, aber schlechter; U₃ ist nicht bezahlbar.",
+      "alt": "Drei Indifferenzkurven und eine Budgetgerade, die U₂ im Punkt O berührt; zwei graue Punkte auf U₁ liegen ebenfalls auf der Geraden."
+    },
+    {
+      "type": "callout",
+      "tab": "theory",
       "variant": "tip",
-      "title": "Try it",
-      "text": "- Double the income **m**: the budget line shifts out in parallel – how do x₁∗ and x₂∗ change?\n- Raise the price **p₁**: the budget line rotates inward – x₁∗ falls, while x₂∗ stays the same (a property of this utility function).\n- Change **α** to give good 1 more weight: the household spends a larger share of its budget on it.\n- Check at every setting: at the optimum the indifference curve just touches the budget line, and MRS = p₁/p₂."
+      "title": "Rezept für die Klausur (recipe)",
+      "text": "1. GRS bestimmen (z. B. GU₁/GU₂; bei U = x₁^α · x₂^(1−α): α/(1−α) · x₂/x₁).\n2. **GRS = p₁/p₂** setzen → Zusammenhang zwischen x₁ und x₂.\n3. In die **Budgetgerade** einsetzen → x₁∗, dann x₂∗.\n4. Probe: Kosten = m? GRS = GRT?"
+    },
+    {
+      "type": "text",
+      "tab": "theory",
+      "text": "*Randlösung* (*corner solution*): Sind die Güter perfekte Substitute oder ist ein Gut sehr teuer, kann das Optimum auf einer Achse liegen – der Haushalt kauft dann nur ein Gut. Die Bedingung GRS = GRT gilt dort nicht."
+    },
+    {
+      "type": "heading",
+      "tab": "theory",
+      "text": "5. Einkommens- und Preisänderungen (income and price changes)",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "tab": "theory",
+      "text": "**Einkommen steigt**: Die Budgetgerade verschiebt sich parallel nach außen, das Optimum wandert auf eine höhere Indifferenzkurve. Bei einem **normalen Gut** (*normal good*) wird mehr gekauft, bei einem **inferioren Gut** (*inferior good*) weniger.\n\n**Preis von Gut 1 sinkt**: Die Budgetgerade dreht sich nach außen. Die Änderung der Menge zerlegt man in zwei Effekte:\n1. **Substitutionseffekt** (*substitution effect*): Gut 1 ist relativ billiger – man bewegt sich **entlang der alten Indifferenzkurve** zum Punkt mit der neuen Steigung. Er führt **immer** zu mehr vom billiger gewordenen Gut.\n2. **Einkommenseffekt** (*income effect*): Man kann sich insgesamt mehr leisten – Sprung auf eine **höhere Indifferenzkurve**. Bei normalen Gütern: mehr Gut 1."
+    },
+    {
+      "type": "image",
+      "tab": "theory",
+      "file": "img/substitution-income-effect.svg",
+      "caption": "Der Preis von Gut 1 sinkt: Von O₁ nach H wirkt der Substitutionseffekt (gleiche Indifferenzkurve, neue Steigung), von H nach O₂ der Einkommenseffekt (höhere Indifferenzkurve).",
+      "alt": "Alte Budgetgerade mit Optimum O₁ auf U₁, gedrehte neue Budgetgerade mit Optimum O₂ auf U₂, gestrichelte Hilfsgerade parallel zur neuen, die U₁ in H berührt. Pfeile von O₁ nach H und von H nach O₂."
+    },
+    {
+      "type": "table",
+      "tab": "theory",
+      "header": true,
+      "rows": [
+        [
+          "Preis von Gut 1 sinkt",
+          "Substitutionseffekt",
+          "Einkommenseffekt",
+          "Gesamt"
+        ],
+        [
+          "normales Gut",
+          "x₁ ↑",
+          "x₁ ↑",
+          "x₁ ↑ (sicher)"
+        ],
+        [
+          "inferiores Gut",
+          "x₁ ↑",
+          "x₁ ↓ (schwächer)",
+          "x₁ ↑"
+        ],
+        [
+          "Giffen-Gut (selten)",
+          "x₁ ↑",
+          "x₁ ↓ (stärker)",
+          "x₁ ↓"
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "tab": "theory",
+      "text": "6. Vom Optimum zur Nachfragekurve (deriving the demand curve)",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "tab": "theory",
+      "text": "Berechnet man das Optimum für verschiedene Preise p₁ (Einkommen und p₂ bleiben gleich), erhält man zu jedem Preis eine Menge x₁∗ – zusammen ergeben sie die **Nachfragekurve** (*demand curve*). Sie fällt, weil beim normalen Gut Substitutions- und Einkommenseffekt in dieselbe Richtung wirken. So hängen dieses Kapitel und **Angebot & Nachfrage** zusammen."
+    },
+    {
+      "type": "table",
+      "tab": "theory",
+      "header": true,
+      "rows": [
+        [
+          "Preis p₁",
+          "optimale Menge x₁∗ (α = 0,5, m = 100)",
+          "Ausgaben für Gut 1"
+        ],
+        [
+          "1 €",
+          "50",
+          "50 €"
+        ],
+        [
+          "2 €",
+          "25",
+          "50 €"
+        ],
+        [
+          "4 €",
+          "12,5",
+          "50 €"
+        ],
+        [
+          "5 €",
+          "10",
+          "50 €"
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "tab": "theory",
+      "variant": "info",
+      "title": "Zusammenhang",
+      "text": "Die Ausgaben für Gut 1 bleiben bei dieser Nutzenfunktion immer α · m = 50 € – deshalb ist x₁∗ = 50/p₁. Die Nachfragekurve ist hier eine Hyperbel."
+    },
+    {
+      "type": "text",
+      "tab": "interactive",
+      "text": "In der Demo siehst du Budgetgerade (türkis), Indifferenzkurven (violett) und das Optimum **O**. Verschiebe Einkommen und Preise und beobachte, wie sich Gerade und Optimum bewegen. Mit **„Eigenes Bündel A“** wählst du selbst einen Punkt auf der Budgetgeraden und vergleichst dort **GRS** und **GRT**."
+    },
+    {
+      "type": "callout",
+      "tab": "interactive",
+      "variant": "tip",
+      "title": "Aufgaben zur Demo",
+      "text": "1. Aktiviere **„Eigenes Bündel A“** und stelle A auf **x₁ = 10**. Wie groß sind GRS und GRT? Was rät die Demo?\n2. Schiebe A Schritt für Schritt nach rechts. Wie entwickelt sich die GRS? Wo ist der Nutzen am größten?\n3. Erhöhe das Einkommen **m auf 150**. Wie bewegt sich die Budgetgerade? Was passiert mit x₁∗ und x₂∗?\n4. Verdopple **p₁ auf 4**. Wie verändert sich die Budgetgerade, wie die GRT? Was passiert mit x₁∗?\n5. Setze **α auf 0,7**. Was bedeutet das für die Vorlieben, und wie ändern sich die Ausgabenanteile?"
     },
     {
       "type": "consumerChoice",
-      "title": "Find the consumer optimum",
-      "caption": "Starting point: the worked example above (m = €100, p₁ = €2, p₂ = €5).",
+      "tab": "interactive",
+      "title": "Haushaltsoptimum finden (find the consumer optimum)",
+      "caption": "Startwerte: m = 100, p₁ = 2, p₂ = 5, U = x₁^0,5 · x₂^0,5.",
       "m": 100,
       "p1": 2,
       "p2": 5,
       "alpha": 0.5
     },
     {
-      "type": "text",
-      "text": "*Note:* The demo uses U = x₁^α · x₂^(1−α). With α = 0.5 it describes the same preferences as U = x₁ · x₂ in the worked example – the optimal bundle is identical, only the utility numbers differ. With this utility function the household always spends the share α of its income on good 1."
-    },
-    {
-      "type": "heading",
-      "text": "5. From the consumer optimum to the demand curve",
-      "level": 2
-    },
-    {
-      "type": "callout",
-      "variant": "important",
-      "title": "Key point: from the consumer optimum to the demand curve",
-      "text": "If you vary the price p₁ and find the new optimum each time, you get the quantity x₁ the household wants at every price – exactly the **individual demand curve** from section 1. Adding up the individual demand curves of all households gives the **market demand curve**."
+      "type": "toggle",
+      "tab": "interactive",
+      "title": "Lösungen zu den Demo-Aufgaben",
+      "text": "1. In A = (10, 16): **GRS = 1,6**, **GRT = 0,4**. GRS > GRT → mehr Gut 1 und weniger Gut 2 kaufen.\n2. Die GRS sinkt, je weiter A nach rechts wandert (abnehmende GRS). Der Nutzen ist bei **x₁ = 25** am größten – dort ist GRS = GRT = 0,4.\n3. Die Budgetgerade verschiebt sich **parallel** nach außen. Das Optimum wird **(37,5; 15)** – beide Güter sind hier normal.\n4. Die Gerade dreht sich um den x₂-Abschnitt 20 nach innen, die GRT steigt auf **0,8**. x₁∗ halbiert sich auf **12,5**, x₂∗ bleibt bei 10.\n5. Gut 1 ist dem Haushalt jetzt wichtiger: Er gibt **70 %** seines Einkommens dafür aus. Optimum: x₁∗ = 35, x₂∗ = 6."
     },
     {
       "type": "text",
-      "text": "**Example:** With α = 0.5 and m = 100 the optimal quantity of good 1 is x₁∗ = 0.5 · 100 / p₁ = 50 / p₁. At p₁ = 2 the household buys 25 units, at p₁ = 4 only 12.5 – the higher the price, the lower the quantity: a downward-sloping demand curve. Check it in the demo by moving p₁."
+      "tab": "interactive",
+      "text": "*Hinweis:* Die Demo nutzt U = x₁^α · x₂^(1−α). Der Haushalt gibt dann immer den Anteil α seines Einkommens für Gut 1 aus: x₁∗ = α·m/p₁ und x₂∗ = (1−α)·m/p₂."
     },
     {
       "type": "heading",
-      "text": "Key terms",
-      "level": 3
+      "tab": "practice",
+      "text": "Rechenbeispiel 1: Budgetgerade (budget line)",
+      "level": 2
     },
     {
-      "type": "table",
-      "header": true,
-      "rows": [
-        [
-          "Term",
-          "Meaning",
-          "German"
-        ],
-        [
-          "Preferences",
-          "how a household ranks bundles of goods",
-          "Präferenzen"
-        ],
-        [
-          "Indifference curve",
-          "bundles with the same utility",
-          "Indifferenzkurve"
-        ],
-        [
-          "Marginal utility (MU)",
-          "extra utility from one more unit of a good",
-          "Grenznutzen"
-        ],
-        [
-          "Marginal rate of substitution (MRS)",
-          "slope of the indifference curve, MU₁/MU₂",
-          "Grenzrate der Substitution (GRS)"
-        ],
-        [
-          "Perfect substitutes / complements",
-          "straight-line / L-shaped indifference curves",
-          "perfekte Substitute / Komplemente"
-        ],
-        [
-          "Budget line (budget constraint)",
-          "bundles that cost exactly the income m",
-          "Budgetgerade"
-        ],
-        [
-          "Consumer optimum",
-          "tangency of budget line and indifference curve",
-          "Haushaltsoptimum"
-        ],
-        [
-          "Equimarginal principle",
-          "MU per euro is equal across goods at the optimum",
-          "2. Gossensches Gesetz"
-        ]
-      ]
+      "type": "text",
+      "tab": "practice",
+      "text": "Lena hat **60 €** pro Monat für Bücher (p₁ = 12 €) und Kinobesuche (p₂ = 6 €). Stelle die Budgetgerade auf, bestimme die Achsenabschnitte und die GRT. Was passiert, wenn Bücher 15 € kosten?"
+    },
+    {
+      "type": "toggle",
+      "tab": "practice",
+      "title": "Lösung anzeigen",
+      "text": "1. Budgetgerade: 12 · x₁ + 6 · x₂ = 60 ⇔ **x₂ = 10 − 2 · x₁**\n2. Achsenabschnitte: nur Bücher 60/12 = **5**, nur Kino 60/6 = **10**\n3. GRT = p₁/p₂ = 12/6 = **2**: Ein Buch mehr kostet zwei Kinobesuche.\n4. p₁ = 15: Bücher-Abschnitt 60/15 = **4**, Kino-Abschnitt bleibt 10, GRT = **2,5** – die Gerade dreht sich nach innen."
     },
     {
       "type": "heading",
-      "text": "Self-test",
+      "tab": "practice",
+      "text": "Rechenbeispiel 2: Haushaltsoptimum (consumer optimum)",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "tab": "practice",
+      "text": "Nutzenfunktion **U = x₁ · x₂**, Einkommen **m = 120**, Preise **p₁ = 3** und **p₂ = 4**. Bestimme das Optimum."
+    },
+    {
+      "type": "toggle",
+      "tab": "practice",
+      "title": "Lösung anzeigen",
+      "text": "1. Grenznutzen: GU₁ = x₂, GU₂ = x₁ → GRS = x₂/x₁\n2. GRS = GRT: x₂/x₁ = 3/4 → x₂ = 0,75 · x₁\n3. Budget: 3x₁ + 4 · 0,75x₁ = 120 → 6x₁ = 120 → **x₁∗ = 20**, **x₂∗ = 15**\n4. Probe: 3 · 20 + 4 · 15 = 60 + 60 = 120 ✓ · GRS = 15/20 = 0,75 = GRT ✓\n\nHinweis: U = x₁ · x₂ hat dieselben Indifferenzkurven wie U = x₁^0,5 · x₂^0,5 – also auch dasselbe Optimum (je die Hälfte des Einkommens pro Gut)."
+    },
+    {
+      "type": "heading",
+      "tab": "practice",
+      "text": "Rechenbeispiel 3: GRS vs. GRT (decision rule)",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "tab": "practice",
+      "text": "Ein Haushalt mit U = x₁^0,5 · x₂^0,5, m = 100, p₁ = 2, p₂ = 5 kauft das Bündel **(40, 4)**. Liegt es auf der Budgetgeraden? Ist es optimal? In welche Richtung sollte er umschichten?"
+    },
+    {
+      "type": "toggle",
+      "tab": "practice",
+      "title": "Lösung anzeigen",
+      "text": "1. Kosten: 2 · 40 + 5 · 4 = 80 + 20 = 100 ✓ – auf der Budgetgeraden.\n2. GRS = x₂/x₁ = 4/40 = **0,1**, GRT = 2/5 = **0,4**.\n3. GRS < GRT: Eine Einheit Gut 1 ist ihm nur 0,1 Einheiten Gut 2 wert, kostet aber 0,4 → **weniger Gut 1, mehr Gut 2** kaufen, bis (25, 10).\n4. Nutzenvergleich: U(40, 4) = √160 ≈ 12,6 < U(25, 10) = √250 ≈ 15,8."
+    },
+    {
+      "type": "heading",
+      "tab": "practice",
+      "text": "Rechenbeispiel 4: Einkommens- und Substitutionseffekt",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "tab": "practice",
+      "text": "Gleicher Haushalt (α = 0,5, m = 100, p₂ = 5). Der Preis von Gut 1 sinkt von **2 auf 1**. Bestimme das neue Optimum und zerlege die Änderung von x₁ in Substitutions- und Einkommenseffekt."
+    },
+    {
+      "type": "toggle",
+      "tab": "practice",
+      "title": "Lösung anzeigen",
+      "text": "1. Altes Optimum: x₁ = 0,5 · 100/2 = 25, x₂ = 10, Nutzen U₀ = √(25 · 10) ≈ 15,81.\n2. Neues Optimum: x₁ = 0,5 · 100/1 = **50**, x₂ = 10 → Gesamteffekt **+25**.\n3. Hilfspunkt H: neue Preise, aber **alter Nutzen**. Bei α = 0,5 ist U = m/(2·√(p₁·p₂)) → nötiges Einkommen m′ = 2 · 15,81 · √5 ≈ 70,7 → x₁(H) = 0,5 · 70,7/1 ≈ **35,4**.\n4. **Substitutionseffekt** = 35,4 − 25 ≈ **+10,4** · **Einkommenseffekt** = 50 − 35,4 ≈ **+14,6**.\nBeide positiv → Gut 1 ist ein normales Gut."
+    },
+    {
+      "type": "heading",
+      "tab": "practice",
+      "text": "Karteikarten (flashcards)",
       "level": 2
     },
     {
       "type": "flashcard",
-      "front": "Why can indifference curves never cross?",
-      "back": "An intersection would lie on two different utility levels at the same time – this contradicts transitive preferences (and the principle that more is better)."
+      "tab": "practice",
+      "front": "Wie lautet die Budgetgerade, und was ist ihre Steigung? *(budget line)*",
+      "back": "p₁·x₁ + p₂·x₂ = m ⇔ x₂ = m/p₂ − (p₁/p₂)·x₁. Steigung **−p₁/p₂**."
     },
     {
       "type": "flashcard",
-      "front": "What is the marginal rate of substitution (MRS)?",
-      "back": "The amount of good 2 the household would give up for one additional unit of good 1 without losing utility – the absolute slope of the indifference curve (= MU₁ / MU₂)."
+      "tab": "practice",
+      "front": "Was ist die GRT (MRT) im Haushaltsmodell?",
+      "back": "Der Tauschkurs des Markts: wie viel Gut 2 man für eine Einheit Gut 1 mehr **aufgeben muss** = **p₁/p₂** = Betrag der Steigung der Budgetgeraden."
     },
     {
       "type": "flashcard",
-      "front": "Which condition holds at the consumer optimum?",
-      "back": "The indifference curve is tangent to the budget line: **MRS = p₁ / p₂** (equivalently: MU₁ / p₁ = MU₂ / p₂)."
+      "tab": "practice",
+      "front": "Was ist die GRS (MRS)?",
+      "back": "Wie viel Gut 2 man für eine Einheit Gut 1 mehr **hergeben würde**, bei gleichem Nutzen = **GU₁/GU₂** = Betrag der Steigung der Indifferenzkurve.\n\n*EN: the rate at which a consumer is willing to trade one good for another.*"
     },
     {
       "type": "flashcard",
-      "front": "How does the budget line react when the price of good 1 rises?",
-      "back": "It rotates inward around its intercept on the x₂ axis (m/p₂) and becomes steeper – its slope is −p₁/p₂."
+      "tab": "practice",
+      "front": "GRS > GRT – was soll der Haushalt tun?",
+      "back": "Mehr Gut 1 und weniger Gut 2 kaufen: Gut 1 ist ihm mehr wert, als es am Markt kostet."
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "Welche Bedingungen gelten im Haushaltsoptimum?",
+      "back": "1. Das Bündel liegt auf der Budgetgeraden. 2. **GRS = GRT**, also GU₁/GU₂ = p₁/p₂ ⇔ GU₁/p₁ = GU₂/p₂."
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "Warum schneiden sich Indifferenzkurven nie?",
+      "back": "Am Schnittpunkt wären zwei verschiedene Nutzenniveaus gleich – ein Widerspruch dazu, dass mehr besser ist."
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "Wie reagiert die Budgetgerade, wenn das Einkommen steigt? Und wenn p₁ steigt?",
+      "back": "Einkommen ↑: **Parallelverschiebung** nach außen. p₁ ↑: **Drehung** um den x₂-Achsenabschnitt nach innen (steiler)."
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "Substitutionseffekt vs. Einkommenseffekt?",
+      "back": "**SE**: Bewegung entlang der alten Indifferenzkurve wegen des neuen Preisverhältnisses. **EE**: Wechsel auf eine andere Indifferenzkurve wegen der veränderten Kaufkraft."
+    },
+    {
+      "type": "heading",
+      "tab": "practice",
+      "text": "Quiz",
+      "level": 2
     },
     {
       "type": "quiz",
-      "question": "Which properties do well-behaved indifference curves have?",
+      "tab": "practice",
+      "question": "Wie lautet die Budgetgerade bei m = 100, p₁ = 2 und p₂ = 5, aufgelöst nach x₂?",
       "options": [
         {
-          "text": "They slope downward.",
+          "text": "x₂ = 20 − 0,4 · x₁",
           "correct": true
         },
         {
-          "text": "Curves further from the origin represent lower utility.",
+          "text": "x₂ = 20 − 2,5 · x₁",
           "correct": false
         },
         {
-          "text": "They are convex to the origin.",
-          "correct": true
+          "text": "x₂ = 100 − 2 · x₁",
+          "correct": false
         },
         {
-          "text": "They never cross.",
-          "correct": true
+          "text": "x₂ = 50 − 2,5 · x₁",
+          "correct": false
         }
       ],
-      "explanation": "Curves further from the origin contain more of both goods – so they represent **higher** utility."
+      "explanation": "2x₁ + 5x₂ = 100 → 5x₂ = 100 − 2x₁ → x₂ = 20 − 0,4x₁. Steigung −p₁/p₂ = −0,4."
     },
     {
       "type": "quiz",
-      "question": "At the consumer optimum …",
+      "tab": "practice",
+      "question": "Das Einkommen steigt, die Preise bleiben gleich. Was passiert mit der Budgetgeraden?",
       "options": [
         {
-          "text": "MRS = 0",
+          "text": "Sie bleibt unverändert.",
           "correct": false
         },
         {
-          "text": "the budget is not fully spent.",
+          "text": "Sie wird steiler.",
           "correct": false
         },
         {
-          "text": "MRS = p₁ / p₂",
+          "text": "Sie verschiebt sich parallel nach außen.",
           "correct": true
         },
         {
-          "text": "p₁ = p₂",
+          "text": "Sie dreht sich um den x₂-Achsenabschnitt.",
           "correct": false
         }
       ],
-      "explanation": "At the optimum the highest attainable indifference curve is tangent to the budget line, so their slopes – the MRS and the price ratio – are equal. Since more is better, the whole budget is spent."
+      "explanation": "Mehr Einkommen → beide Achsenabschnitte m/p₁ und m/p₂ steigen, die Steigung −p₁/p₂ bleibt gleich."
     },
     {
       "type": "quiz",
-      "question": "U = x₁^0.5 · x₂^0.5, income m = 120, prices p₁ = 3 and p₂ = 4. How much of good 1 does the household buy?",
+      "tab": "practice",
+      "question": "Im Bündel A gilt GRS = 1,6 und GRT = 0,4. Was sollte der Haushalt tun?",
       "options": [
         {
-          "text": "x₁∗ = 40",
+          "text": "Weniger Gut 1 und mehr Gut 2 kaufen.",
           "correct": false
         },
+        {
+          "text": "Mehr von beiden Gütern kaufen.",
+          "correct": false
+        },
+        {
+          "text": "Mehr Gut 1 und weniger Gut 2 kaufen.",
+          "correct": true
+        },
+        {
+          "text": "Nichts ändern – A ist optimal.",
+          "correct": false
+        }
+      ],
+      "explanation": "GRS > GRT: Eine Einheit Gut 1 ist ihm 1,6 Einheiten Gut 2 wert, kostet aber nur 0,4. Umschichten zu Gut 1 erhöht den Nutzen. (Mehr von beiden geht nicht – das Budget ist ausgeschöpft.)"
+    },
+    {
+      "type": "quiz",
+      "tab": "practice",
+      "question": "Welche Eigenschaften haben „normale“ Indifferenzkurven? (mehrere richtig)",
+      "options": [
+        {
+          "text": "Kurven näher am Ursprung bedeuten höheren Nutzen.",
+          "correct": false
+        },
+        {
+          "text": "Sie sind zum Ursprung hin gewölbt.",
+          "correct": true
+        },
+        {
+          "text": "Sie fallen.",
+          "correct": true
+        },
+        {
+          "text": "Sie schneiden sich nicht.",
+          "correct": true
+        },
+        {
+          "text": "Sie steigen.",
+          "correct": false
+        }
+      ],
+      "explanation": "Fallend (Verzicht auf Gut 2 für mehr Gut 1), schnittfrei und konvex wegen abnehmender GRS. Weiter außen = höherer Nutzen."
+    },
+    {
+      "type": "quiz",
+      "tab": "practice",
+      "question": "U = x₁ · x₂, m = 120, p₁ = 3, p₂ = 4. Wie viel von Gut 1 kauft der Haushalt im Optimum?",
+      "options": [
         {
           "text": "x₁∗ = 15",
           "correct": false
         },
         {
-          "text": "x₁∗ = 60",
+          "text": "x₁∗ = 40",
           "correct": false
         },
         {
           "text": "x₁∗ = 20",
           "correct": true
+        },
+        {
+          "text": "x₁∗ = 30",
+          "correct": false
         }
       ],
-      "explanation": "With this utility function the household spends half of its income on each good: x₁∗ = 0.5 · 120 / 3 = 20 (and x₂∗ = 0.5 · 120 / 4 = 15). Check it in the demo."
+      "explanation": "GRS = x₂/x₁ = 3/4 → x₂ = 0,75x₁ → 3x₁ + 3x₁ = 120 → x₁∗ = 20, x₂∗ = 15."
+    },
+    {
+      "type": "quiz",
+      "tab": "practice",
+      "question": "*Exam style:* At the consumer’s optimal choice …",
+      "options": [
+        {
+          "text": "the indifference curve crosses the budget line.",
+          "correct": false
+        },
+        {
+          "text": "the marginal rate of substitution equals the ratio of prices.",
+          "correct": true
+        },
+        {
+          "text": "the consumer buys equal quantities of both goods.",
+          "correct": false
+        },
+        {
+          "text": "the marginal utility of each good equals its price.",
+          "correct": false
+        }
+      ],
+      "explanation": "At the optimum the indifference curve is tangent to the budget line, so MRS = p₁/p₂ (equivalently MU₁/p₁ = MU₂/p₂)."
+    },
+    {
+      "type": "quiz",
+      "tab": "practice",
+      "question": "*Exam style:* The price of a normal good falls. Which statement is correct?",
+      "options": [
+        {
+          "text": "Both the substitution effect and the income effect increase the quantity demanded.",
+          "correct": true
+        },
+        {
+          "text": "The substitution effect increases, the income effect decreases the quantity demanded.",
+          "correct": false
+        },
+        {
+          "text": "Only the income effect matters, because relative prices do not change.",
+          "correct": false
+        },
+        {
+          "text": "The quantity demanded falls, because the good is now less valuable.",
+          "correct": false
+        }
+      ],
+      "explanation": "A lower price makes the good relatively cheaper (substitution effect ↑) and raises purchasing power; for a normal good the income effect also raises demand."
+    },
+    {
+      "type": "callout",
+      "tab": "practice",
+      "variant": "info",
+      "title": "Zurück zum Markt",
+      "text": "Aus vielen Haushaltsoptima entsteht die Marktnachfrage – sie ist der Ausgangspunkt im Kapitel **„Angebot & Nachfrage“**."
     }
   ]
 }

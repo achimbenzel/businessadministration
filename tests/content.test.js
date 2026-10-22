@@ -12,7 +12,7 @@ const servers = [];
 after(async () => { for (const s of servers) await s.stop(); });
 const start = async (opts) => { const s = await startServer(opts); servers.push(s); return s; };
 
-test('the bundled chapters are imported first in the subject, in English, with figures and demos', async () => {
+test('the bundled chapters are imported first in the subject, in sections, with figures and demos', async () => {
   const srv = await start({ env: { CONTENT_DIR: CONTENT } });
   const viewer = await srv.login('user');
   const { data } = await viewer('/api/subjects/economical-framework');
@@ -22,8 +22,18 @@ test('the bundled chapters are imported first in the subject, in English, with f
     const { chapter } = (await viewer(`/api/chapters/${id}`)).data;
     const source = await readJSON(path.join(CONTENT, 'economical-framework', folder, 'chapter.json'));
     assert.equal(chapter.status, 'published');
-    assert.equal(chapter.lang, 'en');
+    assert.equal(chapter.lang, 'de');
     assert.equal(chapter.blocks.length, source.blocks.length, `${id}: no block was dropped by the normalizer`);
+    // Every block sits in a section, and every section has content.
+    assert.deepEqual(chapter.blocks.map((b) => b.tab), source.blocks.map((b) => b.tab));
+    assert.deepEqual([...new Set(chapter.blocks.map((b) => b.tab))].sort(),
+      ['formulas', 'interactive', 'overview', 'practice', 'terms', 'theory']);
+    // Terms come with the English term and definition, formulas with explanation, example and analogy.
+    const terms = chapter.blocks.filter((b) => b.type === 'definition');
+    assert.ok(terms.length >= 15 && terms.every((d) => d.tab === 'terms' && d.termEn && d.textEn), `${id}: terms in German and English`);
+    const formulas = chapter.blocks.filter((b) => b.type === 'formula');
+    assert.ok(formulas.length >= 8 && formulas.every((f) => f.tab === 'formulas' && f.title && f.variables.length && f.explanation && f.example && f.analogy),
+      `${id}: every formula is explained`);
     const images = chapter.blocks.filter((b) => b.type === 'image');
     assert.ok(images.length >= 2);
     for (const img of images) {

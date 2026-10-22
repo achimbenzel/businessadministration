@@ -7,6 +7,33 @@ löschen). „Baustein hinzufügen“ am Ende öffnet die Auswahl; ein einzelnes
 in einem leeren Textbaustein öffnet sie ebenfalls und ersetzt den Baustein.
 
 Leere Bausteine sieht nur der Admin – Betrachter bekommen sie nicht angezeigt.
+Jeder Baustein kann zusätzlich `tab` tragen – den Abschnitt, in dem er erscheint (siehe unten).
+
+## Abschnitte (Reiter)
+
+Jeder Baustein gehört zu einem **Abschnitt** (`tab`): Übersicht (`overview`), Begriffe
+(`terms`), Formeln (`formulas`), Theorie (`theory`), Interaktiv (`interactive`) oder
+Übungen (`practice`). Hat ein Kapitel Inhalt in mindestens **zwei** Abschnitten, lesen
+Betrachter es Reiter für Reiter:
+
+- oben eine **Reiterleiste** mit Anzahl (bleibt beim Scrollen sichtbar, scrollt auf dem Handy seitwärts),
+- als erster Reiter die **Übersicht**: Einleitung, danach eine Karte pro Abschnitt mit
+  Vorschau (Begriffe, Formelnamen, Überschriften) und „Los geht’s“, dann die übrigen Übersichts-Bausteine,
+- ein **Inhaltsverzeichnis** – ab 1320 px Breite als Spalte rechts, darunter hinter dem
+  Knopf „Inhalt“ als Blatt. Es listet pro Abschnitt Überschriften, Begriffe, Formeln, Demos und
+  Quiz-/Kartenblöcke; ein Klick springt hin,
+- am Ende jedes Reiters „Zurück / Weiter“, beim letzten Reiter „Als gelernt markieren“.
+
+Der Reiter steht in der Adresse (`?tab=formulas`); Suchtreffer öffnen den passenden Reiter.
+
+Ohne eigenen Abschnitt gilt ein Standard nach Typ: `definition` → Begriffe, `formula` →
+Formeln, Demos → Interaktiv, `quiz`/`flashcard` → Übungen, alles andere → Theorie.
+Überschriften und Trennlinien gehören zum Abschnitt des **nächsten** Bausteins
+(`src/lib/chapterTabs.js`, mit Unit-Tests).
+
+Im **Editor** zeigt jeder Baustein seinen Abschnitt in der Leiste (Auswahlfeld; „Auto ·
+Theorie“ = Standard). Die Reiterleiste filtert dort: „Alle“ oder ein Abschnitt – neue
+Bausteine landen dann in diesem Abschnitt, Verschieben bleibt innerhalb der Anzeige.
 
 **Sprache:** Jedes Kapitel hat eine Inhaltssprache (Deutsch oder Englisch, im ⋯-Menü des
 Kapitels umstellbar). Die Beschriftungen in den Bausteinen folgen ihr – „Quiz“, „Check
@@ -22,25 +49,26 @@ Editor bleiben deutsch.
 | `list` | Grundlagen | `style` (bullet/number), `items[]` | Aufzählung (ein Punkt pro Zeile im Editor) |
 | `quote` | Grundlagen | `text`, `source` | Zitat mit Quelle |
 | `divider` | Grundlagen | – | Trennlinie |
-| `definition` | Lernen | `term`, `text` | Begriff + Erklärung, farbig abgesetzt |
+| `definition` | Lernen | `term`, `text`, `termEn`, `textEn` | Begriff + Erklärung, farbig abgesetzt; optional der englische Begriff (Chip „EN“) und die Definition auf Englisch (für Klausuren auf Englisch) |
 | `callout` | Lernen | `variant` (info/tip/important/warning), `title`, `text` | Hinweisbox: Info, Tipp, **Merke**, Achtung |
 | `toggle` | Lernen | `title`, `text` | Aufklappbar, z. B. „Lösung anzeigen“ |
-| `formula` | Lernen | `text`, `caption` | Formel/Rechenweg in Monospace |
+| `formula` | Lernen | `title`, `text`, `caption`, `variables[{ symbol, meaning }]`, `explanation`, `example`, `analogy` | Formel in Monospace; mit Name, Symbol-Legende („Was bedeutet was?“), „In einfachen Worten“, „Beispiel“ und „Vergleich aus dem Alltag“ – alles außer `text` optional |
 | `flashcard` | Lernen | `front`, `back` | Karte zum Umdrehen; erscheint auch im Karteikarten-Training des Fachs |
 | `quiz` | Lernen | `question`, `options[{ text, correct }]`, `explanation` | Multiple Choice mit „Antwort prüfen“ (mehrere Haken = Mehrfachauswahl) |
 | `table` | Medien & Daten | `header` (bool), `rows[][]` | Tabelle, scrollt auf dem Handy in ihrer Box |
 | `image` | Medien & Daten | `src`, `alt`, `caption` | Bild, antippen zum Vergrößern |
 | `files` | Medien & Daten | `items[{ src, name, size, type }]` | Dateiliste (Folien, Skripte) zum Öffnen/Herunterladen |
 | `links` | Medien & Daten | `items[{ url, title }]` | Linkliste (nur http/https/mailto) |
-| `supplyDemand` | Interaktiv | `title`, `caption`, `a`, `b`, `c`, `d`, `control` (none/ceiling/floor), `controlPrice` | Demo Angebot & Nachfrage: Q_D = a − b·P, Q_S = c + d·P mit Reglern; zeigt Gleichgewicht, Konsumenten-/Produzentenrente, Höchst-/Mindestpreis mit Mangel bzw. Überschuss |
-| `consumerChoice` | Interaktiv | `title`, `caption`, `m`, `p1`, `p2`, `alpha` | Demo Haushaltsoptimum: U = x₁^α · x₂^(1−α) und Budgetgerade mit Reglern; zeigt Optimum, Indifferenzkurven, GRS |
+| `supplyDemand` | Interaktiv | `title`, `caption`, `a`, `b`, `c`, `d`, `control` (none/world/ceiling/floor), `controlPrice`, `worldPrice`, `tariff` | Markt-Demo: Q_D = a − b·P, Q_S = c + d·P. Szenarien (Verschiebungen, Marktöffnung mit Importen/Exporten, Importzoll, Höchst-/Mindestpreis), Flächen mit Buchstaben **A, B, C …** (Konsumentenrente, Produzentenrente, Zolleinnahmen, Wohlfahrtsverlust schraffiert), Ergebnistabelle „jetzt vs. Start“, Bedeutung der Flächen mit Gewinnern und Verlierern |
+| `consumerChoice` | Interaktiv | `title`, `caption`, `m`, `p1`, `p2`, `alpha` | Demo Haushaltsoptimum: U = x₁^α · x₂^(1−α) und Budgetgerade mit Reglern; zeigt Optimum, Indifferenzkurven, GRT (MRT) = p₁/p₂ und GRS (MRS); „Eigenes Bündel A“ vergleicht GRS und GRT in einem frei gewählten Punkt |
 
 **Interaktive Demos:** Die gespeicherten Zahlen sind der Startzustand – im Editor per
 Zahlenfeld gesetzt. Lernende verändern sie mit Reglern; gespeichert wird dabei nichts,
 „Zurücksetzen“ stellt den Start wieder her. Die Ausgangslage bleibt gestrichelt sichtbar,
 damit Verschiebungen erkennbar sind; die Achsen richten sich nach dem Startzustand und
-skalieren beim Verschieben nicht mit. Die Rechnungen stecken in `src/lib/demos.js`
-(mit Unit-Tests).
+skalieren beim Verschieben nicht mit. Die Rechnungen stecken in `src/lib/demos.js` und
+`src/lib/market.js` (Flächen A, B, C … wie in den Lehrbuch-Diagrammen; mit Unit-Tests),
+die Texte der Markt-Demo in `src/lib/marketText.js`.
 
 ## Formatierung in Textfeldern
 

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" font-family="'DM Sans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" role="img" aria-label="Budgetgerade: alle Bündel, die genau das Einkommen kosten; darunter die bezahlbaren Bündel">
+<title>Budgetgerade: alle Bündel, die genau das Einkommen kosten; darunter die bezahlbaren Bündel</title>
+<defs><marker id="arr-bg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#131316"/></marker><marker id="arr-axis" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8b8b94"/></marker><marker id="arr-guide" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6b6b75"/></marker><marker id="arr-text" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#ececef"/></marker><marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a8a8b0"/></marker><marker id="arr-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2ec5d3"/></marker><marker id="arr-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#fbbf24"/></marker><marker id="arr-pink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#f472b6"/></marker><marker id="arr-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6b9cff"/></marker><marker id="arr-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#34d399"/></marker><marker id="arr-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a78bfa"/></marker><marker id="arr-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#fb923c"/></marker><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#ececef" fill-opacity="0.06"/><line x1="0" y1="0" x2="0" y2="8" stroke="#ececef" stroke-opacity="0.55" stroke-width="2.5"/></pattern></defs>
+<rect width="640" height="420" fill="#131316"/>
+<line x1="64" y1="372" x2="618" y2="372" stroke="#8b8b94" stroke-width="2.5" marker-end="url(#arr-axis)"/>
+<line x1="64" y1="372" x2="64" y2="18" stroke="#8b8b94" stroke-width="2.5" marker-end="url(#arr-axis)"/>
+<text x="78" y="28" font-size="17" fill="#a8a8b0" text-anchor="start" font-weight="500" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">Gut 2 (x₂)</text>
+<text x="618" y="410" font-size="17" fill="#a8a8b0" text-anchor="end" font-weight="500" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">Gut 1 (x₁)</text>
+<text x="54" y="394" font-size="16" fill="#a8a8b0" text-anchor="end" font-weight="500" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">0</text>
+<polygon points="64,372 64,103.2 510.7,372" fill="#2ec5d3" fill-opacity="0.12" stroke="#131316" stroke-width="1.5"/>
+<line x1="64" y1="103.2" x2="510.7" y2="372" stroke="#2ec5d3" stroke-width="3.5" stroke-linecap="round"/>
+<polyline points="153.3,157 242.7,157 242.7,210.7" fill="none" stroke="#fbbf24" stroke-width="2.5" stroke-dasharray="6 5"/>
+<text x="198" y="148" font-size="15.5" fill="#fbbf24" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">Δx₁ = 10</text>
+<text x="250.7" y="189.85" font-size="15.5" fill="#fbbf24" text-anchor="start" font-weight="700" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">Δx₂ = −4</text>
+<circle cx="287.3" cy="237.6" r="6.5" fill="#ececef" stroke="#131316" stroke-width="2.5"/>
+<circle cx="198" cy="291.4" r="6.5" fill="#a8a8b0" stroke="#131316" stroke-width="2.5"/>
+<circle cx="376.7" cy="210.7" r="6.5" fill="#f472b6" stroke="#131316" stroke-width="2.5"/>
+<text x="299.3" y="255.6" font-size="19" fill="#ececef" text-anchor="start" font-weight="700" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">A</text>
+<text x="210" y="297.4" font-size="19" fill="#a8a8b0" text-anchor="start" font-weight="700" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">B</text>
+<text x="388.7" y="216.7" font-size="19" fill="#f472b6" text-anchor="start" font-weight="700" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">C</text>
+<text x="76" y="93.2" font-size="16" fill="#2ec5d3" text-anchor="start" font-weight="700" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">m/p₂ = 20</text>
+<text x="518.7" y="360" font-size="16" fill="#2ec5d3" text-anchor="start" font-weight="700" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">m/p₁ = 50</text>
+<text x="54" y="109.2" font-size="18" fill="#ececef" text-anchor="end" font-weight="500" font-style="italic" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">20</text>
+<text x="54" y="243.6" font-size="18" fill="#ececef" text-anchor="end" font-weight="500" font-style="italic" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">10</text>
+<text x="287.3" y="398" font-size="18" fill="#ececef" text-anchor="middle" font-weight="500" font-style="italic" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">25</text>
+<text x="510.7" y="398" font-size="18" fill="#ececef" text-anchor="middle" font-weight="500" font-style="italic" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">50</text>
+<line x1="64" y1="237.6" x2="287.3" y2="237.6" stroke="#6b6b75" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6"/>
+<line x1="287.3" y1="372" x2="287.3" y2="237.6" stroke="#6b6b75" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6"/>
+<rect x="334" y="16" width="284" height="180" rx="10" fill="#131316" fill-opacity="0.92" stroke="#2c2c32"/>
+<line x1="348" y1="38" x2="374" y2="38" stroke="#2ec5d3" stroke-width="3.5" stroke-linecap="round"/>
+<text x="384" y="44" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">Budgetgerade: 2x₁ + 5x₂ = 100</text>
+<rect x="348" y="57" width="26" height="16" rx="3" fill="#2ec5d3" fill-opacity="0.3" stroke="#2ec5d3" stroke-opacity="0.6"/>
+<text x="384" y="71" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">bezahlbar (budget set)</text>
+<line x1="348" y1="92" x2="374" y2="92" stroke="#fbbf24" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="6 5"/>
+<text x="384" y="98" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">Steigung −4/10 = −p₁/p₂</text>
+<circle cx="361" cy="119" r="6" fill="#ececef"/>
+<text x="384" y="125" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">A: gibt alles aus</text>
+<circle cx="361" cy="146" r="6" fill="#a8a8b0"/>
+<text x="384" y="152" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">B: Geld bleibt übrig</text>
+<circle cx="361" cy="173" r="6" fill="#f472b6"/>
+<text x="384" y="179" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">C: zu teuer</text>
+</svg>

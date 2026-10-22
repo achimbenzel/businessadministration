@@ -22,6 +22,13 @@ export default function MobileBar({ onMenu, onSearch }) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Sticky bars below this one (chapter tabs, admin bar) move up while it's hidden.
+  useEffect(() => {
+    const root = document.documentElement;
+    if (hidden) root.dataset.mbar = 'hidden'; else delete root.dataset.mbar;
+    return () => { delete root.dataset.mbar; };
+  }, [hidden]);
+
   return (
     <header className={`mbar ${hidden ? 'mbar-hidden' : ''}`}>
       <button className="icon-btn mbar-btn" onClick={onMenu} aria-label="Menü öffnen"><MenuIcon size={20} /></button>

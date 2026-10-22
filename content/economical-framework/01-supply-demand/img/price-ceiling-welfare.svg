@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" font-family="'DM Sans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" role="img" aria-label="Höchstpreis: Flächen A bis E – Konsumentenrente, Umverteilung, Wohlfahrtsverlust, Produzentenrente">
+<title>Höchstpreis: Flächen A bis E – Konsumentenrente, Umverteilung, Wohlfahrtsverlust, Produzentenrente</title>
+<defs><marker id="arr-bg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#131316"/></marker><marker id="arr-axis" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8b8b94"/></marker><marker id="arr-guide" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6b6b75"/></marker><marker id="arr-text" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#ececef"/></marker><marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a8a8b0"/></marker><marker id="arr-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2ec5d3"/></marker><marker id="arr-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#fbbf24"/></marker><marker id="arr-pink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#f472b6"/></marker><marker id="arr-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6b9cff"/></marker><marker id="arr-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#34d399"/></marker><marker id="arr-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a78bfa"/></marker><marker id="arr-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#fb923c"/></marker><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#ececef" fill-opacity="0.06"/><line x1="0" y1="0" x2="0" y2="8" stroke="#ececef" stroke-opacity="0.55" stroke-width="2.5"/></pattern></defs>
+<rect width="640" height="420" fill="#131316"/>
+<line x1="64" y1="372" x2="618" y2="372" stroke="#8b8b94" stroke-width="2.5" marker-end="url(#arr-axis)"/>
+<line x1="64" y1="372" x2="64" y2="18" stroke="#8b8b94" stroke-width="2.5" marker-end="url(#arr-axis)"/>
+<text x="78" y="28" font-size="17" fill="#a8a8b0" text-anchor="start" font-weight="500" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">Preis P (price)</text>
+<text x="618" y="410" font-size="17" fill="#a8a8b0" text-anchor="end" font-weight="500" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">Menge Q (quantity)</text>
+<text x="54" y="394" font-size="16" fill="#a8a8b0" text-anchor="end" font-weight="500" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">0</text>
+<polygon points="64,36 64,237.6 278.4,237.6 278.4,170.4" fill="#f472b6" fill-opacity="0.24" stroke="#131316" stroke-width="1.5"/>
+<polygon points="64,271.2 64,237.6 278.4,237.6 278.4,271.2" fill="#f472b6" fill-opacity="0.24" stroke="#131316" stroke-width="1.5"/>
+<polygon points="278.4,170.4 278.4,237.6 385.6,237.6" fill="url(#hatch)" stroke="#131316" stroke-width="1.5"/>
+<polygon points="278.4,237.6 278.4,271.2 385.6,237.6" fill="url(#hatch)" stroke="#131316" stroke-width="1.5"/>
+<polygon points="64,271.2 278.4,271.2 64,338.4" fill="#34d399" fill-opacity="0.24" stroke="#131316" stroke-width="1.5"/>
+<line x1="64" y1="237.6" x2="385.6" y2="237.6" stroke="#6b6b75" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6"/>
+<line x1="278.4" y1="372" x2="278.4" y2="170.4" stroke="#6b6b75" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6"/>
+<line x1="385.6" y1="372" x2="385.6" y2="237.6" stroke="#6b6b75" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6"/>
+<line x1="64" y1="36" x2="600" y2="372" stroke="#f472b6" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="64" y1="338.4" x2="600" y2="170.4" stroke="#34d399" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="64" y1="271.2" x2="600" y2="271.2" stroke="#6b9cff" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="8 6"/>
+<text x="153.3" y="171.8" font-size="21" fill="#ececef" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">A</text>
+<text x="171.2" y="261.4" font-size="21" fill="#ececef" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">B</text>
+<text x="318.1" y="222.2" font-size="21" fill="#ececef" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">C</text>
+<text x="318.1" y="255.8" font-size="21" fill="#ececef" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">D</text>
+<text x="135.5" y="300.6" font-size="21" fill="#ececef" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">E</text>
+<circle cx="385.6" cy="237.6" r="6" fill="#131316" stroke="#ececef" stroke-width="2.5"/>
+<text x="397.6" y="229.6" font-size="17" fill="#a8a8b0" text-anchor="start" font-weight="700" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">E∗</text>
+<line x1="281.4" y1="293" x2="436.2" y2="293" stroke="#6b9cff" stroke-width="2.2" marker-start="url(#arr-blue)" marker-end="url(#arr-blue)"/>
+<text x="358.79999999999995" y="314" font-size="15.5" fill="#6b9cff" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">Knappheit (shortage)</text>
+<text x="545" y="332" font-size="21" fill="#f472b6" text-anchor="start" font-weight="700" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">D</text>
+<text x="606" y="177.4" font-size="21" fill="#34d399" text-anchor="start" font-weight="700" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">S</text>
+<text x="54" y="243.6" font-size="18" fill="#ececef" text-anchor="end" font-weight="500" font-style="italic" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">P∗</text>
+<text x="54" y="277.2" font-size="18" fill="#ececef" text-anchor="end" font-weight="500" font-style="italic" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">P<tspan dy="4" font-size="72%">C</tspan><tspan dy="-4"></tspan></text>
+<text x="278.4" y="398" font-size="18" fill="#ececef" text-anchor="middle" font-weight="500" font-style="italic" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">Q₁</text>
+<text x="385.6" y="398" font-size="18" fill="#ececef" text-anchor="middle" font-weight="500" font-style="italic" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">Q∗</text>
+<rect x="332" y="16" width="286" height="126" rx="10" fill="#131316" fill-opacity="0.92" stroke="#2c2c32"/>
+<rect x="346" y="30" width="26" height="16" rx="3" fill="#f472b6" fill-opacity="0.3" stroke="#f472b6" stroke-opacity="0.6"/>
+<text x="382" y="44" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">A + B: Konsumentenrente (CS)</text>
+<rect x="346" y="57" width="26" height="16" rx="3" fill="#34d399" fill-opacity="0.3" stroke="#34d399" stroke-opacity="0.6"/>
+<text x="382" y="71" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">E: Produzentenrente (PS)</text>
+<rect x="346" y="84" width="26" height="16" rx="3" fill="url(#hatch)" stroke="#a8a8b0" stroke-opacity="0.6"/>
+<text x="382" y="98" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">C + D: Wohlfahrtsverlust (DWL)</text>
+<line x1="346" y1="119" x2="372" y2="119" stroke="#6b9cff" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="8 6"/>
+<text x="382" y="125" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">P<tspan dy="4" font-size="72%">C</tspan><tspan dy="-4">: Höchstpreis</tspan></text>
+</svg>

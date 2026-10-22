@@ -32,17 +32,19 @@ content/
 ```json
 {
   "id": "efed-01-supply-demand-indifferenz",
-  "version": 2,
+  "version": 4,
   "subjectId": "economical-framework",
-  "lang": "en",
+  "lang": "de",
   "position": "first",
   "status": "published",
   "title": "…",
   "summary": "…",
   "blocks": [
-    { "type": "text", "text": "**fett**, *kursiv* …" },
-    { "type": "image", "file": "img/market-equilibrium.svg", "caption": "…", "alt": "…" },
-    { "type": "supplyDemand", "a": 100, "b": 2, "c": -20, "d": 4 }
+    { "type": "text", "tab": "overview", "text": "**fett**, *kursiv* …" },
+    { "type": "definition", "tab": "terms", "term": "Konsumentenrente", "termEn": "consumer surplus (CS)", "text": "…", "textEn": "…" },
+    { "type": "formula", "tab": "formulas", "title": "…", "text": "CS = ½ · (P_max − P∗) · Q∗", "variables": [{ "symbol": "CS", "meaning": "…" }], "explanation": "…", "example": "…", "analogy": "…" },
+    { "type": "image", "tab": "theory", "file": "img/market-equilibrium.svg", "caption": "…", "alt": "…" },
+    { "type": "supplyDemand", "tab": "interactive", "a": 100, "b": 2, "c": -20, "d": 4 }
   ]
 }
 ```
@@ -57,6 +59,8 @@ content/
 - `status` – `"published"` (Standard) oder `"draft"`.
 - `blocks` – Bausteine wie in [docs/bausteine.md](../docs/bausteine.md). Bilder und Dateien
   verweisen mit `file` auf eine Datei im Paket (`image`: `file`, `files`: `items[].file`).
+  `tab` legt den Abschnitt fest (`overview`, `terms`, `formulas`, `theory`, `interactive`,
+  `practice`); ohne `tab` gilt der Standard nach Typ.
 
 Ein Paket mit unbekanntem Fach wird übersprungen (mit Hinweis in der Konsole) und
 beim nächsten Start erneut versucht. `CONTENT_DIR=off` schaltet den Import ab.
@@ -64,7 +68,8 @@ beim nächsten Start erneut versucht. `CONTENT_DIR=off` schaltet den Import ab.
 ## Abbildungen
 
 Die Grafiken der Economical-Framework-Kapitel erzeugt `economical-framework/figures.mjs`
-(es schreibt in die `img/`-Ordner beider Kapitel):
+(es schreibt in die `img/`-Ordner beider Kapitel). Beschriftungen sind deutsch mit dem
+englischen Begriff in Klammern; Farben und Flächenbuchstaben entsprechen den Demos:
 
 ```bash
 node content/economical-framework/figures.mjs

@@ -11,7 +11,10 @@ export const CHAPTER_LANGS = ['de', 'en'];
 const TEXT_MAX = 20000;
 const CALLOUT_VARIANTS = ['info', 'tip', 'warning', 'important'];
 const LIST_STYLES = ['bullet', 'number'];
-const DEMO_CONTROLS = ['none', 'ceiling', 'floor'];
+const DEMO_CONTROLS = ['none', 'ceiling', 'floor', 'world'];
+// The section (tab) of the chapter a block belongs to. '' = decided by its type
+// (definition → terms, formula → formulas …, see src/lib/chapterTabs.js).
+export const BLOCK_TABS = ['overview', 'terms', 'formulas', 'theory', 'interactive', 'practice'];
 
 // A file of a chapter lives in its own folder: chapters/<chapterId>/<name>.
 // Nothing else may be referenced (no ../, no other chapter's files).
@@ -35,9 +38,22 @@ const BLOCKS = {
   quote: (b) => ({ text: str(b.text, 4000), source: line(b.source, 200) }),
   divider: () => ({}),
   callout: (b) => ({ variant: oneOf(b.variant, CALLOUT_VARIANTS), title: line(b.title, 200), text: str(b.text, TEXT_MAX) }),
-  definition: (b) => ({ term: line(b.term, 200), text: str(b.text, TEXT_MAX) }),
+  // termEn / textEn: the English term and a one-line English definition (exams in English).
+  definition: (b) => ({ term: line(b.term, 200), text: str(b.text, TEXT_MAX), termEn: line(b.termEn, 200), textEn: str(b.textEn, 4000) }),
   toggle: (b) => ({ title: line(b.title, 300), text: str(b.text, TEXT_MAX) }),
-  formula: (b) => ({ text: str(b.text, 4000), caption: line(b.caption, 300) }),
+  // A formula with its name, the symbols, an explanation in plain words, an
+  // example and an analogy — formulas are learned by understanding them.
+  formula: (b) => ({
+    title: line(b.title, 200),
+    text: str(b.text, 4000),
+    caption: line(b.caption, 300),
+    variables: list(b.variables, 20)
+      .map((v) => ({ symbol: line(v?.symbol, 40), meaning: line(v?.meaning, 300) }))
+      .filter((v) => v.symbol || v.meaning),
+    explanation: str(b.explanation, TEXT_MAX),
+    example: str(b.example, TEXT_MAX),
+    analogy: str(b.analogy, TEXT_MAX),
+  }),
   flashcard: (b) => ({ front: str(b.front, 4000), back: str(b.back, 8000) }),
   quiz: (b) => ({
     question: str(b.question, 4000),
@@ -56,7 +72,8 @@ const BLOCKS = {
   }),
   // Interactive demos: the stored numbers are the starting point; viewers change
   // them with sliders (their changes are not saved).
-  // Market: Q_D = a − b·P, Q_S = c + d·P, optional price ceiling / floor.
+  // Market: Q_D = a − b·P, Q_S = c + d·P; optional price ceiling / floor or a
+  // world market (world price, tariff per unit).
   supplyDemand: (b) => ({
     title: line(b.title, 200),
     caption: line(b.caption, 500),
@@ -66,6 +83,8 @@ const BLOCKS = {
     d: num(b.d, 0.001, 1e4, 4),
     control: oneOf(b.control, DEMO_CONTROLS),
     controlPrice: num(b.controlPrice, 0, 1e6, 0),
+    worldPrice: num(b.worldPrice, 0, 1e6, 0),
+    tariff: num(b.tariff, 0, 1e6, 0),
   }),
   // Consumer choice: U = x₁^α · x₂^(1−α), budget p₁·x₁ + p₂·x₂ = m.
   consumerChoice: (b) => ({
@@ -91,7 +110,7 @@ export function normalizeUrl(v) {
 
 export function normalizeBlock(b, chapterId) {
   if (!b || typeof b !== 'object' || !BLOCKS[b.type]) return null;
-  return { id: subId(b.id), type: b.type, ...BLOCKS[b.type](b, chapterId) };
+  return { id: subId(b.id), type: b.type, tab: BLOCK_TABS.includes(b.tab) ? b.tab : '', ...BLOCKS[b.type](b, chapterId) };
 }
 
 export function normalizeChapter(c) {
@@ -127,8 +146,8 @@ export function blockText(b) {
     case 'list': return b.items.join('\n');
     case 'quote': return `${b.text} ${b.source}`;
     case 'callout': case 'toggle': return `${b.title} ${b.text}`;
-    case 'definition': return `${b.term} ${b.text}`;
-    case 'formula': return `${b.text} ${b.caption}`;
+    case 'definition': return `${b.term} ${b.termEn} ${b.text} ${b.textEn}`;
+    case 'formula': return [b.title, b.text, b.caption, ...b.variables.map((v) => `${v.symbol} ${v.meaning}`), b.explanation, b.example, b.analogy].join(' ');
     case 'flashcard': return `${b.front} ${b.back}`;
     case 'quiz': return [b.question, ...b.options.map((o) => o.text), b.explanation].join(' ');
     case 'table': return b.rows.map((r) => r.join(' ')).join('\n');

@@ -174,3 +174,27 @@ test('interactive demo blocks keep their numbers in range', async () => {
   assert.deepEqual([cc.m, cc.p1, cc.p2, cc.alpha], [50, 0.001, 1e6, 0.95]);
   assert.deepEqual([empty.a, empty.b, empty.c, empty.d], [100, 2, -20, 4]);
 });
+
+test('blocks keep their section; formulas and definitions carry explanations', async () => {
+  const c = await create('Sections');
+  const res = await patch(c.id, {
+    blocks: [
+      { type: 'definition', tab: 'terms', term: 'Konsumentenrente', termEn: 'Consumer surplus', text: 'x', textEn: 'Willingness to pay minus price.' },
+      {
+        type: 'formula', tab: 'nonsense', title: 'Consumer surplus', text: 'CS = ½ · (Pmax − P*) · Q*',
+        variables: [{ symbol: 'Q*', meaning: 'Gleichgewichtsmenge' }, { symbol: '', meaning: '' }, 'junk'],
+        explanation: 'Fläche unter der Nachfrage', example: '½ · 30 · 60 = 900', analogy: 'Konzertticket',
+      },
+      { type: 'supplyDemand', control: 'world', worldPrice: 12, tariff: 4 },
+    ],
+  });
+  const [d, f, sd] = res.data.chapter.blocks;
+  assert.equal(d.tab, 'terms');
+  assert.equal(d.termEn, 'Consumer surplus');
+  assert.equal(f.tab, '');
+  assert.deepEqual(f.variables, [{ symbol: 'Q*', meaning: 'Gleichgewichtsmenge' }]);
+  assert.equal(f.analogy, 'Konzertticket');
+  assert.deepEqual([sd.control, sd.worldPrice, sd.tariff], ['world', 12, 4]);
+  const hit = (await admin('/api/search?q=konzertticket')).data.results.find((r) => r.id === c.id);
+  assert.ok(hit, 'formula analogies are searchable');
+});

@@ -1,436 +1,1363 @@
 {
   "id": "efed-01-supply-demand-indifferenz",
-  "version": 3,
+  "version": 4,
   "subjectId": "economical-framework",
-  "lang": "en",
+  "lang": "de",
   "position": "first",
   "status": "published",
-  "title": "Supply & Demand",
-  "summary": "How markets set prices: demand, supply, market equilibrium, consumer and producer surplus, price controls and shifts – with an interactive market demo.",
+  "title": "Angebot & Nachfrage (Supply & Demand)",
+  "summary": "Wie Märkte Preise bilden: Nachfrage, Angebot, Gleichgewicht, Konsumenten- und Produzentenrente, Höchst- und Mindestpreise, Weltmarkt und Zoll – mit Formeln, Beispielen und interaktiver Markt-Demo. Fachbegriffe auf Deutsch und Englisch.",
   "blocks": [
     {
       "type": "text",
-      "text": "This chapter covers the core model of microeconomics: **supply and demand**. It explains how prices form in competitive markets, why they change, and what happens when governments set prices. The next chapter, *Indifference Curves and Consumer Choice*, shows where the demand curve comes from."
+      "tab": "overview",
+      "text": "Warum ist Spargel im Mai billiger als im Januar? Warum findet man bei einer Mietpreisbremse kaum eine Wohnung? Und wer gewinnt, wenn ein Land seine Grenzen für Importe öffnet? Antworten liefert das wichtigste Modell der Volkswirtschaftslehre: **Angebot und Nachfrage** (*supply and demand*).\n\nDie Klausur wird auf **Englisch** geschrieben. Deshalb steht hinter jedem deutschen Fachbegriff der englische in Klammern, und jede Definition gibt es zusätzlich so, wie sie in einer englischen Klausur stehen könnte."
     },
     {
       "type": "callout",
-      "variant": "info",
-      "title": "Learning objectives",
-      "text": "- explain and draw demand and supply curves\n- distinguish a movement along a curve from a shift of the curve\n- calculate the market equilibrium and interpret consumer and producer surplus\n- explain the effects of price ceilings and price floors\n- predict how shifts in supply and demand change price and quantity"
-    },
-    {
-      "type": "heading",
-      "text": "1. Demand",
-      "level": 2
-    },
-    {
-      "type": "definition",
-      "term": "Demand",
-      "text": "The quantity of a good that buyers are **willing and able** to purchase at different prices – all other things being equal (*ceteris paribus*). The **demand curve** shows this relationship between the price P and the quantity demanded Q."
-    },
-    {
-      "type": "text",
-      "text": "**Law of demand:** Ceteris paribus, when the price of a good rises, the quantity demanded falls. The demand curve therefore slopes downward from the upper left to the lower right.\n\nWhy?\n- **Substitution effect:** The good becomes more expensive relative to alternatives, so buyers switch to substitutes.\n- **Income effect:** A higher price reduces the purchasing power of a given income.\n- **Diminishing marginal utility:** Each additional unit adds less utility, so buyers only purchase more at a lower price."
-    },
-    {
-      "type": "image",
-      "file": "img/demand-movement-vs-shift.svg",
-      "caption": "Figure 1: Movement along the demand curve (A → B) and shift of the demand curve (D₀ → D₁)",
-      "alt": "Downward-sloping demand curve D0 with points A and B; an arrow shows the movement from A to B as the price falls. Next to it, the demand curve D1 shifted to the right."
-    },
-    {
-      "type": "callout",
+      "tab": "overview",
       "variant": "important",
-      "title": "Key point: movement or shift?",
-      "text": "A change in **the good's own price** causes a **movement along** the curve – a change in the *quantity demanded*. A change in **any other determinant**, such as income or preferences, **shifts the whole curve** – a change in *demand*."
-    },
-    {
-      "type": "heading",
-      "text": "What shifts the demand curve?",
-      "level": 3
-    },
-    {
-      "type": "table",
-      "header": true,
-      "rows": [
-        [
-          "Determinant",
-          "Example",
-          "Effect on the demand curve"
-        ],
-        [
-          "Income",
-          "income rises",
-          "normal good: shifts right · inferior good: shifts left"
-        ],
-        [
-          "Price of substitutes",
-          "tea becomes more expensive",
-          "demand for coffee shifts right"
-        ],
-        [
-          "Price of complements",
-          "printers become more expensive",
-          "demand for ink cartridges shifts left"
-        ],
-        [
-          "Tastes and preferences",
-          "organic food is popular",
-          "shifts right"
-        ],
-        [
-          "Expectations",
-          "a price increase is announced",
-          "today's demand shifts right"
-        ],
-        [
-          "Number of buyers",
-          "population grows",
-          "shifts right"
-        ]
-      ]
-    },
-    {
-      "type": "heading",
-      "text": "2. Supply",
-      "level": 2
-    },
-    {
-      "type": "definition",
-      "term": "Supply",
-      "text": "The quantity of a good that sellers are **willing and able** to offer at different prices – ceteris paribus. The **supply curve** shows the relationship between the price and the quantity supplied."
-    },
-    {
-      "type": "text",
-      "text": "**Law of supply:** The higher the price, the greater the quantity supplied – the supply curve slopes upward. A higher price makes production more profitable, and additional output can often only be produced at **rising marginal cost**: a firm produces another unit only if the price covers its cost."
-    },
-    {
-      "type": "heading",
-      "text": "What shifts the supply curve?",
-      "level": 3
-    },
-    {
-      "type": "table",
-      "header": true,
-      "rows": [
-        [
-          "Determinant",
-          "Example",
-          "Effect on the supply curve"
-        ],
-        [
-          "Input prices",
-          "energy becomes more expensive",
-          "shifts left"
-        ],
-        [
-          "Technology",
-          "more efficient production",
-          "shifts right"
-        ],
-        [
-          "Taxes and subsidies",
-          "a per-unit subsidy",
-          "shifts right (a tax: shifts left)"
-        ],
-        [
-          "Expectations",
-          "higher prices expected",
-          "today's supply tends to shift left (goods are held back)"
-        ],
-        [
-          "Number of sellers",
-          "new competitors enter",
-          "shifts right"
-        ]
-      ]
-    },
-    {
-      "type": "heading",
-      "text": "3. Market equilibrium",
-      "level": 2
-    },
-    {
-      "type": "text",
-      "text": "In **market equilibrium** the supply and demand curves intersect: at the **equilibrium price P∗** the quantity demanded equals the quantity supplied, the **equilibrium quantity Q∗**. The market *clears* – everyone who wants to buy or sell at this price can do so."
+      "title": "Lernziele (learning objectives)",
+      "text": "- Nachfrage- und Angebotskurven erklären und zeichnen (*draw demand and supply curves*)\n- Bewegung **entlang** einer Kurve von einer **Verschiebung** der Kurve unterscheiden (*movement along vs. shift*)\n- Gleichgewichtspreis und -menge berechnen (*equilibrium price and quantity*)\n- Konsumenten- und Produzentenrente berechnen und im Diagramm als Flächen finden (*consumer and producer surplus*)\n- Höchst- und Mindestpreise, Weltmarkt und Zoll mit den Flächen A, B, C … analysieren (*price controls, world market, tariff*)"
     },
     {
       "type": "image",
+      "tab": "overview",
       "file": "img/market-equilibrium.svg",
-      "caption": "Figure 2: Market equilibrium E with consumer surplus (CS) and producer surplus (PS)",
-      "alt": "Downward-sloping demand curve D and upward-sloping supply curve S intersect at equilibrium E with price P* and quantity Q*. The area between the demand curve and the price is consumer surplus, the area between the price and the supply curve is producer surplus."
+      "caption": "Das Grundbild des Kapitels: Nachfrage D und Angebot S schneiden sich im Gleichgewicht E. Fläche A ist die Konsumentenrente (CS), Fläche B die Produzentenrente (PS).",
+      "alt": "Marktdiagramm: fallende Nachfragekurve D, steigende Angebotskurve S, Schnittpunkt E bei P∗ und Q∗; darüber Fläche A (Konsumentenrente), darunter Fläche B (Produzentenrente)."
+    },
+    {
+      "type": "callout",
+      "tab": "overview",
+      "variant": "tip",
+      "title": "Die 5 Kernaussagen (key takeaways)",
+      "text": "1. Steigt der Preis, sinkt die **nachgefragte** Menge und steigt die **angebotene** Menge.\n2. Im **Gleichgewicht** gilt Q_D = Q_S – es gibt weder Knappheit noch Überschuss.\n3. Ändert sich der **eigene Preis**, bewegt man sich **auf** der Kurve. Ändert sich etwas anderes (Einkommen, Kosten, Geschmack …), **verschiebt** sich die Kurve.\n4. Konsumentenrente + Produzentenrente = **Gesamtwohlfahrt**. Im freien Marktgleichgewicht ist sie am größten.\n5. Höchst-/Mindestpreise und Zölle kosten Wohlfahrt (**Wohlfahrtsverlust**, *deadweight loss*), Freihandel bringt Wohlfahrt."
+    },
+    {
+      "type": "callout",
+      "tab": "overview",
+      "variant": "info",
+      "title": "Ein Beispielmarkt für alles",
+      "text": "Alle Formeln, Rechenbeispiele und die Demo nutzen denselben Markt:\n\n**Nachfrage Q_D = 100 − 2P** und **Angebot Q_S = −20 + 4P**\n\nGleichgewicht: P∗ = 20, Q∗ = 60 · Konsumentenrente 900 · Produzentenrente 450. So erkennst du die Zahlen überall wieder und kannst jeden Schritt nachrechnen."
+    },
+    {
+      "type": "text",
+      "tab": "terms",
+      "text": "Die Grundbegriffe zuerst – jeweils auf Deutsch erklärt und darunter **auf Englisch**, wie du sie in der Klausur verwenden kannst. Am Ende steht eine Vokabelliste zum Wiederholen."
+    },
+    {
+      "type": "heading",
+      "tab": "terms",
+      "text": "Markt und Kurven (market and curves)",
+      "level": 2
     },
     {
       "type": "definition",
-      "term": "Consumer surplus",
-      "text": "The difference between buyers' **willingness to pay** and the price they actually pay – graphically the area **below the demand curve and above the price**."
+      "tab": "terms",
+      "term": "Markt",
+      "termEn": "market",
+      "text": "Käufer (*buyers*) und Verkäufer (*sellers*) eines Guts, die miteinander handeln. Im Modell des **vollkommenen Wettbewerbs** (*perfect competition*) gibt es so viele von ihnen, dass niemand allein den Preis beeinflussen kann – alle sind **Preisnehmer** (*price takers*).",
+      "textEn": "A market is a group of buyers and sellers of a particular good or service. In a perfectly competitive market, each buyer and seller is a price taker."
     },
     {
       "type": "definition",
-      "term": "Producer surplus",
-      "text": "The difference between the market price and the lowest price at which sellers would still sell (their marginal cost) – the area **above the supply curve and below the price**. Consumer and producer surplus together make up **total surplus**, the welfare the market creates."
+      "tab": "terms",
+      "term": "Nachfrage",
+      "termEn": "demand · quantity demanded (Q_D)",
+      "text": "Die Menge eines Guts, die Käufer zu einem bestimmten Preis kaufen **wollen und können**. Die **Nachfragekurve** (*demand curve*) zeigt diese Menge für jeden möglichen Preis – sie fällt von links oben nach rechts unten.",
+      "textEn": "The quantity demanded is the amount of a good that buyers are willing and able to purchase. The demand curve shows the relationship between the price of a good and the quantity demanded."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Gesetz der Nachfrage",
+      "termEn": "law of demand",
+      "text": "Steigt der Preis eines Guts, sinkt die nachgefragte Menge – wenn alles andere gleich bleibt. Deshalb hat die Nachfragekurve eine **negative Steigung**.",
+      "textEn": "Other things equal, when the price of a good rises, the quantity demanded of the good falls."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Zahlungsbereitschaft",
+      "termEn": "willingness to pay (WTP)",
+      "text": "Der **höchste Preis**, den ein Käufer für ein Gut gerade noch zahlen würde. Die Höhe der Nachfragekurve über einer Menge zeigt die Zahlungsbereitschaft des letzten (marginalen) Käufers.",
+      "textEn": "Willingness to pay is the maximum amount that a buyer will pay for a good. The height of the demand curve measures the willingness to pay of the marginal buyer."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Angebot",
+      "termEn": "supply · quantity supplied (Q_S)",
+      "text": "Die Menge eines Guts, die Verkäufer zu einem bestimmten Preis anbieten **wollen und können**. Die **Angebotskurve** (*supply curve*) steigt von links unten nach rechts oben.",
+      "textEn": "The quantity supplied is the amount of a good that sellers are willing and able to sell. The supply curve shows the relationship between the price of a good and the quantity supplied."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Gesetz des Angebots",
+      "termEn": "law of supply",
+      "text": "Steigt der Preis, steigt die angebotene Menge: Die Produktion lohnt sich mehr, und auch Anbieter mit höheren Kosten steigen ein. Die Angebotskurve hat eine **positive Steigung**.",
+      "textEn": "Other things equal, when the price of a good rises, the quantity supplied of the good also rises."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Ceteris paribus",
+      "termEn": "ceteris paribus · other things being equal",
+      "text": "Lateinisch für „unter sonst gleichen Bedingungen“: Man ändert **eine** Größe (z. B. den Preis) und hält alle anderen fest (Einkommen, Preise anderer Güter, Kosten …). Nur so lässt sich eine Kurve zeichnen.",
+      "textEn": "Ceteris paribus is a Latin phrase meaning “other things being equal”: all variables other than the ones being studied are assumed to be constant."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Bewegung entlang vs. Verschiebung der Kurve",
+      "termEn": "movement along vs. shift of the curve",
+      "text": "Ändert sich der **eigene Preis** des Guts, bewegt man sich **entlang** der Kurve – die *nachgefragte Menge* ändert sich. Ändert sich **etwas anderes** (Einkommen, Geschmack, Preise anderer Güter, Kosten), **verschiebt** sich die ganze Kurve – die *Nachfrage* ändert sich.",
+      "textEn": "A change in the good’s own price causes a movement along the curve (a change in quantity demanded). A change in any other determinant shifts the curve (a change in demand)."
+    },
+    {
+      "type": "heading",
+      "tab": "terms",
+      "text": "Gleichgewicht und Wohlfahrt (equilibrium and welfare)",
+      "level": 2
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Marktgleichgewicht",
+      "termEn": "market equilibrium · equilibrium price P∗ · equilibrium quantity Q∗",
+      "text": "Der Punkt, an dem sich Angebots- und Nachfragekurve schneiden. Beim **Gleichgewichtspreis** P∗ wollen Käufer genau so viel kaufen, wie Verkäufer anbieten – der Markt wird „geräumt“ (*market-clearing price*).",
+      "textEn": "Equilibrium is a situation in which the market price has reached the level at which quantity supplied equals quantity demanded."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Knappheit (Nachfrageüberschuss)",
+      "termEn": "shortage · excess demand",
+      "text": "Zum geltenden Preis wollen Käufer **mehr** kaufen, als angeboten wird: Q_D > Q_S. Passiert, wenn der Preis **unter** P∗ liegt – zum Beispiel durch einen Höchstpreis.",
+      "textEn": "A shortage is a situation in which quantity demanded is greater than quantity supplied."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Überschuss (Angebotsüberschuss)",
+      "termEn": "surplus · excess supply",
+      "text": "Zum geltenden Preis wird **mehr** angeboten, als Käufer kaufen wollen: Q_S > Q_D. Passiert, wenn der Preis **über** P∗ liegt – zum Beispiel durch einen Mindestpreis.",
+      "textEn": "A surplus is a situation in which quantity supplied is greater than quantity demanded."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Konsumentenrente",
+      "termEn": "consumer surplus (CS)",
+      "text": "Was Käufer **höchstens gezahlt hätten** (Zahlungsbereitschaft) minus was sie **tatsächlich zahlen** – ihr „Schnäppchengewinn“. Im Diagramm: die Fläche **unter der Nachfragekurve und über dem Preis**.",
+      "textEn": "Consumer surplus is the amount a buyer is willing to pay for a good minus the amount the buyer actually pays for it. It is the area below the demand curve and above the price."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Produzentenrente",
+      "termEn": "producer surplus (PS)",
+      "text": "Was Verkäufer **erhalten** minus ihre **Kosten** (der Preis, zu dem sie gerade noch verkauft hätten). Im Diagramm: die Fläche **über der Angebotskurve und unter dem Preis**.",
+      "textEn": "Producer surplus is the amount a seller is paid for a good minus the seller’s cost of providing it. It is the area below the price and above the supply curve."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Gesamtwohlfahrt",
+      "termEn": "total surplus · (social) welfare (W)",
+      "text": "Konsumentenrente + Produzentenrente (+ Einnahmen des Staats, falls es welche gibt). Sie misst, wie viel Wert ein Markt schafft: Zahlungsbereitschaft der Käufer minus Kosten der Verkäufer.",
+      "textEn": "Total surplus is the sum of consumer and producer surplus (plus government revenue): the value to buyers minus the cost to sellers."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Wohlfahrtsverlust",
+      "termEn": "deadweight loss (DWL)",
+      "text": "Der Rückgang der Gesamtwohlfahrt durch einen Eingriff in den Markt (Höchst-/Mindestpreis, Steuer, Zoll). Er entsteht, weil Geschäfte **nicht** stattfinden, von denen beide Seiten profitiert hätten. Im Diagramm meist ein **Dreieck**.",
+      "textEn": "Deadweight loss is the fall in total surplus that results from a market distortion, such as a tax, a tariff or a price control."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Effizienz",
+      "termEn": "efficiency",
+      "text": "Eine Verteilung ist effizient, wenn die Gesamtwohlfahrt **maximal** ist. Im freien Wettbewerbsgleichgewicht ist das so: Genau die Käufer mit der höchsten Zahlungsbereitschaft kaufen von den Anbietern mit den niedrigsten Kosten.",
+      "textEn": "Efficiency is the property of a resource allocation of maximizing the total surplus received by all members of society."
+    },
+    {
+      "type": "callout",
+      "tab": "terms",
+      "variant": "warning",
+      "title": "Verwechslungsgefahr: „surplus“",
+      "text": "**surplus** allein heißt *Überschuss* (zu viel Ware am Markt). **consumer surplus / producer surplus** heißt *Konsumenten-/Produzentenrente* (der Vorteil der Marktteilnehmer). Das Gegenteil von surplus ist **shortage** (*Knappheit*)."
+    },
+    {
+      "type": "heading",
+      "tab": "terms",
+      "text": "Staat und Weltmarkt (government and world market)",
+      "level": 2
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Höchstpreis",
+      "termEn": "price ceiling",
+      "text": "Ein gesetzlich festgelegter **maximaler** Preis. Er wirkt nur, wenn er **unter** P∗ liegt – dann entsteht Knappheit. Beispiel: Mietpreisbremse (*rent control*).",
+      "textEn": "A price ceiling is a legal maximum on the price at which a good can be sold. It is binding if it is set below the equilibrium price."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Mindestpreis",
+      "termEn": "price floor",
+      "text": "Ein gesetzlich festgelegter **minimaler** Preis. Er wirkt nur, wenn er **über** P∗ liegt – dann entsteht ein Überschuss. Beispiel: Mindestlohn (*minimum wage*).",
+      "textEn": "A price floor is a legal minimum on the price at which a good can be sold. It is binding if it is set above the equilibrium price."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Bindend / nicht bindend",
+      "termEn": "binding / non-binding",
+      "text": "Eine Preisvorgabe ist **bindend**, wenn sie den Marktpreis tatsächlich verändert. Ein Höchstpreis über P∗ oder ein Mindestpreis unter P∗ ist **nicht bindend** – der Markt landet ohnehin bei P∗.",
+      "textEn": "A price control is binding if it prevents the market from reaching its equilibrium; otherwise it is non-binding and has no effect."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Weltmarktpreis",
+      "termEn": "world price (P_W)",
+      "text": "Der Preis eines Guts auf dem Weltmarkt. Ein **kleines offenes Land** (*small open economy*) ist dort Preisnehmer: Öffnet es seinen Markt, gilt im Inland der Weltmarktpreis.",
+      "textEn": "The world price is the price of a good that prevails in the world market for that good."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Importe und Exporte",
+      "termEn": "imports · exports",
+      "text": "Liegt P_W **unter** P∗, wollen Inländer mehr kaufen, als im Inland hergestellt wird – die Lücke wird **importiert**: Importe = Q_D − Q_S. Liegt P_W **über** P∗, wird der Überschuss **exportiert**: Exporte = Q_S − Q_D.",
+      "textEn": "Imports are goods produced abroad and sold domestically; exports are goods produced domestically and sold abroad. A country imports if the world price is below the domestic equilibrium price and exports if it is above."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Zoll",
+      "termEn": "tariff",
+      "text": "Eine Steuer auf importierte Güter – hier ein fester Betrag t pro Stück. Der Inlandspreis steigt auf P_W + t: Inländische Produzenten und der Staat gewinnen, die Konsumenten verlieren mehr. Es entsteht ein Wohlfahrtsverlust.",
+      "textEn": "A tariff is a tax on goods produced abroad and sold domestically. It raises the domestic price, reduces imports and causes a deadweight loss."
+    },
+    {
+      "type": "heading",
+      "tab": "terms",
+      "text": "Was die Kurven verschiebt (determinants)",
+      "level": 2
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Normales und inferiores Gut",
+      "termEn": "normal good · inferior good",
+      "text": "**Normales Gut**: Steigt das Einkommen, steigt die Nachfrage (Kurve nach rechts) – z. B. Restaurantbesuche. **Inferiores Gut**: Steigt das Einkommen, sinkt die Nachfrage – z. B. Billig-Nudeln oder Busfahrten statt Auto.",
+      "textEn": "A normal good is a good for which, other things equal, an increase in income leads to an increase in demand. For an inferior good, an increase in income leads to a decrease in demand."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Substitute und Komplemente",
+      "termEn": "substitutes · complements",
+      "text": "**Substitute** ersetzen sich (Butter ↔ Margarine): Wird das eine teurer, steigt die Nachfrage nach dem anderen. **Komplemente** ergänzen sich (Drucker ↔ Tinte): Wird das eine teurer, sinkt die Nachfrage nach dem anderen.",
+      "textEn": "Substitutes are two goods for which an increase in the price of one leads to an increase in the demand for the other. Complements are two goods for which an increase in the price of one leads to a decrease in the demand for the other."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Preiselastizität der Nachfrage",
+      "termEn": "price elasticity of demand (ε)",
+      "text": "Misst, **wie stark** die nachgefragte Menge auf eine Preisänderung reagiert: prozentuale Mengenänderung geteilt durch prozentuale Preisänderung. Betrag größer als 1: **elastisch** (*elastic*), kleiner als 1: **unelastisch** (*inelastic*).",
+      "textEn": "The price elasticity of demand measures how much the quantity demanded responds to a change in price: the percentage change in quantity demanded divided by the percentage change in price."
+    },
+    {
+      "type": "heading",
+      "tab": "terms",
+      "text": "Vokabelliste (für die Klausur)",
+      "level": 2
+    },
+    {
+      "type": "table",
+      "tab": "terms",
+      "header": true,
+      "rows": [
+        [
+          "Deutsch",
+          "Englisch",
+          "Symbol"
+        ],
+        [
+          "Nachfrage / nachgefragte Menge",
+          "demand / quantity demanded",
+          "Q_D"
+        ],
+        [
+          "Angebot / angebotene Menge",
+          "supply / quantity supplied",
+          "Q_S"
+        ],
+        [
+          "Preis",
+          "price",
+          "P"
+        ],
+        [
+          "Gleichgewichtspreis / -menge",
+          "equilibrium price / quantity",
+          "P∗, Q∗"
+        ],
+        [
+          "Zahlungsbereitschaft",
+          "willingness to pay",
+          "WTP"
+        ],
+        [
+          "Prohibitivpreis (Nachfrage = 0)",
+          "choke price",
+          "P_max"
+        ],
+        [
+          "Knappheit / Nachfrageüberschuss",
+          "shortage / excess demand",
+          "Q_D − Q_S"
+        ],
+        [
+          "Überschuss / Angebotsüberschuss",
+          "surplus / excess supply",
+          "Q_S − Q_D"
+        ],
+        [
+          "Konsumentenrente",
+          "consumer surplus",
+          "CS"
+        ],
+        [
+          "Produzentenrente",
+          "producer surplus",
+          "PS"
+        ],
+        [
+          "Gesamtwohlfahrt",
+          "total surplus / welfare",
+          "W"
+        ],
+        [
+          "Wohlfahrtsverlust",
+          "deadweight loss",
+          "DWL"
+        ],
+        [
+          "Höchstpreis / Mindestpreis",
+          "price ceiling / price floor",
+          "P_C, P_F"
+        ],
+        [
+          "Weltmarktpreis",
+          "world price",
+          "P_W"
+        ],
+        [
+          "Zoll",
+          "tariff",
+          "t"
+        ],
+        [
+          "Zolleinnahmen",
+          "tariff revenue",
+          "t · Importe"
+        ],
+        [
+          "Verschiebung nach rechts / links",
+          "shift to the right / left (increase / decrease)",
+          "→ / ←"
+        ],
+        [
+          "unter sonst gleichen Bedingungen",
+          "ceteris paribus / other things equal",
+          ""
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "tab": "formulas",
+      "text": "Alle Formeln des Kapitels mit **Symbolen**, einer Erklärung **in einfachen Worten**, einem **Rechenbeispiel** und einem **Vergleich aus dem Alltag**. Die Beispiele nutzen immer den Markt Q_D = 100 − 2P und Q_S = −20 + 4P."
     },
     {
       "type": "formula",
-      "text": "Equilibrium:  Q_D(P) = Q_S(P)\n\nDemand:  Q_D = 100 − 2P\nSupply:  Q_S = −20 + 4P",
-      "caption": "Worked example – try it yourself first, then open the solution"
+      "tab": "formulas",
+      "title": "Nachfragefunktion (demand function)",
+      "text": "Q_D = a − b · P\n\numgestellt (inverse demand):\nP = a/b − Q/b",
+      "variables": [
+        {
+          "symbol": "Q_D",
+          "meaning": "nachgefragte Menge (quantity demanded)"
+        },
+        {
+          "symbol": "P",
+          "meaning": "Preis (price)"
+        },
+        {
+          "symbol": "a",
+          "meaning": "Menge, die bei P = 0 nachgefragt würde"
+        },
+        {
+          "symbol": "b",
+          "meaning": "um so viel sinkt die Menge, wenn P um 1 € steigt"
+        },
+        {
+          "symbol": "a/b",
+          "meaning": "Prohibitivpreis (choke price): ab hier kauft niemand mehr"
+        }
+      ],
+      "explanation": "Je teurer, desto weniger wird gekauft – **b** sagt, *wie viel* weniger pro Euro. Das Minus vor b ist das Gesetz der Nachfrage. Weil im Diagramm der Preis auf der **senkrechten** Achse steht, zeichnet man meist die umgestellte Form P = a/b − Q/b.",
+      "example": "Q_D = 100 − 2P:\n- P = 10 → Q_D = 100 − 20 = **80**\n- P = 20 → Q_D = 100 − 40 = **60**\n- P = 50 → Q_D = 0. Der **Prohibitivpreis** ist a/b = 100/2 = **50**.",
+      "analogy": "Kinotickets: Kosten sie 5 €, gehen viele hin; kosten sie 25 €, nur noch Fans; ab 50 € niemand mehr – das ist der Prohibitivpreis."
     },
     {
-      "type": "toggle",
-      "title": "Solution: equilibrium and surplus",
-      "text": "Set them equal: 100 − 2P = −20 + 4P → 120 = 6P → **P∗ = 20**\n\nSubstitute: Q∗ = 100 − 2 · 20 = **60** (check: −20 + 4 · 20 = 60 ✓)\n\n- Consumer surplus: demand falls to zero at P = 50 (the choke price) → CS = ½ · (50 − 20) · 60 = **900**\n- Producer surplus: supply starts at P = 5 → PS = ½ · (20 − 5) · 60 = **450**"
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Angebotsfunktion (supply function)",
+      "text": "Q_S = c + d · P\n\numgestellt (inverse supply):\nP = (Q − c)/d",
+      "variables": [
+        {
+          "symbol": "Q_S",
+          "meaning": "angebotene Menge (quantity supplied)"
+        },
+        {
+          "symbol": "c",
+          "meaning": "Menge bei P = 0 (oft negativ: unter einem Mindestpreis bietet niemand an)"
+        },
+        {
+          "symbol": "d",
+          "meaning": "um so viel steigt die Menge, wenn P um 1 € steigt"
+        },
+        {
+          "symbol": "−c/d",
+          "meaning": "Preis, ab dem überhaupt angeboten wird (P_min)"
+        }
+      ],
+      "explanation": "Je höher der Preis, desto mehr lohnt sich Produktion – **d** sagt, wie viel mehr pro Euro angeboten wird. Ein negatives c heißt: Erst ab einem bestimmten Preis deckt der günstigste Anbieter seine Kosten.",
+      "example": "Q_S = −20 + 4P:\n- P = 5 → Q_S = −20 + 20 = 0: Erst **ab P = 5** wird angeboten (P_min = 20/4 = 5).\n- P = 20 → Q_S = −20 + 80 = **60**\n- P = 25 → Q_S = −20 + 100 = **80**",
+      "analogy": "Nachhilfe geben: Für 5 € pro Stunde hat niemand Lust, für 20 € machen es viele Studierende, für 30 € sogar die, die eigentlich keine Zeit haben."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Marktgleichgewicht (market equilibrium)",
+      "text": "Q_D = Q_S\n\nP∗ = (a − c) / (b + d)\nQ∗ = a − b · P∗",
+      "variables": [
+        {
+          "symbol": "P∗",
+          "meaning": "Gleichgewichtspreis (equilibrium price)"
+        },
+        {
+          "symbol": "Q∗",
+          "meaning": "Gleichgewichtsmenge (equilibrium quantity)"
+        }
+      ],
+      "explanation": "Im Gleichgewicht wollen Käufer genau so viel kaufen, wie Verkäufer verkaufen wollen. Rechnerisch: beide Funktionen **gleichsetzen**, nach P auflösen, P∗ in eine der beiden Funktionen einsetzen.",
+      "example": "100 − 2P = −20 + 4P\n→ 120 = 6P → **P∗ = 20**\n→ Q∗ = 100 − 2 · 20 = **60** (Probe: −20 + 4 · 20 = 60 ✓)\n\nMit der Formel: P∗ = (100 − (−20)) / (2 + 4) = 120 / 6 = 20.",
+      "analogy": "Ein Flohmarkt am Ende des Tages: Ist der Preis zu hoch, bleiben Sachen liegen und Verkäufer gehen runter; ist er zu niedrig, reißen sich alle darum und die Preise steigen – bis es „passt“."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Konsumentenrente (consumer surplus, CS)",
+      "text": "CS = ½ · (P_max − P∗) · Q∗\n\nP_max = a/b (Prohibitivpreis)",
+      "variables": [
+        {
+          "symbol": "CS",
+          "meaning": "Konsumentenrente (consumer surplus)"
+        },
+        {
+          "symbol": "P_max",
+          "meaning": "Prohibitivpreis – höchste Zahlungsbereitschaft"
+        },
+        {
+          "symbol": "P∗, Q∗",
+          "meaning": "Gleichgewichtspreis und -menge"
+        }
+      ],
+      "explanation": "Die Konsumentenrente ist die Summe aller „Schnäppchen“: Jeder Käufer hätte bis zu seiner Zahlungsbereitschaft gezahlt, zahlt aber nur P∗. Im Diagramm ist das das **Dreieck unter der Nachfragekurve und über dem Preis** – Fläche **A** in der Demo. Dreiecksfläche = ½ · Grundseite · Höhe.",
+      "example": "P_max = 100/2 = 50, P∗ = 20, Q∗ = 60:\nCS = ½ · (50 − 20) · 60 = ½ · 30 · 60 = **900**",
+      "analogy": "Du hättest für das Konzertticket bis zu 80 € gezahlt, es kostet aber 50 € – du „gewinnst“ 30 €. Die Konsumentenrente addiert diese Gewinne aller Käufer."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Produzentenrente (producer surplus, PS)",
+      "text": "PS = ½ · (P∗ − P_min) · Q∗\n\nP_min = −c/d (Angebot beginnt)",
+      "caption": "Gilt so, wenn die Angebotskurve die Preisachse schneidet (c < 0). Bei c > 0 wird die Fläche ein Trapez.",
+      "variables": [
+        {
+          "symbol": "PS",
+          "meaning": "Produzentenrente (producer surplus)"
+        },
+        {
+          "symbol": "P_min",
+          "meaning": "Preis, ab dem angeboten wird (Schnittpunkt der Angebotskurve mit der Preisachse)"
+        }
+      ],
+      "explanation": "Jeder Anbieter bekommt P∗, hätte aber schon zu seinen (niedrigeren) Kosten verkauft. Die Differenz ist sein Gewinn. Im Diagramm: das **Dreieck über der Angebotskurve und unter dem Preis** – Fläche **B** in der Demo.",
+      "example": "P_min = 20/4 = 5, P∗ = 20, Q∗ = 60:\nPS = ½ · (20 − 5) · 60 = ½ · 15 · 60 = **450**",
+      "analogy": "Du würdest fürs Babysitten schon ab 8 € pro Stunde zusagen, bekommst aber 12 € – 4 € pro Stunde sind deine Produzentenrente."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Gesamtwohlfahrt (total surplus)",
+      "text": "W = CS + PS (+ Staatseinnahmen)\n\nW = Wert für Käufer\n    − Kosten der Verkäufer",
+      "variables": [
+        {
+          "symbol": "W",
+          "meaning": "Gesamtwohlfahrt (total surplus / welfare)"
+        },
+        {
+          "symbol": "Staatseinnahmen",
+          "meaning": "z. B. Zolleinnahmen (tariff revenue) oder Steuereinnahmen"
+        }
+      ],
+      "explanation": "Die Gesamtwohlfahrt misst, wie viel ein Markt der ganzen Gesellschaft bringt. Geld, das nur von einer Gruppe zur anderen wandert (z. B. ein höherer Preis), verändert sie **nicht** – nur Geschäfte, die zusätzlich zustande kommen oder wegfallen.",
+      "example": "Im freien Gleichgewicht: W = 900 + 450 = **1 350**. Das ist das Maximum – jeder Eingriff (Höchstpreis, Mindestpreis, Zoll) macht W kleiner.",
+      "analogy": "Ein Kuchen, den Käufer und Verkäufer gemeinsam backen: Der Preis entscheidet, wer welches Stück bekommt; die Gesamtwohlfahrt ist die Größe des ganzen Kuchens."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Knappheit, Überschuss, gehandelte Menge",
+      "text": "Höchstpreis P_C < P∗:\nKnappheit = Q_D(P_C) − Q_S(P_C)\n\nMindestpreis P_F > P∗:\nÜberschuss = Q_S(P_F) − Q_D(P_F)\n\ngehandelt wird immer:\nQ = min(Q_D, Q_S)",
+      "variables": [
+        {
+          "symbol": "P_C",
+          "meaning": "Höchstpreis (price ceiling)"
+        },
+        {
+          "symbol": "P_F",
+          "meaning": "Mindestpreis (price floor)"
+        },
+        {
+          "symbol": "min",
+          "meaning": "die kleinere der beiden Mengen – die „kurze Marktseite“"
+        }
+      ],
+      "explanation": "Ist der Preis vorgeschrieben, passen Angebot und Nachfrage nicht mehr zusammen. Gehandelt wird nur so viel, wie die **kürzere** Seite will: beim Höchstpreis die Verkäufer, beim Mindestpreis die Käufer.",
+      "example": "Höchstpreis P_C = 15: Q_D = 100 − 30 = 70, Q_S = −20 + 60 = 40 → **Knappheit 30** (shortage), gehandelt werden **40**.\n\nMindestpreis P_F = 25: Q_D = 100 − 50 = 50, Q_S = −20 + 100 = 80 → **Überschuss 30** (surplus), gehandelt werden **50**.",
+      "analogy": "Ein Konzert mit staatlich gedeckeltem Ticketpreis: Viel mehr Fans wollen hin, als Plätze da sind – die Halle wird nicht größer, es entstehen Schlangen und Schwarzmärkte."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Wohlfahrtsverlust (deadweight loss, DWL)",
+      "text": "DWL = W_vorher − W_nachher\n\nDreieck:\nDWL = ½ · (Q∗ − Q₁) · (P_D − P_S)",
+      "variables": [
+        {
+          "symbol": "Q₁",
+          "meaning": "gehandelte Menge nach dem Eingriff"
+        },
+        {
+          "symbol": "P_D",
+          "meaning": "Zahlungsbereitschaft bei Q₁ (Höhe der Nachfragekurve)"
+        },
+        {
+          "symbol": "P_S",
+          "meaning": "Kosten bei Q₁ (Höhe der Angebotskurve)"
+        }
+      ],
+      "explanation": "Der Wohlfahrtsverlust sind die Geschäfte, die **nicht mehr** stattfinden, obwohl Käufer mehr gezahlt hätten, als die Herstellung kostet. Er ist ein Dreieck zwischen Nachfrage- und Angebotskurve, von Q₁ bis Q∗. In der Demo ist er **schraffiert**.",
+      "example": "Höchstpreis 15 → Q₁ = 40. Bei Q = 40 ist P_D = (100 − 40)/2 = 30 und P_S = (40 + 20)/4 = 15:\nDWL = ½ · (60 − 40) · (30 − 15) = **150**\n\nProbe: vorher 1 350, nachher CS 1 000 + PS 200 = 1 200 → Verlust 150 ✓",
+      "analogy": "Verschenkte Deals: Jemand würde 25 € für ein Ticket zahlen, ein Veranstalter könnte es für 18 € anbieten – aber wegen des Eingriffs kommt der Tausch nicht zustande. Der Gewinn von 7 € ist für alle verloren."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Importe und Exporte (world market)",
+      "text": "P_W < P∗ → Importe:\nImporte = Q_D(P_W) − Q_S(P_W)\n\nP_W > P∗ → Exporte:\nExporte = Q_S(P_W) − Q_D(P_W)",
+      "variables": [
+        {
+          "symbol": "P_W",
+          "meaning": "Weltmarktpreis (world price)"
+        },
+        {
+          "symbol": "Q_D(P_W)",
+          "meaning": "inländische Nachfrage zum Weltmarktpreis"
+        },
+        {
+          "symbol": "Q_S(P_W)",
+          "meaning": "inländisches Angebot zum Weltmarktpreis"
+        }
+      ],
+      "explanation": "Öffnet ein kleines Land seinen Markt, gilt der Weltmarktpreis. Was Inländer mehr kaufen, als inländische Firmen herstellen, kommt aus dem Ausland (Importe). Ist der Weltmarktpreis höher als P∗, verkaufen inländische Firmen den Rest ins Ausland (Exporte). **Die Gesellschaft gewinnt in beiden Fällen.**",
+      "example": "P_W = 12: Q_D = 100 − 24 = 76, Q_S = −20 + 48 = 28 → **Importe 48**.\nCS = ½ · (50 − 12) · 76 = 1 444, PS = ½ · (12 − 5) · 28 = 98 → W = **1 542** (vorher 1 350, also +192).\n\nP_W = 28: Q_D = 44, Q_S = 92 → **Exporte 48**.",
+      "analogy": "Wie ein Gebrauchtwagen-Markt, der plötzlich ans Internet angeschlossen wird: Es gilt der Preis, den alle online sehen – wer billiger kaufen kann, kauft dort."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Zoll (tariff)",
+      "text": "Inlandspreis: P = P_W + t\n\nZolleinnahmen = t · Importe\n\nDWL = ½ · t · (ΔQ_S + ΔQ_D)",
+      "variables": [
+        {
+          "symbol": "t",
+          "meaning": "Zoll pro Stück (tariff per unit)"
+        },
+        {
+          "symbol": "ΔQ_S",
+          "meaning": "so viel mehr produziert das Inland durch den Zoll"
+        },
+        {
+          "symbol": "ΔQ_D",
+          "meaning": "so viel weniger kaufen die Inländer durch den Zoll"
+        }
+      ],
+      "explanation": "Der Zoll macht Importe teurer, also steigt der Inlandspreis um t. Inländische Firmen produzieren mehr (obwohl das Ausland billiger wäre), Konsumenten kaufen weniger. Der Staat nimmt Zoll auf die verbleibenden Importe ein. Zwei Dreiecke gehen verloren – in der Demo die Flächen **D** und **F**.",
+      "example": "P_W = 12, t = 4 → P = 16: Q_D = 68, Q_S = 44 → Importe **24** (vorher 48).\nZolleinnahmen = 4 · 24 = **96**\nDWL = ½ · 4 · (16 + 8) = **48** (ΔQ_S = 44 − 28 = 16, ΔQ_D = 76 − 68 = 8)",
+      "analogy": "Eine Eintrittsgebühr nur für Waren aus dem Ausland: Heimische Händler freuen sich, die Kundschaft zahlt drauf – und manche kaufen gar nicht mehr."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Preiselastizität der Nachfrage (price elasticity)",
+      "text": "ε = (ΔQ / Q) / (ΔP / P)\n\nlineare Nachfrage:\nε = −b · P / Q",
+      "variables": [
+        {
+          "symbol": "ε",
+          "meaning": "Preiselastizität (price elasticity of demand)"
+        },
+        {
+          "symbol": "|ε| > 1",
+          "meaning": "elastisch (elastic): Menge reagiert stark"
+        },
+        {
+          "symbol": "|ε| < 1",
+          "meaning": "unelastisch (inelastic): Menge reagiert schwach"
+        }
+      ],
+      "explanation": "Die Elastizität sagt, um **wie viel Prozent** sich die Menge ändert, wenn der Preis um 1 % steigt. Sie ist bei normaler Nachfrage negativ; man vergleicht meist ihren Betrag mit 1.",
+      "example": "Im Gleichgewicht P = 20, Q = 60: ε = −2 · 20 / 60 ≈ **−0,67** → unelastisch: 1 % höherer Preis senkt die Menge nur um etwa 0,67 %.\n\nBei P = 40 (Q = 20): ε = −2 · 40 / 20 = −4 → elastisch.",
+      "analogy": "Salz kauft man auch, wenn es teurer wird (unelastisch). Beim Restaurantbesuch verzichtet man schnell (elastisch)."
     },
     {
       "type": "heading",
-      "text": "Interactive demo",
-      "level": 3
+      "tab": "theory",
+      "text": "1. Die Nachfrage (demand)",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "tab": "theory",
+      "text": "Die Nachfragekurve beantwortet die Frage: **Wie viel wollen Käufer bei jedem Preis kaufen?** Je billiger ein Gut, desto mehr wird gekauft – zum einen, weil mehr Leute es sich leisten wollen, zum anderen, weil jeder Einzelne mehr davon nimmt. Das ist das **Gesetz der Nachfrage** (*law of demand*).\n\nWichtig ist die Unterscheidung, *was* sich ändert: der Preis des Guts selbst oder etwas anderes."
+    },
+    {
+      "type": "image",
+      "tab": "theory",
+      "file": "img/demand-movement-vs-shift.svg",
+      "caption": "Bewegung entlang der Kurve (A → B, der Preis des Guts sinkt) und Verschiebung der Kurve (D₀ → D₁, z. B. weil das Einkommen steigt).",
+      "alt": "Zwei parallele Nachfragekurven D₀ und D₁. Auf D₀ ein Pfeil von Punkt A nach Punkt B; rosa Pfeile zeigen die Verschiebung von D₀ nach D₁."
     },
     {
       "type": "callout",
+      "tab": "theory",
+      "variant": "important",
+      "title": "Merke: Bewegung oder Verschiebung?",
+      "text": "- **Eigener Preis** ändert sich → **Bewegung entlang** der Kurve (*movement along the curve*, „change in quantity demanded“).\n- **Alles andere** ändert sich → die Kurve **verschiebt** sich (*shift of the curve*, „change in demand“). Rechts = mehr Nachfrage (*increase*), links = weniger (*decrease*)."
+    },
+    {
+      "type": "heading",
+      "tab": "theory",
+      "text": "Was verschiebt die Nachfragekurve? (demand shifters)",
+      "level": 3
+    },
+    {
+      "type": "table",
+      "tab": "theory",
+      "header": true,
+      "rows": [
+        [
+          "Faktor (determinant)",
+          "Beispiel",
+          "Nachfragekurve"
+        ],
+        [
+          "Einkommen (income) – normales Gut",
+          "Gehaltserhöhung → mehr Restaurantbesuche",
+          "nach rechts"
+        ],
+        [
+          "Einkommen – inferiores Gut",
+          "Gehaltserhöhung → weniger Billig-Nudeln",
+          "nach links"
+        ],
+        [
+          "Preis eines Substituts steigt (substitute)",
+          "Butter teurer → mehr Margarine",
+          "nach rechts"
+        ],
+        [
+          "Preis eines Komplements steigt (complement)",
+          "Drucker teurer → weniger Tintenpatronen",
+          "nach links"
+        ],
+        [
+          "Geschmack, Trends (tastes)",
+          "Hafermilch wird beliebt",
+          "nach rechts"
+        ],
+        [
+          "Erwartungen (expectations)",
+          "Preise steigen bald → jetzt mehr kaufen",
+          "nach rechts"
+        ],
+        [
+          "Zahl der Käufer (number of buyers)",
+          "Stadt wächst → mehr Nachfrage nach Wohnungen",
+          "nach rechts"
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "tab": "theory",
+      "text": "2. Das Angebot (supply)",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "tab": "theory",
+      "text": "Die Angebotskurve beantwortet: **Wie viel wollen Verkäufer bei jedem Preis anbieten?** Bei höheren Preisen lohnt sich die Produktion mehr – bestehende Firmen weiten sie aus, und auch Anbieter mit höheren Kosten steigen ein. Deshalb steigt die Kurve (*law of supply*).\n\nAuch hier gilt: Der **eigene Preis** bewegt uns **entlang** der Kurve; Kosten, Technik oder die Zahl der Anbieter **verschieben** sie."
+    },
+    {
+      "type": "heading",
+      "tab": "theory",
+      "text": "Was verschiebt die Angebotskurve? (supply shifters)",
+      "level": 3
+    },
+    {
+      "type": "table",
+      "tab": "theory",
+      "header": true,
+      "rows": [
+        [
+          "Faktor (determinant)",
+          "Beispiel",
+          "Angebotskurve"
+        ],
+        [
+          "Inputpreise steigen (input prices)",
+          "Strom und Löhne werden teurer",
+          "nach links"
+        ],
+        [
+          "Bessere Technik (technology)",
+          "neue Maschine senkt die Stückkosten",
+          "nach rechts"
+        ],
+        [
+          "Zahl der Anbieter (number of sellers)",
+          "neue Bäckereien eröffnen",
+          "nach rechts"
+        ],
+        [
+          "Erwartungen (expectations)",
+          "höhere Preise erwartet → heute zurückhalten",
+          "nach links"
+        ],
+        [
+          "Natur, Wetter",
+          "Missernte bei Kaffee",
+          "nach links"
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "tab": "theory",
+      "text": "3. Das Marktgleichgewicht (market equilibrium)",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "tab": "theory",
+      "text": "Im **Gleichgewicht** (*equilibrium*) schneiden sich Angebots- und Nachfragekurve. Zum Gleichgewichtspreis P∗ wollen Käufer genau so viel kaufen, wie Verkäufer verkaufen wollen.\n\nWarum landet der Markt dort von allein?\n- Ist der Preis **zu hoch**, bleibt Ware liegen (**Überschuss**, *surplus*). Verkäufer senken die Preise.\n- Ist der Preis **zu niedrig**, reicht die Ware nicht (**Knappheit**, *shortage*). Käufer bieten mehr, Verkäufer erhöhen die Preise.\n\nDieser Mechanismus heißt **Gesetz von Angebot und Nachfrage** (*law of supply and demand*)."
+    },
+    {
+      "type": "image",
+      "tab": "theory",
+      "file": "img/market-equilibrium.svg",
+      "caption": "Gleichgewicht E im Beispielmarkt: P∗ = 20, Q∗ = 60. A = Konsumentenrente (900), B = Produzentenrente (450).",
+      "alt": "Marktdiagramm mit Nachfrage D und Angebot S, Schnittpunkt E. Fläche A oberhalb des Preises, Fläche B unterhalb."
+    },
+    {
+      "type": "heading",
+      "tab": "theory",
+      "text": "4. Wohlfahrt: Wer gewinnt am Markt? (welfare)",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "tab": "theory",
+      "text": "Ein Markt schafft Wert für beide Seiten:\n- **Käufer** gewinnen die **Konsumentenrente** (*consumer surplus*) – Fläche **A**: Sie zahlen weniger, als sie gezahlt hätten.\n- **Verkäufer** gewinnen die **Produzentenrente** (*producer surplus*) – Fläche **B**: Sie bekommen mehr, als sie mindestens verlangt hätten.\n\nZusammen ergibt das die **Gesamtwohlfahrt** (*total surplus*). Das freie Marktgleichgewicht macht sie **maximal**: Jede Einheit, deren Wert für den Käufer über den Kosten liegt, wird gehandelt – und keine andere. Ökonomen nennen das **effizient** (*efficient*); Adam Smith sprach von der „unsichtbaren Hand“ (*invisible hand*)."
+    },
+    {
+      "type": "callout",
+      "tab": "theory",
       "variant": "tip",
-      "title": "Try it",
-      "text": "- Increase **a** (e.g. consumers' income rises): demand shifts right – what happens to P∗ and Q∗?\n- Increase **c** (e.g. input prices fall): supply shifts right – compare the effect on the price.\n- Change the slope with **b** or **d** and watch how consumer and producer surplus change.\n- Switch on a **price ceiling** below P∗ and read off the shortage – then try a **price floor** above P∗."
+      "title": "Flächen lesen – so geht’s",
+      "text": "- **CS**: zwischen Nachfragekurve (oben) und Preislinie (unten), von Q = 0 bis zur gehandelten Menge.\n- **PS**: zwischen Preislinie (oben) und Angebotskurve (unten), ebenfalls bis zur gehandelten Menge.\n- **DWL**: zwischen Nachfrage- und Angebotskurve, von der gehandelten Menge bis Q∗."
+    },
+    {
+      "type": "heading",
+      "tab": "theory",
+      "text": "5. Verschiebungen: Was passiert mit P∗ und Q∗? (shifts)",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "tab": "theory",
+      "text": "Drei Schritte für jede Klausuraufgabe (*three-step approach*):\n1. **Welche Kurve** verschiebt sich – Angebot, Nachfrage oder beide?\n2. **In welche Richtung** – rechts (mehr) oder links (weniger)?\n3. **Neues Gleichgewicht** im Diagramm ablesen: Wie ändern sich Preis und Menge?"
+    },
+    {
+      "type": "table",
+      "tab": "theory",
+      "header": true,
+      "rows": [
+        [
+          "Ereignis (event)",
+          "Preis P∗",
+          "Menge Q∗",
+          "Beispiel im Beispielmarkt"
+        ],
+        [
+          "Nachfrage steigt (demand ↑)",
+          "↑",
+          "↑",
+          "a: 100 → 120 ⇒ P∗ ≈ 23,3, Q∗ ≈ 73,3"
+        ],
+        [
+          "Nachfrage sinkt (demand ↓)",
+          "↓",
+          "↓",
+          "a: 100 → 80 ⇒ P∗ ≈ 16,7, Q∗ ≈ 46,7"
+        ],
+        [
+          "Angebot steigt (supply ↑)",
+          "↓",
+          "↑",
+          "c: −20 → −5 ⇒ P∗ = 17,5, Q∗ = 65"
+        ],
+        [
+          "Angebot sinkt (supply ↓)",
+          "↑",
+          "↓",
+          "c: −20 → −35 ⇒ P∗ = 22,5, Q∗ = 55"
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "tab": "theory",
+      "variant": "warning",
+      "title": "Beide Kurven verschieben sich",
+      "text": "Verschieben sich Angebot **und** Nachfrage gleichzeitig, ist nur **eine** Richtung sicher – die andere hängt davon ab, welche Verschiebung stärker ist. Beispiel: Nachfrage ↑ und Angebot ↑ → Menge steigt sicher, der Preis ist unbestimmt (*ambiguous*)."
+    },
+    {
+      "type": "heading",
+      "tab": "theory",
+      "text": "6. Staatliche Preisvorgaben (price controls)",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "tab": "theory",
+      "text": "Manchmal schreibt der Staat Preise vor, um eine Gruppe zu schützen:\n- Ein **Höchstpreis** (*price ceiling*) unter P∗ soll Käufer schützen (z. B. Mietpreisbremse). Folge: **Knappheit** – Schlangen, Wartelisten, Schwarzmärkte, schlechtere Qualität.\n- Ein **Mindestpreis** (*price floor*) über P∗ soll Verkäufer schützen (z. B. Mindestlohn, Agrarpreise). Folge: **Überschuss** – unverkaufte Ware bzw. Arbeitslosigkeit.\n\nLiegt ein Höchstpreis **über** P∗ oder ein Mindestpreis **unter** P∗, ist er **nicht bindend** (*non-binding*) und ändert nichts."
+    },
+    {
+      "type": "image",
+      "tab": "theory",
+      "file": "img/price-floor-ceiling.svg",
+      "caption": "Mindestpreis P_F über P∗ erzeugt einen Überschuss, Höchstpreis P_C unter P∗ eine Knappheit.",
+      "alt": "Marktdiagramm mit gestrichelter Linie P_F über dem Gleichgewicht (Überschuss markiert) und gestrichelter Linie P_C darunter (Knappheit markiert)."
+    },
+    {
+      "type": "heading",
+      "tab": "theory",
+      "text": "Wer gewinnt beim Höchstpreis? Die Flächen A bis E",
+      "level": 3
+    },
+    {
+      "type": "image",
+      "tab": "theory",
+      "file": "img/price-ceiling-welfare.svg",
+      "caption": "Höchstpreis P_C = 15 im Beispielmarkt: Gehandelt werden nur noch 40 Einheiten. Die Flächen heißen wie in der Demo.",
+      "alt": "Marktdiagramm mit Höchstpreis-Linie bei 15. Flächen: A oben links (Konsumentenrente), B Rechteck zwischen 15 und 20 bis Menge 40, C und D Dreiecke zwischen Menge 40 und 60 (Wohlfahrtsverlust, schraffiert), E unten links (Produzentenrente)."
+    },
+    {
+      "type": "table",
+      "tab": "theory",
+      "header": true,
+      "rows": [
+        [
+          "Fläche",
+          "Bedeutung",
+          "Wert"
+        ],
+        [
+          "A",
+          "Konsumentenrente, die bleibt (Käufer, die noch kaufen können)",
+          "800"
+        ],
+        [
+          "B",
+          "wandert von den Produzenten zu den Konsumenten (sie zahlen 15 statt 20)",
+          "200"
+        ],
+        [
+          "C",
+          "Wohlfahrtsverlust der Käufer, die leer ausgehen",
+          "100"
+        ],
+        [
+          "D",
+          "Wohlfahrtsverlust der Verkäufer, die nicht mehr verkaufen",
+          "50"
+        ],
+        [
+          "E",
+          "Produzentenrente, die bleibt",
+          "200"
+        ],
+        [
+          "**Ergebnis**",
+          "Konsumenten **+B − C = +100**, Produzenten **−(B + D) = −250**, Gesellschaft **−(C + D) = −150**",
+          ""
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "tab": "theory",
+      "text": "7. Internationaler Handel (world market)",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "tab": "theory",
+      "text": "Ein **kleines offenes Land** (*small open economy*) kann den Weltmarktpreis P_W nicht beeinflussen. Öffnet es seinen Markt, gilt im Inland P_W statt P∗:\n- **P_W < P∗** → das Land **importiert** (*imports*). Konsumenten gewinnen, inländische Produzenten verlieren – die Gewinne sind größer als die Verluste.\n- **P_W > P∗** → das Land **exportiert** (*exports*). Produzenten gewinnen, Konsumenten verlieren – auch hier überwiegen die Gewinne.\n\nIn beiden Fällen steigt die Gesamtwohlfahrt: **Handel macht ein Land insgesamt reicher** (*gains from trade*), auch wenn es Verlierer gibt."
+    },
+    {
+      "type": "image",
+      "tab": "theory",
+      "file": "img/world-market-imports.svg",
+      "caption": "Weltmarktpreis P_W = 12 unter P∗ = 20: Das Land importiert 48 Einheiten. Fläche C ist der Wohlfahrtsgewinn durch Handel.",
+      "alt": "Marktdiagramm mit waagerechter Weltmarktpreis-Linie unter dem Gleichgewicht. Flächen A und B über der Linie, Dreieck C zwischen den Kurven unter E, Fläche D unten links; Klammer zeigt die Importe."
+    },
+    {
+      "type": "table",
+      "tab": "theory",
+      "header": true,
+      "rows": [
+        [
+          "Fläche",
+          "Bedeutung",
+          "Wert"
+        ],
+        [
+          "A",
+          "Konsumentenrente schon vor dem Handel",
+          "900"
+        ],
+        [
+          "B",
+          "wandert von inländischen Produzenten zu den Konsumenten (billiger einkaufen)",
+          "352"
+        ],
+        [
+          "C",
+          "**Handelsgewinn** (*gains from trade*): neue, vorteilhafte Käufe",
+          "192"
+        ],
+        [
+          "D",
+          "Produzentenrente, die den inländischen Firmen bleibt",
+          "98"
+        ],
+        [
+          "**Ergebnis**",
+          "Konsumenten **+(B + C) = +544**, Produzenten **−B = −352**, Gesellschaft **+C = +192**",
+          ""
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "tab": "theory",
+      "text": "**Zoll** (*tariff*): Erhebt der Staat einen Zoll t pro Stück, steigt der Inlandspreis auf P_W + t. In der Demo („Importzoll“) siehst du die Flächen: **C** gewinnen die inländischen Produzenten, **E** sind die Zolleinnahmen des Staats, **D** und **F** sind Wohlfahrtsverlust – D, weil teurer im Inland produziert wird, F, weil Käufer wegfallen. Im Beispiel (P_W = 12, t = 4): C = 144, D = 32, E = 96, F = 16."
+    },
+    {
+      "type": "callout",
+      "tab": "theory",
+      "variant": "important",
+      "title": "Merke",
+      "text": "- Freier Markt: Gesamtwohlfahrt maximal.\n- Höchst-/Mindestpreis, Zoll: Umverteilung **plus** Wohlfahrtsverlust (Dreiecke).\n- Handel (Import oder Export): Wohlfahrtsgewinn für das Land insgesamt."
+    },
+    {
+      "type": "text",
+      "tab": "interactive",
+      "text": "Probiere das Modell selbst aus. Oben wählst du ein **Szenario** (z. B. „Höchstpreis“ oder „Importzoll“) – Kurven und Flächen bewegen sich dorthin. Darunter kannst du alles frei einstellen. Die Flächen tragen Buchstaben (**A, B, C …**); die Tabelle „Bedeutung der Flächen“ erklärt sie und zeigt, wer gewinnt und wer verliert."
+    },
+    {
+      "type": "callout",
+      "tab": "interactive",
+      "variant": "tip",
+      "title": "Aufgaben zur Demo",
+      "text": "1. Wähle **„Höchstpreis“**. Wie groß ist die Knappheit? Welche Flächen sind schraffiert und was bedeuten sie?\n2. Wähle **„Nachfrage steigt“**. In welche Richtung wandert das Gleichgewicht – und warum steigt die Produzentenrente?\n3. Wähle **„Marktöffnung: Importe“**. Wer gewinnt, wer verliert? Wie groß ist der Handelsgewinn?\n4. Wähle **„Importzoll“** und vergleiche mit Aufgabe 3: Welche Fläche bekommt der Staat?\n5. Bleib bei „Höchstpreis“ und schiebe den Höchstpreis von 15 auf **18**. Was passiert mit Knappheit und Wohlfahrtsverlust?"
     },
     {
       "type": "supplyDemand",
-      "title": "Explore the market",
-      "caption": "Starting point: the worked example above (P∗ = 20, Q∗ = 60). The dashed lines keep the starting position visible.",
+      "tab": "interactive",
+      "title": "Markt erkunden (explore the market)",
+      "caption": "Startpunkt ist der Beispielmarkt Q_D = 100 − 2P und Q_S = −20 + 4P.",
       "a": 100,
       "b": 2,
       "c": -20,
       "d": 4,
       "control": "none",
-      "controlPrice": 0
-    },
-    {
-      "type": "heading",
-      "text": "4. Price controls",
-      "level": 2
-    },
-    {
-      "type": "image",
-      "file": "img/price-floor-ceiling.svg",
-      "caption": "Figure 3: A price floor above P∗ creates a surplus, a price ceiling below P∗ creates a shortage",
-      "alt": "Supply and demand curves with a price floor above the equilibrium price, where the quantity supplied exceeds the quantity demanded, and a price ceiling below it, where the quantity demanded exceeds the quantity supplied."
-    },
-    {
-      "type": "callout",
-      "variant": "tip",
-      "title": "Price controls",
-      "text": "- **Price ceiling** (a legal maximum price) *below* P∗, e.g. rent control: the quantity demanded exceeds the quantity supplied → **shortage**, waiting lists, black markets.\n- **Price floor** (a legal minimum price) *above* P∗, e.g. agricultural price supports or a minimum wage in the labour market: the quantity supplied exceeds the quantity demanded → **surplus** (in the labour market model: unemployment).\n- A ceiling above P∗ or a floor below P∗ is **non-binding** and has no effect."
+      "controlPrice": 0,
+      "worldPrice": 0,
+      "tariff": 0
     },
     {
       "type": "toggle",
-      "title": "Example: a price ceiling of 15",
-      "text": "Market from the worked example: Q_D = 100 − 2P and Q_S = −20 + 4P, equilibrium P∗ = 20.\n\nAt the ceiling P = 15:\n- quantity demanded: 100 − 2 · 15 = **70**\n- quantity supplied: −20 + 4 · 15 = **40**\n\nThe ceiling is below P∗, so it binds: a **shortage of 30 units**, and only the 40 units supplied are traded. Try it in the demo above."
+      "tab": "interactive",
+      "title": "Lösungen zu den Demo-Aufgaben",
+      "text": "1. Höchstpreis 15: Q_D = 70, Q_S = 40 → **Knappheit 30**. Schraffiert sind **C** (100) und **D** (50): der Wohlfahrtsverlust, weil 20 Einheiten nicht mehr gehandelt werden.\n2. Das Gleichgewicht wandert nach **rechts oben**: Preis und Menge steigen (P∗ ≈ 23,3, Q∗ ≈ 73,3). Die Produzenten verkaufen mehr **und** teurer – deshalb wächst ihre Rente.\n3. Beim Weltmarktpreis 12 gewinnen die **Konsumenten** (B + C), die inländischen **Produzenten** verlieren B. Der Handelsgewinn ist **C = 192**.\n4. Der Staat erhält die Zolleinnahmen **E** (4 · 24 = 96). Der Wohlfahrtsverlust D + F beträgt 48.\n5. Bei 18 ist Q_D = 64 und Q_S = 52: Die Knappheit sinkt auf **12**, der Wohlfahrtsverlust auf ½ · (60 − 52) · (24 − 18) = **24**. Je näher der Höchstpreis an P∗ liegt, desto kleiner der Schaden."
     },
     {
       "type": "heading",
-      "text": "5. Shifts in supply and demand",
+      "tab": "practice",
+      "text": "Rechenbeispiel 1: Gleichgewicht und Renten (worked example)",
       "level": 2
     },
     {
-      "type": "table",
-      "header": true,
-      "rows": [
-        [
-          "Event",
-          "Curve",
-          "Equilibrium price",
-          "Equilibrium quantity"
-        ],
-        [
-          "Demand increases",
-          "D shifts right",
-          "rises ↑",
-          "rises ↑"
-        ],
-        [
-          "Demand decreases",
-          "D shifts left",
-          "falls ↓",
-          "falls ↓"
-        ],
-        [
-          "Supply increases",
-          "S shifts right",
-          "falls ↓",
-          "rises ↑"
-        ],
-        [
-          "Supply decreases",
-          "S shifts left",
-          "rises ↑",
-          "falls ↓"
-        ]
-      ]
+      "type": "text",
+      "tab": "practice",
+      "text": "Ein Markt hat die Nachfrage **Q_D = 120 − 3P** und das Angebot **Q_S = 4P − 20**. Berechne Gleichgewichtspreis, Gleichgewichtsmenge, Konsumentenrente und Produzentenrente. *Erst selbst rechnen, dann aufklappen.*"
     },
     {
-      "type": "callout",
-      "variant": "warning",
-      "title": "Caution: both curves shift",
-      "text": "If supply **and** demand shift at the same time, only one of the two variables is certain. If both increase, for example, the quantity definitely rises – whether the price rises or falls depends on which shift is larger."
+      "type": "toggle",
+      "tab": "practice",
+      "title": "Lösung anzeigen",
+      "text": "1. Gleichsetzen: 120 − 3P = 4P − 20 → 140 = 7P → **P∗ = 20**\n2. Einsetzen: Q∗ = 120 − 3 · 20 = **60** (Probe: 4 · 20 − 20 = 60 ✓)\n3. Prohibitivpreis: P_max = 120/3 = 40 → CS = ½ · (40 − 20) · 60 = **600**\n4. Angebot beginnt bei P_min = 20/4 = 5 → PS = ½ · (20 − 5) · 60 = **450**\n5. Gesamtwohlfahrt W = 600 + 450 = **1 050**"
     },
     {
       "type": "heading",
-      "text": "Key terms",
-      "level": 3
+      "tab": "practice",
+      "text": "Rechenbeispiel 2: Höchstpreis (price ceiling)",
+      "level": 2
     },
     {
-      "type": "table",
-      "header": true,
-      "rows": [
-        [
-          "Term",
-          "Meaning",
-          "German"
-        ],
-        [
-          "Ceteris paribus",
-          "all other things being equal",
-          "unter sonst gleichen Bedingungen"
-        ],
-        [
-          "Quantity demanded / supplied",
-          "amount buyers want to buy / sellers want to sell at a given price",
-          "nachgefragte / angebotene Menge"
-        ],
-        [
-          "Normal / inferior good",
-          "demand rises / falls when income rises",
-          "normales / inferiores Gut"
-        ],
-        [
-          "Substitutes / complements",
-          "goods used instead of / together with each other",
-          "Substitute / Komplemente"
-        ],
-        [
-          "Equilibrium price",
-          "price at which quantity demanded equals quantity supplied",
-          "Gleichgewichtspreis"
-        ],
-        [
-          "Consumer / producer surplus",
-          "gain of buyers / sellers from trading at the market price",
-          "Konsumenten- / Produzentenrente"
-        ],
-        [
-          "Price ceiling / price floor",
-          "legal maximum / minimum price",
-          "Höchstpreis / Mindestpreis"
-        ],
-        [
-          "Shortage / surplus",
-          "excess demand / excess supply",
-          "Nachfrage- / Angebotsüberschuss"
-        ]
-      ]
+      "type": "text",
+      "tab": "practice",
+      "text": "Im Beispielmarkt (Q_D = 100 − 2P, Q_S = −20 + 4P) setzt der Staat einen Höchstpreis von **P_C = 15**. Berechne die gehandelte Menge, die Knappheit, CS, PS und den Wohlfahrtsverlust."
+    },
+    {
+      "type": "toggle",
+      "tab": "practice",
+      "title": "Lösung anzeigen",
+      "text": "1. Bindend? 15 < P∗ = 20 → ja.\n2. Q_D(15) = 70, Q_S(15) = 40 → **Knappheit 30**, gehandelt werden **40** (die Verkäufer sind die kurze Seite).\n3. Zahlungsbereitschaft bei Q = 40: P = (100 − 40)/2 = 30.\n   CS = Trapez zwischen Nachfrage und Preis 15: ½ · (50 + 30) · 40 − 15 · 40 = 1 600 − 600 = **1 000**\n4. PS = ½ · (15 − 5) · 40 = **200**\n5. DWL = 1 350 − (1 000 + 200) = **150** (= ½ · 20 · (30 − 15))\n\nDie Konsumenten gewinnen insgesamt (+100), die Produzenten verlieren (−250), die Gesellschaft verliert 150."
     },
     {
       "type": "heading",
-      "text": "Self-test",
+      "tab": "practice",
+      "text": "Rechenbeispiel 3: Weltmarkt und Zoll (world market and tariff)",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "tab": "practice",
+      "text": "Der Beispielmarkt öffnet sich dem Weltmarkt mit **P_W = 12**. Danach führt der Staat einen Zoll von **t = 4** pro Stück ein. Berechne jeweils Importe, CS, PS, Zolleinnahmen und die Gesamtwohlfahrt."
+    },
+    {
+      "type": "toggle",
+      "tab": "practice",
+      "title": "Lösung anzeigen",
+      "text": "**Freihandel (P = 12):** Q_D = 76, Q_S = 28 → Importe 48.\nCS = ½ · (50 − 12) · 76 = 1 444 · PS = ½ · (12 − 5) · 28 = 98 · W = **1 542**\n\n**Mit Zoll (P = 16):** Q_D = 68, Q_S = 44 → Importe 24.\nCS = ½ · (50 − 16) · 68 = 1 156 · PS = ½ · (16 − 5) · 44 = 242 · Zolleinnahmen = 4 · 24 = 96\nW = 1 156 + 242 + 96 = **1 494** → Wohlfahrtsverlust 1 542 − 1 494 = **48**"
+    },
+    {
+      "type": "heading",
+      "tab": "practice",
+      "text": "Karteikarten (flashcards)",
       "level": 2
     },
     {
       "type": "flashcard",
-      "front": "What does the law of demand state?",
-      "back": "Ceteris paribus, the quantity demanded falls when the price of the good rises (and vice versa) – the demand curve slopes downward."
+      "tab": "practice",
+      "front": "Was besagt das Gesetz der Nachfrage? *(law of demand)*",
+      "back": "Steigt der Preis eines Guts, sinkt – ceteris paribus – die nachgefragte Menge.\n\n*EN: Other things equal, when the price of a good rises, the quantity demanded falls.*"
     },
     {
       "type": "flashcard",
-      "front": "Movement along the demand curve or a shift of the curve – when is it which?",
-      "back": "**Movement along:** the good's own price changes.\n**Shift:** another determinant changes – income, prices of related goods, preferences, expectations or the number of buyers."
+      "tab": "practice",
+      "front": "Bewegung entlang der Nachfragekurve oder Verschiebung – woran erkenne ich das?",
+      "back": "Ändert sich der **eigene Preis** → Bewegung entlang der Kurve. Ändert sich **etwas anderes** (Einkommen, Preise anderer Güter, Geschmack, Erwartungen) → die Kurve verschiebt sich."
     },
     {
       "type": "flashcard",
-      "front": "What is consumer surplus?",
-      "back": "The difference between willingness to pay and the price paid – the area below the demand curve and above the market price."
+      "tab": "practice",
+      "front": "Wie berechnet man das Marktgleichgewicht?",
+      "back": "Q_D = Q_S setzen, nach P auflösen (→ P∗), P∗ in eine der Funktionen einsetzen (→ Q∗). Allgemein: P∗ = (a − c)/(b + d)."
     },
     {
       "type": "flashcard",
-      "front": "What happens with a price ceiling below the equilibrium price?",
-      "back": "The quantity demanded exceeds the quantity supplied: a **shortage** (excess demand) occurs."
+      "tab": "practice",
+      "front": "Konsumentenrente – Definition und Fläche? *(consumer surplus)*",
+      "back": "Zahlungsbereitschaft minus tatsächlich gezahlter Preis. Fläche **unter der Nachfragekurve und über dem Preis**.\n\nCS = ½ · (P_max − P∗) · Q∗"
     },
     {
       "type": "flashcard",
-      "front": "What happens to the equilibrium price and quantity when supply increases?",
-      "back": "The supply curve shifts right: the equilibrium **price falls** and the equilibrium **quantity rises**."
+      "tab": "practice",
+      "front": "Produzentenrente – Definition und Fläche? *(producer surplus)*",
+      "back": "Erhaltener Preis minus Kosten. Fläche **über der Angebotskurve und unter dem Preis**.\n\nPS = ½ · (P∗ − P_min) · Q∗"
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "Was passiert bei einem bindenden Höchstpreis?",
+      "back": "Er liegt unter P∗ → **Knappheit** (Q_D > Q_S). Gehandelt wird nur Q_S. Es entsteht ein Wohlfahrtsverlust (Dreieck zwischen den Kurven)."
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "Was ist ein Wohlfahrtsverlust? *(deadweight loss)*",
+      "back": "Der Rückgang der Gesamtwohlfahrt durch einen Markteingriff: Geschäfte, die für beide Seiten vorteilhaft wären, finden nicht statt."
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "Wer gewinnt, wer verliert bei Importen?",
+      "back": "Konsumenten gewinnen (billiger), inländische Produzenten verlieren. Die Gewinne sind größer: Die Gesellschaft gewinnt das Dreieck C (*gains from trade*)."
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "Angebot steigt – was passiert mit P∗ und Q∗?",
+      "back": "Die Angebotskurve verschiebt sich nach rechts: **P∗ sinkt, Q∗ steigt.**"
+    },
+    {
+      "type": "heading",
+      "tab": "practice",
+      "text": "Quiz",
+      "level": 2
     },
     {
       "type": "quiz",
-      "question": "Consumers' income rises and the good is a **normal good**. What happens in the market?",
+      "tab": "practice",
+      "question": "Das Einkommen der Konsumenten steigt, das Gut ist ein **normales Gut**. Was passiert?",
       "options": [
         {
-          "text": "We move down along the demand curve.",
-          "correct": false
-        },
-        {
-          "text": "The supply curve shifts right – the price falls.",
-          "correct": false
-        },
-        {
-          "text": "The demand curve shifts right – the equilibrium price and quantity both rise.",
+          "text": "Die Nachfragekurve verschiebt sich nach rechts; P∗ und Q∗ steigen.",
           "correct": true
         },
         {
-          "text": "The demand curve shifts left – price and quantity both fall.",
+          "text": "Bewegung entlang der Nachfragekurve nach rechts unten; P∗ sinkt.",
+          "correct": false
+        },
+        {
+          "text": "Die Angebotskurve verschiebt sich nach rechts; P∗ sinkt.",
+          "correct": false
+        },
+        {
+          "text": "Die Nachfragekurve verschiebt sich nach links; P∗ und Q∗ sinken.",
           "correct": false
         }
       ],
-      "explanation": "Income is not the good's own price, so the curve shifts. For a normal good, demand rises with income → D shifts right → new equilibrium with a higher price and a higher quantity."
+      "explanation": "Das Einkommen ist **nicht** der eigene Preis → Verschiebung. Normales Gut → mehr Nachfrage → Kurve nach rechts → neues Gleichgewicht mit höherem Preis und höherer Menge."
     },
     {
       "type": "quiz",
-      "question": "Demand: Q_D = 120 − 3P, supply: Q_S = 4P − 20. What is the equilibrium price?",
+      "tab": "practice",
+      "question": "Nachfrage Q_D = 120 − 3P, Angebot Q_S = 4P − 20. Wie hoch ist der Gleichgewichtspreis?",
       "options": [
-        {
-          "text": "P∗ = 14",
-          "correct": false
-        },
         {
           "text": "P∗ = 20",
           "correct": true
         },
         {
-          "text": "P∗ = 40",
+          "text": "P∗ = 25",
           "correct": false
         },
         {
-          "text": "P∗ = 60",
+          "text": "P∗ = 14",
+          "correct": false
+        },
+        {
+          "text": "P∗ = 40",
           "correct": false
         }
       ],
-      "explanation": "120 − 3P = 4P − 20 → 140 = 7P → P∗ = 20. The equilibrium quantity is Q∗ = 120 − 3 · 20 = 60."
+      "explanation": "120 − 3P = 4P − 20 → 140 = 7P → P∗ = 20. Die Menge ist dann Q∗ = 60."
     },
     {
       "type": "quiz",
-      "question": "With Q_D = 100 − 2P and Q_S = −20 + 4P, the government sets a price ceiling of 15. What happens?",
+      "tab": "practice",
+      "question": "Im Beispielmarkt (Q_D = 100 − 2P, Q_S = −20 + 4P) gilt ein Höchstpreis von 15. Wie groß ist die Knappheit?",
       "options": [
         {
-          "text": "A surplus of 30 units.",
+          "text": "Es gibt keine Knappheit, der Höchstpreis ist nicht bindend.",
           "correct": false
         },
         {
-          "text": "Nothing – the ceiling is not binding.",
-          "correct": false
-        },
-        {
-          "text": "A shortage of 30 units – only 40 units are traded.",
+          "text": "30 Einheiten",
           "correct": true
         },
         {
-          "text": "A shortage of 70 units.",
+          "text": "10 Einheiten",
+          "correct": false
+        },
+        {
+          "text": "20 Einheiten",
           "correct": false
         }
       ],
-      "explanation": "At P = 15: Q_D = 70 and Q_S = 40. The ceiling is below P∗ = 20, so it binds: excess demand of 70 − 40 = 30, and only the 40 units supplied are traded."
+      "explanation": "Q_D(15) = 70, Q_S(15) = 40 → Knappheit 70 − 40 = 30. Der Höchstpreis liegt unter P∗ = 20, ist also bindend."
+    },
+    {
+      "type": "quiz",
+      "tab": "practice",
+      "question": "Wie groß ist die Konsumentenrente im Beispielmarkt (P∗ = 20, Q∗ = 60, Prohibitivpreis 50)?",
+      "options": [
+        {
+          "text": "450",
+          "correct": false
+        },
+        {
+          "text": "1 800",
+          "correct": false
+        },
+        {
+          "text": "1 350",
+          "correct": false
+        },
+        {
+          "text": "900",
+          "correct": true
+        }
+      ],
+      "explanation": "CS = ½ · (50 − 20) · 60 = 900. (450 ist die Produzentenrente, 1 350 die Gesamtwohlfahrt.)"
+    },
+    {
+      "type": "quiz",
+      "tab": "practice",
+      "question": "*Exam style:* A binding price floor is imposed in a competitive market. Which statement is correct?",
+      "options": [
+        {
+          "text": "Total surplus rises because producers receive a higher price.",
+          "correct": false
+        },
+        {
+          "text": "The price floor is set below the equilibrium price.",
+          "correct": false
+        },
+        {
+          "text": "Quantity supplied exceeds quantity demanded, and total surplus falls.",
+          "correct": true
+        },
+        {
+          "text": "Quantity demanded exceeds quantity supplied, and total surplus falls.",
+          "correct": false
+        }
+      ],
+      "explanation": "A binding price floor lies **above** P∗ → surplus (excess supply). Only Q_D is traded, so total surplus falls (deadweight loss). Producers may gain, but society loses."
+    },
+    {
+      "type": "quiz",
+      "tab": "practice",
+      "question": "*Exam style:* A small open economy opens up to trade. The world price is **below** the domestic equilibrium price. What happens?",
+      "options": [
+        {
+          "text": "The country imports; consumers gain more than domestic producers lose.",
+          "correct": true
+        },
+        {
+          "text": "Nothing changes, because the country is a price taker.",
+          "correct": false
+        },
+        {
+          "text": "The country exports; producers gain more than consumers lose.",
+          "correct": false
+        },
+        {
+          "text": "The country imports; total surplus falls.",
+          "correct": false
+        }
+      ],
+      "explanation": "P_W < P∗ → imports. Consumer surplus rises by B + C, producer surplus falls by B → total surplus rises by C (gains from trade)."
+    },
+    {
+      "type": "quiz",
+      "tab": "practice",
+      "question": "Ein Zoll wird auf Importe erhoben. Welche Flächen der Demo sind Wohlfahrtsverlust?",
+      "options": [
+        {
+          "text": "D und F",
+          "correct": true
+        },
+        {
+          "text": "Nur E",
+          "correct": false
+        },
+        {
+          "text": "C und E",
+          "correct": false
+        },
+        {
+          "text": "A und B",
+          "correct": false
+        }
+      ],
+      "explanation": "C ist die Umverteilung zu den inländischen Produzenten, E die Zolleinnahmen des Staats. **D** (teure Inlandsproduktion) und **F** (Käufer fallen weg) sind der Wohlfahrtsverlust."
+    },
+    {
+      "type": "quiz",
+      "tab": "practice",
+      "question": "Welche Ereignisse senken **sicher** den Gleichgewichtspreis? (mehrere richtig)",
+      "options": [
+        {
+          "text": "Die Nachfrage steigt und das Angebot steigt.",
+          "correct": false
+        },
+        {
+          "text": "Das Angebot sinkt, die Nachfrage bleibt gleich.",
+          "correct": false
+        },
+        {
+          "text": "Das Angebot steigt und die Nachfrage sinkt.",
+          "correct": true
+        },
+        {
+          "text": "Das Angebot steigt, die Nachfrage bleibt gleich.",
+          "correct": true
+        },
+        {
+          "text": "Die Nachfrage sinkt, das Angebot bleibt gleich.",
+          "correct": true
+        }
+      ],
+      "explanation": "Mehr Angebot drückt den Preis, weniger Nachfrage auch – beides zusammen erst recht. Steigen Angebot **und** Nachfrage, ist der Preiseffekt unbestimmt."
     },
     {
       "type": "callout",
+      "tab": "practice",
       "variant": "info",
-      "title": "Next chapter",
-      "text": "**Indifference Curves and Consumer Choice** shows how a household picks its best bundle of goods – and how the demand curve follows from that choice."
+      "title": "Weiter geht’s",
+      "text": "Im nächsten Kapitel **„Budgetgerade & Indifferenzkurven“** schauen wir hinter die Nachfragekurve: Wie entscheidet ein Haushalt, was er kauft? Dort lernst du GRS (MRS) und GRT (MRT) kennen."
     }
   ]
 }

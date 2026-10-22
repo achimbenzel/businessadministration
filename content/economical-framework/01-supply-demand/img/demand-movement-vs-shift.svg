@@ -1,36 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" font-family="'DM Sans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" role="img" aria-label="Movement along the demand curve and shift of the demand curve">
-<title>Movement along the demand curve and shift of the demand curve</title>
-<defs><marker id="arr-bg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#131316"/></marker><marker id="arr-axis" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8b8b94"/></marker><marker id="arr-guide" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6b6b75"/></marker><marker id="arr-text" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#ececef"/></marker><marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a8a8b0"/></marker><marker id="arr-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2ec5d3"/></marker><marker id="arr-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#fbbf24"/></marker><marker id="arr-pink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#f472b6"/></marker><marker id="arr-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6b9cff"/></marker><marker id="arr-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#34d399"/></marker><marker id="arr-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a78bfa"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" font-family="'DM Sans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" role="img" aria-label="Bewegung entlang der Nachfragekurve und Verschiebung der Nachfragekurve">
+<title>Bewegung entlang der Nachfragekurve und Verschiebung der Nachfragekurve</title>
+<defs><marker id="arr-bg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#131316"/></marker><marker id="arr-axis" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8b8b94"/></marker><marker id="arr-guide" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6b6b75"/></marker><marker id="arr-text" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#ececef"/></marker><marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a8a8b0"/></marker><marker id="arr-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2ec5d3"/></marker><marker id="arr-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#fbbf24"/></marker><marker id="arr-pink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#f472b6"/></marker><marker id="arr-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6b9cff"/></marker><marker id="arr-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#34d399"/></marker><marker id="arr-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a78bfa"/></marker><marker id="arr-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#fb923c"/></marker><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#ececef" fill-opacity="0.06"/><line x1="0" y1="0" x2="0" y2="8" stroke="#ececef" stroke-opacity="0.55" stroke-width="2.5"/></pattern></defs>
 <rect width="640" height="420" fill="#131316"/>
 <line x1="64" y1="372" x2="618" y2="372" stroke="#8b8b94" stroke-width="2.5" marker-end="url(#arr-axis)"/>
 <line x1="64" y1="372" x2="64" y2="18" stroke="#8b8b94" stroke-width="2.5" marker-end="url(#arr-axis)"/>
-<text x="78" y="28" font-size="17" fill="#a8a8b0" text-anchor="start" font-weight="500">Price P</text>
-<text x="618" y="410" font-size="17" fill="#a8a8b0" text-anchor="end" font-weight="500">Quantity Q</text>
-<text x="54" y="394" font-size="16" fill="#a8a8b0" text-anchor="end" font-weight="500">0</text>
+<text x="78" y="28" font-size="17" fill="#a8a8b0" text-anchor="start" font-weight="500" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">Preis P (price)</text>
+<text x="618" y="410" font-size="17" fill="#a8a8b0" text-anchor="end" font-weight="500" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">Menge Q (quantity)</text>
+<text x="54" y="394" font-size="16" fill="#a8a8b0" text-anchor="end" font-weight="500" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">0</text>
 <line x1="64" y1="153.6" x2="171.2" y2="153.6" stroke="#6b6b75" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6"/>
 <line x1="171.2" y1="372" x2="171.2" y2="153.6" stroke="#6b6b75" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6"/>
 <line x1="64" y1="237.6" x2="305.2" y2="237.6" stroke="#6b6b75" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6"/>
 <line x1="305.2" y1="372" x2="305.2" y2="237.6" stroke="#6b6b75" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6"/>
-<line x1="90.8" y1="103.2" x2="492.8" y2="355.2" stroke="#2ec5d3" stroke-width="3.5" stroke-linecap="round"/>
-<line x1="198" y1="103.2" x2="600" y2="355.2" stroke="#2ec5d3" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="10 8"/>
+<line x1="90.8" y1="103.2" x2="492.8" y2="355.2" stroke="#f472b6" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="198" y1="103.2" x2="600" y2="355.2" stroke="#f472b6" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="10 8"/>
 <line x1="170.1" y1="174.4" x2="272" y2="238.3" stroke="#ececef" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arr-text)"/>
-<line x1="109.6" y1="109.9" x2="198" y2="109.9" stroke="#f472b6" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arr-pink)"/>
-<line x1="369.5" y1="277.9" x2="452.6" y2="277.9" stroke="#f472b6" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arr-pink)"/>
+<line x1="109.6" y1="109.9" x2="198" y2="109.9" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arr-amber)"/>
+<line x1="369.5" y1="277.9" x2="452.6" y2="277.9" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arr-amber)"/>
 <circle cx="171.2" cy="153.6" r="6.5" fill="#ececef" stroke="#131316" stroke-width="2.5"/>
 <circle cx="305.2" cy="237.6" r="6.5" fill="#ececef" stroke="#131316" stroke-width="2.5"/>
-<text x="183.2" y="143.6" font-size="19" fill="#ececef" text-anchor="start" font-weight="700">A</text>
-<text x="317.2" y="227.6" font-size="19" fill="#ececef" text-anchor="start" font-weight="700">B</text>
-<text x="500.8" y="349.2" font-size="20" fill="#2ec5d3" text-anchor="start" font-weight="700">D₀</text>
-<text x="594" y="329.2" font-size="20" fill="#2ec5d3" text-anchor="end" font-weight="700">D₁</text>
-<text x="54" y="159.6" font-size="18" fill="#ececef" text-anchor="end" font-weight="500" font-style="italic">P₁</text>
-<text x="54" y="243.6" font-size="18" fill="#ececef" text-anchor="end" font-weight="500" font-style="italic">P₂</text>
-<text x="171.2" y="398" font-size="18" fill="#ececef" text-anchor="middle" font-weight="500" font-style="italic">Q₁</text>
-<text x="305.2" y="398" font-size="18" fill="#ececef" text-anchor="middle" font-weight="500" font-style="italic">Q₂</text>
-<rect x="356" y="16" width="262" height="126" rx="10" fill="#131316" fill-opacity="0.92" stroke="#2c2c32"/>
-<line x1="370" y1="38" x2="396" y2="38" stroke="#ececef" stroke-width="3.5" stroke-linecap="round"/>
-<text x="406" y="44" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500">A → B: movement along D₀</text>
-<text x="370" y="71" font-size="15.5" fill="#a8a8b0" text-anchor="start" font-weight="500">the good’s own price falls</text>
-<line x1="370" y1="92" x2="396" y2="92" stroke="#f472b6" stroke-width="3.5" stroke-linecap="round"/>
-<text x="406" y="98" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500">D₀ → D₁: shift in demand</text>
-<text x="370" y="125" font-size="15.5" fill="#a8a8b0" text-anchor="start" font-weight="500">e.g. income rises</text>
+<text x="183.2" y="143.6" font-size="19" fill="#ececef" text-anchor="start" font-weight="700" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">A</text>
+<text x="317.2" y="227.6" font-size="19" fill="#ececef" text-anchor="start" font-weight="700" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">B</text>
+<text x="500.8" y="349.2" font-size="20" fill="#f472b6" text-anchor="start" font-weight="700" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">D₀</text>
+<text x="594" y="329.2" font-size="20" fill="#f472b6" text-anchor="end" font-weight="700" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">D₁</text>
+<text x="54" y="159.6" font-size="18" fill="#ececef" text-anchor="end" font-weight="500" font-style="italic" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">P₁</text>
+<text x="54" y="243.6" font-size="18" fill="#ececef" text-anchor="end" font-weight="500" font-style="italic" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">P₂</text>
+<text x="171.2" y="398" font-size="18" fill="#ececef" text-anchor="middle" font-weight="500" font-style="italic" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">Q₁</text>
+<text x="305.2" y="398" font-size="18" fill="#ececef" text-anchor="middle" font-weight="500" font-style="italic" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">Q₂</text>
+<rect x="336" y="16" width="282" height="126" rx="10" fill="#131316" fill-opacity="0.92" stroke="#2c2c32"/>
+<line x1="350" y1="38" x2="376" y2="38" stroke="#ececef" stroke-width="3.5" stroke-linecap="round"/>
+<text x="386" y="44" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">A → B: Bewegung entlang D₀</text>
+<text x="350" y="71" font-size="15.5" fill="#a8a8b0" text-anchor="start" font-weight="500" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">(movement along) – Preis sinkt</text>
+<line x1="350" y1="92" x2="376" y2="92" stroke="#fbbf24" stroke-width="3.5" stroke-linecap="round"/>
+<text x="386" y="98" font-size="15.5" fill="#ececef" text-anchor="start" font-weight="500" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">D₀ → D₁: Verschiebung (shift)</text>
+<text x="350" y="125" font-size="15.5" fill="#a8a8b0" text-anchor="start" font-weight="500" paint-order="stroke" stroke="#131316" stroke-width="3" stroke-linejoin="round">z. B. das Einkommen steigt</text>
 </svg>

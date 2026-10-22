@@ -6,6 +6,7 @@ import { normalizeChapter, normalizeUrl, blockText } from '../server/schema.js';
 import { str, num, isId } from '../server/schema/base.js';
 import { sanitize } from '../server/files.js';
 import { isAllowedHost } from '../server/http.js';
+import { resolveSections, buildSections, sectionLabel } from '../src/lib/chapterTabs.js';
 
 test('inline markdown → tokens', () => {
   assert.deepEqual(parseInline('a **b** c'), [{ t: 'text', v: 'a ' }, { t: 'b', children: [{ t: 'text', v: 'b' }] }, { t: 'text', v: ' c' }]);
@@ -93,4 +94,103 @@ test('demo maths: axes, steps, market and consumer', async () => {
   const c = consumer({ m: 100, p1: 2, p2: 5, alpha: 0.5 });
   assert.deepEqual([c.x1, c.x2, c.mrs], [25, 10, 0.4]);
   assert.ok(Math.abs(indifferenceX2(c.u, 0.5, 25) - 10) < 1e-9);
+});
+
+test('market: surplus areas A, B, C … add up in every situation', async () => {
+  const { analyze, scenarios, centroid } = await import('../src/lib/market.js');
+  const base = { a: 100, b: 2, c: -20, d: 4 };
+  const val = (r, id) => r.regions.list.find((x) => x.id === id)?.val ?? 0;
+  const sum = (r, who) => r.regions.sums.find((s) => s[0] === who)[2];
+  const near = (x, y) => assert.ok(Math.abs(x - y) < 1e-6, `${x} ≠ ${y}`);
+
+  const closed = analyze({ ...base, mode: 'closed' });
+  assert.deepEqual([closed.P, closed.Q, closed.CS, closed.PS, closed.W], [20, 60, 900, 450, 1350]);
+  assert.deepEqual(closed.regions.list.map((x) => x.id), ['A', 'B']);
+
+  // Price ceiling 15: 40 units traded, shortage 30, deadweight loss C + D = 150.
+  const ceil = analyze({ ...base, mode: 'ceiling', pc: 15 });
+  assert.deepEqual([ceil.Q, ceil.gap, ceil.CS, ceil.PS, ceil.dwl], [40, 30, 1000, 200, 150]);
+  near(val(ceil, 'A') + val(ceil, 'B'), ceil.CS);
+  near(val(ceil, 'C') + val(ceil, 'D'), ceil.dwl);
+  near(sum(ceil, 'consumers'), ceil.CS - closed.CS);
+  near(sum(ceil, 'producers'), ceil.PS - closed.PS);
+
+  // Price floor 25: 50 units sold, surplus 30.
+  const floor = analyze({ ...base, mode: 'floor', pc: 25 });
+  assert.deepEqual([floor.Q, floor.gap, floor.CS, floor.PS, floor.dwl], [50, 30, 625, 687.5, 37.5]);
+  near(val(floor, 'B') + val(floor, 'E'), floor.PS);
+  near(sum(floor, 'producers'), floor.PS - closed.PS);
+
+  // World price 12: imports 48, gain from trade C = 192.
+  const imp = analyze({ ...base, mode: 'world', pw: 12, tariff: 0 });
+  assert.deepEqual([imp.qd, imp.qs, imp.trade, imp.CS, imp.PS], [76, 28, 48, 1444, 98]);
+  near(val(imp, 'C'), imp.W - closed.W);
+  near(sum(imp, 'consumers'), imp.CS - closed.CS);
+
+  // Tariff 4 on top: price 16, imports 24, revenue 96, deadweight loss D + F = 48.
+  const tar = analyze({ ...base, mode: 'world', pw: 12, tariff: 4 });
+  assert.deepEqual([tar.P, tar.trade, tar.rev, tar.dwl], [16, 24, 96, 48]);
+  near(val(tar, 'D') + val(tar, 'F'), tar.dwl);
+  near(val(tar, 'E'), tar.rev);
+  near(sum(tar, 'consumers'), tar.CS - imp.CS);
+
+  // World price 28: exports 48.
+  const exp = analyze({ ...base, mode: 'world', pw: 28, tariff: 0 });
+  assert.equal(exp.trade, -48);
+  near(val(exp, 'C'), exp.W - closed.W);
+
+  // Not binding / prohibitive / supply positive at P = 0 / no equilibrium.
+  assert.equal(analyze({ ...base, mode: 'ceiling', pc: 25 }).nb, true);
+  assert.deepEqual(analyze({ ...base, mode: 'world', pw: 12, tariff: 30 }).notes, ['prohibitive']);
+  const posC = analyze({ a: 100, b: 2, c: 10, d: 2, mode: 'closed' }); // P* = 22.5, Q* = 55
+  near(posC.PS, 10 * 22.5 + 22.5 ** 2);
+  assert.equal(analyze({ a: 10, b: 1, c: 20, d: 1, mode: 'closed' }).invalid, true);
+
+  const sc = scenarios(base);
+  assert.equal(sc.ceiling.pc, 15);
+  assert.equal(sc.supplyUp.ss, 15);
+  assert.deepEqual(centroid([[0, 0], [3, 0], [0, 3]]), [1, 1]);
+});
+
+test('chapter sections: explicit tab, type default, headings follow the next block', () => {
+  const blocks = [
+    { id: 'h1', type: 'heading', text: 'Begriffe', level: 2 },
+    { id: 'd1', type: 'definition', term: '**Nachfrage**', text: 'x' },
+    { id: 'd2', type: 'definition', term: 'Angebot', text: 'y', tab: 'theory' },
+    { id: 'h2', type: 'heading', text: 'Formeln', level: 2 },
+    { id: 'f1', type: 'formula', title: '', text: 'Q_D = a − b·P\nmehr' },
+    { id: 't1', type: 'text', text: 'Einleitung', tab: 'overview' },
+    { id: 'x1', type: 'text', text: '' },                    // empty: not shown, no section of its own
+    { id: 's1', type: 'supplyDemand', title: '' },
+    { id: 'q1', type: 'quiz', question: 'a?' },
+    { id: 'q2', type: 'quiz', question: 'b?' },
+    { id: 'c1', type: 'flashcard', front: 'c', back: 'd' },
+    { id: 'v1', type: 'divider' },
+  ];
+  assert.deepEqual(resolveSections(blocks),
+    ['terms', 'terms', 'theory', 'formulas', 'formulas', 'overview', 'theory', 'interactive', 'practice', 'practice', 'practice', 'theory']);
+
+  const s = buildSections(blocks, { lang: 'de' });
+  assert.equal(s.tabbed, true);
+  assert.deepEqual(s.list.map((x) => x.key), ['overview', 'terms', 'formulas', 'theory', 'interactive', 'practice']);
+  assert.equal(s.of.get('d2'), 'theory');
+  const terms = s.list.find((x) => x.key === 'terms');
+  assert.deepEqual(terms.items.map((i) => i.title), ['Begriffe', 'Nachfrage']); // markup stripped
+  assert.equal(terms.count, 1);
+  const formulas = s.list.find((x) => x.key === 'formulas');
+  assert.equal(formulas.items[1].title, 'Q_D = a − b·P'); // first line when there's no title
+  const practice = s.list.find((x) => x.key === 'practice');
+  assert.deepEqual(practice.items.map((i) => [i.kind, i.n, i.title]), [['quiz', 2, 'Quiz · 2 Fragen'], ['cards', 1, 'Karteikarten · 1']]);
+  assert.equal(practice.count, 3);
+  assert.equal(s.list.find((x) => x.key === 'interactive').items[0].title, 'Angebot & Nachfrage');
+  assert.equal(sectionLabel('practice', 'en'), 'Practice');
+
+  // One section only (plus dividers): not split into tabs, no overview added.
+  const plain = buildSections([{ id: 'a', type: 'text', text: 'x' }, { id: 'b', type: 'divider' }, { id: 'c', type: 'heading', text: 'y' }]);
+  assert.equal(plain.tabbed, false);
+  assert.deepEqual(plain.list.map((x) => x.key), ['theory']);
+  // Two content sections: tabbed, with an (empty) overview tab in front.
+  const two = buildSections([{ id: 'a', type: 'text', text: 'x' }, { id: 'b', type: 'quiz', question: 'q' }], { lang: 'en' });
+  assert.deepEqual(two.list.map((x) => [x.key, x.blocks.length]), [['overview', 0], ['theory', 1], ['practice', 1]]);
+  assert.equal(two.list[0].label, 'Overview');
 });

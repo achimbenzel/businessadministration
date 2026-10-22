@@ -128,16 +128,34 @@ test('admin on the desktop: create a chapter, add blocks, publish', async () => 
   await page.locator('.ed-type-flashcard textarea').first().fill('Was ist der DB?');
   await page.locator('.ed-type-flashcard textarea').last().fill('Erlös − variable Kosten');
 
+  // The section filter shows one section; a block added there belongs to it.
+  const blockCount = (n) => page.waitForFunction((k) => document.querySelectorAll('.ed-block').length === k, n);
+  await page.click('.ch-tab:has-text("Begriffe")');
+  await blockCount(1);
+  await page.click('button:has-text("Baustein in „Begriffe“ hinzufügen")');
+  await page.click('.picker-item:has-text("Hinweis")');
+  await page.locator('.ed-type-callout textarea').fill('Der DB deckt zuerst die Fixkosten.');
+  await page.click('.ch-tab:has-text("Alle")');
+  await blockCount(4);
+
   await page.waitForSelector('.save-state.ok');
   await page.click('.status-btn');
-  const saved = await until(() => admin(`/api/chapters/${id}`), (r) => r.data?.chapter?.status === 'published' && r.data.chapter.blocks.length === 3);
-  assert.deepEqual(saved.data.chapter.blocks.map((b) => b.type), ['text', 'definition', 'flashcard']);
+  const saved = await until(() => admin(`/api/chapters/${id}`), (r) => r.data?.chapter?.status === 'published' && r.data.chapter.blocks.length === 4);
+  assert.deepEqual(saved.data.chapter.blocks.map((b) => b.type), ['text', 'definition', 'callout', 'flashcard']);
   assert.equal(saved.data.chapter.blocks[1].term, 'Deckungsbeitrag');
-  assert.equal(saved.data.chapter.blocks[2].back, 'Erlös − variable Kosten');
+  assert.equal(saved.data.chapter.blocks[2].tab, 'terms');
+  assert.equal(saved.data.chapter.blocks[3].back, 'Erlös − variable Kosten');
 
-  // Read mode renders the Markdown.
+  // Read mode: split into sections, with the contents column next to the text.
   await page.click('button[role=tab]:has-text("Ansehen")');
+  await page.waitForSelector('.ch-ov-card');
+  assert.deepEqual(await page.locator('.ch-tab > span:first-of-type').allTextContents(), ['Übersicht', 'Begriffe', 'Theorie', 'Übungen']);
+  await page.click('.ch-toc-head:has-text("Theorie")');
   await page.waitForSelector('.blocks strong:has-text("Deckungsbeitragsrechnung")');
+  assert.match(page.url(), /tab=theory/);
+  await page.click('.ch-toc-head:has-text("Begriffe")');
+  await page.click('.ch-toc-item:has-text("Deckungsbeitrag")');
+  await page.waitForSelector('.blk.flash .blk-def-term:has-text("Deckungsbeitrag")');
   assert.ok(await sideways(page) <= 1);
   await ctx.close();
 });
@@ -159,8 +177,18 @@ test('viewer on the phone: read, quiz, flashcards, search', async () => {
   const { ctx, page } = await open(PHONE);
   await login(page, 'User', PASSWORDS.user);
   await page.goto(`${srv.base}/kapitel/${c.id}`);
-  await page.waitForSelector('.blocks');
+  await page.waitForSelector('.ch-tabs');
   assert.equal(await page.locator('.admin-bar').count(), 0, 'no admin bar for viewers');
+  // Overview first: one card per section. The table lives in "Theorie".
+  assert.equal(await page.locator('.ch-ov-card').count(), 2);
+  await page.click('.ch-ov-card:has-text("Theorie")');
+  await page.waitForSelector('.blk-table');
+  assert.ok(await sideways(page) <= 1, 'chapter page scrolls sideways (table must scroll inside its box)');
+  // The contents sheet jumps to the quiz in "Übungen".
+  await page.click('.ch-toc-btn');
+  await page.click('.ch-toc-modal .ch-toc-item:has-text("Quiz")');
+  await page.waitForSelector('.blk-quiz');
+  assert.match(page.url(), /tab=practice/);
   await page.click('.blk-quiz-opt:has-text("Maximalprinzip")');
   await page.click('button:has-text("Antwort prüfen")');
   await page.waitForSelector('.blk-quiz-result.right');
@@ -168,7 +196,6 @@ test('viewer on the phone: read, quiz, flashcards, search', async () => {
   await page.waitForSelector('.blk-card.flipped');
   await page.click('button:has-text("Als gelernt markieren")');
   await page.waitForSelector('.learned-btn.on');
-  assert.ok(await sideways(page) <= 1, 'chapter page scrolls sideways (table must scroll inside its box)');
 
   await page.goto(`${srv.base}/fach/grundlagen-bwl/karteikarten`);
   await page.waitForSelector('.study-card');
@@ -181,40 +208,57 @@ test('viewer on the phone: read, quiz, flashcards, search', async () => {
   await page.waitForSelector('.search-hit');
   await page.keyboard.press('Enter');
   await page.waitForURL(/\/kapitel\//);
+  await page.waitForSelector('.blk.flash'); // the hit's tab is opened and the block highlighted
   await ctx.close();
 });
 
-test('interactive demos: sliders move the curves and the numbers', async () => {
+test('interactive demos: scenarios and sliders move the curves, areas and numbers', async () => {
   const c = (await admin('/api/chapters', { method: 'POST', json: { subjectId: 'economical-framework', title: 'Demos' } })).data.chapter;
   await admin(`/api/chapters/${c.id}`, {
     method: 'PATCH',
-    json: { status: 'published', lang: 'en', blocks: [
+    json: { status: 'published', blocks: [
       { type: 'supplyDemand', a: 100, b: 2, c: -20, d: 4 },
       { type: 'consumerChoice', m: 100, p1: 2, p2: 5, alpha: 0.5 },
     ] },
   });
   const { ctx, page } = await open(PHONE);
+  await page.emulateMedia({ reducedMotion: 'reduce' }); // no animation between scenarios
   await login(page, 'User', PASSWORDS.user);
   await page.goto(`${srv.base}/kapitel/${c.id}`);
-  await page.waitForSelector('.demo svg');
+  await page.waitForSelector('.mk-chart svg');
   const [market, choice] = [page.locator('.demo').nth(0), page.locator('.demo').nth(1)];
-  const readout = (demo, label) => demo.locator('.demo-readout', { hasText: label }).first().locator('strong').textContent();
-  assert.equal(await readout(market, 'P*'), '20');
-  assert.equal(await readout(market, 'Consumer surplus'), '900');
-  await market.locator('input[type=range]').nth(0).fill('140'); // a: demand at P = 0
-  assert.equal(await readout(market, 'P*'), '26.67');
-  assert.equal(await market.locator('.demo-base').count(), 2, 'starting curves stay visible, dashed');
-  await market.locator('button', { hasText: 'Reset' }).click();
-  assert.equal(await readout(market, 'P*'), '20');
-  await market.locator('button', { hasText: 'Price ceiling' }).click();
-  await market.locator('input[type=range]').last().fill('15');
-  assert.equal(await readout(market, 'Shortage'), '30');
-  assert.equal(await readout(market, 'Quantity traded'), '40');
+  const result = (label) => market.locator('.mk-table tr', { hasText: label }).first().locator('td.now').textContent();
+  const letters = () => market.locator('.mk-letter').allTextContents();
+  assert.equal(await result('Marktpreis'), '20');
+  assert.equal(await result('Konsumentenrente'), '900');
+  assert.deepEqual(await letters(), ['A', 'B']);
 
-  assert.equal(await readout(choice, 'x₁*'), '25');
+  await market.locator('.mk-chip', { hasText: 'Höchstpreis' }).click();
+  assert.equal(await result('Knappheit'), '30');
+  assert.equal(await result('Gehandelte Menge'), '40');
+  assert.equal(await result('Wohlfahrtsverlust'), '150');
+  assert.ok((await letters()).includes('C'), 'the deadweight loss areas are lettered');
+
+  await market.locator('.mk-chip', { hasText: 'Importzoll' }).click();
+  assert.equal(await result('Importe'), '24');
+  assert.equal(await result('Zolleinnahmen'), '96');
+
+  await market.locator('button', { hasText: 'Zurücksetzen' }).click();
+  assert.equal(await result('Marktpreis'), '20');
+  await market.locator('input[type=range]').nth(0).fill('20'); // demand +20
+  assert.equal(await result('Marktpreis'), '23,33');
+  assert.equal(await market.locator('.mk-curve.ghost').count(), 2, 'starting curves stay visible, dashed');
+
+  const readout = (label) => choice.locator('.demo-readout', { hasText: label }).first().locator('strong').textContent();
+  assert.equal(await readout('x₁*'), '25');
   await choice.locator('input[type=range]').nth(1).fill('4'); // p₁
-  assert.equal(await readout(choice, 'x₁*'), '12.5');
-  assert.equal(await readout(choice, 'x₂*'), '10');
+  assert.equal(await readout('x₁*'), '12,5');
+  assert.equal(await readout('x₂*'), '10');
+  await choice.locator('input[type=range]').nth(1).fill('2');
+  await choice.locator('input[type=checkbox]').check(); // own bundle A: MRS vs. MRT
+  await choice.locator('input[type=range]').nth(4).fill('10');
+  assert.equal(await readout('GRS (MRS) in A'), '1,6');
+  assert.match(await choice.locator('.demo-verdict').textContent(), /mehr Gut 1/);
   assert.ok(await sideways(page) <= 1, 'demo page scrolls sideways');
   await ctx.close();
 });

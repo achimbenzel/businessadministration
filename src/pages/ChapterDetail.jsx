@@ -1,6 +1,8 @@
 // A chapter: read it (everyone) or edit it in place (admin, ?bearbeiten=1).
 // Edits save themselves while typing — there's no save button.
-import { useEffect, useRef, useState } from 'react';
+// Chapters with content in several sections (Begriffe, Formeln, …) are read
+// tab by tab (?tab=formulas) with an overview first and a contents list.
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import {
   ChevronLeft, ChevronRight, Eye, Pencil, Trash2, CircleCheck, Circle, Globe, EyeOff, Check, LoaderCircle,
@@ -13,6 +15,7 @@ import PageLoader from '../components/PageLoader.jsx';
 import AutoTextarea from '../components/AutoTextarea.jsx';
 import BlockList from '../components/blocks/BlockList.jsx';
 import BlockEditor from '../components/blocks/BlockEditor.jsx';
+import { SectionTabs, SectionToc, SectionCards, SectionNav, SECTION_TEXT, useScrollSpy } from '../components/chapter/ChapterSections.jsx';
 import { useToast } from '../components/Toast.jsx';
 import { api } from '../lib/api.js';
 import { useAuth } from '../lib/auth.jsx';
@@ -23,6 +26,8 @@ import { useLearned, rememberChapter } from '../lib/progress.js';
 import { usePageTitle } from '../lib/pageTitle.js';
 import { subjectStyle } from '../lib/subjects.js';
 import { fmtRelative } from '../lib/format.js';
+import { buildSections, resolveSections, SECTIONS, SECTION_KEYS } from '../lib/chapterTabs.js';
+import { DESKTOP, useMediaQuery } from '../lib/useMedia.js';
 import '../styles/chapter.css';
 import '../styles/blocks.css';
 
@@ -52,18 +57,63 @@ export default function ChapterDetail() {
   const { isLearned, toggle } = useLearned();
   usePageTitle(data?.chapter?.title || 'Kapitel');
 
+  // Sections and the current tab. In the editor the tab bar filters instead (no tab = all blocks).
+  const blocks = data?.chapter?.blocks;
+  const lang = data?.chapter?.lang || 'de';
+  const sections = useMemo(() => buildSections(blocks || [], { lang }), [blocks, lang]);
+  const tabParam = params.get('tab');
+  const tabbed = sections.tabbed && !editing;
+  const section = tabbed ? (sections.list.find((x) => x.key === tabParam) || sections.list[0]) : null;
+  const current = section?.key ?? null;
+  const filter = editing && SECTION_KEYS.includes(tabParam) ? tabParam : null;
+  const wide = useMediaQuery('(min-width: 1320px)');
+  const desktop = useMediaQuery(DESKTOP);
+  const [tocOpen, setTocOpen] = useState(false);
+  const [jump, setJump] = useState(null);
+  const tabsAnchor = useRef(null);
+  const spyIds = useMemo(() => (section?.items || []).map((i) => i.id), [section]);
+  const active = useScrollSpy(tabbed ? spyIds : []);
+
   useEffect(() => { if (data?.chapter) rememberChapter(data.chapter, data.subject); }, [data?.chapter?.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Search results link to a block (#b-<id>): scroll there and highlight it.
+  const selectTab = (key) => {
+    const p = new URLSearchParams(params);
+    if (key && (editing || key !== sections.list[0]?.key)) p.set('tab', key); else p.delete('tab');
+    setParams(p, { replace: true });
+    // Back to the start of the section once the tab bar has scrolled away.
+    const a = tabsAnchor.current;
+    if (a) {
+      const y = a.getBoundingClientRect().top + window.scrollY - (desktop ? 0 : 56) - 6;
+      if (window.scrollY > y) window.scrollTo({ top: y });
+    }
+  };
+
+  // Go to a block: switch to its tab (or show all in the editor), then scroll there.
+  const jumpTo = (id) => {
+    const key = sections.of.get(id);
+    if (tabbed && key && key !== current) selectTab(key);
+    if (editing && filter) {
+      const i = (blocks || []).findIndex((b) => b.id === id);
+      if (i >= 0 && resolveSections(blocks)[i] !== filter) selectTab(null);
+    }
+    setTocOpen(false);
+    setJump({ id });
+  };
   useEffect(() => {
-    if (!data || !location.hash.startsWith('#b-')) return;
-    const el = document.getElementById(location.hash.slice(1));
-    if (!el) return;
-    el.scrollIntoView({ block: 'center' });
+    if (!jump) return undefined;
+    const el = document.getElementById(`b-${jump.id}`);
+    if (!el) return undefined;
+    setJump(null);
+    el.scrollIntoView({ block: 'start', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     el.classList.add('flash');
     const t = setTimeout(() => el.classList.remove('flash'), 1800);
     return () => clearTimeout(t);
-  }, [data, location.hash]);
+  }, [jump, current, filter]);
+
+  // Search results link to a block (#b-<id>).
+  useEffect(() => {
+    if (data && location.hash.startsWith('#b-')) jumpTo(location.hash.slice(3));
+  }, [data?.chapter?.id, location.hash]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const save = async (opts = {}) => {
     const c = chapterRef.current;
@@ -119,6 +169,16 @@ export default function ChapterDetail() {
   if (!data) return <PageLoader />;
   const { chapter, subject, semester, prev, next, position, total } = data;
   const learned = isLearned(chapter.id);
+  const T = SECTION_TEXT[lang] || SECTION_TEXT.de;
+  const last = sections.list[sections.list.length - 1];
+  // Editor: "Alle" plus every section, with the number of blocks in it.
+  const editTabs = editing && chapter.blocks.length > 0 && (() => {
+    const keys = resolveSections(chapter.blocks);
+    return [
+      { key: null, label: 'Alle', color: 'blue', count: chapter.blocks.length },
+      ...SECTIONS.map((x) => ({ key: x.key, label: x.label.de, color: x.color, count: keys.filter((k) => k === x.key).length })),
+    ];
+  })();
 
   const remove = async () => {
     saver.cancel();
@@ -138,77 +198,113 @@ export default function ChapterDetail() {
   };
 
   return (
-    <article className={`chapter ${editing ? 'is-editing' : ''}`} style={subjectStyle(subject)}>
-      <nav className="crumbs" aria-label="Pfad">
-        {semester && <Link to={`/semester/${semester.id}`}>{semester.title}</Link>}
-        {semester && subject && <ChevronRight size={14} />}
-        {subject && <Link to={`/fach/${subject.id}`}>{subject.short || subject.title}</Link>}
-        {total > 0 && <span className="crumbs-pos">Kapitel {position} von {total}</span>}
-      </nav>
+    <article className={`chapter ${editing ? 'is-editing' : ''} ${tabbed ? 'is-tabbed' : ''}`} style={subjectStyle(subject)}>
+      <div className="ch-main">
+        <nav className="crumbs" aria-label="Pfad">
+          {semester && <Link to={`/semester/${semester.id}`}>{semester.title}</Link>}
+          {semester && subject && <ChevronRight size={14} />}
+          {subject && <Link to={`/fach/${subject.id}`}>{subject.short || subject.title}</Link>}
+          {total > 0 && <span className="crumbs-pos">Kapitel {position} von {total}</span>}
+        </nav>
 
-      {isAdmin && (
-        <div className="admin-bar">
-          <div className="segmented" role="tablist" aria-label="Modus">
-            <button role="tab" aria-selected={!editing} className={!editing ? 'on' : ''} onClick={() => setEditing(false)}><Eye size={15} /> Ansehen</button>
-            <button role="tab" aria-selected={editing} className={editing ? 'on' : ''} onClick={() => setEditing(true)}><Pencil size={15} /> Bearbeiten</button>
+        {isAdmin && (
+          <div className="admin-bar">
+            <div className="segmented" role="tablist" aria-label="Modus">
+              <button role="tab" aria-selected={!editing} className={!editing ? 'on' : ''} onClick={() => setEditing(false)}><Eye size={15} /> Ansehen</button>
+              <button role="tab" aria-selected={editing} className={editing ? 'on' : ''} onClick={() => setEditing(true)}><Pencil size={15} /> Bearbeiten</button>
+            </div>
+            <button className={`status-btn ${chapter.status}`} onClick={() => edit({ status: chapter.status === 'published' ? 'draft' : 'published' }, { immediate: true })}
+              title={chapter.status === 'published' ? 'Für Betrachter sichtbar – klicken, um es zum Entwurf zu machen' : 'Nur für Admins sichtbar – klicken, um es zu veröffentlichen'}>
+              {chapter.status === 'published' ? <><Globe size={15} /> Veröffentlicht</> : <><EyeOff size={15} /> Entwurf</>}
+            </button>
+            {chapter.lang === 'en' && <span className="chip-static" title="Inhalt auf Englisch">EN</span>}
+            <SaveIndicator state={saveState} updatedAt={chapter.updatedAt} />
+            <Menu label="Kapitel-Aktionen" items={[
+              {
+                label: chapter.lang === 'en' ? 'Inhalt auf Deutsch umstellen' : 'Inhalt auf Englisch umstellen',
+                hint: chapter.lang === 'en' ? 'jetzt: EN' : 'jetzt: DE',
+                icon: Languages,
+                onClick: () => edit({ lang: chapter.lang === 'en' ? 'de' : 'en' }, { immediate: true }),
+              },
+              { label: 'In anderes Fach verschieben', icon: FolderInput, onClick: () => { saver.flush(); setMoving(true); } },
+              '-',
+              { label: 'Kapitel löschen', icon: Trash2, danger: true, onClick: remove },
+            ]} />
           </div>
-          <button className={`status-btn ${chapter.status}`} onClick={() => edit({ status: chapter.status === 'published' ? 'draft' : 'published' }, { immediate: true })}
-            title={chapter.status === 'published' ? 'Für Betrachter sichtbar – klicken, um es zum Entwurf zu machen' : 'Nur für Admins sichtbar – klicken, um es zu veröffentlichen'}>
-            {chapter.status === 'published' ? <><Globe size={15} /> Veröffentlicht</> : <><EyeOff size={15} /> Entwurf</>}
-          </button>
-          {chapter.lang === 'en' && <span className="chip-static" title="Inhalt auf Englisch">EN</span>}
-          <SaveIndicator state={saveState} updatedAt={chapter.updatedAt} />
-          <Menu label="Kapitel-Aktionen" items={[
-            {
-              label: chapter.lang === 'en' ? 'Inhalt auf Deutsch umstellen' : 'Inhalt auf Englisch umstellen',
-              hint: chapter.lang === 'en' ? 'jetzt: EN' : 'jetzt: DE',
-              icon: Languages,
-              onClick: () => edit({ lang: chapter.lang === 'en' ? 'de' : 'en' }, { immediate: true }),
-            },
-            { label: 'In anderes Fach verschieben', icon: FolderInput, onClick: () => { saver.flush(); setMoving(true); } },
-            '-',
-            { label: 'Kapitel löschen', icon: Trash2, danger: true, onClick: remove },
-          ]} />
-        </div>
-      )}
-
-      <header className="chapter-head" lang={chapter.lang}>
-        {editing ? (
-          <>
-            <AutoTextarea className="chapter-title-input" value={chapter.title} onChange={(e) => edit({ title: e.target.value.replace(/\n/g, ' ') })}
-              placeholder="Titel des Kapitels" aria-label="Titel" maxLength={200} />
-            <AutoTextarea className="chapter-summary-input" value={chapter.summary} onChange={(e) => edit({ summary: e.target.value })}
-              placeholder="Kurze Zusammenfassung (optional) – erscheint in der Kapitelliste" aria-label="Zusammenfassung" maxLength={1000} />
-          </>
-        ) : (
-          <>
-            <h1>{chapter.title}</h1>
-            {chapter.summary && <p className="chapter-summary">{chapter.summary}</p>}
-          </>
         )}
-      </header>
 
-      {editing
-        ? <BlockEditor blocks={chapter.blocks} chapterId={chapter.id} lang={chapter.lang} onChange={(blocks) => edit({ blocks })} />
-        : <BlockList blocks={chapter.blocks} chapterId={chapter.id} lang={chapter.lang} emptyHint={isAdmin ? <button className="btn" onClick={() => setEditing(true)}><Pencil size={15} /> Inhalte hinzufügen</button> : null} />}
+        <header className="chapter-head" lang={chapter.lang}>
+          {editing ? (
+            <>
+              <AutoTextarea className="chapter-title-input" value={chapter.title} onChange={(e) => edit({ title: e.target.value.replace(/\n/g, ' ') })}
+                placeholder="Titel des Kapitels" aria-label="Titel" maxLength={200} />
+              <AutoTextarea className="chapter-summary-input" value={chapter.summary} onChange={(e) => edit({ summary: e.target.value })}
+                placeholder="Kurze Zusammenfassung (optional) – erscheint in der Kapitelliste" aria-label="Zusammenfassung" maxLength={1000} />
+            </>
+          ) : (
+            <>
+              <h1>{chapter.title}</h1>
+              {chapter.summary && <p className="chapter-summary">{chapter.summary}</p>}
+            </>
+          )}
+        </header>
 
-      {!editing && (
-        <footer className="chapter-foot">
-          <button className={`learned-btn ${learned ? 'on' : ''}`} onClick={() => toggle(chapter.id)} aria-pressed={learned}>
-            {learned ? <CircleCheck size={20} /> : <Circle size={20} />}
-            {learned ? 'Gelernt' : 'Als gelernt markieren'}
-          </button>
-          <div className="chapter-nav">
-            {prev ? (
-              <Link to={`/kapitel/${prev.id}`} className="nav-card prev"><ChevronLeft size={18} /><span><small>Vorheriges</small>{prev.title}</span></Link>
-            ) : <span />}
-            {next ? (
-              <Link to={`/kapitel/${next.id}`} className="nav-card next"><span><small>Nächstes</small>{next.title}</span><ChevronRight size={18} /></Link>
-            ) : subject && (
-              <Link to={`/fach/${subject.id}`} className="nav-card next"><span><small>Fertig</small>Zurück zum Fach</span><ChevronRight size={18} /></Link>
-            )}
+        <div ref={tabsAnchor} />
+        {tabbed && (
+          <SectionTabs tabs={sections.list} current={current} onSelect={selectTab} lang={lang}
+            onContents={wide ? null : () => setTocOpen(true)} />
+        )}
+        {editTabs && <SectionTabs tabs={editTabs} current={filter} onSelect={selectTab} lang="de" sticky={false} />}
+
+        {editing ? (
+          <BlockEditor blocks={chapter.blocks} chapterId={chapter.id} lang={chapter.lang} filter={filter} onChange={(blocks) => edit({ blocks })} />
+        ) : tabbed ? (
+          <div className="ch-panel" role="tabpanel" aria-label={section.label} key={current}>
+            {current === 'overview' ? (
+              // The map of the chapter comes right after the introduction (the first overview block).
+              <>
+                {section.blocks.length > 0 && <BlockList blocks={section.blocks.slice(0, 1)} chapterId={chapter.id} lang={chapter.lang} />}
+                <SectionCards sections={sections.list} onSelect={selectTab} lang={lang} />
+                {section.blocks.length > 1 && <BlockList blocks={section.blocks.slice(1)} chapterId={chapter.id} lang={chapter.lang} />}
+              </>
+            ) : <BlockList blocks={section.blocks} chapterId={chapter.id} lang={chapter.lang} />}
+            {current !== 'overview' && <SectionNav sections={sections.list} current={current} onSelect={selectTab} lang={lang} />}
           </div>
-        </footer>
+        ) : (
+          <BlockList blocks={chapter.blocks} chapterId={chapter.id} lang={chapter.lang} emptyHint={isAdmin ? <button className="btn" onClick={() => setEditing(true)}><Pencil size={15} /> Inhalte hinzufügen</button> : null} />
+        )}
+
+        {!editing && (!tabbed || current === last.key) && (
+          <footer className="chapter-foot">
+            <button className={`learned-btn ${learned ? 'on' : ''}`} onClick={() => toggle(chapter.id)} aria-pressed={learned}>
+              {learned ? <CircleCheck size={20} /> : <Circle size={20} />}
+              {learned ? 'Gelernt' : 'Als gelernt markieren'}
+            </button>
+            <div className="chapter-nav">
+              {prev ? (
+                <Link to={`/kapitel/${prev.id}`} className="nav-card prev"><ChevronLeft size={18} /><span><small>Vorheriges</small>{prev.title}</span></Link>
+              ) : <span />}
+              {next ? (
+                <Link to={`/kapitel/${next.id}`} className="nav-card next"><span><small>Nächstes</small>{next.title}</span><ChevronRight size={18} /></Link>
+              ) : subject && (
+                <Link to={`/fach/${subject.id}`} className="nav-card next"><span><small>Fertig</small>Zurück zum Fach</span><ChevronRight size={18} /></Link>
+              )}
+            </div>
+          </footer>
+        )}
+      </div>
+
+      {tabbed && wide && (
+        <aside className="ch-toc">
+          <div className="ch-toc-label">{T.contents}</div>
+          <SectionToc sections={sections.list} current={current} active={active} onSelect={selectTab} onJump={jumpTo} lang={lang} />
+        </aside>
+      )}
+      {tocOpen && (
+        <Modal title={T.contents} onClose={() => setTocOpen(false)} size="sm" className="ch-toc-modal">
+          <SectionToc sections={sections.list} current={current} active={active} onSelect={(k) => { setTocOpen(false); selectTab(k); }}
+            onJump={jumpTo} lang={lang} expandAll />
+        </Modal>
       )}
 
       {moving && (
