@@ -3,7 +3,7 @@
 // The server cleans the same fields (server/schema/chapters.js) — keep in sync.
 import {
   Type, Heading2, List, Quote, Minus, Lightbulb, BookMarked, ChevronRight, Sigma, Layers, CircleHelp,
-  Table, Image, Paperclip, Link2, ChartLine, ChartSpline,
+  Table, Image, Paperclip, Link2, ChartLine, ChartSpline, Presentation,
 } from 'lucide-react';
 
 export const rid = () => Math.random().toString(36).slice(2, 10);
@@ -17,7 +17,11 @@ export const BLOCK_META = {
   definition: { label: 'Definition', icon: BookMarked, hint: 'Begriff und Erklärung', create: () => ({ term: '', text: '' }) },
   callout: { label: 'Hinweis', icon: Lightbulb, hint: 'Merke, Tipp, Achtung', create: () => ({ variant: 'info', title: '', text: '' }) },
   toggle: { label: 'Aufklappbar', icon: ChevronRight, hint: 'Inhalt zum Aufklappen', create: () => ({ title: '', text: '' }) },
-  formula: { label: 'Formel', icon: Sigma, hint: 'Formel oder Rechenweg', create: () => ({ text: '', caption: '' }) },
+  formula: { label: 'Formel', icon: Sigma, hint: 'Formel oder Rechenweg – x^{2}, a_{i}, \\sum, \\frac{a}{b}', create: () => ({ text: '', caption: '' }) },
+  slides: {
+    label: 'Folien', icon: Presentation, hint: 'Foliensatz: Schritt für Schritt blättern oder präsentieren',
+    create: () => ({ title: '', slides: [{ id: rid(), title: '', formula: '', text: '', example: '', image: '', alt: '' }] }),
+  },
   flashcard: { label: 'Karteikarte', icon: Layers, hint: 'Frage vorne, Antwort hinten', create: () => ({ front: '', back: '' }) },
   quiz: {
     label: 'Quizfrage', icon: CircleHelp, hint: 'Multiple Choice mit Auflösung',
@@ -39,7 +43,7 @@ export const BLOCK_META = {
 
 export const BLOCK_GROUPS = [
   { key: 'basic', label: 'Grundlagen', types: ['text', 'heading', 'list', 'quote', 'divider'] },
-  { key: 'learn', label: 'Lernen', types: ['definition', 'callout', 'toggle', 'formula', 'flashcard', 'quiz'] },
+  { key: 'learn', label: 'Lernen', types: ['definition', 'callout', 'toggle', 'formula', 'slides', 'flashcard', 'quiz'] },
   { key: 'media', label: 'Medien & Daten', types: ['table', 'image', 'files', 'links'] },
   { key: 'interactive', label: 'Interaktiv', types: ['supplyDemand', 'consumerChoice'] },
 ];
@@ -63,6 +67,7 @@ export function isEmptyBlock(b) {
     case 'quiz': return blank(b.question);
     case 'table': return (b.rows || []).every((r) => r.every(blank));
     case 'image': return !b.src;
+    case 'slides': return !(b.slides || []).some((s) => [s.title, s.formula, s.text, s.example].some((x) => !blank(x)) || s.image);
     case 'files': return !(b.items || []).length;
     case 'links': return !(b.items || []).some((l) => !blank(l.url));
     default: return true;

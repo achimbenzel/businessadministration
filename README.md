@@ -42,12 +42,17 @@ Playwright).
   Im Fach Economical Framework: *Angebot & Nachfrage (Supply & Demand)* und *Budgetgerade &
   Indifferenzkurven (Consumer Choice)* – auf Deutsch mit englischen Fachbegriffen und Definitionen
   (die Klausur ist englisch).
+- **Mathe-Tutorium** (1. Semester): Summen- und Produktzeichen, Potenzgesetze 1–6 und binomische
+  Formeln – jeweils als Foliensatz mit Begriffen, erklärten Formeln und Übungen.
+- **Folien** als Baustein – blättern, wischen, Pfeiltasten oder im Vollbild präsentieren.
+- **Formeln** in einer kleinen LaTeX-Schreibweise (`a^{x+y}`, `\sum_{i=1}^{n}`, `\frac{a}{b}` …),
+  auch mitten im Text zwischen `$…$` – ohne Mathe-Bibliothek, offline.
 - **Interaktive Demos** als Bausteine – Markt-Demo mit Szenarien (Verschiebungen, Weltmarkt, Zoll,
   Höchst-/Mindestpreis) und Flächen A, B, C … mit Gewinnern und Verlierern; Haushaltsoptimum mit
   Budgetgerade, Indifferenzkurven und GRS-vs.-GRT-Vergleich in einem eigenen Bündel.
 - **Inhaltssprache pro Kapitel** (Deutsch/Englisch) – die Beschriftungen in den Bausteinen folgen ihr.
 - **Abschnitte** – Kapitel mit Inhalt in mehreren Bereichen werden in Reitern gelesen:
-  Übersicht · Begriffe · Formeln · Theorie · Interaktiv · Übungen, mit Übersichtskarten,
+  Übersicht · Folien · Begriffe · Formeln · Theorie · Interaktiv · Übungen, mit Übersichtskarten,
   Inhaltsverzeichnis (Spalte am Desktop, Blatt am Handy) und „Weiter“ am Ende jedes Reiters.
 - **Formeln zum Verstehen** – Formel-Bausteine mit Symbol-Legende, Erklärung in einfachen
   Worten, Rechenbeispiel und Alltagsvergleich; Definitionen optional mit englischem Begriff.

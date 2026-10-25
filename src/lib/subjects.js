@@ -2,14 +2,14 @@
 // an unknown name falls back to the first entry.
 import {
   BookOpen, Users, Globe, Briefcase, Scale, Calculator, ChartColumn, Landmark, Building2, Coins,
-  Handshake, Target, Puzzle, Brain, Lightbulb, GraduationCap, Megaphone, Factory, Network, TrendingUp,
+  Handshake, Target, Puzzle, Brain, Lightbulb, GraduationCap, Megaphone, Factory, Network, TrendingUp, Sigma,
 } from 'lucide-react';
 
 export const SUBJECT_ICONS = {
   book: BookOpen, users: Users, globe: Globe, briefcase: Briefcase, scale: Scale, calculator: Calculator,
   chart: ChartColumn, landmark: Landmark, building: Building2, coins: Coins, handshake: Handshake,
   target: Target, puzzle: Puzzle, brain: Brain, lightbulb: Lightbulb, graduation: GraduationCap,
-  megaphone: Megaphone, factory: Factory, network: Network, trend: TrendingUp,
+  megaphone: Megaphone, factory: Factory, network: Network, trend: TrendingUp, sigma: Sigma,
 };
 
 // Names of colour tokens in base.css (--c-<name>, --c-<name>-rgb).

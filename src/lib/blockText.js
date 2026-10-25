@@ -7,6 +7,7 @@ export const BLOCK_TEXT = {
   de: {
     definition: 'Definition',
     inEnglish: 'Auf Englisch',
+    slides: { label: 'Folien', slide: 'Folie', of: 'von', present: 'Präsentieren (Vollbild)', close: 'Präsentation beenden', prev: 'Vorherige Folie', next: 'Nächste Folie', example: 'Beispiel' },
     formula: { label: 'Formel', variables: 'Was bedeutet was?', plain: 'In einfachen Worten', example: 'Beispiel', analogy: 'Vergleich aus dem Alltag' },
     callout: { info: 'Info', tip: 'Tipp', important: 'Merke', warning: 'Achtung' },
     showMore: 'Mehr anzeigen',
@@ -73,6 +74,7 @@ export const BLOCK_TEXT = {
   en: {
     definition: 'Definition',
     inEnglish: 'In English',
+    slides: { label: 'Slides', slide: 'Slide', of: 'of', present: 'Present (full screen)', close: 'End presentation', prev: 'Previous slide', next: 'Next slide', example: 'Example' },
     formula: { label: 'Formula', variables: 'Symbols', plain: 'In plain words', example: 'Example', analogy: 'Everyday analogy' },
     callout: { info: 'Info', tip: 'Tip', important: 'Key point', warning: 'Caution' },
     showMore: 'Show more',

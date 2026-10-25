@@ -475,3 +475,21 @@ a.row-item:hover { background: var(--surface-2); }
   html[data-cookie=open] .legal-standalone,
   html[data-cookie=open] .main-inner { padding-bottom: calc(var(--cookie-h, 0px) + 24px); }
 }
+
+/* ------------------------------------------------------------------ Formulas (MathText) */
+.m-sup, .m-sub { font-size: .72em; line-height: 0; }
+.m-sup { vertical-align: .55em; }
+.m-sub { vertical-align: -.28em; }
+/* index and exponent together: the box's baseline is the exponent's, raised like a normal exponent */
+.m-ss { display: inline-flex; flex-direction: column; vertical-align: .42em; margin-left: .04em; font-size: .72em; line-height: 1.05; }
+.m-op { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin: 0 .14em; line-height: 1; }
+.m-sym { font-size: 1.6em; line-height: 1.02; }
+.m-lim { min-height: .3em; font-size: .64em; line-height: 1.15; white-space: nowrap; }
+.m-frac { display: inline-flex; flex-direction: column; align-items: stretch; vertical-align: middle; margin: 0 .12em; text-align: center; line-height: 1.25; }
+.m-num { padding: 0 .18em .06em; }
+.m-den { padding: .06em .18em 0; border-top: .09em solid currentColor; }
+.m-sqrt { display: inline-flex; align-items: baseline; white-space: nowrap; }
+.m-root { font-size: 1.08em; }
+.m-rad { margin-left: .02em; padding: 0 .1em; border-top: .08em solid currentColor; }
+.m-idx { margin-right: -.3em; font-size: .55em; transform: translateY(-.75em); }
+.m-bar { text-decoration: overline; text-decoration-thickness: .08em; }

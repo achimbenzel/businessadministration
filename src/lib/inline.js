@@ -3,10 +3,14 @@
 // typed into a block can inject markup or scripts.
 //
 // Inline:  **fett**  *kursiv* / _kursiv_  ==markiert==  `code`  [Text](https://…)  bare URLs
+//          $a^{x+y}$  formula (lib/math.js) — no space right inside the dollars, so "5 $ und 10 $" stays text
 // Blocks:  blank line = new paragraph · "- " / "• " = bullet list · "1. " = numbered list
+
+import { mathToPlain } from './math.js';
 
 const RULES = [
   { t: 'code', re: /`([^`\n]+)`/ },
+  { t: 'math', re: /\$(?=\S)([^$\n]*?\S)\$(?!\d)/ },
   { t: 'link', re: /\[([^\]\n]+)\]\(([^)\s]+)\)/ },
   { t: 'b', re: /\*\*(?=\S)([\s\S]*?\S)\*\*/ },
   { t: 'mark', re: /==(?=\S)([\s\S]*?\S)==/ },
@@ -44,6 +48,7 @@ export function parseInline(text, depth = 0) {
     const { rule, m } = best;
     pushText(out, rest.slice(0, m.index));
     if (rule.t === 'code') out.push({ t: 'code', v: m[1] });
+    else if (rule.t === 'math') out.push({ t: 'math', v: m[1] });
     else if (rule.t === 'link') {
       const href = safeHref(m[2]);
       if (href) out.push({ t: 'link', href, children: parseInline(m[1], depth + 1) });
@@ -85,6 +90,6 @@ export function parseParagraphs(text) {
 
 /** Plain text without the markup — for previews and summaries. */
 export function stripInline(text) {
-  const walk = (tokens) => tokens.map((t) => (t.children ? walk(t.children) : t.v)).join('');
+  const walk = (tokens) => tokens.map((t) => (t.children ? walk(t.children) : t.t === 'math' ? mathToPlain(t.v) : t.v)).join('');
   return walk(parseInline(text));
 }

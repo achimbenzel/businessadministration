@@ -1,23 +1,24 @@
-// The parts of a split-up chapter: the tab bar (Übersicht · Begriffe · Formeln
-// · Theorie · Interaktiv · Übungen), the contents list (a column on wide
+// The parts of a split-up chapter: the tab bar (Übersicht · Folien · Begriffe ·
+// Formeln · Theorie · Interaktiv · Übungen), the contents list (a column on wide
 // screens, a sheet on the phone), the overview cards and the "next section"
 // buttons at the end of a tab. Sections come from lib/chapterTabs.js.
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import {
   LayoutGrid, BookMarked, Sigma, BookOpen, SlidersHorizontal, ListChecks, Hash, CircleHelp, Layers,
-  TableOfContents, ArrowRight, ChevronLeft, ChevronRight,
+  TableOfContents, ArrowRight, ChevronLeft, ChevronRight, Presentation,
 } from 'lucide-react';
 
 export const SECTION_ICON = {
-  overview: LayoutGrid, terms: BookMarked, formulas: Sigma, theory: BookOpen, interactive: SlidersHorizontal, practice: ListChecks,
+  overview: LayoutGrid, slides: Presentation, terms: BookMarked, formulas: Sigma, theory: BookOpen, interactive: SlidersHorizontal, practice: ListChecks,
 };
-const ITEM_ICON = { heading: Hash, term: BookMarked, formula: Sigma, demo: SlidersHorizontal, quiz: CircleHelp, cards: Layers };
+const ITEM_ICON = { slides: Presentation, heading: Hash, term: BookMarked, formula: Sigma, demo: SlidersHorizontal, quiz: CircleHelp, cards: Layers };
 
 export const SECTION_TEXT = {
   de: {
     sections: 'Abschnitte', contents: 'Inhalt', all: 'Alle', inChapter: 'In diesem Kapitel', start: 'Los geht’s',
     back: 'Zurück', next: 'Weiter', more: (n) => `+ ${n} weitere`,
     count: {
+      slides: (n) => `${n} ${n === 1 ? 'Folie' : 'Folien'}`,
       terms: (n) => `${n} ${n === 1 ? 'Begriff' : 'Begriffe'}`,
       formulas: (n) => `${n} ${n === 1 ? 'Formel' : 'Formeln'}`,
       theory: (n) => `${n} ${n === 1 ? 'Abschnitt' : 'Abschnitte'}`,
@@ -25,6 +26,7 @@ export const SECTION_TEXT = {
       practice: (n) => `${n} ${n === 1 ? 'Aufgabe' : 'Aufgaben'}`,
     },
     hint: {
+      slides: 'Das Wichtigste Schritt für Schritt – zum Blättern oder im Vollbild.',
       terms: 'Die Grundbegriffe – zuerst lesen.',
       formulas: 'Alle Formeln mit Beispiel und Erklärung in einfachen Worten.',
       theory: 'Die Zusammenhänge Schritt für Schritt.',
@@ -36,6 +38,7 @@ export const SECTION_TEXT = {
     sections: 'Sections', contents: 'Contents', all: 'All', inChapter: 'In this chapter', start: 'Let’s start',
     back: 'Back', next: 'Next', more: (n) => `+ ${n} more`,
     count: {
+      slides: (n) => `${n} ${n === 1 ? 'slide' : 'slides'}`,
       terms: (n) => `${n} ${n === 1 ? 'term' : 'terms'}`,
       formulas: (n) => `${n} ${n === 1 ? 'formula' : 'formulas'}`,
       theory: (n) => `${n} ${n === 1 ? 'section' : 'sections'}`,
@@ -43,6 +46,7 @@ export const SECTION_TEXT = {
       practice: (n) => `${n} ${n === 1 ? 'exercise' : 'exercises'}`,
     },
     hint: {
+      slides: 'The essentials step by step – page through or present full screen.',
       terms: 'The key terms – read these first.',
       formulas: 'Every formula with an example and a plain-language explanation.',
       theory: 'How it all fits together, step by step.',

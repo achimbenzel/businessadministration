@@ -2,8 +2,10 @@
  * Content packs: chapters that ship with the code, so content can be prepared
  * in the repository and arrives with a `git pull`:
  *
+ *   content/<subject>/subject.json             { id, semesterId, title, short, icon, color, description } (optional)
  *   content/<subject>/<chapter>/chapter.json   { id, version, subjectId, lang, title, summary, status, position | after, blocks }
  *   content/<subject>/<chapter>/img/…          pictures, referenced as { type: 'image', file: 'img/x.svg' }
+ *                                              (on slides: { slides: [{ …, file: 'img/x.svg' }] })
  *
  * At start, every new pack is added to the database once (its files copied to
  * data/chapters/<id>/). From then on the chapter is the admin's like any other.
@@ -11,6 +13,9 @@
  * has edited it in the app since (its revision is still the one the import
  * produced). An edited chapter is never overwritten: the new version arrives
  * as a separate draft right after it. A chapter the admin deleted stays deleted.
+ *
+ * A subject.json adds its subject once — to existing databases too — at the
+ * end of its semester. Deleted or edited in the app, it stays that way.
  */
 import crypto from 'node:crypto';
 import fs from 'node:fs';
@@ -19,7 +24,7 @@ import path from 'node:path';
 import { nanoid } from 'nanoid';
 import { CONTENT_DIR, DATA_DIR } from './config.js';
 import { mutateDB, readDB } from './db.js';
-import { normalizeChapter, chapterFiles } from './schema.js';
+import { normalizeChapter, normalizeSubject, chapterFiles } from './schema.js';
 import { isId } from './schema/base.js';
 import { assertInside, sanitize, safeRm } from './files.js';
 
@@ -62,6 +67,10 @@ async function withFiles(pack, dir, chapterId) {
   for (const b of Array.isArray(pack.blocks) ? pack.blocks : []) {
     if (b?.type === 'image' && b.file) {
       blocks.push({ ...b, src: (await copy(b.file)).src });
+    } else if (b?.type === 'slides' && Array.isArray(b.slides)) {
+      const slides = [];
+      for (const s of b.slides) slides.push(s?.file ? { ...s, image: (await copy(s.file)).src } : s);
+      blocks.push({ ...b, slides });
     } else if (b?.type === 'files' && Array.isArray(b.items)) {
       const items = [];
       for (const f of b.items) items.push(f?.file ? { ...f, ...(await copy(f.file)), name: f.name || path.basename(f.file) } : f);
@@ -91,9 +100,46 @@ async function removeUnusedFiles(chapter) {
   }
 }
 
-/** Import new packs and apply new versions. Returns what happened: [{ id, action }]. */
-export async function importContentPacks(dir = CONTENT_DIR) {
+/** Subjects that ship with the content (content/<subject>/subject.json), each added once. */
+export async function importContentSubjects(dir = CONTENT_DIR) {
   const report = [];
+  if (!dir || !fs.existsSync(dir)) return report;
+  const entries = await fsp.readdir(dir, { withFileTypes: true }).catch(() => []);
+  for (const e of entries.filter((x) => x.isDirectory() && !x.name.startsWith('.')).sort((a, b) => a.name.localeCompare(b.name))) {
+    const file = path.join(dir, e.name, 'subject.json');
+    if (!fs.existsSync(file)) continue;
+    try {
+      const def = JSON.parse(await fsp.readFile(file, 'utf8'));
+      if (!isId(def.id)) throw new Error('"id" fehlt oder ist ungültig (6–40 Zeichen: a–z, 0–9, _ und -)');
+      const db = await readDB();
+      if (db.subjectsImported.some((x) => x.id === def.id)) continue;
+      const exists = db.subjects.some((s) => s.id === def.id);
+      if (!exists && !db.semesters.some((s) => s.id === def.semesterId)) {
+        console.warn(`  Fach ${def.id}: Semester "${def.semesterId}" gibt es nicht – übersprungen.`);
+        continue; // tried again at the next start
+      }
+      await mutateDB((d) => {
+        const now = Date.now();
+        if (!exists) {
+          const order = Math.max(-1, ...d.subjects.filter((s) => s.semesterId === def.semesterId).map((s) => s.order)) + 1;
+          d.subjects.push(normalizeSubject({ ...def, order, createdAt: now, updatedAt: now }));
+        }
+        d.subjectsImported.push({ id: def.id, at: now });
+      });
+      if (!exists) report.push({ id: def.id, action: 'subject' });
+    } catch (err) {
+      console.warn(`  ${path.relative(process.cwd(), file)} konnte nicht importiert werden: ${err.message}`);
+    }
+  }
+  return report;
+}
+
+/**
+ * Import new subjects and packs and apply new versions.
+ * Returns what happened: [{ id, action: 'subject' | 'imported' | 'updated' | 'draft' }].
+ */
+export async function importContentPacks(dir = CONTENT_DIR) {
+  const report = await importContentSubjects(dir);
   for (const { file, dir: packDir } of await findPacks(dir)) {
     const where = path.relative(process.cwd(), file);
     try {

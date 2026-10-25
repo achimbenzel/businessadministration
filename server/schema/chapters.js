@@ -14,7 +14,7 @@ const LIST_STYLES = ['bullet', 'number'];
 const DEMO_CONTROLS = ['none', 'ceiling', 'floor', 'world'];
 // The section (tab) of the chapter a block belongs to. '' = decided by its type
 // (definition → terms, formula → formulas …, see src/lib/chapterTabs.js).
-export const BLOCK_TABS = ['overview', 'terms', 'formulas', 'theory', 'interactive', 'practice'];
+export const BLOCK_TABS = ['overview', 'slides', 'terms', 'formulas', 'theory', 'interactive', 'practice'];
 
 // A file of a chapter lives in its own folder: chapters/<chapterId>/<name>.
 // Nothing else may be referenced (no ../, no other chapter's files).
@@ -66,6 +66,20 @@ const BLOCKS = {
     return { header: b.header !== false, rows: rows.map((r) => [...r, ...Array(cols - r.length).fill('')]) };
   },
   image: (b, chapterId) => ({ src: chapterFile(chapterId, b.src), alt: line(b.alt, 300), caption: line(b.caption, 500) }),
+  // A slide deck: one idea per slide — title, formula (lib/math.js syntax),
+  // text, example and an optional picture; viewers page through or present it.
+  slides: (b, chapterId) => ({
+    title: line(b.title, 200),
+    slides: list(b.slides, 80).map((s) => ({
+      id: subId(s?.id),
+      title: line(s?.title, 200),
+      formula: str(s?.formula, 2000),
+      text: str(s?.text, 6000),
+      example: str(s?.example, 4000),
+      image: chapterFile(chapterId, s?.image),
+      alt: line(s?.alt, 300),
+    })),
+  }),
   files: (b, chapterId) => ({ items: list(b.items, 50).map((f) => normalizeFileRef(f, chapterId)).filter((f) => f.src) }),
   links: (b) => ({
     items: list(b.items, 50).map((l) => ({ id: subId(l?.id), url: normalizeUrl(l?.url), title: line(l?.title, 200) })),
@@ -152,6 +166,7 @@ export function blockText(b) {
     case 'quiz': return [b.question, ...b.options.map((o) => o.text), b.explanation].join(' ');
     case 'table': return b.rows.map((r) => r.join(' ')).join('\n');
     case 'image': return `${b.alt} ${b.caption}`;
+    case 'slides': return [b.title, ...b.slides.map((s) => `${s.title} ${s.formula} ${s.text} ${s.example} ${s.alt}`)].join(' ');
     case 'files': return b.items.map((f) => f.name).join(' ');
     case 'links': return b.items.map((l) => `${l.title} ${l.url}`).join(' ');
     case 'supplyDemand': case 'consumerChoice': return `${b.title} ${b.caption}`;
@@ -175,6 +190,7 @@ export function chapterFiles(c) {
   for (const b of c.blocks) {
     if (b.type === 'image' && b.src) out.add(b.src);
     if (b.type === 'files') for (const f of b.items) out.add(f.src);
+    if (b.type === 'slides') for (const s of b.slides) if (s.image) out.add(s.image);
   }
   return out;
 }

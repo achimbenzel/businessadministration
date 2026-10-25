@@ -2,6 +2,7 @@
 // always as React elements, never as HTML.
 import { Fragment } from 'react';
 import { parseInline, parseParagraphs } from '../lib/inline.js';
+import MathText from './MathText.jsx';
 
 function renderTokens(tokens) {
   return tokens.map((t, i) => {
@@ -11,6 +12,7 @@ function renderTokens(tokens) {
         return <Fragment key={i}>{lines.map((ln, j) => (j ? <Fragment key={j}><br />{ln}</Fragment> : ln))}</Fragment>;
       }
       case 'code': return <code key={i}>{t.v}</code>;
+      case 'math': return <MathText key={i} text={t.v} className="m-inline" />;
       case 'b': return <strong key={i}>{renderTokens(t.children)}</strong>;
       case 'i': return <em key={i}>{renderTokens(t.children)}</em>;
       case 'mark': return <mark key={i}>{renderTokens(t.children)}</mark>;

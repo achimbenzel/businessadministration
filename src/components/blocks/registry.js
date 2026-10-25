@@ -5,6 +5,7 @@ import { FlashcardView, FlashcardEdit, QuizView, QuizEdit } from './QuizBlocks.j
 import { ImageView, ImageEdit, FilesView, FilesEdit, LinksView, LinksEdit } from './MediaBlocks.jsx';
 import { TableView, TableEdit } from './TableBlock.jsx';
 import { SupplyDemandView, SupplyDemandEdit, ConsumerChoiceView, ConsumerChoiceEdit } from './DemoBlocks.jsx';
+import { SlidesView, SlidesEdit } from './SlidesBlock.jsx';
 
 export const BLOCKS = {
   text: { View: TextView, Edit: TextEdit },
@@ -16,6 +17,7 @@ export const BLOCKS = {
   callout: { View: CalloutView, Edit: CalloutEdit },
   toggle: { View: ToggleView, Edit: ToggleEdit },
   formula: { View: FormulaView, Edit: FormulaEdit },
+  slides: { View: SlidesView, Edit: SlidesEdit },
   flashcard: { View: FlashcardView, Edit: FlashcardEdit },
   quiz: { View: QuizView, Edit: QuizEdit },
   table: { View: TableView, Edit: TableEdit },

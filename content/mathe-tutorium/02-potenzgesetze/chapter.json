@@ -1,0 +1,550 @@
+{
+  "id": "mathe-02-potenzgesetze",
+  "version": 1,
+  "subjectId": "mathe-tutorium",
+  "lang": "de",
+  "after": "mathe-01-summen-produkt",
+  "status": "published",
+  "title": "Potenzgesetze – Exponentenregeln 1–6",
+  "summary": "Mit Potenzen rechnen: die sechs Regeln von aˣ⁺ʸ = aˣ · aʸ bis zum negativen Exponenten, Wurzeln als Potenzen, typische Fehler – und Zinseszins, Barwert und Cobb-Douglas als Anwendung.",
+  "blocks": [
+    {
+      "type": "text",
+      "tab": "overview",
+      "text": "Potenzen (*powers*) stecken in fast jeder Formel der BWL und VWL: im Zinseszins $(1 + i)^n$, im Barwert $(1 + i)^{−n}$, in Nutzen- und Produktionsfunktionen wie $x_1^{α} \\cdot x_2^{1−α}$. Wer die **sechs Potenzgesetze** (*exponent rules*) sicher beherrscht, kann solche Ausdrücke in Sekunden vereinfachen.\n\nDie Folien gehen jede Regel einzeln durch – mit Begründung, Beispiel und den häufigsten Fehlern."
+    },
+    {
+      "type": "callout",
+      "tab": "overview",
+      "variant": "important",
+      "title": "Lernziele",
+      "text": "- Basis und Exponent unterscheiden und Potenzen ausrechnen\n- die Potenzgesetze 1–6 anwenden und begründen\n- negative und gebrochene Exponenten (Wurzeln) umformen\n- typische Fehler wie $(a + b)^2 = a^2 + b^2$ erkennen\n- Zinseszins und Abzinsung als Potenz rechnen"
+    },
+    {
+      "type": "callout",
+      "tab": "overview",
+      "variant": "info",
+      "title": "Merkhilfe für alle Regeln",
+      "text": "- **Multiplizieren** bei gleicher Basis → Exponenten **addieren**\n- **Dividieren** bei gleicher Basis → Exponenten **subtrahieren**\n- **Potenzieren** einer Potenz → Exponenten **multiplizieren**\n\nDie Nummerierung 1–6 unterscheidet sich je nach Skript – entscheidend ist, dass du jede Regel erkennst."
+    },
+    {
+      "type": "image",
+      "tab": "overview",
+      "file": "img/potenzgesetze-kacheln.svg",
+      "caption": "Regel 1 und 3 als Kacheln: a³ · a² sind fünf a, (a²)³ sind dreimal zwei a – also a⁶.",
+      "alt": "Kacheln mit dem Buchstaben a: drei plus zwei Kacheln ergeben fünf; drei Gruppen zu je zwei Kacheln ergeben sechs."
+    },
+    {
+      "type": "slides",
+      "tab": "slides",
+      "title": "Die 6 Potenzgesetze",
+      "slides": [
+        {
+          "title": "Was ist eine Potenz?",
+          "formula": "a^n = a \\cdot a \\cdot \\dots \\cdot a\n(n Faktoren)",
+          "text": "**a** heißt **Basis** (*base*), **n** heißt **Exponent** (*exponent*), $a^n$ die **Potenz** (*power*). Gelesen: „a hoch n“.",
+          "example": "$2^5 = 2 \\cdot 2 \\cdot 2 \\cdot 2 \\cdot 2 = 32$"
+        },
+        {
+          "title": "Regel 1: gleiche Basis multiplizieren",
+          "formula": "a^{x+y} = a^x \\cdot a^y",
+          "text": "Bei **gleicher Basis** werden beim Multiplizieren die Exponenten **addiert**. Begründung: Man zählt einfach alle Faktoren a zusammen.",
+          "example": "$2^3 \\cdot 2^4 = 2^{3+4} = 2^7 = 128$",
+          "file": "img/potenzgesetze-kacheln.svg",
+          "alt": "Kacheln: drei a mal zwei a ergeben fünf a."
+        },
+        {
+          "title": "Regel 2: gleiche Basis dividieren",
+          "formula": "a^{x−y} = \\frac{a^x}{a^y}   (a ≠ 0)",
+          "text": "Beim Dividieren werden die Exponenten **subtrahiert** – gleiche Faktoren oben und unten kürzen sich weg.",
+          "example": "$\\frac{5^6}{5^4} = 5^{6−4} = 5^2 = 25$"
+        },
+        {
+          "title": "Regel 3: Potenz einer Potenz",
+          "formula": "(a^x)^y = a^{x \\cdot y}",
+          "text": "Wird eine Potenz noch einmal potenziert, werden die Exponenten **multipliziert**.",
+          "example": "$(3^2)^3 = 3^2 \\cdot 3^2 \\cdot 3^2 = 3^{2 \\cdot 3} = 3^6 = 729$"
+        },
+        {
+          "title": "Regel 4: gleicher Exponent multiplizieren",
+          "formula": "a^x \\cdot b^x = (a \\cdot b)^x",
+          "text": "Bei **gleichem Exponenten** darf man die Basen multiplizieren und den Exponenten behalten.",
+          "example": "$2^3 \\cdot 5^3 = (2 \\cdot 5)^3 = 10^3 = 1000$"
+        },
+        {
+          "title": "Regel 5: gleicher Exponent dividieren",
+          "formula": "\\frac{a^x}{b^x} = (\\frac{a}{b})^x   (b ≠ 0)",
+          "text": "Genauso beim Dividieren: Basen teilen, Exponent behalten.",
+          "example": "$\\frac{12^2}{4^2} = (\\frac{12}{4})^2 = 3^2 = 9$"
+        },
+        {
+          "title": "Regel 6: Exponent null und negative Exponenten",
+          "formula": "a^0 = 1\na^{−x} = \\frac{1}{a^x}",
+          "text": "Aus Regel 2 folgt: $\\frac{a^x}{a^x} = a^{x−x} = a^0$ – und das ist 1. Ein **negativer** Exponent bedeutet den **Kehrwert** (*reciprocal*).",
+          "example": "$2^{−3} = \\frac{1}{2^3} = \\frac{1}{8}$\n$7^0 = 1$"
+        },
+        {
+          "title": "Bonus: Wurzeln sind Potenzen",
+          "formula": "a^{1/n} = \\sqrt[n]{a}\na^{m/n} = \\sqrt[n]{a^m}",
+          "text": "Ein **Bruch** im Exponenten ist eine Wurzel (*root*). Damit gelten alle Regeln auch für Wurzeln.",
+          "example": "$8^{1/3} = \\sqrt[3]{8} = 2$\n$27^{2/3} = (\\sqrt[3]{27})^2 = 3^2 = 9$"
+        },
+        {
+          "title": "Typische Fehler",
+          "formula": "(a + b)^2 \\neq a^2 + b^2\n−2^2 = −4,  aber (−2)^2 = 4\n2^3 \\cdot 2^4 \\neq 4^7",
+          "text": "- Bei einer **Summe** in der Klammer gelten die Potenzgesetze nicht – dafür gibt es die binomischen Formeln.\n- Das Minus vor $2^2$ gehört **nicht** zur Basis.\n- Bei Regel 1 bleibt die Basis gleich – sie wird nicht multipliziert.\n- $a^x \\cdot b^y$ mit verschiedener Basis **und** verschiedenem Exponenten lässt sich nicht zusammenfassen."
+        },
+        {
+          "title": "BWL: Zinseszins",
+          "formula": "K_n = K_0 \\cdot (1 + i)^n",
+          "text": "Jedes Jahr wird das Kapital mit dem Faktor (1 + i) multipliziert – nach n Jahren also n-mal.",
+          "example": "1 000 € zu 5 % für 10 Jahre: $1000 \\cdot 1,05^{10} ≈ 1628,89$ €"
+        },
+        {
+          "title": "BWL: Abzinsen (Barwert)",
+          "formula": "K_0 = K_n \\cdot (1 + i)^{−n}\n= \\frac{K_n}{(1 + i)^n}",
+          "text": "Rückwärts gerechnet: Was ist eine Zahlung in n Jahren **heute** wert? Regel 6 macht aus dem Teilen ein Multiplizieren mit negativem Exponenten.",
+          "example": "10 000 € in 5 Jahren bei 4 %: $10000 \\cdot 1,04^{−5} ≈ 8219,27$ €"
+        },
+        {
+          "title": "VWL: Cobb-Douglas",
+          "formula": "Y = A \\cdot K^{α} \\cdot L^{1−α}",
+          "text": "Verdoppelt man Kapital K und Arbeit L, gilt mit Regel 4 und 1: $(2K)^{α} (2L)^{1−α} = 2^{α} \\cdot 2^{1−α} \\cdot K^{α} L^{1−α} = 2^{1} \\cdot K^{α} L^{1−α}$ – die Produktion verdoppelt sich genau (*constant returns to scale*)."
+        },
+        {
+          "title": "Alle Regeln auf einen Blick",
+          "formula": "1  a^{x+y} = a^x \\cdot a^y\n2  a^{x−y} = \\frac{a^x}{a^y}\n3  (a^x)^y = a^{x \\cdot y}\n4  a^x \\cdot b^x = (ab)^x\n5  \\frac{a^x}{b^x} = (\\frac{a}{b})^x\n6  a^0 = 1,  a^{−x} = \\frac{1}{a^x}",
+          "text": "Tipp: Vor jeder Umformung prüfen – **gleiche Basis** (Regeln 1–3) oder **gleicher Exponent** (Regeln 4–5)?"
+        }
+      ]
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Potenz",
+      "termEn": "power",
+      "text": "Kurzschrift für ein Produkt gleicher Faktoren: $a^n = a \\cdot a \\cdot \\dots \\cdot a$ (n Faktoren).",
+      "textEn": "A power is a number written as a base raised to an exponent, e.g. aⁿ."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Basis",
+      "termEn": "base",
+      "text": "Die Zahl, die mit sich selbst multipliziert wird – das a in $a^n$.",
+      "textEn": "The base is the number that is multiplied by itself."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Exponent",
+      "termEn": "exponent · index",
+      "text": "Die hochgestellte Zahl: Sie sagt, wie oft die Basis als Faktor vorkommt. Kann auch null, negativ oder ein Bruch sein.",
+      "textEn": "The exponent tells how many times the base is used as a factor."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Kehrwert",
+      "termEn": "reciprocal",
+      "text": "Zahl „umgedreht“: der Kehrwert von a ist $\\frac{1}{a}$. Ein negativer Exponent bildet den Kehrwert: $a^{−1} = \\frac{1}{a}$.",
+      "textEn": "The reciprocal of a number a is 1/a."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Wurzel",
+      "termEn": "root · square root",
+      "text": "Die n-te Wurzel ist die Umkehrung des Potenzierens: $\\sqrt[n]{a} = a^{1/n}$. Die Quadratwurzel ist $\\sqrt{a} = a^{1/2}$.",
+      "textEn": "The n-th root of a is the number whose n-th power is a."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Regel 1: Produkt mit gleicher Basis",
+      "text": "a^{x+y} = a^x \\cdot a^y",
+      "variables": [
+        {
+          "symbol": "a",
+          "meaning": "Basis (gleich!)"
+        },
+        {
+          "symbol": "x, y",
+          "meaning": "Exponenten"
+        }
+      ],
+      "explanation": "Gleiche Basis multiplizieren → Exponenten addieren. Auch rückwärts nützlich: $a^{x+y}$ in zwei Faktoren zerlegen.",
+      "example": "$x^3 \\cdot x^5 = x^8$\n$10^2 \\cdot 10^3 = 10^5 = 100000$",
+      "analogy": "Zwei Stapel gleicher Kisten zusammenschieben: 3 Kisten + 5 Kisten = 8 Kisten."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Regel 2: Quotient mit gleicher Basis",
+      "text": "a^{x−y} = \\frac{a^x}{a^y}",
+      "variables": [
+        {
+          "symbol": "a",
+          "meaning": "Basis, a ≠ 0"
+        }
+      ],
+      "explanation": "Gleiche Basis dividieren → Exponenten subtrahieren (oben minus unten).",
+      "example": "$\\frac{x^7}{x^2} = x^5$\n$\\frac{2^3}{2^5} = 2^{−2} = \\frac{1}{4}$",
+      "analogy": "Von 7 Kisten werden 2 weggenommen – es bleiben 5."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Regel 3: Potenz einer Potenz",
+      "text": "(a^x)^y = a^{x \\cdot y}",
+      "variables": [
+        {
+          "symbol": "x \\cdot y",
+          "meaning": "Exponenten werden multipliziert"
+        }
+      ],
+      "explanation": "Eine Potenz y-mal mit sich selbst multiplizieren → Exponenten multiplizieren.",
+      "example": "$(x^4)^3 = x^{12}$\n$(2^5)^2 = 2^{10} = 1024$",
+      "analogy": "3 Regale mit je 4 Kisten = 12 Kisten."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Regel 4: Produkt mit gleichem Exponenten",
+      "text": "a^x \\cdot b^x = (a \\cdot b)^x",
+      "variables": [
+        {
+          "symbol": "x",
+          "meaning": "Exponent (gleich!)"
+        },
+        {
+          "symbol": "a, b",
+          "meaning": "verschiedene Basen"
+        }
+      ],
+      "explanation": "Gleicher Exponent → Basen multiplizieren, Exponent bleibt. Häufig rückwärts: $(2x)^3 = 2^3 x^3 = 8x^3$.",
+      "example": "$4^2 \\cdot 25^2 = 100^2 = 10000$",
+      "analogy": "3 Paare Socken mit je 2 Socken: Ob man erst Paare bildet oder einzeln zählt – das Ergebnis ist dasselbe."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Regel 5: Quotient mit gleichem Exponenten",
+      "text": "\\frac{a^x}{b^x} = (\\frac{a}{b})^x",
+      "variables": [
+        {
+          "symbol": "b",
+          "meaning": "b ≠ 0"
+        }
+      ],
+      "explanation": "Gleicher Exponent → Basen dividieren, Exponent bleibt.",
+      "example": "$\\frac{15^3}{5^3} = 3^3 = 27$\n$(\\frac{x}{2})^2 = \\frac{x^2}{4}$",
+      "analogy": "Erst teilen, dann potenzieren – oder umgekehrt: Der Kuchen wird gleich groß aufgeteilt."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Regel 6: Exponent 0 und negative Exponenten",
+      "text": "a^0 = 1\na^{−x} = \\frac{1}{a^x}",
+      "variables": [
+        {
+          "symbol": "a",
+          "meaning": "a ≠ 0"
+        },
+        {
+          "symbol": "a^{−x}",
+          "meaning": "Kehrwert von a^x"
+        }
+      ],
+      "explanation": "Jede Zahl (außer 0) hoch 0 ist 1. Ein Minus im Exponenten heißt: Kehrwert bilden – der Exponent selbst bleibt positiv.",
+      "example": "$5^{−2} = \\frac{1}{25} = 0,04$\n$\\frac{1}{x^3} = x^{−3}$",
+      "analogy": "Wie Schulden: Ein negativer Exponent steht „auf der anderen Seite des Bruchstrichs“."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Wurzeln als Potenzen",
+      "text": "a^{1/n} = \\sqrt[n]{a}\na^{m/n} = \\sqrt[n]{a^m} = (\\sqrt[n]{a})^m",
+      "variables": [
+        {
+          "symbol": "n",
+          "meaning": "Wurzelexponent (n = 2: Quadratwurzel)"
+        },
+        {
+          "symbol": "m",
+          "meaning": "Exponent unter der Wurzel"
+        }
+      ],
+      "explanation": "Gebrochene Exponenten sind Wurzeln – so lassen sich Wurzeln mit den Regeln 1–6 umformen.",
+      "example": "$\\sqrt{x} \\cdot \\sqrt[3]{x} = x^{1/2} \\cdot x^{1/3} = x^{5/6}$\n$16^{3/4} = 2^3 = 8$",
+      "analogy": "Die Wurzel ist der Rückwärtsgang des Potenzierens."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Zinseszins und Barwert",
+      "text": "K_n = K_0 \\cdot (1 + i)^n\nK_0 = K_n \\cdot (1 + i)^{−n}",
+      "variables": [
+        {
+          "symbol": "K_0",
+          "meaning": "Kapital heute (Barwert, present value)"
+        },
+        {
+          "symbol": "K_n",
+          "meaning": "Kapital nach n Jahren (Endwert, future value)"
+        },
+        {
+          "symbol": "i",
+          "meaning": "Zinssatz pro Jahr"
+        },
+        {
+          "symbol": "n",
+          "meaning": "Laufzeit in Jahren"
+        }
+      ],
+      "explanation": "Aufzinsen: n-mal mit (1 + i) multiplizieren. Abzinsen: durch $(1 + i)^n$ teilen – also mal $(1 + i)^{−n}$.",
+      "example": "Wie viel muss man heute anlegen, um in 8 Jahren bei 3 % 20 000 € zu haben?\n$K_0 = 20000 \\cdot 1,03^{−8} ≈ 15788,18$ €",
+      "analogy": "Ein Schneeball, der jedes Jahr um denselben Prozentsatz wächst – und beim Abzinsen rückwärts schmilzt."
+    },
+    {
+      "type": "heading",
+      "tab": "practice",
+      "text": "Aufgaben",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "tab": "practice",
+      "text": "**Aufgabe 1.** Vereinfache $x^3 \\cdot x^5 \\cdot x^{−2}$."
+    },
+    {
+      "type": "toggle",
+      "tab": "practice",
+      "title": "Lösung anzeigen",
+      "text": "Regel 1: $x^{3+5−2} = x^6$"
+    },
+    {
+      "type": "text",
+      "tab": "practice",
+      "text": "**Aufgabe 2.** Vereinfache $\\frac{a^7 b^3}{a^2 b^5}$ und schreibe das Ergebnis ohne negative Exponenten."
+    },
+    {
+      "type": "toggle",
+      "tab": "practice",
+      "title": "Lösung anzeigen",
+      "text": "Regel 2 für a und b: $a^{7−2} b^{3−5} = a^5 b^{−2} = \\frac{a^5}{b^2}$ (Regel 6)"
+    },
+    {
+      "type": "text",
+      "tab": "practice",
+      "text": "**Aufgabe 3.** Vereinfache $(2x^3)^4$."
+    },
+    {
+      "type": "toggle",
+      "tab": "practice",
+      "title": "Lösung anzeigen",
+      "text": "Regel 4 und 3: $2^4 \\cdot (x^3)^4 = 16 x^{12}$"
+    },
+    {
+      "type": "text",
+      "tab": "practice",
+      "text": "**Aufgabe 4.** Berechne $\\frac{4^5}{2^8}$ ohne Taschenrechner."
+    },
+    {
+      "type": "toggle",
+      "tab": "practice",
+      "title": "Lösung anzeigen",
+      "text": "$4^5 = (2^2)^5 = 2^{10}$ (Regel 3), dann $\\frac{2^{10}}{2^8} = 2^2 = 4$ (Regel 2)."
+    },
+    {
+      "type": "text",
+      "tab": "practice",
+      "text": "**Aufgabe 5.** Berechne $27^{2/3}$ und $16^{−1/2}$."
+    },
+    {
+      "type": "toggle",
+      "tab": "practice",
+      "title": "Lösung anzeigen",
+      "text": "$27^{2/3} = (\\sqrt[3]{27})^2 = 3^2 = 9$\n$16^{−1/2} = \\frac{1}{\\sqrt{16}} = \\frac{1}{4}$"
+    },
+    {
+      "type": "text",
+      "tab": "practice",
+      "text": "**Aufgabe 6.** Wie viel muss man heute anlegen, um in 8 Jahren bei 3 % Zins 20 000 € zu haben?"
+    },
+    {
+      "type": "toggle",
+      "tab": "practice",
+      "title": "Lösung anzeigen",
+      "text": "$K_0 = 20000 \\cdot 1,03^{−8} = \\frac{20000}{1,26677} ≈ 15788,18$ €"
+    },
+    {
+      "type": "heading",
+      "tab": "practice",
+      "text": "Karteikarten",
+      "level": 2
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "Regel 1: $a^x \\cdot a^y = ?$",
+      "back": "$a^{x+y}$ – gleiche Basis multiplizieren → Exponenten addieren."
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "Regel 2: $\\frac{a^x}{a^y} = ?$",
+      "back": "$a^{x−y}$ – gleiche Basis dividieren → Exponenten subtrahieren."
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "Regel 3: $(a^x)^y = ?$",
+      "back": "$a^{x \\cdot y}$ – Exponenten multiplizieren."
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "Regel 4 und 5?",
+      "back": "$a^x \\cdot b^x = (ab)^x$ und $\\frac{a^x}{b^x} = (\\frac{a}{b})^x$ – gleicher Exponent, Basen verrechnen."
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "Regel 6: $a^0$ und $a^{−x}$?",
+      "back": "$a^0 = 1$ und $a^{−x} = \\frac{1}{a^x}$"
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "Was ist $a^{1/n}$?",
+      "back": "Die n-te Wurzel: $\\sqrt[n]{a}$"
+    },
+    {
+      "type": "heading",
+      "tab": "practice",
+      "text": "Quiz",
+      "level": 2
+    },
+    {
+      "type": "quiz",
+      "tab": "practice",
+      "question": "Was ergibt $2^3 \\cdot 2^4$?",
+      "options": [
+        {
+          "text": "$4^{12}$",
+          "correct": false
+        },
+        {
+          "text": "$2^{12}$",
+          "correct": false
+        },
+        {
+          "text": "$4^7$",
+          "correct": false
+        },
+        {
+          "text": "$2^7 = 128$",
+          "correct": true
+        }
+      ],
+      "explanation": "Gleiche Basis: Exponenten addieren (Regel 1). Die Basis bleibt 2."
+    },
+    {
+      "type": "quiz",
+      "tab": "practice",
+      "question": "Was ergibt $(x^2)^5$?",
+      "options": [
+        {
+          "text": "$x^{10}$",
+          "correct": true
+        },
+        {
+          "text": "$x^7$",
+          "correct": false
+        },
+        {
+          "text": "$x^{25}$",
+          "correct": false
+        },
+        {
+          "text": "$2x^5$",
+          "correct": false
+        }
+      ],
+      "explanation": "Potenz einer Potenz: Exponenten multiplizieren (Regel 3)."
+    },
+    {
+      "type": "quiz",
+      "tab": "practice",
+      "question": "Welche Aussage ist **falsch**?",
+      "options": [
+        {
+          "text": "$a^{−2} = \\frac{1}{a^2}$",
+          "correct": false
+        },
+        {
+          "text": "$a^0 = 1$ für a ≠ 0",
+          "correct": false
+        },
+        {
+          "text": "$a^3 \\cdot b^3 = (ab)^3$",
+          "correct": false
+        },
+        {
+          "text": "$(a + b)^2 = a^2 + b^2$",
+          "correct": true
+        }
+      ],
+      "explanation": "Für eine Summe gelten die Potenzgesetze nicht: $(a + b)^2 = a^2 + 2ab + b^2$ (1. binomische Formel)."
+    },
+    {
+      "type": "quiz",
+      "tab": "practice",
+      "question": "Wie viel ist $8^{2/3}$?",
+      "options": [
+        {
+          "text": "$\\frac{16}{3}$",
+          "correct": false
+        },
+        {
+          "text": "2",
+          "correct": false
+        },
+        {
+          "text": "4",
+          "correct": true
+        },
+        {
+          "text": "6",
+          "correct": false
+        }
+      ],
+      "explanation": "$8^{2/3} = (\\sqrt[3]{8})^2 = 2^2 = 4$"
+    },
+    {
+      "type": "quiz",
+      "tab": "practice",
+      "question": "*Exam style:* What is the present value of €1 000 received in 2 years at an interest rate of 10 %?",
+      "options": [
+        {
+          "text": "€909.09",
+          "correct": false
+        },
+        {
+          "text": "About €826.45",
+          "correct": true
+        },
+        {
+          "text": "€800.00",
+          "correct": false
+        },
+        {
+          "text": "€1 210.00",
+          "correct": false
+        }
+      ],
+      "explanation": "$1000 \\cdot 1.1^{−2} = 1000 / 1.21 ≈ 826.45$"
+    }
+  ]
+}

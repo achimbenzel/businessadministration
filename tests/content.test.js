@@ -53,6 +53,39 @@ test('the bundled chapters are imported first in the subject, in sections, with 
   assert.equal((await viewer('/api/subjects/economical-framework/cards')).data.cards.length, cards);
 });
 
+test('Mathe-Tutorium: the subject comes with its pack, chapters with slide decks and pictures', async () => {
+  const dataDir = await tempDir();
+  let srv = await start({ dataDir, env: { CONTENT_DIR: CONTENT } });
+  let admin = await srv.login('admin');
+  const subjects = (await admin('/api/semesters')).data.semesters.find((s) => s.id === 'semester-1').subjects;
+  const math = subjects[subjects.length - 1];
+  assert.deepEqual([math.id, math.title, math.icon], ['mathe-tutorium', 'Mathe-Tutorium', 'sigma'], 'added at the end of semester 1');
+  const { data } = await admin('/api/subjects/mathe-tutorium');
+  assert.deepEqual(data.chapters.map((c) => c.id), ['mathe-01-summen-produkt', 'mathe-02-potenzgesetze', 'mathe-03-binomische-formeln']);
+  for (const { id } of data.chapters) {
+    const { chapter } = (await admin(`/api/chapters/${id}`)).data;
+    const deck = chapter.blocks.find((b) => b.type === 'slides');
+    assert.ok(deck && deck.tab === 'slides' && deck.slides.length >= 10, `${id}: a slide deck in the "Folien" section`);
+    assert.ok(deck.slides.every((x) => x.title), `${id}: every slide has a title`);
+    for (const img of deck.slides.filter((x) => x.image)) {
+      assert.match(img.image, new RegExp(`^chapters/${id}/[0-9a-f]{8}-[\\w.-]+\\.svg$`));
+      assert.equal((await admin(`/data/${img.image}`)).status, 200, img.image);
+    }
+    assert.ok(chapter.blocks.some((b) => b.type === 'formula' && /\^|\\sum|\\frac/.test(b.text)), `${id}: formulas in math syntax`);
+  }
+
+  // Deleted by the admin (with its chapters): not brought back at the next start.
+  for (const { id } of data.chapters) {
+    const { trashId } = (await admin(`/api/chapters/${id}`, { method: 'DELETE' })).data;
+    await admin(`/api/trash/${trashId}`, { method: 'DELETE' });
+  }
+  assert.equal((await admin('/api/subjects/mathe-tutorium', { method: 'DELETE' })).status, 200);
+  await srv.stop();
+  srv = await start({ dataDir, env: { CONTENT_DIR: CONTENT } });
+  admin = await srv.login('admin');
+  assert.equal((await admin('/api/subjects/mathe-tutorium')).status, 404);
+});
+
 test('a pack is imported only once — also after the admin deleted the chapter', async () => {
   const dataDir = await tempDir();
   let srv = await start({ dataDir, env: { CONTENT_DIR: CONTENT } });
@@ -65,7 +98,7 @@ test('a pack is imported only once — also after the admin deleted the chapter'
   admin = await srv.login('admin');
   assert.equal((await admin(`/api/chapters/${PACK}`)).status, 404);
   const db = await readJSON(path.join(dataDir, 'db.json'));
-  assert.deepEqual(db.contentImported.map((x) => x.id), [PACK, PACK2]);
+  assert.deepEqual(db.contentImported.map((x) => x.id).filter((x) => x.startsWith('efed-')), [PACK, PACK2]);
   assert.deepEqual((await admin('/api/subjects/economical-framework')).data.chapters.map((c) => c.id), [PACK2]);
 });
 

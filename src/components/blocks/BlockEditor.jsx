@@ -65,6 +65,7 @@ export default function BlockEditor({ blocks, chapterId, onChange, lang = 'de', 
     copy.id = rid();
     if (Array.isArray(copy.options)) copy.options = copy.options.map((o) => ({ ...o, id: rid() }));
     if (Array.isArray(copy.items) && copy.items.length && typeof copy.items[0] === 'object') copy.items = copy.items.map((x) => ({ ...x, id: rid() }));
+    if (Array.isArray(copy.slides)) copy.slides = copy.slides.map((x) => ({ ...x, id: rid() }));
     const next = [...latest.current];
     next.splice(i + 1, 0, copy);
     commit(next);

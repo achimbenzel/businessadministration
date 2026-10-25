@@ -7,6 +7,7 @@ import { str, num, isId } from '../server/schema/base.js';
 import { sanitize } from '../server/files.js';
 import { isAllowedHost } from '../server/http.js';
 import { resolveSections, buildSections, sectionLabel } from '../src/lib/chapterTabs.js';
+import { parseMath, mathToPlain } from '../src/lib/math.js';
 
 test('inline markdown → tokens', () => {
   assert.deepEqual(parseInline('a **b** c'), [{ t: 'text', v: 'a ' }, { t: 'b', children: [{ t: 'text', v: 'b' }] }, { t: 'text', v: ' c' }]);
@@ -193,4 +194,40 @@ test('chapter sections: explicit tab, type default, headings follow the next blo
   const two = buildSections([{ id: 'a', type: 'text', text: 'x' }, { id: 'b', type: 'quiz', question: 'q' }], { lang: 'en' });
   assert.deepEqual(two.list.map((x) => [x.key, x.blocks.length]), [['overview', 0], ['theory', 1], ['practice', 1]]);
   assert.equal(two.list[0].label, 'Overview');
+});
+
+test('formula syntax: exponents, indices, Σ / Π with limits, fractions, roots', () => {
+  assert.deepEqual(parseMath('a^{x+y}'), [{ t: 'text', v: 'a' }, { t: 'scripts', sub: null, sup: [{ t: 'text', v: 'x+y' }] }]);
+  assert.deepEqual(parseMath('x^10')[1].sup, [{ t: 'text', v: '10' }]);           // a digit run
+  assert.deepEqual(parseMath('a^xy').slice(1), [{ t: 'scripts', sub: null, sup: [{ t: 'text', v: 'x' }] }, { t: 'text', v: 'y' }]);
+  assert.deepEqual(parseMath('P_max')[1].sub, [{ t: 'text', v: 'max' }]);         // an index is a word
+  assert.deepEqual(parseMath('x^(1−α)')[1].sup, [{ t: 'text', v: '1−α' }]);       // (group) without the brackets
+  const both = parseMath('x_i^2')[1];
+  assert.deepEqual([both.sub[0].v, both.sup[0].v], ['i', '2']);
+  const sum = parseMath('\\sum_{i=1}^{n} a_i')[0];
+  assert.deepEqual([sum.t, sum.sym, sum.sub[0].v, sum.sup[0].v], ['op', 'Σ', 'i=1', 'n']);
+  assert.equal(parseMath('\\prod_{t=1}^{n} x')[0].sym, 'Π');
+  assert.equal(mathToPlain('\\frac{a^x}{a^y} = a^{x−y}'), '(a^x)/(a^y) = a^(x−y)');
+  assert.equal(mathToPlain('\\sqrt[3]{8} \\cdot 2 \\neq 5 \\%'), '3√8 · 2 ≠ 5 %');
+  assert.equal(mathToPlain('\\bar{x}'), 'x\u0304');
+  // Stray or unfinished syntax stays text.
+  assert.equal(mathToPlain('2 ^ 3 and a^ and 5_'), '2 ^ 3 and a^ and 5_');
+  assert.equal(mathToPlain('\\unknown{x}'), '\\unknownx');
+  // $…$ in text is a formula — but not "5 $ und 10 $".
+  assert.deepEqual(parseInline('Regel: $a^2$!').map((t) => t.t), ['text', 'math', 'text']);
+  assert.equal(parseInline('kostet 5 $ und 10 $').length, 1);
+  assert.equal(stripInline('Summe $\\sum_{i=1}^{n} i$'), 'Summe Σ_(i=1)^n i');
+});
+
+test('chapter sections: slide decks get their own "Folien" section, counted by slides', () => {
+  const blocks = [
+    { id: 'o', type: 'text', text: 'Intro', tab: 'overview' },
+    { id: 's', type: 'slides', title: 'Potenzgesetze', slides: [{ title: 'a' }, { title: 'b' }, { title: 'c' }] },
+    { id: 'q', type: 'quiz', question: 'q' },
+  ];
+  const s = buildSections(blocks, { lang: 'de' });
+  assert.deepEqual(s.list.map((x) => x.key), ['overview', 'slides', 'practice']);
+  const slides = s.list.find((x) => x.key === 'slides');
+  assert.equal(slides.count, 3);
+  assert.deepEqual(slides.items.map((i) => [i.kind, i.title]), [['slides', 'Potenzgesetze · 3 Folien']]);
 });

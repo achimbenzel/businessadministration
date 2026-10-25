@@ -11,9 +11,9 @@ Jeder Baustein kann zusätzlich `tab` tragen – den Abschnitt, in dem er ersche
 
 ## Abschnitte (Reiter)
 
-Jeder Baustein gehört zu einem **Abschnitt** (`tab`): Übersicht (`overview`), Begriffe
-(`terms`), Formeln (`formulas`), Theorie (`theory`), Interaktiv (`interactive`) oder
-Übungen (`practice`). Hat ein Kapitel Inhalt in mindestens **zwei** Abschnitten, lesen
+Jeder Baustein gehört zu einem **Abschnitt** (`tab`): Übersicht (`overview`), Folien
+(`slides`), Begriffe (`terms`), Formeln (`formulas`), Theorie (`theory`), Interaktiv
+(`interactive`) oder Übungen (`practice`). Hat ein Kapitel Inhalt in mindestens **zwei** Abschnitten, lesen
 Betrachter es Reiter für Reiter:
 
 - oben eine **Reiterleiste** mit Anzahl (bleibt beim Scrollen sichtbar, scrollt auf dem Handy seitwärts),
@@ -26,7 +26,7 @@ Betrachter es Reiter für Reiter:
 
 Der Reiter steht in der Adresse (`?tab=formulas`); Suchtreffer öffnen den passenden Reiter.
 
-Ohne eigenen Abschnitt gilt ein Standard nach Typ: `definition` → Begriffe, `formula` →
+Ohne eigenen Abschnitt gilt ein Standard nach Typ: `slides` → Folien, `definition` → Begriffe, `formula` →
 Formeln, Demos → Interaktiv, `quiz`/`flashcard` → Übungen, alles andere → Theorie.
 Überschriften und Trennlinien gehören zum Abschnitt des **nächsten** Bausteins
 (`src/lib/chapterTabs.js`, mit Unit-Tests).
@@ -53,6 +53,7 @@ Editor bleiben deutsch.
 | `callout` | Lernen | `variant` (info/tip/important/warning), `title`, `text` | Hinweisbox: Info, Tipp, **Merke**, Achtung |
 | `toggle` | Lernen | `title`, `text` | Aufklappbar, z. B. „Lösung anzeigen“ |
 | `formula` | Lernen | `title`, `text`, `caption`, `variables[{ symbol, meaning }]`, `explanation`, `example`, `analogy` | Formel in Monospace; mit Name, Symbol-Legende („Was bedeutet was?“), „In einfachen Worten“, „Beispiel“ und „Vergleich aus dem Alltag“ – alles außer `text` optional |
+| `slides` | Lernen | `title`, `slides[{ title, formula, text, example, image, alt }]` | Foliensatz: eine Idee pro Folie (Überschrift, Formel, Bild, Erklärung, Beispiel). Blättern mit Pfeilen, Punkten, Wischen oder ← → – und **Präsentieren** im Vollbild (auf dem iPhone füllt der Foliensatz das Fenster); Esc beendet |
 | `flashcard` | Lernen | `front`, `back` | Karte zum Umdrehen; erscheint auch im Karteikarten-Training des Fachs |
 | `quiz` | Lernen | `question`, `options[{ text, correct }]`, `explanation` | Multiple Choice mit „Antwort prüfen“ (mehrere Haken = Mehrfachauswahl) |
 | `table` | Medien & Daten | `header` (bool), `rows[][]` | Tabelle, scrollt auf dem Handy in ihrer Box |
@@ -70,6 +71,27 @@ skalieren beim Verschieben nicht mit. Die Rechnungen stecken in `src/lib/demos.j
 `src/lib/market.js` (Flächen A, B, C … wie in den Lehrbuch-Diagrammen; mit Unit-Tests),
 die Texte der Markt-Demo in `src/lib/marketText.js`.
 
+## Formeln schreiben
+
+In Formel-Bausteinen und im Formelfeld einer Folie gilt eine kleine LaTeX-Schreibweise
+(`src/lib/math.js`, gerendert ohne HTML von `components/MathText.jsx`). In jedem anderen
+Textfeld steht eine Formel zwischen Dollarzeichen: `$a^2 + b^2$`. Der Editor zeigt unter
+Formelfeldern eine Vorschau.
+
+| Eingabe | Ergebnis |
+| --- | --- |
+| `x^2`, `x^10`, `a^{x+y}`, `e^(−rt)` | Hochzahl (eine Ziffernfolge oder ein Buchstabe, sonst Klammern) |
+| `a_i`, `x_{n+1}`, `P_max` | Index (ein Wort, sonst Klammern) |
+| `\sum_{i=1}^{n} a_i`, `\prod_{t=1}^{n}` | Σ / Π mit Grenzen darunter und darüber |
+| `\frac{a}{b}` | Bruch |
+| `\sqrt{x}`, `\sqrt[3]{x}` | Wurzel |
+| `\bar{x}` | Mittelwert (Strich darüber) |
+| `\cdot \neq \leq \geq \pm \approx \infty \Rightarrow \dots` | · ≠ ≤ ≥ ± ≈ ∞ ⇒ … |
+| `\{ \} \_ \^ \$ \%` | die Zeichen selbst |
+
+Leerzeichen und Zeilenumbrüche bleiben, wie getippt. Ein Dollarzeichen mit Leerzeichen
+dahinter („5 $ und 10 $“) bleibt normaler Text.
+
 ## Formatierung in Textfeldern
 
 | Eingabe | Ergebnis |
@@ -78,6 +100,7 @@ die Texte der Markt-Demo in `src/lib/marketText.js`.
 | `*kursiv*` oder `_kursiv_` | *kursiv* |
 | `==markiert==` | hervorgehoben (gelb) |
 | `` `Code` `` | Monospace |
+| `$a^2$` | Formel (siehe oben) |
 | `[Text](https://…)` | Link (nur http/https/mailto) |
 | eine URL | wird automatisch verlinkt |
 | Leerzeile | neuer Absatz |

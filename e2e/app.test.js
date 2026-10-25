@@ -295,6 +295,47 @@ test('interactive demos: scenarios and sliders move the curves, areas and number
   await ctx.close();
 });
 
+test('slides: page through, keys, present; formulas are typeset', async () => {
+  const c = (await admin('/api/chapters', { method: 'POST', json: { subjectId: 'grundlagen-bwl', title: 'Potenzen' } })).data.chapter;
+  await admin(`/api/chapters/${c.id}`, {
+    method: 'PATCH',
+    json: { status: 'published', blocks: [
+      { type: 'text', tab: 'overview', text: 'Potenzgesetze im Überblick.' },
+      { type: 'slides', title: 'Potenzgesetze', slides: [
+        { title: 'Regel 1', formula: 'a^{x+y} = a^x \\cdot a^y', text: 'Exponenten **addieren**: $2^3 \\cdot 2^4 = 2^7$' },
+        { title: 'Summenzeichen', formula: '\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}' },
+        { title: 'Regel 6', formula: 'a^{−x} = \\frac{1}{a^x}', example: '$2^{−3} = \\frac{1}{8}$' },
+      ] },
+      { type: 'formula', text: '\\prod_{i=1}^{n} c = c^n' },
+    ] },
+  });
+  const { ctx, page } = await open(PHONE);
+  await login(page, 'User', PASSWORDS.user);
+  await page.goto(`${srv.base}/kapitel/${c.id}?tab=slides`);
+  const deck = page.locator('.blk-slides');
+  await deck.waitFor();
+  const count = () => deck.locator('.sl-count').textContent();
+  assert.equal(await count(), '1 / 3');
+  assert.equal(await deck.locator('.sl-formula .m-sup').count(), 3, 'exponents are raised');
+  assert.equal(await deck.locator('.sl-text .math .m-sup').count(), 3, '$…$ in the text is a formula too');
+  await deck.locator('.sl-arrow').last().click();
+  assert.equal(await count(), '2 / 3');
+  assert.equal(await deck.locator('.sl-formula .m-op .m-sym').textContent(), 'Σ');
+  assert.equal(await deck.locator('.sl-formula .m-frac').count(), 1);
+  await page.keyboard.press('ArrowRight');
+  assert.equal(await count(), '3 / 3');
+  await deck.locator('.sl-dots button').first().click();
+  assert.equal(await count(), '1 / 3');
+  await deck.locator('.sl-present').click();
+  await page.waitForSelector('.blk-slides.is-present');
+  await page.keyboard.press('Escape');
+  await page.waitForFunction(() => !document.querySelector('.blk-slides.is-present'));
+  assert.ok(await sideways(page) <= 1);
+  await page.click('.ch-tab:has-text("Formeln")');
+  await page.waitForSelector('.blk-formula .m-op');
+  await ctx.close();
+});
+
 test('no script errors, console errors or CSP violations on any page', () => {
   assert.deepEqual(problems, []);
 });

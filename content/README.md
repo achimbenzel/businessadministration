@@ -21,6 +21,7 @@ Ohne höhere `version` wird ein geändertes Paket nicht erneut eingelesen.
 ```
 content/
 └── <fach>/
+    ├── subject.json       (optional) das Fach selbst, falls es noch nicht existiert
     └── <nr>-<kapitel>/
         ├── chapter.json   Kapitel mit Bausteinen
         ├── img/…          Abbildungen
@@ -58,12 +59,25 @@ content/
   ID eines Kapitels, hinter dem es eingereiht wird. Sonst kommt es ans Ende.
 - `status` – `"published"` (Standard) oder `"draft"`.
 - `blocks` – Bausteine wie in [docs/bausteine.md](../docs/bausteine.md). Bilder und Dateien
-  verweisen mit `file` auf eine Datei im Paket (`image`: `file`, `files`: `items[].file`).
+  verweisen mit `file` auf eine Datei im Paket (`image`: `file`, `files`: `items[].file`,
+  Folien: `slides[].file`).
   `tab` legt den Abschnitt fest (`overview`, `terms`, `formulas`, `theory`, `interactive`,
   `practice`); ohne `tab` gilt der Standard nach Typ.
 
 Ein Paket mit unbekanntem Fach wird übersprungen (mit Hinweis in der Konsole) und
 beim nächsten Start erneut versucht. `CONTENT_DIR=off` schaltet den Import ab.
+
+## `subject.json` – ein Fach mitliefern
+
+```json
+{ "id": "mathe-tutorium", "semesterId": "semester-1", "title": "Mathe-Tutorium", "short": "MATHE", "icon": "sigma", "color": "orange", "description": "…" }
+```
+
+Liegt im Fach-Ordner neben den Kapiteln. Beim Start wird das Fach **einmal** angelegt –
+auch in einer bestehenden Datenbank – und ans Ende seines Semesters gestellt
+(`subjectsImported` in `data/db.json`). Danach gehört es der Redaktion: in der App
+umbenannt, verschoben oder gelöscht bleibt es so. Fehlt das Semester, wird es beim
+nächsten Start erneut versucht. `icon` und `color` wie im Fach-Dialog (`src/lib/subjects.js`).
 
 ## Abbildungen
 

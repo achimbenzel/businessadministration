@@ -198,3 +198,28 @@ test('blocks keep their section; formulas and definitions carry explanations', a
   const hit = (await admin('/api/search?q=konzertticket')).data.results.find((r) => r.id === c.id);
   assert.ok(hit, 'formula analogies are searchable');
 });
+
+test('slide decks: fields are cleaned, pictures only from the own chapter, searchable', async () => {
+  const c = await create('Folien');
+  const res = await patch(c.id, {
+    blocks: [{
+      type: 'slides', tab: 'slides', title: 'Potenzgesetze',
+      slides: [
+        { title: 'Regel 1', formula: 'a^{x+y} = a^x \\cdot a^y', text: 'Exponenten addieren', example: '2^3 · 2^4', image: `chapters/${c.id}/abc.svg`, alt: 'Kacheln' },
+        { title: 'Fremdes Bild', image: 'chapters/other-chapter/x.png' },
+        { title: 'Pfad', image: `chapters/${c.id}/../../db.json` },
+        'junk',
+      ],
+    }],
+  });
+  const [deck] = res.data.chapter.blocks;
+  assert.equal(deck.tab, 'slides');
+  assert.equal(deck.slides.length, 4);
+  assert.equal(deck.slides[0].formula, 'a^{x+y} = a^x \\cdot a^y');
+  assert.equal(deck.slides[0].image, `chapters/${c.id}/abc.svg`);
+  assert.equal(deck.slides[1].image, '', 'no files of other chapters');
+  assert.equal(deck.slides[2].image, '', 'no paths out of the chapter folder');
+  assert.ok(deck.slides.every((s) => typeof s.id === 'string' && s.id));
+  const hit = (await admin('/api/search?q=exponenten addieren')).data.results.find((r) => r.id === c.id);
+  assert.ok(hit, 'slide text is searchable');
+});

@@ -1,5 +1,5 @@
-// A chapter's sections: Übersicht, Begriffe, Formeln, Theorie, Interaktiv,
-// Übungen. Each block may name its section (`tab`); blocks without one are
+// A chapter's sections: Übersicht, Folien, Begriffe, Formeln, Theorie,
+// Interaktiv, Übungen. Each block may name its section (`tab`); blocks without one are
 // placed by their type, and headings / dividers go with the block after them.
 // Pure functions — the chapter page and the tests use them alike.
 import { stripInline } from './inline.js';
@@ -7,6 +7,7 @@ import { isEmptyBlock } from './blocks.js';
 
 export const SECTIONS = [
   { key: 'overview', color: 'blue', label: { de: 'Übersicht', en: 'Overview' } },
+  { key: 'slides', color: 'amber', label: { de: 'Folien', en: 'Slides' } },
   { key: 'terms', color: 'violet', label: { de: 'Begriffe', en: 'Key terms' } },
   { key: 'formulas', color: 'teal', label: { de: 'Formeln', en: 'Formulas' } },
   { key: 'theory', color: 'green', label: { de: 'Theorie', en: 'Theory' } },
@@ -14,10 +15,11 @@ export const SECTIONS = [
   { key: 'practice', color: 'pink', label: { de: 'Übungen', en: 'Practice' } },
 ];
 export const SECTION_KEYS = SECTIONS.map((s) => s.key);
-export const sectionOf = (key) => SECTIONS.find((s) => s.key === key) || SECTIONS[3];
+export const sectionOf = (key) => SECTIONS.find((s) => s.key === key) || SECTIONS.find((s) => s.key === 'theory');
 export const sectionLabel = (key, lang = 'de') => sectionOf(key).label[lang] || sectionOf(key).label.de;
 
 const BY_TYPE = {
+  slides: 'slides',
   definition: 'terms',
   formula: 'formulas',
   supplyDemand: 'interactive',
@@ -61,6 +63,12 @@ export function sectionItems(blocks, lang = 'de') {
       case 'formula': it = { kind: 'formula', title: plain(b.title || firstLine(b.text)) }; break;
       case 'supplyDemand': it = { kind: 'demo', title: plain(b.title) || (lang === 'en' ? 'Supply & demand' : 'Angebot & Nachfrage') }; break;
       case 'consumerChoice': it = { kind: 'demo', title: plain(b.title) || (lang === 'en' ? 'Consumer optimum' : 'Haushaltsoptimum') }; break;
+      case 'slides': {
+        const n = (b.slides || []).length;
+        const what = lang === 'en' ? `${n} ${n === 1 ? 'slide' : 'slides'}` : `${n} ${n === 1 ? 'Folie' : 'Folien'}`;
+        it = { kind: 'slides', title: plain(b.title) ? `${plain(b.title)} · ${what}` : what };
+        break;
+      }
       case 'quiz': case 'flashcard': {
         const kind = b.type === 'quiz' ? 'quiz' : 'cards';
         const last = items[items.length - 1];
@@ -85,6 +93,7 @@ function countOf(key, blocks, items) {
   const n = (types) => blocks.filter((b) => types.includes(b.type)).length;
   if (key === 'terms') return n(['definition']);
   if (key === 'formulas') return n(['formula']);
+  if (key === 'slides') return blocks.reduce((sum, b) => sum + (b.type === 'slides' ? (b.slides || []).length : 0), 0);
   if (key === 'interactive') return n(['supplyDemand', 'consumerChoice']);
   if (key === 'practice') return n(['quiz', 'flashcard']) || items.filter((i) => i.kind === 'heading').length;
   return items.filter((i) => i.kind === 'heading' && i.level === 2).length;

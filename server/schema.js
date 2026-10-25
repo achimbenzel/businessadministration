@@ -17,7 +17,7 @@ export * from './schema/chapters.js';
 
 export const SCHEMA_VERSION = 1;
 
-export const emptyDB = () => ({ schemaVersion: SCHEMA_VERSION, semesters: [], subjects: [], chapters: [], trash: [], contentImported: [] });
+export const emptyDB = () => ({ schemaVersion: SCHEMA_VERSION, semesters: [], subjects: [], chapters: [], trash: [], contentImported: [], subjectsImported: [] });
 
 // Content packs (content/…/chapter.json) that were imported once — see server/content.js.
 // version: the pack's version; rev: the chapter's revision right after the import —
@@ -48,6 +48,8 @@ export function normalizeDB(d) {
     chapters: list(db.chapters, 10000).map(normalizeChapter),
     trash: list(db.trash, 10000).map(normalizeTrashEntry).filter((t) => t && t.id),
     contentImported: list(db.contentImported, 10000).map(normalizeImport).filter((x) => x.id),
+    // Subjects that came with a content pack (content/<subject>/subject.json), added once.
+    subjectsImported: list(db.subjectsImported, 1000).map((x) => ({ id: isId(x?.id) ? x.id : '', at: time(x?.at) })).filter((x) => x.id),
   };
 }
 

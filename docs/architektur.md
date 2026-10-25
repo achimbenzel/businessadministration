@@ -107,8 +107,10 @@ die Seite bietet „Neu laden“ an – nichts wird still überschrieben.
   Speicherungen laufen beim Verlassen der Seite, bei verstecktem Tab und beim
   Schließen (als `keepalive`-Request); der Browser fragt nach, wenn noch etwas
   ungespeichert ist.
-- **`lib/inline.js`:** kleines Markdown (fett, kursiv, markiert, Code, Links, Listen)
-  als Token → `components/Inline.jsx` rendert React-Elemente.
+- **`lib/inline.js`:** kleines Markdown (fett, kursiv, markiert, Code, Links, Listen,
+  `$Formel$`) als Token → `components/Inline.jsx` rendert React-Elemente.
+- **`lib/math.js`:** kleine LaTeX-Schreibweise für Formeln (Hochzahlen, Indizes, Σ/Π mit
+  Grenzen, Brüche, Wurzeln) als Knoten → `components/MathText.jsx`; nie HTML.
 - **Lernfortschritt** (gelernt, gewusste Karten, zuletzt geöffnet) liegt im
   `localStorage` des Geräts – alle Betrachter teilen sich das Konto `User`.
 

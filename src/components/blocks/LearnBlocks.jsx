@@ -5,7 +5,9 @@ import { useState } from 'react';
 import { BookMarked, Info, Lightbulb, Pin, TriangleAlert, ChevronRight, Sigma, MessageCircle, Calculator, Plus, X } from 'lucide-react';
 import AutoTextarea from '../AutoTextarea.jsx';
 import { Inline, RichText } from '../Inline.jsx';
+import MathText from '../MathText.jsx';
 import { CALLOUT_VARIANTS } from '../../lib/blocks.js';
+import { hasMath } from '../../lib/math.js';
 import { useBlockText } from '../../lib/blockText.js';
 
 export function DefinitionView({ block }) {
@@ -122,12 +124,12 @@ export function FormulaView({ block }) {
   return (
     <figure className={`blk-formula ${rich ? 'is-rich' : ''}`}>
       {block.title && <div className="blk-formula-title"><Sigma size={15} /> <Inline text={block.title} /></div>}
-      <pre>{block.text}</pre>
+      <pre><MathText text={block.text} /></pre>
       {block.caption && <figcaption><Inline text={block.caption} /></figcaption>}
       {vars.length > 0 && (
         <dl className="blk-formula-vars" aria-label={t.formula.variables}>
           {vars.map((v, i) => (
-            <div key={i}><dt>{v.symbol}</dt><dd><Inline text={v.meaning} /></dd></div>
+            <div key={i}><dt><MathText text={v.symbol} /></dt><dd><Inline text={v.meaning} /></dd></div>
           ))}
         </dl>
       )}
@@ -150,6 +152,7 @@ export function FormulaEdit({ block, onChange, autoFocus }) {
       <AutoTextarea className="ed-formula" value={block.text} minRows={2} spellCheck="false"
         placeholder={'Deckungsbeitrag = Umsatzerlöse − variable Kosten\nBetriebsergebnis = Σ DB − Fixkosten'}
         onChange={(e) => onChange({ text: e.target.value })} />
+      <MathPreview text={block.text} />
       <input className="input input-sm" value={block.caption} placeholder="Beschriftung (optional)" maxLength={300}
         onChange={(e) => onChange({ caption: e.target.value })} />
       <div className="ed-vars">
@@ -174,5 +177,16 @@ export function FormulaEdit({ block, onChange, autoFocus }) {
       <AutoTextarea className="input input-sm" value={block.analogy || ''} minRows={1} placeholder="Vergleich aus dem Alltag / Eselsbrücke (optional)"
         onChange={(e) => onChange({ analogy: e.target.value })} />
     </figure>
+  );
+}
+
+/** Under a formula field in the editor: how x^{2}, a_{i}, \sum_{i=1}^{n}, \frac{a}{b} will look. */
+export function MathPreview({ text }) {
+  if (!hasMath(text)) return null;
+  return (
+    <div className="ed-math-preview" aria-label="Vorschau">
+      <span className="ed-math-label">Vorschau</span>
+      <pre><MathText text={text} /></pre>
+    </div>
   );
 }

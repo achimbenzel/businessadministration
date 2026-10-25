@@ -12,7 +12,7 @@ const hostOf = (url) => { try { return new URL(url).hostname.replace(/^www\./, '
 const safeLink = (url) => (/^(https?:\/\/|mailto:)/i.test(url || '') ? url : null);
 
 /** A drop zone + file picker that uploads through `upload(file)`. */
-function Dropzone({ accept, multiple = false, upload, onUploaded, icon: Icon = Upload, children }) {
+export function Dropzone({ accept, multiple = false, upload, onUploaded, icon: Icon = Upload, children }) {
   const input = useRef(null);
   const [busy, setBusy] = useState(0);
   const [over, setOver] = useState(false);
