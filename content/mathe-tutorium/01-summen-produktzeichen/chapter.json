@@ -1,353 +1,98 @@
 {
   "id": "mathe-01-summen-produkt",
-  "version": 1,
+  "version": 2,
   "subjectId": "mathe-tutorium",
   "lang": "de",
   "status": "published",
   "title": "Summen- und Produktzeichen (Σ und Π)",
-  "summary": "Lange Summen und Produkte kurz schreiben und ausrechnen: Aufbau, Rechenregeln, typische Fehler – und wo Σ und Π in der BWL vorkommen (Mittelwert, Kapitalwert, Zinseszins).",
+  "summary": "Lange Summen und Produkte kurz schreiben und ausrechnen.",
   "blocks": [
     {
       "type": "text",
       "tab": "overview",
-      "text": "In Statistik, Finanzmathematik und Volkswirtschaft stehen ständig Ausdrücke wie $\\sum_{i=1}^{n} x_i$ oder $\\prod_{t=1}^{n} (1 + r_t)$. Sie sehen kompliziert aus, sind aber nur eine **Kurzschrift**: Das **Summenzeichen** Σ (*summation sign*) heißt „addiere alle …“, das **Produktzeichen** Π (*product notation*) heißt „multipliziere alle …“.\n\nAm schnellsten lernst du es mit den **Folien**: Schritt für Schritt, mit Beispielen – auch im Vollbild."
-    },
-    {
-      "type": "callout",
-      "tab": "overview",
-      "variant": "important",
-      "title": "Lernziele",
-      "text": "- Summen- und Produktzeichen lesen und ausrechnen\n- lange Summen und Produkte selbst mit Σ und Π schreiben\n- die Rechenregeln anwenden (Konstante, Faktor vorziehen, aufteilen)\n- typische Fehler vermeiden\n- Mittelwert, Kapitalwert und Zinseszins als Σ- bzw. Π-Formel verstehen"
-    },
-    {
-      "type": "image",
-      "tab": "overview",
-      "file": "img/summenzeichen-aufbau.svg",
-      "caption": "Der Aufbau des Summenzeichens: obere Grenze n, Laufindex i mit Startwert 1 und der Summand aᵢ.",
-      "alt": "Großes Sigma-Zeichen mit n darüber, i=1 darunter und a mit Index i rechts daneben; Pfeile mit Erklärungen."
-    },
-    {
-      "type": "slides",
-      "tab": "slides",
-      "title": "Summen- und Produktzeichen",
-      "slides": [
-        {
-          "title": "Wozu Σ und Π?",
-          "formula": "1 + 2 + 3 + \\dots + 100 = \\sum_{i=1}^{100} i",
-          "text": "Lange Summen und Produkte schreibt man mit einem einzigen Zeichen. Σ ist das griechische **S** wie *Summe*, Π das griechische **P** wie *Produkt*.",
-          "example": "Statt 1 · 2 · 3 · 4 · 5 schreibt man $\\prod_{i=1}^{5} i$."
-        },
-        {
-          "title": "Aufbau des Summenzeichens",
-          "text": "Lies: „**Summe** über $a_i$ **von** i gleich 1 **bis** n“. Der **Laufindex** i nimmt nacheinander alle ganzen Zahlen von der unteren bis zur oberen Grenze an.",
-          "file": "img/summenzeichen-aufbau.svg",
-          "alt": "Aufbau des Summenzeichens mit oberer Grenze, Laufindex und Summand."
-        },
-        {
-          "title": "So rechnest du eine Summe aus",
-          "formula": "\\sum_{i=1}^{4} i^2 = 1^2 + 2^2 + 3^2 + 4^2\n= 30",
-          "text": "1. Für i den **Startwert** einsetzen.\n2. i jeweils um 1 erhöhen, bis die **obere Grenze** erreicht ist.\n3. Alle Werte **addieren**.",
-          "example": "1 + 4 + 9 + 16 = 30"
-        },
-        {
-          "title": "Der Summand kann ein Term sein",
-          "formula": "\\sum_{k=1}^{3} (2k + 1) = 3 + 5 + 7 = 15",
-          "text": "Wie der Laufindex heißt (i, j, k …), ist egal – wichtig sind Start, Ende und der Term dahinter. Klammern zeigen, was alles zum Summanden gehört."
-        },
-        {
-          "title": "Wie viele Summanden?",
-          "formula": "\\sum_{i=m}^{n} a_i\nhat n − m + 1 Summanden",
-          "text": "Die Grenzen zählen beide mit. Darum „+ 1“.",
-          "example": "$\\sum_{i=3}^{7} a_i = a_3 + a_4 + a_5 + a_6 + a_7$: 7 − 3 + 1 = **5** Summanden."
-        },
-        {
-          "title": "Regel 1: Konstante summieren",
-          "formula": "\\sum_{i=1}^{n} c = n \\cdot c",
-          "text": "Hängt der Summand **nicht** von i ab, wird einfach n-mal dasselbe addiert.",
-          "example": "$\\sum_{i=1}^{5} 4 = 4 + 4 + 4 + 4 + 4 = 5 \\cdot 4 = 20$"
-        },
-        {
-          "title": "Regel 2: Konstanten Faktor vorziehen",
-          "formula": "\\sum_{i=1}^{n} c \\cdot a_i = c \\cdot \\sum_{i=1}^{n} a_i",
-          "text": "Ein Faktor, der in jedem Summanden steckt, darf vor die Summe – das ist Ausklammern.",
-          "example": "$\\sum_{i=1}^{3} 5i = 5 + 10 + 15 = 5 \\cdot (1 + 2 + 3) = 30$"
-        },
-        {
-          "title": "Regel 3: Summe aufteilen",
-          "formula": "\\sum_{i=1}^{n} (a_i + b_i) = \\sum_{i=1}^{n} a_i + \\sum_{i=1}^{n} b_i",
-          "text": "Eine Summe aus zwei Teilen darf man in zwei Summen zerlegen (und umgekehrt zusammenfassen).",
-          "example": "$\\sum_{i=1}^{3} (i + 2) = \\sum_{i=1}^{3} i + \\sum_{i=1}^{3} 2 = 6 + 6 = 12$"
-        },
-        {
-          "title": "Regel 4: Grenzen aufteilen",
-          "formula": "\\sum_{i=1}^{n} a_i = \\sum_{i=1}^{m} a_i + \\sum_{i=m+1}^{n} a_i",
-          "text": "Eine lange Summe darf man an einer beliebigen Stelle m in zwei Stücke teilen.",
-          "example": "$\\sum_{i=51}^{100} i = \\sum_{i=1}^{100} i − \\sum_{i=1}^{50} i = 5050 − 1275 = 3775$"
-        },
-        {
-          "title": "Achtung: typische Fehler",
-          "formula": "\\sum (a_i \\cdot b_i) \\neq \\sum a_i \\cdot \\sum b_i\n\\sum a_i^2 \\neq (\\sum a_i)^2",
-          "text": "Produkte und Quadrate darf man **nicht** auseinanderziehen – nur Summen und konstante Faktoren.",
-          "example": "a = (1, 2), b = (3, 4): $\\sum a_i b_i = 3 + 8 = 11$, aber $\\sum a_i \\cdot \\sum b_i = 3 \\cdot 7 = 21$."
-        },
-        {
-          "title": "Die Gaußsche Summenformel",
-          "formula": "\\sum_{i=1}^{n} i = \\frac{n \\cdot (n + 1)}{2}",
-          "text": "Der junge Gauß sollte 1 bis 100 addieren. Er bildete Paare: 1 + 100, 2 + 99, … – 50 Paare zu je 101.",
-          "example": "$\\sum_{i=1}^{100} i = \\frac{100 \\cdot 101}{2} = 5050$"
-        },
-        {
-          "title": "Σ in der BWL",
-          "formula": "\\bar{x} = \\frac{1}{n} \\sum_{i=1}^{n} x_i\n\nKW = \\sum_{t=0}^{T} \\frac{CF_t}{(1 + i)^t}",
-          "text": "- **Arithmetisches Mittel** (*mean*): alle Werte addieren, durch ihre Anzahl teilen.\n- **Kapitalwert** (*net present value*): alle abgezinsten Zahlungen $CF_t$ der Jahre t = 0 … T addieren.",
-          "example": "Umsätze 3, 5 und 10 Mio. €: $\\bar{x}$ = (3 + 5 + 10) / 3 = **6 Mio. €**."
-        },
-        {
-          "title": "Aufbau des Produktzeichens",
-          "formula": "\\prod_{i=1}^{n} a_i = a_1 \\cdot a_2 \\cdot \\dots \\cdot a_n",
-          "text": "Genau wie beim Summenzeichen – nur wird **multipliziert** statt addiert.",
-          "file": "img/produktzeichen-aufbau.svg",
-          "alt": "Aufbau des Produktzeichens mit oberer Grenze, Laufindex und Faktor."
-        },
-        {
-          "title": "Beispiele zum Produktzeichen",
-          "formula": "\\prod_{i=1}^{4} i = 1 \\cdot 2 \\cdot 3 \\cdot 4 = 24 = 4!\n\\prod_{k=1}^{3} 2 = 2 \\cdot 2 \\cdot 2 = 2^3",
-          "text": "Das Produkt der Zahlen 1 bis n heißt **Fakultät** (*factorial*), geschrieben n!. Es gilt 0! = 1."
-        },
-        {
-          "title": "Rechenregeln für Π",
-          "formula": "\\prod_{i=1}^{n} c = c^n\n\\prod_{i=1}^{n} c \\cdot a_i = c^n \\cdot \\prod_{i=1}^{n} a_i\n\\prod_{i=1}^{n} a_i b_i = \\prod_{i=1}^{n} a_i \\cdot \\prod_{i=1}^{n} b_i",
-          "text": "Achtung beim Vorziehen: Der Faktor c kommt **n-mal** vor – also $c^n$, nicht c."
-        },
-        {
-          "title": "Π in der BWL: Zinseszins",
-          "formula": "K_n = K_0 \\cdot \\prod_{t=1}^{n} (1 + r_t)",
-          "text": "Ändert sich der Zinssatz $r_t$ jedes Jahr, multipliziert man die Wachstumsfaktoren aller Jahre.",
-          "example": "1 000 € mit +10 % und danach −10 %: 1 000 · 1,1 · 0,9 = **990 €** – kein Nullsummenspiel!"
-        },
-        {
-          "title": "Warum das geometrische Mittel?",
-          "formula": "\\bar{r} = (\\prod_{t=1}^{n} (1 + r_t))^{1/n} − 1",
-          "text": "Für die **durchschnittliche Rendite** über mehrere Jahre nimmt man das geometrische Mittel der Faktoren, nicht das arithmetische Mittel der Prozente.",
-          "example": "+10 % und −10 %: arithmetisch 0 %, aber $\\sqrt{1,1 \\cdot 0,9} − 1 = \\sqrt{0,99} − 1 ≈ −0,5 \\%$ pro Jahr."
-        },
-        {
-          "title": "Zusammenfassung",
-          "text": "- **Σ** = addiere alle, **Π** = multipliziere alle – von der unteren bis zur oberen Grenze.\n- Konstante summieren: $\\sum c = n \\cdot c$ · Produkt: $\\prod c = c^n$\n- Konstante Faktoren und Summen darf man herausziehen bzw. aufteilen – Produkte und Quadrate **nicht**.\n- Gauß: $\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}$"
-        }
-      ]
+      "text": "**Σ** (Summenzeichen) heißt „addiere alle …“, **Π** (Produktzeichen) heißt „multipliziere alle …“. Unten steht, womit man anfängt, oben, wo man aufhört."
     },
     {
       "type": "definition",
       "tab": "terms",
-      "term": "Summenzeichen",
-      "termEn": "summation sign · sigma notation (Σ)",
-      "text": "Kurzschrift für eine Summe vieler gleich aufgebauter Summanden: $\\sum_{i=1}^{n} a_i = a_1 + \\dots + a_n$.",
-      "textEn": "The summation sign Σ denotes the sum of a sequence of terms, from the lower to the upper limit of the index."
+      "term": "Summenzeichen Σ",
+      "text": "Kurzschrift für eine Summe: Alle Summanden von der unteren bis zur oberen Grenze werden addiert."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Produktzeichen Π",
+      "text": "Kurzschrift für ein Produkt: Alle Faktoren von der unteren bis zur oberen Grenze werden multipliziert."
     },
     {
       "type": "definition",
       "tab": "terms",
       "term": "Laufindex",
-      "termEn": "index (of summation)",
-      "text": "Die Variable unter dem Zeichen (meist i, j, k oder t). Sie läuft in Einerschritten von der unteren bis zur oberen Grenze und wird in den Summanden eingesetzt.",
-      "textEn": "The index takes every integer value from the lower limit to the upper limit."
+      "text": "Die Zählvariable unter dem Zeichen (meist i oder k). Sie läuft in Einerschritten von der unteren bis zur oberen Grenze."
     },
     {
       "type": "definition",
       "tab": "terms",
       "term": "Untere und obere Grenze",
-      "termEn": "lower limit · upper limit",
-      "text": "Start- und Endwert des Laufindex. Beide gehören dazu: Von m bis n sind es n − m + 1 Summanden.",
-      "textEn": "The lower and upper limits are the first and last values of the index; both are included."
-    },
-    {
-      "type": "definition",
-      "tab": "terms",
-      "term": "Summand",
-      "termEn": "term (of a sum)",
-      "text": "Was addiert wird – der Ausdruck hinter dem Summenzeichen, meist abhängig vom Laufindex.",
-      "textEn": "A term is one of the quantities being added."
-    },
-    {
-      "type": "definition",
-      "tab": "terms",
-      "term": "Produktzeichen",
-      "termEn": "product notation · pi notation (Π)",
-      "text": "Kurzschrift für ein Produkt vieler Faktoren: $\\prod_{i=1}^{n} a_i = a_1 \\cdot \\dots \\cdot a_n$.",
-      "textEn": "The product sign Π denotes the product of a sequence of factors."
-    },
-    {
-      "type": "definition",
-      "tab": "terms",
-      "term": "Fakultät",
-      "termEn": "factorial (n!)",
-      "text": "Das Produkt aller natürlichen Zahlen von 1 bis n: $n! = \\prod_{i=1}^{n} i$. Festgelegt: 0! = 1.",
-      "textEn": "The factorial n! is the product of all positive integers up to n; by definition 0! = 1."
+      "text": "Start- und Endwert des Laufindex – beide zählen mit."
     },
     {
       "type": "formula",
       "tab": "formulas",
-      "title": "Summenzeichen (sigma notation)",
+      "title": "Summenzeichen",
       "text": "\\sum_{i=1}^{n} a_i = a_1 + a_2 + \\dots + a_n",
       "variables": [
         {
           "symbol": "i",
-          "meaning": "Laufindex (index)"
+          "meaning": "Laufindex"
         },
         {
-          "symbol": "1",
-          "meaning": "untere Grenze (Startwert)"
-        },
-        {
-          "symbol": "n",
-          "meaning": "obere Grenze (Endwert)"
+          "symbol": "1 / n",
+          "meaning": "untere / obere Grenze"
         },
         {
           "symbol": "a_i",
-          "meaning": "Summand – der Ausdruck, in den i eingesetzt wird"
+          "meaning": "Summand"
         }
       ],
-      "explanation": "Setze nacheinander i = 1, 2, …, n in den Summanden ein und addiere alle Ergebnisse.",
-      "example": "$\\sum_{i=1}^{4} (i + 1) = 2 + 3 + 4 + 5 = 14$",
-      "analogy": "Wie ein Einkaufszettel mit Positionen 1 bis n: Σ ist der Strich darunter mit der Gesamtsumme."
+      "explanation": "Für i nacheinander 1, 2, …, n einsetzen und alle Ergebnisse **addieren**.",
+      "example": "$\\sum_{i=1}^{4} i^2 = 1 + 4 + 9 + 16 = 30$"
+    },
+    {
+      "type": "image",
+      "tab": "formulas",
+      "file": "img/summenzeichen-aufbau.svg",
+      "caption": "Aufbau des Summenzeichens.",
+      "alt": "Sigma-Zeichen mit oberer Grenze n, Laufindex i mit Startwert 1 und Summand a mit Index i."
     },
     {
       "type": "formula",
       "tab": "formulas",
-      "title": "Rechenregeln für Summen",
-      "text": "\\sum_{i=1}^{n} c = n \\cdot c\n\\sum_{i=1}^{n} c \\cdot a_i = c \\cdot \\sum_{i=1}^{n} a_i\n\\sum_{i=1}^{n} (a_i + b_i) = \\sum a_i + \\sum b_i\n\\sum_{i=1}^{n} a_i = \\sum_{i=1}^{m} a_i + \\sum_{i=m+1}^{n} a_i",
-      "variables": [
-        {
-          "symbol": "c",
-          "meaning": "Konstante: hängt nicht von i ab"
-        },
-        {
-          "symbol": "m",
-          "meaning": "Stelle, an der geteilt wird (1 ≤ m < n)"
-        }
-      ],
-      "explanation": "Konstanten werden n-mal addiert, konstante Faktoren darf man ausklammern, Summen aufteilen und an jeder Stelle zerlegen. **Nicht** erlaubt: Produkte oder Quadrate auseinanderziehen.",
-      "example": "$\\sum_{i=1}^{4} (3i + 2) = 3 \\cdot \\sum_{i=1}^{4} i + \\sum_{i=1}^{4} 2 = 3 \\cdot 10 + 8 = 38$",
-      "analogy": "Ausklammern beim Einkauf: 4 Packungen zu je 3 € kosten 3 € · 4 – egal ob du einzeln oder auf einmal zahlst."
-    },
-    {
-      "type": "formula",
-      "tab": "formulas",
-      "title": "Gaußsche Summenformel",
-      "text": "\\sum_{i=1}^{n} i = \\frac{n \\cdot (n + 1)}{2}",
-      "variables": [
-        {
-          "symbol": "n",
-          "meaning": "letzte Zahl, bis zu der addiert wird"
-        }
-      ],
-      "explanation": "Die Summe 1 + 2 + … + n ergibt sich aus Paaren, die jeweils n + 1 ergeben – davon gibt es n/2.",
-      "example": "$\\sum_{i=1}^{20} i = \\frac{20 \\cdot 21}{2} = 210$",
-      "analogy": "Treppenstufen zählen: Zwei gleiche Treppen umgedreht aneinandergelegt ergeben ein Rechteck n × (n + 1)."
-    },
-    {
-      "type": "formula",
-      "tab": "formulas",
-      "title": "Arithmetisches Mittel (mean)",
-      "text": "\\bar{x} = \\frac{1}{n} \\sum_{i=1}^{n} x_i",
-      "variables": [
-        {
-          "symbol": "\\bar{x}",
-          "meaning": "Mittelwert (sprich „x quer“)"
-        },
-        {
-          "symbol": "x_i",
-          "meaning": "die einzelnen Werte"
-        },
-        {
-          "symbol": "n",
-          "meaning": "Anzahl der Werte"
-        }
-      ],
-      "explanation": "Alle Werte addieren und durch ihre Anzahl teilen – die wichtigste Σ-Formel der Statistik.",
-      "example": "Klausurnoten 1,7; 2,3; 3,0: $\\bar{x}$ = (1,7 + 2,3 + 3,0) / 3 = 7 / 3 ≈ **2,33**",
-      "analogy": "Pizza gerecht teilen: alles zusammenlegen, dann durch die Zahl der Personen teilen."
-    },
-    {
-      "type": "formula",
-      "tab": "formulas",
-      "title": "Kapitalwert (net present value)",
-      "text": "KW = \\sum_{t=0}^{T} \\frac{CF_t}{(1 + i)^t}",
-      "variables": [
-        {
-          "symbol": "CF_t",
-          "meaning": "Zahlung (cash flow) im Jahr t, Auszahlungen negativ"
-        },
-        {
-          "symbol": "i",
-          "meaning": "Kalkulationszinssatz"
-        },
-        {
-          "symbol": "T",
-          "meaning": "letztes Jahr"
-        }
-      ],
-      "explanation": "Jede Zahlung wird auf heute abgezinst und dann aufsummiert. Ist der Kapitalwert positiv, lohnt sich die Investition.",
-      "example": "−1 000 heute, dann 400, 500, 300 bei 10 %:\nKW = −1 000 + 400/1,1 + 500/1,1² + 300/1,1³ ≈ −1 000 + 363,64 + 413,22 + 225,39 = **2,25 €**",
-      "analogy": "Geld von morgen ist heute weniger wert – wie ein Gutschein, den man erst später einlösen kann."
-    },
-    {
-      "type": "formula",
-      "tab": "formulas",
-      "title": "Produktzeichen (pi notation)",
+      "title": "Produktzeichen",
       "text": "\\prod_{i=1}^{n} a_i = a_1 \\cdot a_2 \\cdot \\dots \\cdot a_n",
       "variables": [
         {
+          "symbol": "i",
+          "meaning": "Laufindex"
+        },
+        {
+          "symbol": "1 / n",
+          "meaning": "untere / obere Grenze"
+        },
+        {
           "symbol": "a_i",
-          "meaning": "Faktor – der Ausdruck, in den i eingesetzt wird"
+          "meaning": "Faktor"
         }
       ],
-      "explanation": "Wie beim Summenzeichen, nur werden die Werte multipliziert.",
-      "example": "$\\prod_{i=1}^{3} (i + 1) = 2 \\cdot 3 \\cdot 4 = 24$",
-      "analogy": "Rabatte hintereinander: 10 % und dann 20 % Rabatt = Preis · 0,9 · 0,8 – Faktoren werden multipliziert."
+      "explanation": "Genau wie beim Summenzeichen – nur wird **multipliziert**.",
+      "example": "$\\prod_{i=1}^{4} i = 1 \\cdot 2 \\cdot 3 \\cdot 4 = 24$"
     },
     {
-      "type": "formula",
+      "type": "image",
       "tab": "formulas",
-      "title": "Rechenregeln für Produkte",
-      "text": "\\prod_{i=1}^{n} c = c^n\n\\prod_{i=1}^{n} c \\cdot a_i = c^n \\cdot \\prod_{i=1}^{n} a_i\n\\prod_{i=1}^{n} a_i b_i = \\prod a_i \\cdot \\prod b_i",
-      "variables": [
-        {
-          "symbol": "c",
-          "meaning": "Konstante"
-        },
-        {
-          "symbol": "c^n",
-          "meaning": "c kommt in jedem der n Faktoren vor"
-        }
-      ],
-      "explanation": "Eine Konstante wird n-mal multipliziert – also hoch n. Produkte darf man in Teilprodukte zerlegen.",
-      "example": "$\\prod_{i=1}^{3} 2i = 2^3 \\cdot (1 \\cdot 2 \\cdot 3) = 8 \\cdot 6 = 48$",
-      "analogy": "Drei Kisten mit je doppeltem Inhalt: Der Faktor 2 steckt dreimal drin – das ist 2³."
-    },
-    {
-      "type": "formula",
-      "tab": "formulas",
-      "title": "Zinseszins und geometrisches Mittel",
-      "text": "K_n = K_0 \\cdot \\prod_{t=1}^{n} (1 + r_t)\n\n\\bar{r} = (\\prod_{t=1}^{n} (1 + r_t))^{1/n} − 1",
-      "variables": [
-        {
-          "symbol": "K_0, K_n",
-          "meaning": "Kapital am Anfang und nach n Jahren"
-        },
-        {
-          "symbol": "r_t",
-          "meaning": "Zins bzw. Rendite im Jahr t"
-        },
-        {
-          "symbol": "\\bar{r}",
-          "meaning": "durchschnittliche Rendite pro Jahr"
-        }
-      ],
-      "explanation": "Jedes Jahr wird das Kapital mit seinem Wachstumsfaktor (1 + r) multipliziert. Der Durchschnitt solcher Faktoren ist das geometrische Mittel.",
-      "example": "+20 %, −20 %: K = 1 000 · 1,2 · 0,8 = 960 €. $\\bar{r}$ = $\\sqrt{0,96} − 1 ≈ −2,0 \\%$ pro Jahr (nicht 0 %).",
-      "analogy": "Erst 20 % Aufschlag, dann 20 % Rabatt – am Ende ist es billiger als vorher, weil der Rabatt vom höheren Preis abgeht."
+      "file": "img/produktzeichen-aufbau.svg",
+      "caption": "Aufbau des Produktzeichens.",
+      "alt": "Pi-Zeichen mit oberer Grenze n, Laufindex i mit Startwert 1 und Faktor a mit Index i."
     },
     {
       "type": "heading",
@@ -358,57 +103,35 @@
     {
       "type": "text",
       "tab": "practice",
-      "text": "**Aufgabe 1.** Berechne $\\sum_{i=1}^{5} (3i − 1)$ – einmal durch Ausschreiben und einmal mit den Rechenregeln."
+      "text": "**Aufgabe 1.** Berechne $\\sum_{i=1}^{5} 2i$."
     },
     {
       "type": "toggle",
       "tab": "practice",
       "title": "Lösung anzeigen",
-      "text": "Ausschreiben: 2 + 5 + 8 + 11 + 14 = **40**.\nMit Regeln: $3 \\cdot \\sum_{i=1}^{5} i − \\sum_{i=1}^{5} 1 = 3 \\cdot 15 − 5 = 40$."
+      "text": "2 + 4 + 6 + 8 + 10 = **30**"
     },
     {
       "type": "text",
       "tab": "practice",
-      "text": "**Aufgabe 2.** Schreibe 2 + 4 + 6 + … + 20 mit dem Summenzeichen und berechne den Wert."
+      "text": "**Aufgabe 2.** Schreibe 1 + 4 + 9 + 16 + 25 mit dem Summenzeichen."
     },
     {
       "type": "toggle",
       "tab": "practice",
       "title": "Lösung anzeigen",
-      "text": "$\\sum_{i=1}^{10} 2i = 2 \\cdot \\sum_{i=1}^{10} i = 2 \\cdot 55 = 110$"
+      "text": "$\\sum_{i=1}^{5} i^2$"
     },
     {
       "type": "text",
       "tab": "practice",
-      "text": "**Aufgabe 3.** Berechne $\\sum_{i=51}^{100} i$ mit der Gaußschen Summenformel."
+      "text": "**Aufgabe 3.** Berechne $\\prod_{k=1}^{3} (k + 1)$."
     },
     {
       "type": "toggle",
       "tab": "practice",
       "title": "Lösung anzeigen",
-      "text": "$\\sum_{i=51}^{100} i = \\sum_{i=1}^{100} i − \\sum_{i=1}^{50} i = 5050 − 1275 = 3775$"
-    },
-    {
-      "type": "text",
-      "tab": "practice",
-      "text": "**Aufgabe 4.** Berechne $\\prod_{k=1}^{4} \\frac{k + 1}{k}$."
-    },
-    {
-      "type": "toggle",
-      "tab": "practice",
-      "title": "Lösung anzeigen",
-      "text": "$\\frac{2}{1} \\cdot \\frac{3}{2} \\cdot \\frac{4}{3} \\cdot \\frac{5}{4} = 5$ – fast alles kürzt sich weg („Teleskopprodukt“)."
-    },
-    {
-      "type": "text",
-      "tab": "practice",
-      "text": "**Aufgabe 5.** Eine Investition kostet heute 1 000 € und bringt danach 400 €, 500 € und 300 € (Jahre 1–3). Lohnt sie sich bei 10 % Zins? Schreibe den Kapitalwert mit Σ."
-    },
-    {
-      "type": "toggle",
-      "tab": "practice",
-      "title": "Lösung anzeigen",
-      "text": "$KW = \\sum_{t=0}^{3} \\frac{CF_t}{1,1^t} = −1000 + \\frac{400}{1,1} + \\frac{500}{1,1^2} + \\frac{300}{1,1^3}$\n≈ −1 000 + 363,64 + 413,22 + 225,39 = **2,25 €** > 0 → knapp lohnend."
+      "text": "2 · 3 · 4 = **24**"
     },
     {
       "type": "heading",
@@ -420,37 +143,19 @@
       "type": "flashcard",
       "tab": "practice",
       "front": "Was bedeutet $\\sum_{i=1}^{n} a_i$?",
-      "back": "Die Summe $a_1 + a_2 + \\dots + a_n$: i läuft von 1 bis n, alle Summanden werden addiert."
+      "back": "$a_1 + a_2 + \\dots + a_n$ – alle Summanden von i = 1 bis n addieren."
     },
     {
       "type": "flashcard",
       "tab": "practice",
-      "front": "Wie viele Summanden hat $\\sum_{i=m}^{n} a_i$?",
-      "back": "n − m + 1 (beide Grenzen zählen mit)."
+      "front": "Was bedeutet $\\prod_{i=1}^{n} a_i$?",
+      "back": "$a_1 \\cdot a_2 \\cdot \\dots \\cdot a_n$ – alle Faktoren von i = 1 bis n multiplizieren."
     },
     {
       "type": "flashcard",
       "tab": "practice",
-      "front": "$\\sum_{i=1}^{n} c = ?$",
-      "back": "n · c – die Konstante wird n-mal addiert."
-    },
-    {
-      "type": "flashcard",
-      "tab": "practice",
-      "front": "$\\prod_{i=1}^{n} c = ?$",
-      "back": "$c^n$ – die Konstante wird n-mal multipliziert."
-    },
-    {
-      "type": "flashcard",
-      "tab": "practice",
-      "front": "Gaußsche Summenformel?",
-      "back": "$\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}$"
-    },
-    {
-      "type": "flashcard",
-      "tab": "practice",
-      "front": "Darf man $\\sum a_i b_i$ als $\\sum a_i \\cdot \\sum b_i$ schreiben?",
-      "back": "Nein! Nur Summen und konstante Faktoren dürfen auseinandergezogen werden."
+      "front": "Was ist der Laufindex?",
+      "back": "Die Zählvariable unter dem Zeichen; sie läuft von der unteren bis zur oberen Grenze."
     },
     {
       "type": "heading",
@@ -480,103 +185,55 @@
           "correct": false
         }
       ],
-      "explanation": "2 + 4 + 6 + 8 = 20 (oder 2 · (1 + 2 + 3 + 4) = 2 · 10)."
+      "explanation": "2 + 4 + 6 + 8 = 20"
     },
     {
       "type": "quiz",
       "tab": "practice",
-      "question": "Wie viele Summanden hat $\\sum_{i=4}^{12} a_i$?",
+      "question": "Wie viel ist $\\sum_{i=2}^{4} i$?",
       "options": [
         {
           "text": "9",
           "correct": true
         },
         {
-          "text": "16",
+          "text": "24",
           "correct": false
         },
         {
-          "text": "12",
+          "text": "10",
           "correct": false
         },
         {
-          "text": "8",
+          "text": "6",
           "correct": false
         }
       ],
-      "explanation": "12 − 4 + 1 = 9."
+      "explanation": "2 + 3 + 4 = 9 – die Summe beginnt bei i = 2."
     },
     {
       "type": "quiz",
       "tab": "practice",
-      "question": "Welche Umformung ist **richtig**?",
+      "question": "Wie viel ist $\\prod_{i=1}^{3} i$?",
       "options": [
         {
-          "text": "$\\sum_{i=1}^{n} a_i^2 = (\\sum_{i=1}^{n} a_i)^2$",
+          "text": "3",
           "correct": false
         },
         {
-          "text": "$\\sum_{i=1}^{n} 3a_i = 3 \\sum_{i=1}^{n} a_i$",
+          "text": "6",
           "correct": true
         },
         {
-          "text": "$\\sum_{i=1}^{n} a_i b_i = \\sum a_i \\cdot \\sum b_i$",
+          "text": "9",
           "correct": false
         },
         {
-          "text": "$\\prod_{i=1}^{n} 3a_i = 3 \\prod_{i=1}^{n} a_i$",
+          "text": "27",
           "correct": false
         }
       ],
-      "explanation": "Konstante Faktoren dürfen vor die Summe. Beim Produkt kommt der Faktor n-mal vor: $3^n$, nicht 3."
-    },
-    {
-      "type": "quiz",
-      "tab": "practice",
-      "question": "Wie viel ist $\\prod_{i=1}^{5} i$?",
-      "options": [
-        {
-          "text": "15",
-          "correct": false
-        },
-        {
-          "text": "25",
-          "correct": false
-        },
-        {
-          "text": "60",
-          "correct": false
-        },
-        {
-          "text": "120",
-          "correct": true
-        }
-      ],
-      "explanation": "1 · 2 · 3 · 4 · 5 = 5! = 120."
-    },
-    {
-      "type": "quiz",
-      "tab": "practice",
-      "question": "*Exam style:* An investment returns +50 % in year 1 and −50 % in year 2. What is the average annual return?",
-      "options": [
-        {
-          "text": "0 %",
-          "correct": false
-        },
-        {
-          "text": "About −13.4 % (geometric mean)",
-          "correct": true
-        },
-        {
-          "text": "−25 %",
-          "correct": false
-        },
-        {
-          "text": "+25 %",
-          "correct": false
-        }
-      ],
-      "explanation": "Factor: 1.5 · 0.5 = 0.75; $\\sqrt{0.75} − 1 ≈ −0.134$. The arithmetic mean (0 %) is misleading."
+      "explanation": "1 · 2 · 3 = 6"
     }
   ]
 }

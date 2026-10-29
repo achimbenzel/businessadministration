@@ -53,7 +53,7 @@ test('the bundled chapters are imported first in the subject, in sections, with 
   assert.equal((await viewer('/api/subjects/economical-framework/cards')).data.cards.length, cards);
 });
 
-test('Mathe-Tutorium: the subject comes with its pack, chapters with slide decks and pictures', async () => {
+test('Mathe-Tutorium: the subject comes with its pack; short chapters with formulas and pictures', async () => {
   const dataDir = await tempDir();
   let srv = await start({ dataDir, env: { CONTENT_DIR: CONTENT } });
   let admin = await srv.login('admin');
@@ -61,18 +61,32 @@ test('Mathe-Tutorium: the subject comes with its pack, chapters with slide decks
   const math = subjects[subjects.length - 1];
   assert.deepEqual([math.id, math.title, math.icon], ['mathe-tutorium', 'Mathe-Tutorium', 'sigma'], 'added at the end of semester 1');
   const { data } = await admin('/api/subjects/mathe-tutorium');
-  assert.deepEqual(data.chapters.map((c) => c.id), ['mathe-01-summen-produkt', 'mathe-02-potenzgesetze', 'mathe-03-binomische-formeln']);
+  assert.deepEqual(data.chapters.map((c) => c.id), [
+    'mathe-01-summen-produkt', 'mathe-02-potenzgesetze', 'mathe-03-binomische-formeln',
+    'mathe-04-logarithmen', 'mathe-05-wurzeln', 'mathe-06-gleichungen',
+  ]);
+  assert.ok(data.chapters.every((c) => !/^\d/.test(c.title)), 'titles without numbering');
   for (const { id } of data.chapters) {
     const { chapter } = (await admin(`/api/chapters/${id}`)).data;
-    const deck = chapter.blocks.find((b) => b.type === 'slides');
-    assert.ok(deck && deck.tab === 'slides' && deck.slides.length >= 10, `${id}: a slide deck in the "Folien" section`);
-    assert.ok(deck.slides.every((x) => x.title), `${id}: every slide has a title`);
-    for (const img of deck.slides.filter((x) => x.image)) {
-      assert.match(img.image, new RegExp(`^chapters/${id}/[0-9a-f]{8}-[\\w.-]+\\.svg$`));
-      assert.equal((await admin(`/data/${img.image}`)).status, 200, img.image);
+    assert.ok(!chapter.blocks.some((b) => b.type === 'slides'), `${id}: no slide decks`);
+    const terms = chapter.blocks.filter((b) => b.type === 'definition');
+    assert.ok(terms.length && terms.every((d) => !d.termEn && !d.textEn), `${id}: terms in German only`);
+    const formulas = chapter.blocks.filter((b) => b.type === 'formula' && b.tab === 'formulas');
+    assert.ok(formulas.length >= 2 && formulas.every((f) => f.explanation && f.example && !f.analogy), `${id}: short formula cards`);
+    assert.ok(formulas.every((f) => /[\\^_]/.test(f.text)), `${id}: formulas in math syntax`);
+    for (const img of chapter.blocks.filter((b) => b.type === 'image')) {
+      assert.equal((await admin(`/data/${img.src}`)).status, 200, img.src);
     }
-    assert.ok(chapter.blocks.some((b) => b.type === 'formula' && /\^|\\sum|\\frac/.test(b.text)), `${id}: formulas in math syntax`);
   }
+  const sums = (await admin('/api/chapters/mathe-01-summen-produkt')).data.chapter;
+  assert.deepEqual(sums.blocks.filter((b) => b.type === 'formula').map((f) => f.title), ['Summenzeichen', 'Produktzeichen']);
+  const block = async (id, pred) => (await admin(`/api/chapters/${id}`)).data.chapter.blocks.find(pred);
+  assert.ok(await block('mathe-04-logarithmen', (b) => b.type === 'callout' && /ln\(a \+ b\)/.test(b.title)), 'ln(a + b) cannot be split');
+  const undefinedNote = await block('mathe-05-wurzeln', (b) => b.type === 'callout' && b.title === 'Nicht definiert');
+  for (const what of ['Division durch 0', 'Gerade Wurzeln von negativen Zahlen', 'Logarithmen von negativen Zahlen oder 0']) {
+    assert.ok(undefinedNote.text.includes(what), what);
+  }
+  assert.equal((await block('mathe-06-gleichungen', (b) => b.type === 'definition')).term, 'Term', 'equations start with the term');
 
   // Deleted by the admin (with its chapters): not brought back at the next start.
   for (const { id } of data.chapters) {
@@ -84,6 +98,34 @@ test('Mathe-Tutorium: the subject comes with its pack, chapters with slide decks
   srv = await start({ dataDir, env: { CONTENT_DIR: CONTENT } });
   admin = await srv.login('admin');
   assert.equal((await admin('/api/subjects/mathe-tutorium')).status, 404);
+});
+
+test('a new subject.json version updates the subject — unless it was edited in the app', async () => {
+  const dataDir = await tempDir();
+  const content = await tempDir();
+  const write = (version, description) => fsp.mkdir(path.join(content, 'extra'), { recursive: true }).then(() => fsp.writeFile(
+    path.join(content, 'extra', 'subject.json'),
+    JSON.stringify({ id: 'extra-fach', version, semesterId: 'semester-1', title: `Extra v${version}`, short: 'EX', icon: 'sigma', color: 'pink', description }),
+  ));
+  await write(1, 'erste Fassung');
+  let srv = await start({ dataDir, env: { CONTENT_DIR: content } });
+  await srv.stop();
+
+  await write(2, 'zweite Fassung');
+  srv = await start({ dataDir, env: { CONTENT_DIR: content } });
+  let admin = await srv.login('admin');
+  let s = (await admin('/api/subjects/extra-fach')).data.subject;
+  assert.deepEqual([s.title, s.description, s.semesterId], ['Extra v2', 'zweite Fassung', 'semester-1']);
+  assert.match(srv.log(), /Fach aus content\/ aktualisiert: extra-fach/);
+
+  // Edited in the app: a newer version leaves it alone.
+  await admin('/api/subjects/extra-fach', { method: 'PATCH', json: { description: 'eigener Text' } });
+  await srv.stop();
+  await write(3, 'dritte Fassung');
+  srv = await start({ dataDir, env: { CONTENT_DIR: content } });
+  admin = await srv.login('admin');
+  s = (await admin('/api/subjects/extra-fach')).data.subject;
+  assert.deepEqual([s.title, s.description], ['Extra v2', 'eigener Text']);
 });
 
 test('a pack is imported only once — also after the admin deleted the chapter', async () => {

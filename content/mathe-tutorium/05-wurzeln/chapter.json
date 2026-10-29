@@ -1,0 +1,245 @@
+{
+  "id": "mathe-05-wurzeln",
+  "version": 1,
+  "subjectId": "mathe-tutorium",
+  "lang": "de",
+  "after": "mathe-04-logarithmen",
+  "status": "published",
+  "title": "Rechnen mit Wurzeln",
+  "summary": "Wurzeln als Potenzen, die wichtigsten Rechenregeln – und was nicht definiert ist.",
+  "blocks": [
+    {
+      "type": "text",
+      "tab": "overview",
+      "text": "Die Wurzel ist die Umkehrung des Potenzierens: $\\sqrt{9} = 3$, weil $3^2 = 9$. Am einfachsten rechnet man, wenn man Wurzeln als **Potenzen** schreibt – dann gelten die Potenzgesetze."
+    },
+    {
+      "type": "formula",
+      "tab": "overview",
+      "title": "Die Regeln auf einen Blick",
+      "text": "\\sqrt[n]{a} = a^{1/n}\n\\sqrt[n]{a^m} = a^{m/n}\n\\sqrt{a} \\cdot \\sqrt{b} = \\sqrt{a \\cdot b}\n\\frac{\\sqrt{a}}{\\sqrt{b}} = \\sqrt{\\frac{a}{b}}",
+      "variables": []
+    },
+    {
+      "type": "callout",
+      "tab": "overview",
+      "variant": "warning",
+      "title": "Nicht definiert",
+      "text": "- **Division durch 0:** $\\frac{5}{0}$ gibt es nicht.\n- **Gerade Wurzeln von negativen Zahlen:** $\\sqrt{−4}$ gibt es nicht – keine Zahl mal sich selbst ergibt −4. Ungerade Wurzeln gehen: $\\sqrt[3]{−8} = −2$.\n- **Logarithmen von negativen Zahlen oder 0:** $ln(0)$ und $log(−10)$ gibt es nicht."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Quadratwurzel",
+      "text": "$\\sqrt{a}$ ist die Zahl ≥ 0, die mit sich selbst multipliziert a ergibt: $\\sqrt{25} = 5$."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "n-te Wurzel",
+      "text": "$\\sqrt[n]{a}$ ist die Zahl, die n-mal mit sich selbst multipliziert a ergibt: $\\sqrt[3]{8} = 2$."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Radikand",
+      "text": "Die Zahl unter dem Wurzelzeichen – bei $\\sqrt{25}$ die 25."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Nicht definiert",
+      "text": "Ein Rechenausdruck ohne Ergebnis – dafür gibt es keine Zahl, z. B. $\\frac{1}{0}$."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Wurzel als Potenz",
+      "text": "\\sqrt[n]{a} = a^{1/n}",
+      "variables": [],
+      "explanation": "Die n-te Wurzel ist dasselbe wie **hoch 1/n**. So lassen sich die Potenzgesetze verwenden.",
+      "example": "$\\sqrt{16} = 16^{1/2} = 4$\n$\\sqrt[3]{27} = 27^{1/3} = 3$"
+    },
+    {
+      "type": "image",
+      "tab": "formulas",
+      "file": "img/wurzel-quadrat.svg",
+      "caption": "Die Quadratwurzel als Seitenlänge: Ein Quadrat mit Fläche 9 hat die Seite 3.",
+      "alt": "Quadrat aus 3 mal 3 Kästchen, Fläche 9, Seitenlänge 3; daneben: 3 hoch 2 gleich 9, also Wurzel aus 9 gleich 3."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Wurzel einer Potenz",
+      "text": "\\sqrt[n]{a^m} = a^{m/n}",
+      "variables": [],
+      "explanation": "Hochzahl unter der Wurzel **geteilt durch** den Wurzelexponenten.",
+      "example": "$\\sqrt[3]{8^2} = 8^{2/3} = 2^2 = 4$"
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Wurzeln multiplizieren",
+      "text": "\\sqrt{a} \\cdot \\sqrt{b} = \\sqrt{a \\cdot b}",
+      "variables": [],
+      "explanation": "Zwei Wurzeln unter **eine** Wurzel schreiben (für a, b ≥ 0).",
+      "example": "$\\sqrt{2} \\cdot \\sqrt{8} = \\sqrt{16} = 4$"
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Wurzeln dividieren",
+      "text": "\\frac{\\sqrt{a}}{\\sqrt{b}} = \\sqrt{\\frac{a}{b}}",
+      "variables": [],
+      "explanation": "Genauso beim Teilen (a ≥ 0, b > 0).",
+      "example": "$\\frac{\\sqrt{50}}{\\sqrt{2}} = \\sqrt{25} = 5$"
+    },
+    {
+      "type": "heading",
+      "tab": "practice",
+      "text": "Aufgaben",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "tab": "practice",
+      "text": "**Aufgabe 1.** Schreibe als Potenz: a) $\\sqrt{x}$  b) $\\sqrt[3]{x^2}$  c) $\\frac{1}{\\sqrt{x}}$"
+    },
+    {
+      "type": "toggle",
+      "tab": "practice",
+      "title": "Lösung anzeigen",
+      "text": "a) $x^{1/2}$\nb) $x^{2/3}$\nc) $x^{−1/2}$ (negativer Exponent = Kehrwert)"
+    },
+    {
+      "type": "text",
+      "tab": "practice",
+      "text": "**Aufgabe 2.** Berechne ohne Taschenrechner: a) $\\sqrt{3} \\cdot \\sqrt{12}$  b) $\\frac{\\sqrt{98}}{\\sqrt{2}}$  c) $27^{1/3}$"
+    },
+    {
+      "type": "toggle",
+      "tab": "practice",
+      "title": "Lösung anzeigen",
+      "text": "a) $\\sqrt{36} = 6$\nb) $\\sqrt{49} = 7$\nc) $\\sqrt[3]{27} = 3$"
+    },
+    {
+      "type": "text",
+      "tab": "practice",
+      "text": "**Aufgabe 3.** Welche Ausdrücke sind nicht definiert? a) $\\sqrt{−9}$  b) $\\sqrt[3]{−27}$  c) $\\frac{0}{5}$  d) $ln(0)$  e) $\\frac{5}{0}$"
+    },
+    {
+      "type": "toggle",
+      "tab": "practice",
+      "title": "Lösung anzeigen",
+      "text": "Nicht definiert: a) gerade Wurzel einer negativen Zahl, d) Logarithmus von 0, e) Division durch 0.\nDefiniert: b) = −3 und c) = 0."
+    },
+    {
+      "type": "heading",
+      "tab": "practice",
+      "text": "Karteikarten",
+      "level": 2
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "$\\sqrt[n]{a}$ als Potenz?",
+      "back": "$a^{1/n}$"
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "$\\sqrt[n]{a^m}$ als Potenz?",
+      "back": "$a^{m/n}$"
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "$\\sqrt{a} \\cdot \\sqrt{b} = ?$",
+      "back": "$\\sqrt{a \\cdot b}$ (für a, b ≥ 0)"
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "Was ist nicht definiert?",
+      "back": "Division durch 0, gerade Wurzeln von negativen Zahlen, Logarithmen von negativen Zahlen oder 0."
+    },
+    {
+      "type": "heading",
+      "tab": "practice",
+      "text": "Quiz",
+      "level": 2
+    },
+    {
+      "type": "quiz",
+      "tab": "practice",
+      "question": "Was ist $\\sqrt{2} \\cdot \\sqrt{18}$?",
+      "options": [
+        {
+          "text": "6",
+          "correct": true
+        },
+        {
+          "text": "$\\sqrt{20}$",
+          "correct": false
+        },
+        {
+          "text": "9",
+          "correct": false
+        },
+        {
+          "text": "36",
+          "correct": false
+        }
+      ],
+      "explanation": "$\\sqrt{2 \\cdot 18} = \\sqrt{36} = 6$"
+    },
+    {
+      "type": "quiz",
+      "tab": "practice",
+      "question": "Wie schreibt man $\\sqrt[4]{x^3}$ als Potenz?",
+      "options": [
+        {
+          "text": "$x^7$",
+          "correct": false
+        },
+        {
+          "text": "$x^{4/3}$",
+          "correct": false
+        },
+        {
+          "text": "$x^{3/4}$",
+          "correct": true
+        },
+        {
+          "text": "$x^{12}$",
+          "correct": false
+        }
+      ],
+      "explanation": "Hochzahl geteilt durch Wurzelexponent: 3 durch 4."
+    },
+    {
+      "type": "quiz",
+      "tab": "practice",
+      "question": "Welcher Ausdruck ist definiert?",
+      "options": [
+        {
+          "text": "$ln(−8)$",
+          "correct": false
+        },
+        {
+          "text": "$\\frac{8}{0}$",
+          "correct": false
+        },
+        {
+          "text": "$\\sqrt[3]{−8}$",
+          "correct": true
+        },
+        {
+          "text": "$\\sqrt{−8}$",
+          "correct": false
+        }
+      ],
+      "explanation": "Ungerade Wurzeln von negativen Zahlen gehen: $(−2)^3 = −8$. Die anderen drei sind nicht definiert."
+    }
+  ]
+}

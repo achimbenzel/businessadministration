@@ -2,7 +2,7 @@
  * Content packs: chapters that ship with the code, so content can be prepared
  * in the repository and arrives with a `git pull`:
  *
- *   content/<subject>/subject.json             { id, semesterId, title, short, icon, color, description } (optional)
+ *   content/<subject>/subject.json             { id, version, semesterId, title, short, icon, color, description } (optional)
  *   content/<subject>/<chapter>/chapter.json   { id, version, subjectId, lang, title, summary, status, position | after, blocks }
  *   content/<subject>/<chapter>/img/…          pictures, referenced as { type: 'image', file: 'img/x.svg' }
  *                                              (on slides: { slides: [{ …, file: 'img/x.svg' }] })
@@ -15,7 +15,9 @@
  * as a separate draft right after it. A chapter the admin deleted stays deleted.
  *
  * A subject.json adds its subject once — to existing databases too — at the
- * end of its semester. Deleted or edited in the app, it stays that way.
+ * end of its semester. A higher `version` updates title, short name, icon,
+ * colour and description, but only if nobody has edited the subject in the
+ * app since; deleted or edited, it stays that way.
  */
 import crypto from 'node:crypto';
 import fs from 'node:fs';
@@ -111,8 +113,25 @@ export async function importContentSubjects(dir = CONTENT_DIR) {
     try {
       const def = JSON.parse(await fsp.readFile(file, 'utf8'));
       if (!isId(def.id)) throw new Error('"id" fehlt oder ist ungültig (6–40 Zeichen: a–z, 0–9, _ und -)');
+      const version = Number.isInteger(def.version) && def.version > 0 ? def.version : 1;
       const db = await readDB();
-      if (db.subjectsImported.some((x) => x.id === def.id)) continue;
+      const record = db.subjectsImported.find((x) => x.id === def.id);
+      if (record) {
+        if (record.version >= version) continue;
+        const subject = db.subjects.find((s) => s.id === def.id);
+        const untouched = subject && subject.updatedAt <= record.at;
+        await mutateDB((d) => {
+          const now = Date.now();
+          const s = d.subjects.find((x) => x.id === def.id);
+          if (untouched && s) {
+            const { title, short, icon, color, description } = def;
+            Object.assign(s, normalizeSubject({ ...s, title, short, icon, color, description, updatedAt: now }));
+          }
+          Object.assign(d.subjectsImported.find((x) => x.id === def.id), { version, at: now });
+        });
+        if (untouched) report.push({ id: def.id, action: 'subjectUpdated' });
+        continue;
+      }
       const exists = db.subjects.some((s) => s.id === def.id);
       if (!exists && !db.semesters.some((s) => s.id === def.semesterId)) {
         console.warn(`  Fach ${def.id}: Semester "${def.semesterId}" gibt es nicht – übersprungen.`);
@@ -124,7 +143,7 @@ export async function importContentSubjects(dir = CONTENT_DIR) {
           const order = Math.max(-1, ...d.subjects.filter((s) => s.semesterId === def.semesterId).map((s) => s.order)) + 1;
           d.subjects.push(normalizeSubject({ ...def, order, createdAt: now, updatedAt: now }));
         }
-        d.subjectsImported.push({ id: def.id, at: now });
+        d.subjectsImported.push({ id: def.id, at: now, version });
       });
       if (!exists) report.push({ id: def.id, action: 'subject' });
     } catch (err) {

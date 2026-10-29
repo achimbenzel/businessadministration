@@ -433,7 +433,9 @@ a.row-item:hover { background: var(--surface-2); }
 .row-meta { display: none; align-items: center; gap: 5px; font-size: 12px; color: var(--text-faint); white-space: nowrap; }
 .row-icon { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: var(--surface-3); color: var(--text-muted); flex-shrink: 0; }
 .row-actions { display: flex; gap: 6px; align-items: center; }
-@media (min-width: 641px) { .row-meta { display: inline-flex; } }
+/* phone: the time as a third line under the subject; wider: on the right */
+.row-when { display: inline-flex; align-items: center; gap: 4px; margin-top: 1px; font-size: 12px; color: var(--text-faint); }
+@media (min-width: 641px) { .row-meta { display: inline-flex; } .row-when { display: none; } }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }

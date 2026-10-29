@@ -49,7 +49,8 @@ export function normalizeDB(d) {
     trash: list(db.trash, 10000).map(normalizeTrashEntry).filter((t) => t && t.id),
     contentImported: list(db.contentImported, 10000).map(normalizeImport).filter((x) => x.id),
     // Subjects that came with a content pack (content/<subject>/subject.json), added once.
-    subjectsImported: list(db.subjectsImported, 1000).map((x) => ({ id: isId(x?.id) ? x.id : '', at: time(x?.at) })).filter((x) => x.id),
+    subjectsImported: list(db.subjectsImported, 1000)
+      .map((x) => ({ id: isId(x?.id) ? x.id : '', at: time(x?.at), version: num(x?.version, 1, 1e6, 1) })).filter((x) => x.id),
   };
 }
 

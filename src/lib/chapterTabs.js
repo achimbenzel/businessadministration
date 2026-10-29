@@ -51,12 +51,16 @@ const plain = (s, max = 90) => {
 
 /**
  * Contents entries of a section's blocks: headings, terms, formulas, demos;
- * runs of quiz questions / flashcards become one entry with a count (n).
+ * runs of quiz questions / flashcards become one entry with a count (n) — a
+ * heading right above such a run ("Quiz", "Karteikarten") merges into it.
  */
 export function sectionItems(blocks, lang = 'de') {
   const items = [];
+  let heading = null; // the entry of the block just before, if it was a heading
   for (const b of blocks) {
     let it = null;
+    const above = heading;
+    heading = null;
     switch (b.type) {
       case 'heading': it = { kind: 'heading', level: b.level === 3 ? 3 : 2, title: plain(b.text) }; break;
       case 'definition': it = { kind: 'term', title: plain(b.term) }; break;
@@ -73,12 +77,17 @@ export function sectionItems(blocks, lang = 'de') {
         const kind = b.type === 'quiz' ? 'quiz' : 'cards';
         const last = items[items.length - 1];
         if (last && last.kind === kind && last.run) { last.n += 1; continue; }
+        if (above) { Object.assign(above, { kind, n: 1, run: true }); delete above.level; continue; }
         it = { kind, n: 1, run: true };
         break;
       }
       default: break;
     }
-    if (it && (it.title || it.run)) items.push({ id: b.id, n: 1, ...it });
+    if (it && (it.title || it.run)) {
+      const entry = { id: b.id, n: 1, ...it };
+      items.push(entry);
+      if (it.kind === 'heading') heading = entry;
+    }
   }
   for (const it of items) {
     if (it.kind === 'quiz') it.title = lang === 'en' ? `Quiz · ${it.n} ${it.n === 1 ? 'question' : 'questions'}` : `Quiz · ${it.n} ${it.n === 1 ? 'Frage' : 'Fragen'}`;

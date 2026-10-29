@@ -14,7 +14,7 @@ import { useCatalog } from '../lib/catalog.jsx';
 import { useLoad } from '../lib/useLoad.js';
 import { useLastChapter, useLearned } from '../lib/progress.js';
 import { usePageTitle } from '../lib/pageTitle.js';
-import { fmtRelative } from '../lib/format.js';
+import { fmtUpdated } from '../lib/format.js';
 import '../styles/catalog.css';
 
 export default function HomePage() {
@@ -95,9 +95,10 @@ export default function HomePage() {
                 <span className="row-text">
                   <strong>{c.title}</strong>
                   <small>{c.subject?.title}</small>
+                  <small className="row-when"><Clock size={12} /> {fmtUpdated(c.updatedAt)}</small>
                 </span>
                 {c.status === 'draft' && <span className="badge badge-draft">Entwurf</span>}
-                <span className="row-meta"><Clock size={13} /> {fmtRelative(c.updatedAt)}</span>
+                <span className="row-meta"><Clock size={13} /> {fmtUpdated(c.updatedAt)}</span>
               </Link>
             ))}
           </div>

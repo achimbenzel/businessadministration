@@ -6,8 +6,9 @@ import { normalizeChapter, normalizeUrl, blockText } from '../server/schema.js';
 import { str, num, isId } from '../server/schema/base.js';
 import { sanitize } from '../server/files.js';
 import { isAllowedHost } from '../server/http.js';
-import { resolveSections, buildSections, sectionLabel } from '../src/lib/chapterTabs.js';
+import { resolveSections, buildSections, sectionLabel, sectionItems } from '../src/lib/chapterTabs.js';
 import { parseMath, mathToPlain } from '../src/lib/math.js';
+import { fmtUpdated } from '../src/lib/format.js';
 
 test('inline markdown → tokens', () => {
   assert.deepEqual(parseInline('a **b** c'), [{ t: 'text', v: 'a ' }, { t: 'b', children: [{ t: 'text', v: 'b' }] }, { t: 'text', v: ' c' }]);
@@ -230,4 +231,22 @@ test('chapter sections: slide decks get their own "Folien" section, counted by s
   const slides = s.list.find((x) => x.key === 'slides');
   assert.equal(slides.count, 3);
   assert.deepEqual(slides.items.map((i) => [i.kind, i.title]), [['slides', 'Potenzgesetze · 3 Folien']]);
+});
+
+test('"zuletzt aktualisiert": date and time, within a week with the relative time', () => {
+  const now = Date.UTC(2026, 9, 29, 12, 0);
+  assert.match(fmtUpdated(now - 3 * 86400000, now), /^vor 3 Tagen · \d{2}\.\d{2}\.2026, \d{2}:\d{2} Uhr$/);
+  assert.match(fmtUpdated(now - 20 * 86400000, now), /^\d{2}\.\d{2}\.2026, \d{2}:\d{2} Uhr$/);
+  assert.equal(fmtUpdated(0, now), '');
+});
+
+test('contents: a heading right above quiz questions or flashcards merges into one entry', () => {
+  const items = sectionItems([
+    { id: 'h1', type: 'heading', text: 'Aufgaben' }, { id: 't', type: 'text', text: 'x' },
+    { id: 'h2', type: 'heading', text: 'Karteikarten' }, { id: 'c1', type: 'flashcard' }, { id: 'c2', type: 'flashcard' },
+    { id: 'h3', type: 'heading', text: 'Quiz' }, { id: 'q1', type: 'quiz' },
+  ]);
+  assert.deepEqual(items.map((i) => [i.id, i.kind, i.title]), [
+    ['h1', 'heading', 'Aufgaben'], ['h2', 'cards', 'Karteikarten · 2'], ['h3', 'quiz', 'Quiz · 1 Frage'],
+  ]);
 });

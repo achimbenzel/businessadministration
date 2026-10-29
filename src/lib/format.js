@@ -1,6 +1,7 @@
 // Dates, numbers and sizes — German format.
 const dateFmt = new Intl.DateTimeFormat('de-DE', { day: 'numeric', month: 'short', year: 'numeric' });
 const dateTimeFmt = new Intl.DateTimeFormat('de-DE', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+const stampFmt = new Intl.DateTimeFormat('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
 const rtf = new Intl.RelativeTimeFormat('de-DE', { numeric: 'auto' });
 
 export const fmtDate = (ts) => (ts ? dateFmt.format(new Date(ts)) : '');
@@ -16,6 +17,13 @@ export function fmtRelative(ts, now = Date.now()) {
   if (a < 86400) return rtf.format(Math.round(s / 3600), 'hour');
   if (a < 7 * 86400) return rtf.format(Math.round(s / 86400), 'day');
   return fmtDate(ts);
+}
+
+/** "29.10.2026, 14:32 Uhr" — within a week with the relative time in front: "vor 3 Tagen · 26.10.2026, 09:05 Uhr". */
+export function fmtUpdated(ts, now = Date.now()) {
+  if (!ts) return '';
+  const stamp = `${stampFmt.format(new Date(ts))} Uhr`;
+  return Math.abs(now - ts) < 7 * 86400 * 1000 ? `${fmtRelative(ts, now)} · ${stamp}` : stamp;
 }
 
 export function fmtBytes(n) {

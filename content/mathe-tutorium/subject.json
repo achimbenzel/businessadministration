@@ -1,9 +1,10 @@
 {
   "id": "mathe-tutorium",
+  "version": 3,
   "semesterId": "semester-1",
   "title": "Mathe-Tutorium",
   "short": "MATHE",
   "icon": "sigma",
   "color": "orange",
-  "description": "Mathematische Grundlagen zum Auffrischen: Summen- und Produktzeichen, Potenzgesetze und binomische Formeln – als Folien mit Beispielen, Formeln und Übungen."
+  "description": "Mathematische Grundlagen zum Auffrischen: Summen- und Produktzeichen, Potenzgesetze, binomische Formeln, Logarithmen, Wurzeln sowie Gleichungen und Ungleichungen – kurz erklärt mit Beispielen und Übungen."
 }
