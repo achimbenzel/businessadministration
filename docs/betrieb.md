@@ -92,12 +92,13 @@ Getestet mit Docker 29 / Compose 5: Start, Host-Prüfung (fremde Domain → 403)
    printf 'https://oauth2:%s@github.com\n' "$GH_TOKEN" > ~/.git-credentials && chmod 600 ~/.git-credentials
    unset GH_TOKEN
    ```
-3. **Code nach `/root/mba` holen.** Liegt dort schon eine eigene `docker-compose.yml`, wird der
+3. **Code nach `/root/mba` holen** – `git clone` ohne `-b` holt den Standard-Branch des Repos
+   (auf GitHub unter „Branches“ als *default* markiert). Liegt dort schon eine eigene `docker-compose.yml`, wird der
    Ordner vorher gesichert – das Repo bringt seine `docker-compose.yml` mit (im selben Format):
    ```bash
    cd /root/mba && docker compose down 2>/dev/null; cd /root
    mv mba mba-alt
-   git clone -b main https://github.com/achimbenzel/businessadministration.git mba
+   git clone https://github.com/achimbenzel/businessadministration.git mba
    cp mba-alt/.env mba/.env 2>/dev/null || cp mba/.env.example mba/.env
    [ -d mba-alt/data ] && cp -a mba-alt/data mba/
    nano mba/.env        # Passwörter, SESSION_SECRET, ALLOWED_HOSTS=<Domain>
