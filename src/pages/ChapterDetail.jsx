@@ -25,7 +25,7 @@ import { useSaver } from '../lib/autosave.js';
 import { useLearned, rememberChapter } from '../lib/progress.js';
 import { usePageTitle } from '../lib/pageTitle.js';
 import { subjectStyle } from '../lib/subjects.js';
-import { fmtRelative } from '../lib/format.js';
+import { fmtUpdated } from '../lib/format.js';
 import { buildSections, resolveSections, SECTIONS, SECTION_KEYS } from '../lib/chapterTabs.js';
 import { DESKTOP, useMediaQuery } from '../lib/useMedia.js';
 import '../styles/chapter.css';
@@ -326,7 +326,7 @@ function SaveIndicator({ state, updatedAt }) {
   if (state === 'saving' || state === 'dirty') return <span className="save-state"><LoaderCircle size={14} className="spin" /> Speichert …</span>;
   if (state === 'error') return <span className="save-state bad"><CloudOff size={14} /> Nicht gespeichert</span>;
   if (state === 'conflict') return <span className="save-state bad"><TriangleAlert size={14} /> Konflikt</span>;
-  return <span className="save-state ok" title={`Zuletzt geändert ${fmtRelative(updatedAt)}`}><Check size={14} /> Gespeichert</span>;
+  return <span className="save-state ok" title={`Zuletzt geändert: ${fmtUpdated(updatedAt)}`}><Check size={14} /> Gespeichert</span>;
 }
 
 function MoveDialog({ chapter, semesters, onClose, onMove }) {

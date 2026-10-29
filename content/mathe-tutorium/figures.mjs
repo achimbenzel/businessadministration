@@ -61,24 +61,24 @@ function anatomy(sym, { title, name, part, expand }) {
     text(160, 306, 'i=1', { size: 36, color: C.teal, anchor: 'middle', weight: 700, font: MONO }),
     text(238, 216, 'a_i', { size: 62, color: C.pink, weight: 700, font: MONO }),
     text(370, 66, 'obere Grenze: bis wohin?', { size: 17, color: C.amber, weight: 700 }),
-    text(370, 88, '(upper limit)', { size: 15, color: C.muted }),
+    text(370, 88, '(Endwert)', { size: 15, color: C.muted }),
     arrow(362, 72, 190, 74, C.amber),
     text(370, 178, part, { size: 17, color: C.pink, weight: 700 }),
     text(370, 200, '(hängt meist von i ab)', { size: 15, color: C.muted }),
     arrow(362, 186, 322, 194, C.pink),
     text(370, 290, 'Laufindex i und Startwert:', { size: 17, color: C.teal, weight: 700 }),
-    text(370, 312, 'ab wo? (index, lower limit)', { size: 15, color: C.muted }),
+    text(370, 312, 'ab wo? (untere Grenze)', { size: 15, color: C.muted }),
     arrow(362, 296, 214, 296, C.teal),
     text(24, 354, expand, { size: 18, color: C.muted, font: MONO }),
   ]);
 }
 const sumAnatomy = anatomy('Σ', {
   title: 'Aufbau des Summenzeichens: obere Grenze n, Laufindex i mit Startwert 1, Summand a_i',
-  name: 'Summenzeichen (Sigma, summation sign)', part: 'Summand: was addiert wird', expand: 'Σ a_i = a_1 + a_2 + … + a_n',
+  name: 'Summenzeichen (Sigma)', part: 'Summand: was addiert wird', expand: 'Σ a_i = a_1 + a_2 + … + a_n',
 });
 const prodAnatomy = anatomy('Π', {
   title: 'Aufbau des Produktzeichens: obere Grenze n, Laufindex i mit Startwert 1, Faktor a_i',
-  name: 'Produktzeichen (Pi, product notation)', part: 'Faktor: was multipliziert wird', expand: 'Π a_i = a_1 · a_2 · … · a_n',
+  name: 'Produktzeichen (Pi)', part: 'Faktor: was multipliziert wird', expand: 'Π a_i = a_1 · a_2 · … · a_n',
 });
 
 // ---- (a + b)² as a square --------------------------------------------------------------------

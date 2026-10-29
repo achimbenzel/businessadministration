@@ -70,7 +70,7 @@ beim nächsten Start erneut versucht. `CONTENT_DIR=off` schaltet den Import ab.
 ## `subject.json` – ein Fach mitliefern
 
 ```json
-{ "id": "mathe-tutorium", "semesterId": "semester-1", "title": "Mathe-Tutorium", "short": "MATHE", "icon": "sigma", "color": "orange", "description": "…" }
+{ "id": "mathe-tutorium", "version": 2, "semesterId": "semester-1", "title": "Mathe-Tutorium", "short": "MATHE", "icon": "sigma", "color": "orange", "description": "…" }
 ```
 
 Liegt im Fach-Ordner neben den Kapiteln. Beim Start wird das Fach **einmal** angelegt –
@@ -79,14 +79,20 @@ auch in einer bestehenden Datenbank – und ans Ende seines Semesters gestellt
 umbenannt, verschoben oder gelöscht bleibt es so. Fehlt das Semester, wird es beim
 nächsten Start erneut versucht. `icon` und `color` wie im Fach-Dialog (`src/lib/subjects.js`).
 
+`version` (Standard 1) hochzählen, um Titel, Kürzel, Icon, Farbe und Beschreibung eines
+schon importierten Fachs zu aktualisieren – aber nur, wenn es seit dem Import nicht in
+der App bearbeitet wurde. Semester und Position bleiben, ein gelöschtes Fach bleibt gelöscht.
+
 ## Abbildungen
 
 Die Grafiken der Economical-Framework-Kapitel erzeugt `economical-framework/figures.mjs`
 (es schreibt in die `img/`-Ordner beider Kapitel). Beschriftungen sind deutsch mit dem
-englischen Begriff in Klammern; Farben und Flächenbuchstaben entsprechen den Demos:
+englischen Begriff in Klammern; Farben und Flächenbuchstaben entsprechen den Demos.
+Die Mathe-Tutorium-Grafiken (nur deutsch) kommen aus `mathe-tutorium/figures.mjs`:
 
 ```bash
 node content/economical-framework/figures.mjs
+node content/mathe-tutorium/figures.mjs
 ```
 
 Damit eine geänderte Abbildung ankommt, `version` in `chapter.json` hochzählen.
