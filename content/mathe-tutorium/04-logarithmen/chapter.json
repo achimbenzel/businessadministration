@@ -1,0 +1,307 @@
+{
+  "id": "mathe-04-logarithmen",
+  "version": 1,
+  "subjectId": "mathe-tutorium",
+  "lang": "de",
+  "after": "mathe-03-binomische-formeln",
+  "status": "published",
+  "title": "Rechnen mit Logarithmen (log und ln)",
+  "summary": "Was log und ln bedeuten und die drei Rechenregeln – kurz erklärt mit Beispiel.",
+  "blocks": [
+    {
+      "type": "text",
+      "tab": "overview",
+      "text": "Der Logarithmus beantwortet die Frage: **Mit welcher Hochzahl** muss ich die Basis potenzieren, um die Zahl zu erhalten? Er ist die Umkehrung der Potenz: $log_2(8) = 3$, weil $2^3 = 8$."
+    },
+    {
+      "type": "formula",
+      "tab": "overview",
+      "title": "Die 3 Rechenregeln auf einen Blick",
+      "text": "1   log(a \\cdot b) = log(a) + log(b)\n2   log(\\frac{a}{b}) = log(a) − log(b)\n3   log(a^r) = r \\cdot log(a)",
+      "variables": []
+    },
+    {
+      "type": "text",
+      "tab": "overview",
+      "text": "Die Regeln gelten für jede Basis – für log genauso wie für ln."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Logarithmus",
+      "text": "Die Hochzahl, mit der man die Basis potenzieren muss, um eine Zahl zu erhalten: $log_b(x) = y$ heißt $b^y = x$."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "log (Zehnerlogarithmus)",
+      "text": "Logarithmus zur Basis 10: $log(100) = 2$, weil $10^2 = 100$. Auf dem Taschenrechner die Taste log."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "ln (natürlicher Logarithmus)",
+      "text": "Logarithmus zur Basis e ≈ 2,718 (eulersche Zahl): $ln(x) = y$ heißt $e^y = x$."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Logarithmus",
+      "text": "log_b(x) = y  \\Leftrightarrow  b^y = x",
+      "variables": [
+        {
+          "symbol": "b",
+          "meaning": "Basis"
+        },
+        {
+          "symbol": "x",
+          "meaning": "Zahl (größer als 0)"
+        },
+        {
+          "symbol": "y",
+          "meaning": "gesuchte Hochzahl"
+        }
+      ],
+      "explanation": "Der Logarithmus ist die gesuchte **Hochzahl**.",
+      "example": "$log_2(8) = 3$, weil $2^3 = 8$"
+    },
+    {
+      "type": "image",
+      "tab": "formulas",
+      "file": "img/logarithmus-umkehrung.svg",
+      "caption": "Potenz und Logarithmus: gleiche Farbe, gleiche Zahl.",
+      "alt": "Oben die Potenz 2 hoch 3 gleich 8, darunter der Logarithmus zur Basis 2 von 8 gleich 3. Die Basis 2, die Hochzahl 3 und das Ergebnis 8 sind jeweils gleich eingefärbt."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "log und ln",
+      "text": "log(x) = log_{10}(x)\nln(x) = log_e(x)",
+      "variables": [],
+      "explanation": "log hat die Basis 10, ln die Basis e. Der Logarithmus von 1 ist immer 0, der der Basis selbst immer 1.",
+      "example": "$log(1000) = 3$\n$ln(1) = 0$,  $ln(e) = 1$"
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Regel 1: Produkt",
+      "text": "log(a \\cdot b) = log(a) + log(b)",
+      "variables": [],
+      "explanation": "Logarithmus eines **Produkts** = Summe der Logarithmen.",
+      "example": "$log(20) + log(5) = log(100) = 2$"
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Regel 2: Quotient",
+      "text": "log(\\frac{a}{b}) = log(a) − log(b)",
+      "variables": [],
+      "explanation": "Logarithmus eines **Bruchs** = Differenz: oben minus unten.",
+      "example": "$log(\\frac{1000}{10}) = log(1000) − log(10) = 3 − 1 = 2$"
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Regel 3: Potenz",
+      "text": "log(a^r) = r \\cdot log(a)",
+      "variables": [],
+      "explanation": "Die Hochzahl wird als **Faktor** nach vorne gezogen.",
+      "example": "$ln(e^3) = 3 \\cdot ln(e) = 3$"
+    },
+    {
+      "type": "callout",
+      "tab": "formulas",
+      "variant": "warning",
+      "title": "Nicht umformen lässt sich ln(a + b)",
+      "text": "Für den Logarithmus einer **Summe** gibt es keine Regel: $ln(a + b) \\neq ln(a) + ln(b)$.\nBeispiel: $ln(1 + 1) = ln(2) ≈ 0,69$ – aber $ln(1) + ln(1) = 0$."
+    },
+    {
+      "type": "heading",
+      "tab": "practice",
+      "text": "Aufgaben",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "tab": "practice",
+      "text": "**Aufgabe 1.** Berechne ohne Taschenrechner: a) $log_2(16)$  b) $log(1000)$  c) $ln(1)$"
+    },
+    {
+      "type": "toggle",
+      "tab": "practice",
+      "title": "Lösung anzeigen",
+      "text": "a) 4, weil $2^4 = 16$\nb) 3, weil $10^3 = 1000$\nc) 0, weil $e^0 = 1$"
+    },
+    {
+      "type": "text",
+      "tab": "practice",
+      "text": "**Aufgabe 2.** Fasse zusammen und berechne: $log(4) + log(25)$"
+    },
+    {
+      "type": "toggle",
+      "tab": "practice",
+      "title": "Lösung anzeigen",
+      "text": "Regel 1: $log(4 \\cdot 25) = log(100) = 2$"
+    },
+    {
+      "type": "text",
+      "tab": "practice",
+      "text": "**Aufgabe 3.** Schreibe $ln(\\frac{x^2}{y})$ ohne Bruch und ohne Hochzahl."
+    },
+    {
+      "type": "toggle",
+      "tab": "practice",
+      "title": "Lösung anzeigen",
+      "text": "Regel 2, dann Regel 3: $ln(x^2) − ln(y) = 2 \\cdot ln(x) − ln(y)$"
+    },
+    {
+      "type": "text",
+      "tab": "practice",
+      "text": "**Aufgabe 4.** Lässt sich $ln(x + 1)$ vereinfachen?"
+    },
+    {
+      "type": "toggle",
+      "tab": "practice",
+      "title": "Lösung anzeigen",
+      "text": "Nein – für den Logarithmus einer Summe gibt es keine Regel."
+    },
+    {
+      "type": "heading",
+      "tab": "practice",
+      "text": "Karteikarten",
+      "level": 2
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "Was bedeutet $log_b(x) = y$?",
+      "back": "$b^y = x$ – der Logarithmus ist die gesuchte Hochzahl."
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "Regel 1: $log(a \\cdot b) = ?$",
+      "back": "$log(a) + log(b)$"
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "Regel 2: $log(\\frac{a}{b}) = ?$",
+      "back": "$log(a) − log(b)$"
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "Regel 3: $log(a^r) = ?$",
+      "back": "$r \\cdot log(a)$"
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "Lässt sich $ln(a + b)$ umformen?",
+      "back": "Nein. Für eine Summe gibt es keine Regel: $ln(a + b) \\neq ln(a) + ln(b)$."
+    },
+    {
+      "type": "heading",
+      "tab": "practice",
+      "text": "Quiz",
+      "level": 2
+    },
+    {
+      "type": "quiz",
+      "tab": "practice",
+      "question": "Was ist $log_3(9)$?",
+      "options": [
+        {
+          "text": "6",
+          "correct": false
+        },
+        {
+          "text": "3",
+          "correct": false
+        },
+        {
+          "text": "2",
+          "correct": true
+        },
+        {
+          "text": "27",
+          "correct": false
+        }
+      ],
+      "explanation": "$3^2 = 9$ – also ist 2 die gesuchte Hochzahl."
+    },
+    {
+      "type": "quiz",
+      "tab": "practice",
+      "question": "Was ergibt $log(5) + log(20)$?",
+      "options": [
+        {
+          "text": "100",
+          "correct": false
+        },
+        {
+          "text": "$log(25)$",
+          "correct": false
+        },
+        {
+          "text": "2",
+          "correct": true
+        },
+        {
+          "text": "1",
+          "correct": false
+        }
+      ],
+      "explanation": "Regel 1: $log(5 \\cdot 20) = log(100) = 2$"
+    },
+    {
+      "type": "quiz",
+      "tab": "practice",
+      "question": "Was ergibt $ln(e^4)$?",
+      "options": [
+        {
+          "text": "4",
+          "correct": true
+        },
+        {
+          "text": "$4e$",
+          "correct": false
+        },
+        {
+          "text": "1",
+          "correct": false
+        },
+        {
+          "text": "e",
+          "correct": false
+        }
+      ],
+      "explanation": "Regel 3: $4 \\cdot ln(e) = 4 \\cdot 1 = 4$"
+    },
+    {
+      "type": "quiz",
+      "tab": "practice",
+      "question": "Welche Umformung ist richtig?",
+      "options": [
+        {
+          "text": "$ln(a \\cdot b) = ln(a) \\cdot ln(b)$",
+          "correct": false
+        },
+        {
+          "text": "$ln(a^2) = (ln(a))^2$",
+          "correct": false
+        },
+        {
+          "text": "$ln(a + b) = ln(a) + ln(b)$",
+          "correct": false
+        },
+        {
+          "text": "$ln(a^2 \\cdot b) = 2 \\cdot ln(a) + ln(b)$",
+          "correct": true
+        }
+      ],
+      "explanation": "Regel 1 und 3. Aus einem Produkt wird eine Summe; für eine Summe gibt es keine Regel."
+    }
+  ]
+}

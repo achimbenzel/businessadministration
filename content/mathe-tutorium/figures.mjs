@@ -148,12 +148,76 @@ const powerTiles = svg(680, 330, 'Potenzgesetze als Kacheln: a³ · a² = a⁵ u
   text(24, 300, '(a^2)^3 = a^2 · a^2 · a^2 = a^{2·3} = a^6', { size: 22, weight: 700, font: MONO }),
 ]);
 
+// Coloured pieces in one line: [['log', C.text], ['_2', C.teal], …] — '_x' / '^x' lowered / raised.
+function pieces(x, y, parts, { size = 44, anchor = 'start', font = MONO, weight = 700 } = {}) {
+  let cur = 0;
+  const spans = parts.map(([v, color]) => {
+    const level = v[0] === '^' ? 1 : v[0] === '_' ? -1 : 0;
+    const target = level === 1 ? -0.4 * size : level === -1 ? 0.22 * size : 0;
+    const dy = target - cur;
+    cur = target;
+    return `<tspan fill="${color}"${dy ? ` dy="${dy.toFixed(1)}"` : ''}${level ? ' font-size="68%"' : ''}>${esc(level ? v.slice(1) : v)}</tspan>`;
+  }).join('');
+  return `<text x="${x}" y="${y}" font-size="${size}" text-anchor="${anchor}" font-weight="${weight}" font-family="${font}">${spans}</text>`;
+}
+
+// ---- Logarithm = the exponent you are looking for --------------------------------------------
+const logInverse = svg(640, 330, 'Potenz und Logarithmus: 2 hoch 3 gleich 8, also Logarithmus zur Basis 2 von 8 gleich 3', [
+  text(24, 38, 'Der Logarithmus sucht die Hochzahl', { size: 20, weight: 700 }),
+  text(24, 104, 'Potenz', { size: 19, color: C.muted, weight: 700 }),
+  pieces(200, 110, [['2', C.teal], ['^3', C.amber], [' = ', C.text], ['8', C.pink]]),
+  text(200, 146, 'Hochzahl bekannt → Ergebnis gesucht', { size: 18, color: C.muted }),
+  text(24, 214, 'Logarithmus', { size: 19, color: C.muted, weight: 700 }),
+  pieces(200, 220, [['log', C.text], ['_2', C.teal], ['(', C.text], ['8', C.pink], [') = ', C.text], ['3', C.amber]]),
+  text(200, 256, 'Ergebnis bekannt → Hochzahl gesucht', { size: 18, color: C.muted }),
+  text(24, 310, 'Basis', { size: 18, color: C.teal, weight: 700 }),
+  text(94, 310, 'Hochzahl', { size: 18, color: C.amber, weight: 700 }),
+  text(194, 310, 'Ergebnis', { size: 18, color: C.pink, weight: 700 }),
+  text(290, 310, '– gleiche Farbe, gleiche Zahl', { size: 18, color: C.muted }),
+]);
+
+// ---- Square root = side of a square ----------------------------------------------------------
+const cell = 56; const sx = 60; const sy = 70;
+const rootSquare = svg(640, 330, 'Quadratwurzel als Seitenlänge: Ein Quadrat aus 3 mal 3 Kästchen hat die Fläche 9 und die Seite 3', [
+  ...Array.from({ length: 9 }, (_, k) => `<rect x="${sx + (k % 3) * cell}" y="${sy + Math.floor(k / 3) * cell}" width="${cell}" height="${cell}" fill="${C.teal}" fill-opacity="0.22" stroke="${C.teal}" stroke-width="2"/>`),
+  text(sx + 1.5 * cell, sy + 3 * cell + 36, 'Fläche 9 (9 Kästchen)', { size: 18, anchor: 'middle', weight: 700, color: C.teal }),
+  text(sx + 1.5 * cell, sy - 16, 'Seite 3', { size: 18, anchor: 'middle', color: C.amber, weight: 700 }),
+  text(sx - 14, sy + 1.5 * cell + 7, '3', { size: 20, anchor: 'end', color: C.amber, weight: 700 }),
+  text(330, 130, '3^2 = 9', { size: 34, weight: 700, font: MONO }),
+  text(330, 186, '√9 = 3', { size: 34, weight: 700, font: MONO }),
+  text(330, 240, 'Die Wurzel aus der Fläche', { size: 19, color: C.muted }),
+  text(330, 266, 'ist die Seitenlänge.', { size: 19, color: C.muted }),
+]);
+
+// ---- An equation as a balance: the same step on both sides ----------------------------------
+const pan = (cx, label, color) => [
+  `<line x1="${cx}" y1="96" x2="${cx - 70}" y2="200" stroke="${C.faint}" stroke-width="2"/>`,
+  `<line x1="${cx}" y1="96" x2="${cx + 70}" y2="200" stroke="${C.faint}" stroke-width="2"/>`,
+  `<path d="M${cx - 84} 200 H${cx + 84} Q${cx} 236 ${cx - 84} 200 Z" fill="${color}" fill-opacity="0.22" stroke="${color}" stroke-width="2"/>`,
+  `<rect x="${cx - 66}" y="152" width="132" height="46" rx="10" fill="${C.bg}" stroke="${color}" stroke-width="2"/>`,
+  `<rect x="${cx - 66}" y="152" width="132" height="46" rx="10" fill="${color}" fill-opacity="0.22"/>`,
+  text(cx, 184, label, { size: 28, anchor: 'middle', weight: 700, font: MONO, color }),
+  text(cx, 268, '− 3', { size: 26, anchor: 'middle', weight: 700, font: MONO, color: C.amber }),
+];
+const balance = svg(540, 350, 'Gleichung als Waage: links 2x + 3, rechts 11; auf beiden Seiten minus 3 ergibt 2x = 8', [
+  `<path d="M245 300 L270 252 L295 300 Z" fill="${C.faint}" fill-opacity="0.4" stroke="${C.faint}" stroke-width="2"/>`,
+  `<line x1="270" y1="252" x2="270" y2="88" stroke="${C.muted}" stroke-width="4"/>`,
+  `<line x1="110" y1="96" x2="430" y2="96" stroke="${C.muted}" stroke-width="5" stroke-linecap="round"/>`,
+  `<circle cx="270" cy="92" r="7" fill="${C.text}"/>`,
+  ...pan(110, '2x + 3', C.teal), ...pan(430, '11', C.violet),
+  text(270, 42, 'Gleichgewicht: links = rechts', { size: 21, color: C.muted, anchor: 'middle' }),
+  text(270, 336, 'auf beiden Seiten − 3  →  2x = 8', { size: 22, anchor: 'middle', weight: 700, color: C.text }),
+]);
+
 for (const [name, content] of Object.entries({
   '01-summen-produktzeichen/img/summenzeichen-aufbau.svg': sumAnatomy,
   '01-summen-produktzeichen/img/produktzeichen-aufbau.svg': prodAnatomy,
   '02-potenzgesetze/img/potenzgesetze-kacheln.svg': powerTiles,
   '03-binomische-formeln/img/binom-quadrat.svg': binom1,
   '03-binomische-formeln/img/binom-dritte.svg': binom3,
+  '04-logarithmen/img/logarithmus-umkehrung.svg': logInverse,
+  '05-wurzeln/img/wurzel-quadrat.svg': rootSquare,
+  '06-gleichungen-ungleichungen/img/gleichung-waage.svg': balance,
 })) {
   fs.mkdirSync(path.dirname(path.join(OUT, name)), { recursive: true });
   fs.writeFileSync(path.join(OUT, name), content);

@@ -61,7 +61,11 @@ test('Mathe-Tutorium: the subject comes with its pack; short chapters with formu
   const math = subjects[subjects.length - 1];
   assert.deepEqual([math.id, math.title, math.icon], ['mathe-tutorium', 'Mathe-Tutorium', 'sigma'], 'added at the end of semester 1');
   const { data } = await admin('/api/subjects/mathe-tutorium');
-  assert.deepEqual(data.chapters.map((c) => c.id), ['mathe-01-summen-produkt', 'mathe-02-potenzgesetze', 'mathe-03-binomische-formeln']);
+  assert.deepEqual(data.chapters.map((c) => c.id), [
+    'mathe-01-summen-produkt', 'mathe-02-potenzgesetze', 'mathe-03-binomische-formeln',
+    'mathe-04-logarithmen', 'mathe-05-wurzeln', 'mathe-06-gleichungen',
+  ]);
+  assert.ok(data.chapters.every((c) => !/^\d/.test(c.title)), 'titles without numbering');
   for (const { id } of data.chapters) {
     const { chapter } = (await admin(`/api/chapters/${id}`)).data;
     assert.ok(!chapter.blocks.some((b) => b.type === 'slides'), `${id}: no slide decks`);
@@ -69,13 +73,20 @@ test('Mathe-Tutorium: the subject comes with its pack; short chapters with formu
     assert.ok(terms.length && terms.every((d) => !d.termEn && !d.textEn), `${id}: terms in German only`);
     const formulas = chapter.blocks.filter((b) => b.type === 'formula' && b.tab === 'formulas');
     assert.ok(formulas.length >= 2 && formulas.every((f) => f.explanation && f.example && !f.analogy), `${id}: short formula cards`);
-    assert.ok(formulas.every((f) => /\^|\\sum|\\prod/.test(f.text)), `${id}: formulas in math syntax`);
+    assert.ok(formulas.every((f) => /[\\^_]/.test(f.text)), `${id}: formulas in math syntax`);
     for (const img of chapter.blocks.filter((b) => b.type === 'image')) {
       assert.equal((await admin(`/data/${img.src}`)).status, 200, img.src);
     }
   }
   const sums = (await admin('/api/chapters/mathe-01-summen-produkt')).data.chapter;
   assert.deepEqual(sums.blocks.filter((b) => b.type === 'formula').map((f) => f.title), ['Summenzeichen', 'Produktzeichen']);
+  const block = async (id, pred) => (await admin(`/api/chapters/${id}`)).data.chapter.blocks.find(pred);
+  assert.ok(await block('mathe-04-logarithmen', (b) => b.type === 'callout' && /ln\(a \+ b\)/.test(b.title)), 'ln(a + b) cannot be split');
+  const undefinedNote = await block('mathe-05-wurzeln', (b) => b.type === 'callout' && b.title === 'Nicht definiert');
+  for (const what of ['Division durch 0', 'Gerade Wurzeln von negativen Zahlen', 'Logarithmen von negativen Zahlen oder 0']) {
+    assert.ok(undefinedNote.text.includes(what), what);
+  }
+  assert.equal((await block('mathe-06-gleichungen', (b) => b.type === 'definition')).term, 'Term', 'equations start with the term');
 
   // Deleted by the admin (with its chapters): not brought back at the next start.
   for (const { id } of data.chapters) {

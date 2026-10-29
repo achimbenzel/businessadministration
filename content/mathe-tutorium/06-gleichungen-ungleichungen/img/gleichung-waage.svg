@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 350" width="540" height="350" font-family="'DM Sans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" role="img" aria-label="Gleichung als Waage: links 2x + 3, rechts 11; auf beiden Seiten minus 3 ergibt 2x = 8">
+<title>Gleichung als Waage: links 2x + 3, rechts 11; auf beiden Seiten minus 3 ergibt 2x = 8</title>
+<defs><marker id="arr-bg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#131316"/></marker><marker id="arr-text" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#ececef"/></marker><marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a8a8b0"/></marker><marker id="arr-faint" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#6b6b75"/></marker><marker id="arr-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2ec5d3"/></marker><marker id="arr-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a78bfa"/></marker><marker id="arr-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#fbbf24"/></marker><marker id="arr-pink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#f472b6"/></marker><marker id="arr-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#34d399"/></marker><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" stroke="#a8a8b0" stroke-opacity="0.5" stroke-width="2"/></pattern></defs>
+<rect width="540" height="350" fill="#131316"/>
+<path d="M245 300 L270 252 L295 300 Z" fill="#6b6b75" fill-opacity="0.4" stroke="#6b6b75" stroke-width="2"/>
+<line x1="270" y1="252" x2="270" y2="88" stroke="#a8a8b0" stroke-width="4"/>
+<line x1="110" y1="96" x2="430" y2="96" stroke="#a8a8b0" stroke-width="5" stroke-linecap="round"/>
+<circle cx="270" cy="92" r="7" fill="#ececef"/>
+<line x1="110" y1="96" x2="40" y2="200" stroke="#6b6b75" stroke-width="2"/>
+<line x1="110" y1="96" x2="180" y2="200" stroke="#6b6b75" stroke-width="2"/>
+<path d="M26 200 H194 Q110 236 26 200 Z" fill="#2ec5d3" fill-opacity="0.22" stroke="#2ec5d3" stroke-width="2"/>
+<rect x="44" y="152" width="132" height="46" rx="10" fill="#131316" stroke="#2ec5d3" stroke-width="2"/>
+<rect x="44" y="152" width="132" height="46" rx="10" fill="#2ec5d3" fill-opacity="0.22"/>
+<text x="110" y="184" font-size="28" fill="#2ec5d3" text-anchor="middle" font-weight="700" font-family="'JetBrains Mono', Menlo, Consolas, monospace"><tspan>2x + 3</tspan></text>
+<text x="110" y="268" font-size="26" fill="#fbbf24" text-anchor="middle" font-weight="700" font-family="'JetBrains Mono', Menlo, Consolas, monospace"><tspan>− 3</tspan></text>
+<line x1="430" y1="96" x2="360" y2="200" stroke="#6b6b75" stroke-width="2"/>
+<line x1="430" y1="96" x2="500" y2="200" stroke="#6b6b75" stroke-width="2"/>
+<path d="M346 200 H514 Q430 236 346 200 Z" fill="#a78bfa" fill-opacity="0.22" stroke="#a78bfa" stroke-width="2"/>
+<rect x="364" y="152" width="132" height="46" rx="10" fill="#131316" stroke="#a78bfa" stroke-width="2"/>
+<rect x="364" y="152" width="132" height="46" rx="10" fill="#a78bfa" fill-opacity="0.22"/>
+<text x="430" y="184" font-size="28" fill="#a78bfa" text-anchor="middle" font-weight="700" font-family="'JetBrains Mono', Menlo, Consolas, monospace"><tspan>11</tspan></text>
+<text x="430" y="268" font-size="26" fill="#fbbf24" text-anchor="middle" font-weight="700" font-family="'JetBrains Mono', Menlo, Consolas, monospace"><tspan>− 3</tspan></text>
+<text x="270" y="42" font-size="21" fill="#a8a8b0" text-anchor="middle" font-weight="500" font-family="'DM Sans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"><tspan>Gleichgewicht: links = rechts</tspan></text>
+<text x="270" y="336" font-size="22" fill="#ececef" text-anchor="middle" font-weight="700" font-family="'DM Sans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"><tspan>auf beiden Seiten − 3  →  2x = 8</tspan></text>
+</svg>

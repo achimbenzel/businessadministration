@@ -1,0 +1,244 @@
+{
+  "id": "mathe-06-gleichungen",
+  "version": 1,
+  "subjectId": "mathe-tutorium",
+  "lang": "de",
+  "after": "mathe-05-wurzeln",
+  "status": "published",
+  "title": "Gleichungen und Ungleichungen",
+  "summary": "Vom Term zur Gleichung: wie Umformungen funktionieren – und worauf man bei Ungleichungen achten muss.",
+  "blocks": [
+    {
+      "type": "text",
+      "tab": "overview",
+      "text": "Ein **Term** ist ein Rechenausdruck aus Zahlen, Variablen und Rechenzeichen – ohne Gleichheitszeichen, z. B. $2x + 3$. Verbindet man zwei Terme mit =, entsteht eine **Gleichung**: $2x + 3 = 11$. Mit <, >, ≤ oder ≥ entsteht eine **Ungleichung**: $2x + 3 < 11$. Gelöst wird durch **Umformen**, bis x allein auf einer Seite steht."
+    },
+    {
+      "type": "callout",
+      "tab": "overview",
+      "variant": "important",
+      "title": "Grundregel",
+      "text": "Was man auf der einen Seite tut, muss man auch auf der anderen tun. Bei Ungleichungen zusätzlich: Mal oder geteilt durch eine **negative** Zahl dreht das Zeichen um."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Term",
+      "text": "Ein Rechenausdruck aus Zahlen, Variablen und Rechenzeichen, ohne =, < oder > – z. B. $2x + 3$ oder $a^2 − b$."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Gleichung",
+      "text": "Zwei Terme, verbunden durch = – z. B. $2x + 3 = 11$."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Ungleichung",
+      "text": "Zwei Terme, verbunden durch <, >, ≤ oder ≥ – z. B. $2x + 3 < 11$."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Äquivalenzumformung",
+      "text": "Eine Umformung, die die Lösung nicht verändert: auf beiden Seiten dasselbe rechnen."
+    },
+    {
+      "type": "definition",
+      "tab": "terms",
+      "term": "Lösung",
+      "text": "Die Zahl, die die Gleichung wahr macht. Bei einer Ungleichung meist ein ganzer Bereich, z. B. x < 4."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Addieren und subtrahieren",
+      "text": "a = b  \\Leftrightarrow  a + c = b + c",
+      "variables": [],
+      "explanation": "Auf **beiden** Seiten dieselbe Zahl addieren oder abziehen – so wird man Zahlen neben dem x los.",
+      "example": "$x + 5 = 12 \\quad | −5$\n$x = 7$"
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Multiplizieren und dividieren",
+      "text": "a = b  \\Leftrightarrow  a \\cdot c = b \\cdot c   (c \\neq 0)",
+      "variables": [],
+      "explanation": "Beide Seiten mit derselben Zahl malnehmen oder durch sie teilen – aber **nie mit 0**.",
+      "example": "$3x = 12 \\quad | :3$\n$x = 4$"
+    },
+    {
+      "type": "image",
+      "tab": "formulas",
+      "file": "img/gleichung-waage.svg",
+      "caption": "Eine Gleichung ist wie eine Waage: Was man links wegnimmt, muss man auch rechts wegnehmen.",
+      "alt": "Waage im Gleichgewicht, links 2x + 3, rechts 11. Auf beiden Seiten wird 3 abgezogen, übrig bleibt 2x = 8."
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Gleichung lösen – Schritt für Schritt",
+      "text": "2x + 3 = 11  \\quad | −3\n2x = 8       \\quad | :2\nx = 4",
+      "variables": [],
+      "explanation": "Erst die Zahl ohne x auf die andere Seite bringen, dann durch die Zahl vor dem x teilen.",
+      "example": "Probe: $2 \\cdot 4 + 3 = 11$ ✓"
+    },
+    {
+      "type": "formula",
+      "tab": "formulas",
+      "title": "Ungleichungen umformen",
+      "text": "a < b  \\Leftrightarrow  a + c < b + c\na < b  \\Leftrightarrow  a \\cdot c < b \\cdot c   (c > 0)\na < b  \\Leftrightarrow  a \\cdot c > b \\cdot c   (c < 0)",
+      "variables": [],
+      "explanation": "Wie bei Gleichungen – aber mal oder geteilt durch eine **negative** Zahl dreht das Zeichen um. Warum? $2 < 3$, aber $−2 > −3$.",
+      "example": "$−2x < 6 \\quad | :(−2)$\n$x > −3$"
+    },
+    {
+      "type": "heading",
+      "tab": "practice",
+      "text": "Aufgaben",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "tab": "practice",
+      "text": "**Aufgabe 1.** Term, Gleichung oder Ungleichung? a) $3x − 7$  b) $3x − 7 = 2$  c) $3x − 7 \\geq 2$"
+    },
+    {
+      "type": "toggle",
+      "tab": "practice",
+      "title": "Lösung anzeigen",
+      "text": "a) Term\nb) Gleichung\nc) Ungleichung"
+    },
+    {
+      "type": "text",
+      "tab": "practice",
+      "text": "**Aufgabe 2.** Löse: a) $x − 4 = 10$  b) $5x = 35$  c) $3x + 2 = 17$"
+    },
+    {
+      "type": "toggle",
+      "tab": "practice",
+      "title": "Lösung anzeigen",
+      "text": "a) $| +4$: $x = 14$\nb) $| :5$: $x = 7$\nc) $| −2$: $3x = 15$, dann $| :3$: $x = 5$"
+    },
+    {
+      "type": "text",
+      "tab": "practice",
+      "text": "**Aufgabe 3.** Löse: a) $x + 3 < 8$  b) $−3x \\leq 12$"
+    },
+    {
+      "type": "toggle",
+      "tab": "practice",
+      "title": "Lösung anzeigen",
+      "text": "a) $| −3$: $x < 5$\nb) $| :(−3)$, das Zeichen dreht sich um: $x \\geq −4$"
+    },
+    {
+      "type": "heading",
+      "tab": "practice",
+      "text": "Karteikarten",
+      "level": 2
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "Was ist ein Term?",
+      "back": "Ein Rechenausdruck ohne =, < oder >, z. B. $2x + 3$."
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "Grundregel beim Umformen?",
+      "back": "Auf beiden Seiten dasselbe rechnen."
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "Womit darf man nie multiplizieren oder dividieren?",
+      "back": "Mit 0."
+    },
+    {
+      "type": "flashcard",
+      "tab": "practice",
+      "front": "Wann dreht sich bei einer Ungleichung das Zeichen um?",
+      "back": "Beim Multiplizieren oder Dividieren mit einer negativen Zahl."
+    },
+    {
+      "type": "heading",
+      "tab": "practice",
+      "text": "Quiz",
+      "level": 2
+    },
+    {
+      "type": "quiz",
+      "tab": "practice",
+      "question": "Welcher Ausdruck ist ein Term?",
+      "options": [
+        {
+          "text": "$x = 1$",
+          "correct": false
+        },
+        {
+          "text": "$4x − 1$",
+          "correct": true
+        },
+        {
+          "text": "$4x − 1 > 3$",
+          "correct": false
+        },
+        {
+          "text": "$4x − 1 = 3$",
+          "correct": false
+        }
+      ],
+      "explanation": "Ein Term hat kein =, < oder > – sonst ist es eine Gleichung oder Ungleichung."
+    },
+    {
+      "type": "quiz",
+      "tab": "practice",
+      "question": "Was ist die Lösung von $4x − 3 = 9$?",
+      "options": [
+        {
+          "text": "$x = 12$",
+          "correct": false
+        },
+        {
+          "text": "$x = 1,5$",
+          "correct": false
+        },
+        {
+          "text": "$x = 3$",
+          "correct": true
+        },
+        {
+          "text": "$x = 6$",
+          "correct": false
+        }
+      ],
+      "explanation": "$| +3$: $4x = 12$, dann $| :4$: $x = 3$"
+    },
+    {
+      "type": "quiz",
+      "tab": "practice",
+      "question": "Was wird aus $−2x > 8$ nach Division durch −2?",
+      "options": [
+        {
+          "text": "$x < −4$",
+          "correct": true
+        },
+        {
+          "text": "$x < 4$",
+          "correct": false
+        },
+        {
+          "text": "$x > 4$",
+          "correct": false
+        },
+        {
+          "text": "$x > −4$",
+          "correct": false
+        }
+      ],
+      "explanation": "Geteilt durch eine negative Zahl – das Zeichen dreht sich um."
+    }
+  ]
+}
