@@ -49,7 +49,8 @@ Fürs Handy im eigenen Netz ohne Domain: Tailscale (`*.ts.net` ist als Host erla
 `docker-compose.yml` startet die App im offiziellen `node:20`-Image im Docker-Netz
 `npm_default` des Nginx Proxy Managers (NPM) – ohne eigenen Port nach außen.
 
-1. Repository auf den Server holen, z. B. `git clone … /opt/mba && cd /opt/mba`.
+1. Repository auf den Server holen – bei einem privaten Repo mit Token, siehe
+   [„Code mit GitHub-Token holen“](#code-mit-github-token-holen-privates-repo) unten (Ordner z. B. `/root/mba`).
 2. `.env` anlegen (`cp .env.example .env`) und eintragen:
    ```ini
    USER_PASSWORD=<langes Passwort>
@@ -74,9 +75,37 @@ Was die Compose-Datei festlegt:
 | Volume `node_modules` | die Linux-Pakete liegen getrennt vom Projektordner (plattformabhängige Teile wie esbuild) |
 | `npm ci && npm run build && npm start` | Produktionsbetrieb. `npm run dev` wäre der Vite-Entwicklungsserver – langsamer und nicht fürs offene Internet gedacht |
 
-**Aktualisieren:** `git pull && docker compose restart` – der Neustart installiert und baut neu.
+**Aktualisieren:** `cd /root/mba && git pull && docker compose restart` – der Neustart installiert und baut neu.
 Inhalte und Uploads liegen im Projektordner unter `data/` und bleiben dabei erhalten (Backups siehe unten).
 Getestet mit Docker 29 / Compose 5: Start, Host-Prüfung (fremde Domain → 403), Login mit `Secure`-Cookie hinter HTTPS.
+
+### Code mit GitHub-Token holen (privates Repo)
+
+1. **Token anlegen:** GitHub → Settings → Developer settings → Personal access tokens →
+   **Fine-grained tokens** → Generate new token. Repository access: *Only select repositories* →
+   `businessadministration`; Permissions → Repository → **Contents: Read-only**. Ablaufdatum setzen.
+2. **Auf dem Server** (als root) – der Token wird einmal abgefragt und für spätere `git pull`
+   in `~/.git-credentials` gespeichert (nur für root lesbar), nicht in der Shell-History:
+   ```bash
+   read -rsp "GitHub-Token: " GH_TOKEN; echo
+   git config --global credential.helper store
+   printf 'https://oauth2:%s@github.com\n' "$GH_TOKEN" > ~/.git-credentials && chmod 600 ~/.git-credentials
+   unset GH_TOKEN
+   ```
+3. **Code nach `/root/mba` holen.** Liegt dort schon eine eigene `docker-compose.yml`, wird der
+   Ordner vorher gesichert – das Repo bringt seine `docker-compose.yml` mit (im selben Format):
+   ```bash
+   cd /root/mba && docker compose down 2>/dev/null; cd /root
+   mv mba mba-alt
+   git clone -b main https://github.com/achimbenzel/businessadministration.git mba
+   cp mba-alt/.env mba/.env 2>/dev/null || cp mba/.env.example mba/.env
+   [ -d mba-alt/data ] && cp -a mba-alt/data mba/
+   nano mba/.env        # Passwörter, SESSION_SECRET, ALLOWED_HOSTS=<Domain>
+   cd mba && docker compose up -d && docker logs -f mba
+   ```
+4. Später aktualisieren: `cd /root/mba && git pull && docker compose restart`.
+
+Den Token widerrufen: auf GitHub löschen und auf dem Server `rm ~/.git-credentials`.
 
 ## Passwörter ändern
 
